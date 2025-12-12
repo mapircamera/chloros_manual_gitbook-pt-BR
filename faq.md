@@ -9,9 +9,9 @@ metaLinks:
 
 <details>
 
-<summary>Posso processar imagens de câmeras que não sejam da marca MAPIR com o Chloros?</summary>
+<summary>Posso processar imagens de câmeras que não são da marca MAPIR com o Chloros?</summary>
 
-Não, o Chloros só suporta o processamento de imagens de câmeras MAPIR. Consulte a lista de [modelos de câmeras compatíveis](supported-cameras.md) para obter mais informações. Oferecemos o processamento de outras câmeras no MAPIR Cloud. Consulte a lista completa [aqui](https://mapir.gitbook.io/mapir-cloud/supported-cameras).
+Não, o Chloros só suporta o processamento de imagens de câmeras MAPIR. Consulte a lista de [modelos de câmeras compatíveis](supported-cameras.md) para obter mais informações. Oferecemos o processamento de outras câmeras no MAPIR Cloud. Veja a lista completa [aqui](https://mapir.gitbook.io/mapir-cloud/supported-cameras).
 
 </details>
 
@@ -19,7 +19,7 @@ Não, o Chloros só suporta o processamento de imagens de câmeras MAPIR. Consul
 
 <summary>Posso calibrar minhas imagens para refletância sem um alvo de calibração?</summary>
 
-Não. Sem uma imagem do alvo de calibração capturada ao mesmo tempo que as imagens não alvo, você não poderá relacionar os valores de pixel da imagem a uma porcentagem de refletância conhecida. Se você também não incluir o registro de um sensor de luz MAPIR, o espectro de luz ambiente não será medido e os resultados de refletância não serão precisos.
+Não. Sem uma imagem do alvo de calibração capturada ao mesmo tempo que as imagens sem alvo, você não poderá relacionar os valores de pixel da imagem a uma porcentagem de refletância conhecida. Se você também não incluir o registro de um sensor de luz MAPIR, o espectro de luz ambiente não será medido e os resultados de refletância não serão precisos.
 
 </details>
 
@@ -51,7 +51,7 @@ Não. Apenas imagens individuais da câmera MAPIR são suportadas, não imagens 
 
 <summary>Como posso acelerar a etapa de detecção de alvos do Chloros?</summary>
 
-Na tabela do navegador de arquivos, pré-selecionar as imagens-alvo na coluna à direita indicará ao Chloros para procurar apenas nessas imagens os alvos de calibração, acelerando consideravelmente o processamento.
+Na tabela do navegador de arquivos, pré-selecionar as imagens-alvo na coluna da direita indicará ao Chloros para procurar apenas nessas imagens os alvos de calibração, acelerando consideravelmente o processamento.
 
 </details>
 

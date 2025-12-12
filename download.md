@@ -6,7 +6,7 @@ metaLinks:
 
 # Download
 
-Faça o download da versão mais recente do Chloros para Windows para começar a usar o processamento de imagens multiespectrais.
+Faça o download da versão mais recente do Chloros para o Windows para começar a usar o processamento de imagens multiespectrais.
 
 ### Requisitos do sistema
 
@@ -37,7 +37,7 @@ Faça o download da versão mais recente do Chloros para Windows para começar a
 * **Versão**: 1.0.3
 * **Data de lançamento**: dezembro de 2025
 * **Tamanho do arquivo**: 1,6 GB
-* **Tipo de arquivo**: .exe (instalador do Windows)
+* **Tipo de arquivo**: .exe (Instalador Windows)
 
 #### **Etapas de instalação:**
 
@@ -75,7 +75,7 @@ pip install chloros-sdk
 A instalação do Chloros inclui:
 
 * ✅ **Chloros Desktop GUI** - Interface gráfica completa
-* ✅ **Chloros (Navegador)** - Interface baseada na Web para sistemas com especificações mais baixas
+* ✅ **Chloros (Browser)** - Interface baseada na Web para sistemas com especificações mais baixas
 * ✅ **Chloros CLI** - Interface de linha de comando (requer licença Chloros+)
 * ✅ **Backend Engine** - Pipeline de processamento de imagens
 * ✅ **Perfis de câmera** - Modelos de câmera pré-configurados MAPIR
@@ -107,13 +107,13 @@ Desbloqueie recursos avançados com uma assinatura do Chloros+:
 
 **O aplicativo não inicia:**
 
-* Experimente a versão Chloros (navegador)
+* Tente a versão Chloros (navegador)
 * Verifique se o Windows 10/11 (64 bits) está instalado
 * Atualize os drivers gráficos
 * Verifique o Windows Visualizador de Eventos para obter detalhes sobre o erro
 * Entre em contato com o suporte com os registros de erros
 
-**Problemas de ativação da licença:**
+**Problemas com a ativação da licença:**
 
 * Certifique-se de que a conexão com a Internet esteja ativa
 * Verifique as credenciais em [https://cloud.mapir.camera](https://cloud.mapir.camera)

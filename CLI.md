@@ -1,8 +1,6 @@
 # CLI: Linha de comando
 
-<figure><img src=".gitbook/assets/cli.JPG" alt=""><figcaption></figcaption></figure>
-
-O **Chloros CLI** fornece acesso poderoso por linha de comando ao mecanismo de processamento de imagens Chloros, permitindo automação, criação de scripts e operação sem monitor para seus fluxos de trabalho de imagem.
+<figure><img src=".gitbook/assets/cli.JPG" alt=""><figcaption></figcaption></figure>O **Chloros CLI** fornece acesso poderoso por linha de comando ao mecanismo de processamento de imagens Chloros, permitindo automação, criação de scripts e operação sem monitor para seus fluxos de trabalho de imagem.
 
 ### Principais recursos
 
@@ -55,7 +53,7 @@ chloros-cli status
 chloros-cli process "C:\Images\Dataset001"
 ```
 
-### Uso básico
+### Utilização básica
 
 Processe uma pasta com as configurações padrão:
 
@@ -280,7 +278,7 @@ chloros-cli language ja
 | `hu`    | Húngaro             | Magyar           |
 | `ro`    | Romeno              | Română           |
 | `uk`    | Ucraniano             | Українська       |
-| `pt-BR` | Português Brasileiro  | Português Brasileiro |
+| `pt-BR` | Português brasileiro  | Português Brasileiro |
 | `zh-HK` | Cantonês             | 粵語             |
 | `ms`    | Malaio                 | Bahasa Melayu    |
 | `sk`    | Eslovaco                | Slovenčina       |
