@@ -1,86 +1,86 @@
-# Index/LUT Sandbox
+# Sandbox de Índice/LUT
 
-The Index/LUT Sandbox is an interactive workspace within the Chloros Image Viewer that allows you to experiment with multispectral index calculations and color visualizations in real-time. This powerful tool helps you test different indices, refine value ranges, and create publication-ready visualizations without reprocessing your entire dataset.
+A Sandbox de Índice/LUT é um espaço de trabalho interativo dentro do Visualizador de Imagens Chloros que permite experimentar cálculos de índices multiespectrais e visualizações de cores em tempo real. Esta poderosa ferramenta ajuda a testar diferentes índices, refinar intervalos de valores e criar visualizações prontas para publicação sem reprocessar todo o conjunto de dados.
 
-## What is the Index/LUT Sandbox?
+## O que é a Sandbox de Índice/LUT?
 
-### Purpose
+### Objetivo
 
-The Sandbox provides:
+A Sandbox oferece:
 
-* **Real-time index calculation** - Apply any vegetation index instantly
-* **Interactive LUT adjustment** - Fine-tune color gradients and ranges
-* **Workflow optimization** - Determine best settings before batch processing
+* **Cálculo de índice em tempo real** - Aplique qualquer índice de vegetação instantaneamente
+* **Ajuste LUT interativo** - Ajuste gradientes e intervalos de cores
+* **Otimização do fluxo de trabalho** - Determine as melhores configurações antes do processamento em lote
 
-### Sandbox vs. Project Processing
+### Sandbox vs. Processamento de projeto
 
-**Index/LUT Sandbox (Interactive):**
+**Sandbox de índice/LUT (interativo):**
 
-* Single image at a time
-* Instant feedback
-* Experimental and iterative
-* No permanent changes to files
-* Perfect for exploring and testing
+* Uma imagem por vez
+* Feedback instantâneo
+* Experimental e iterativo
+* Sem alterações permanentes nos arquivos
+* Perfeito para explorar e testar
 
-**Project Processing (Batch):**
+**Processamento de projeto (em lote):**
 
-* Entire dataset at once
-* Pre-configured settings
-* Permanent output files
-* Time-intensive
-* Best when settings are finalized
+* Conjunto de dados inteiro de uma vez
+* Configurações pré-definidas
+* Arquivos de saída permanentes
+* Demorado
+* Ideal quando as configurações estão finalizadas
 
-{% hint style="success" %}
-**Best Workflow**: Use the Sandbox to experiment and find optimal index and LUT settings, then apply those settings during Project Processing for your entire dataset.
+{% hint style=&quot;success&quot; %}
+**Melhor fluxo de trabalho**: use a Sandbox para experimentar e encontrar as configurações ideais de índice e LUT e, em seguida, aplique essas configurações durante o processamento do projeto para todo o conjunto de dados.
 {% endhint %}
 
 ***
 
-## Working with the Index/LUT Sandbox
+## Trabalhando com a Sandbox de índice/LUT
 
-### Understanding Pre-Calculated Indices
+### Entendendo os índices pré-calculados
 
-In Chloros, indices can be applied during project processing. To determine which index and LUT settings you want to apply to exports it is easiest to use the image viewer sandbox.
+No Chloros, os índices podem ser aplicados durante o processamento do projeto. Para determinar quais configurações de índice e LUT você deseja aplicar às exportações, é mais fácil usar a sandbox do visualizador de imagens.
 
-The sandbox allows you to:
+A sandbox permite que você:
 
-* **Apply new index and color gradients (LUTs)** to visualize the data
-* **Adjust visualization settings** interactively
-* **View** already-calculated index images
-* **Inspect** pixel values at all zoom levels
+* **Aplicar novos índices e gradientes de cor (LUTs)** para visualizar os dados
+* **Ajustar as configurações de visualização** de forma interativa
+* **Visualizar** imagens de índice já calculadas
+* **Inspecionar** valores de pixel em todos os níveis de zoom
 
-### Opening the Sandbox
+### Abrindo a área restrita
 
-The Index/LUT Sandbox is accessed in the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> sidebar tab:
+A área restrita do índice/LUT é acessada na guia **Visualizador de imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> :
 
-1. Click an image in the file browser image grid, it opens in the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab
-2. Click **the Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab to open the left pop-out sidebar if it's not already open
+1. Clique em uma imagem na grade de imagens do navegador de arquivos para abri-la na guia **Visualizador de Imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> .
+2. Clique na guia **Visualizador de Imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> para abrir a barra lateral pop-out à esquerda, caso ainda não esteja aberta
 
-### Selecting an Image to Apply an Index/LUT to
+### Selecionando uma imagem para aplicar um índice/LUT
 
-To work with an index in the Image Viewer <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> sandbox:
+Para trabalhar com um índice na barra lateral <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> :
 
-1. **Open an image** from the main image grid by clicking on it
-2. The **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab will then open
-3. Click the **Layer dropdown** (top-right of viewer)
-4. Select the layer from the dropdown:
-   * RAW (Reflectance)
+1. **Abra uma imagem** da grade de imagens principal clicando nela
+2. A guia **Visualizador de imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> será aberta
+3. Clique no **menu suspenso Camada** (canto superior direito do visualizador)
+4. Selecione a camada no menu suspenso:
+   * RAW (Refletância)
 
-### Applying an Index to an Image
+### Aplicando um índice a uma imagem
 
-Once the image is fullscreen and the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab sidebar is open:
+Quando a imagem estiver em tela cheia e a barra lateral da guia **Visualizador de imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> estiver aberta:
 
-1. Check the Index box at the top of the sidebar
-2. Choose your camera's filter from the left dropdown
-3. Choose the desired index formula from the right dropdown
-4. Drag the filter channel color circles to the locations in the index formula below
-5. Once the formula is valid the image will update and show the index values
-6. Move your mouse cursor around to see the values at the cursor's location
-7. Zoom in to see individual pixels and their associated values
+1. Marque a caixa Índice na parte superior da barra lateral
+2. Escolha o filtro da sua câmera no menu suspenso à esquerda
+3. Escolha a fórmula de índice desejada no menu suspenso à direita
+4. Arraste os círculos de cor do canal do filtro para os locais na fórmula de índice abaixo
+5. Quando a fórmula for válida, a imagem será atualizada e mostrará os valores do índice
+6. Mova o cursor do mouse para ver os valores no local do cursor
+7. Amplie para ver os pixels individuais e seus valores associados
 
-Each index has a specific value range and meaning:
+Cada índice tem um intervalo de valores e um significado específicos:
 
-#### NDVI Example
+#### NDVI Exemplo
 
 ```
 Formula: (NIR - Red) / (NIR + Red)
@@ -96,293 +96,293 @@ Bare soil: 0.0 to 0.2
 Water: -0.1 to 0.1
 ```
 
-For complete index formula documentation, see [Multispectral Index Formulas](../project-settings/multispectral-index-formulas.md).
+Para obter a documentação completa da fórmula do índice, consulte [Fórmulas do Índice Multiespectral](../project-settings/multispectral-index-formulas.md).
 
 ***
 
-## Working with LUTs (Look-Up Tables)
+## Trabalhando com LUTs (Tabelas de Consulta)
 
-### What is a LUT?
+### O que é uma LUT?
 
-A **Look-Up Table (LUT)** maps numerical index values to colors for visualization:
+Uma **Tabela de Consulta (LUT)** mapeia valores numéricos de índice para cores para visualização:
 
-* **Input**: Index pixel value (e.g., NDVI 0.65)
-* **Output**: RGB color (e.g., bright green)
-* **Purpose**: Make patterns easier to see and interpret
+* **Entrada**: Valor do pixel do índice (por exemplo, NDVI 0,65)
+* **Saída**: cor RGB (por exemplo, verde brilhante)
+* **Objetivo**: tornar os padrões mais fáceis de ver e interpretar
 
-**Grayscale vs. Color LUT:**
+**Escala de cinza vs. LUT de cor:**
 
-* Grayscale: Scientific and neutral, shows raw data
-* Color LUT: Intuitive and impactful, highlights patterns and differences
+* Escala de cinza: científica e neutra, mostra dados brutos
+* LUT de cor: intuitiva e impactante, destaca padrões e diferenças
 
-{% hint style="success" %}
-**Visualization Power**: Applying a color LUT to a grayscale index image makes it dramatically easier to identify patterns, anomalies, and areas of interest at a glance.
+{% hint style=&quot;success&quot; %}
+**Poder de visualização**: Aplicar uma LUT colorida a uma imagem de índice em escala de cinza torna muito mais fácil identificar padrões, anomalias e áreas de interesse rapidamente.
 {% endhint %}
 
-### Applying a LUT to an Index Image
+### Aplicando uma LUT a uma imagem de índice
 
-Once you have an index image showing
+Depois de ter uma imagem de índice mostrando
 
-1. Click the <img src="../.gitbook/assets/image.png" alt="" data-size="line"> "+Add LUT" button
-2. Select the color gradient
-3. Adjust the clipping min/max end points
-4. Adjust the Clipping Mode
-5. Check the Index box in the **Image Viewer** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> tab sidebar to apply the LUT
+1. Clique no <img src="../.gitbook/assets/image.png" alt="" data-size="line"> botão “+Adicionar LUT”
+2. Selecione o gradiente de cores
+3. Ajuste os pontos finais mínimo/máximo do recorte
+4. Ajuste o modo de recorte
+5. Marque a caixa Índice na barra lateral do **Visualizador de imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> para aplicar a LUT
 
-### Choosing a Color Gradient
+### Escolhendo um gradiente de cor
 
-**Selecting a gradient:**
+**Selecionando um gradiente:**
 
-1. In the LUT panel, locate the **colored gradient bar**
-2. Hover your mouse over it to view available gradient presets
-3. Select desired gradient
-4. The image **updates immediately** with new colors when the Index box is checked
+1. No painel LUT, localize a **barra de gradiente colorida**
+2. Passe o mouse sobre ela para ver as predefinições de gradiente disponíveis
+3. Selecione o gradiente desejado
+4. A imagem **é atualizada imediatamente** com novas cores quando a caixa Índice é marcada
 
-{% hint style="success" %}
-**Best Practice**: For vegetation indices like NDVI, the Red-Yellow-Green gradient is most intuitive because it aligns with natural color associations (green=healthy, yellow=moderate, red=stressed).
+{% hint style=&quot;success&quot; %}
+**Melhor prática**: para índices de vegetação como NDVI, o gradiente Red-Amarelo-Green é mais intuitivo, pois se alinha às associações naturais de cores (verde = saudável, amarelo = moderado, vermelho = estressado).
 {% endhint %}
 
-### Adjusting Color Classes
+### Ajustando classes de cores
 
-The **Classes control** determines how many discrete color steps appear in your gradient:
+O **controle Classes** determina quantos degraus de cores discretos aparecem no seu gradiente:
 
-**Class count options:**
+**Opções de contagem de classes:**
 
-* **2-5 classes**: Very broad categories, distinct zones
-* **6-10 classes**: Balanced, good for classification
-* **11-20 classes**: Smooth gradients, continuous appearance
-* **20+ classes**: Near-continuous, maximum smoothness
+* **2-5 classes**: categorias muito amplas, zonas distintas
+* **6-10 classes**: equilibrado, bom para classificação
+* **11-20 classes**: gradientes suaves, aparência contínua
+* **20+ classes**: quase contínuo, suavidade máxima
 
-**How to adjust:**
+**Como ajustar:**
 
-1. In the LUT panel, locate the **color swatch squares below the gradient bar**
-2. Adjust the number of classes by adding with the + button
-3. Remove the number of classes by double clicking on a color swatch
-4. The gradient updates **in real-time** on the image
+1. No painel LUT, localize os **quadrados de amostras de cores abaixo da barra de gradiente**
+2. Ajuste o número de classes adicionando com o botão +
+3. Remova o número de classes clicando duas vezes em uma amostra de cor
+4. O gradiente é atualizado **em tempo real** na imagem
 
-**Effect on visualization:**
+**Efeito na visualização:**
 
-* **Fewer classes** (3-5): Creates distinct zones, simplified classification, easier to distinguish categories
-* **Medium classes** (6-10): Balanced approach, good for most applications
-* **More classes** (15-20): Smooth transitions, detailed variation, photographic appearance
+* **Menos classes** (3-5): Cria zonas distintas, classificação simplificada, categorias mais fáceis de distinguir
+* **Classes médias** (6-10): Abordagem equilibrada, boa para a maioria das aplicações
+* **Mais classes** (15-20): Transições suaves, variação detalhada, aparência fotográfica
 
-**When to use:**
+**Quando usar:**
 
-* **Few classes (3-5)**: Presentation slides, classification maps, simple reports
-* **Medium classes (6-10)**: General analysis, balanced detail, standard reports
-* **Many classes (15-20)**: Scientific analysis, detailed inspection, publication-quality outputs
+* **Poucas classes (3-5)**: Slides de apresentação, mapas de classificação, relatórios simples
+* **Classes médias (6-10)**: Análise geral, detalhes equilibrados, relatórios padrão
+* **Muitas classes (15-20)**: Análise científica, inspeção detalhada, resultados com qualidade de publicação
 
-### Fine-Tuning Value Ranges
+### Ajustes finos dos intervalos de valores
 
-The **value range controls** determine which index values map to which colors in your gradient:
+Os **controles de intervalo de valores** determinam quais valores de índice são mapeados para quais cores em seu gradiente:
 
-**Range controls in LUT panel:**
+**Controles de intervalo no painel LUT:**
 
-* **Minimum value**: Lower bound of the color scale
-* **Maximum value**: Upper bound of the color scale
-* **Intermediate values**: Automatically distributed between min and max (based on class count)
+* **Valor mínimo**: limite inferior da escala de cores
+* **Valor máximo**: limite superior da escala de cores
+* **Valores intermediários**: distribuídos automaticamente entre o mínimo e o máximo (com base na contagem de classes)
 
-#### Adjusting Min/Max Values
+#### Ajustando valores mínimos/máximos
 
-**To adjust value ranges:**
+**Para ajustar intervalos de valores:**
 
-1. In the LUT panel, locate the **Min Value** and **Max Value** input fields
-2. Click the **Min Value** field
-3. Type the desired minimum value (e.g., `0.2`)
-4. Press **Enter** or click outside the field
-5. Repeat for **Max Value** field (e.g., `0.9`)
-6. The visualization **updates immediately**
+1. No painel LUT, localize os campos de entrada **Valor mínimo** e **Valor máximo**
+2. Clique no campo **Valor mínimo**
+3. Digite o valor mínimo desejado (por exemplo, `0.2`)
+4. Pressione **Enter** ou clique fora do campo
+5. Repita para o campo **Valor Máximo** (por exemplo, `0.9`)
+6. A visualização **é atualizada imediatamente**
 
-{% hint style="info" %}
-**Auto-Scaling**: When you first apply a LUT, Chloros automatically sets the min/max to the actual data range in the image. You can then narrow this range to focus on specific value ranges of interest.
+{% hint style=&quot;info&quot; %}
+**Escalonamento automático**: quando você aplica uma LUT pela primeira vez, o Chloros define automaticamente o mínimo/máximo para o intervalo de dados real na imagem. Você pode então restringir esse intervalo para se concentrar em intervalos de valores específicos de interesse.
 {% endhint %}
 
-**Example NDVI range adjustments:**
+**Exemplo de ajustes de intervalo do NDVI:**
 
-* **Full range**: `-1.0` to `1.0` (show all possible values)
-* **Vegetation-focused**: `0.2` to `0.9` (exclude bare soil and water)
-* **Healthy vegetation only**: `0.5` to `0.9` (highlight only vigorous plants)
-* **Stress detection**: `0.2` to `0.5` (emphasize problem areas)
-* **Custom range**: Adjust based on your observed pixel values
+* **Intervalo completo**: `-1.0` a `1.0` (mostrar todos os valores possíveis)
+* **Focado na vegetação**: `0.2` a `0.9` (excluir solo nu e água)
+* **Apenas vegetação saudável**: `0.5` a `0.9` (destacar apenas plantas vigorosas)
+* **Detecção de estresse**: `0.2` a `0.5` (enfatizar áreas problemáticas)
+* **Intervalo personalizado**: ajustar com base nos valores de pixel observados
 
-**Why adjust ranges?**
+**Por que ajustar os intervalos?**
 
-* **Increase contrast** in your area of interest
-* **Exclude irrelevant values** (e.g., water bodies, bare soil)
-* **Standardize visualization** across multiple images or dates
-* **Emphasize subtle differences** within a narrow value range
+* **Aumentar o contraste** na área de interesse
+* **Exclua valores irrelevantes** (por exemplo, corpos d&#x27;água, solo nu)
+* **Padronize a visualização** em várias imagens ou datas
+* **Enfatize diferenças sutis** dentro de um intervalo de valores estreito
 
-### Clipping Out-of-Range Values
+### Recorte valores fora do intervalo
 
-When pixel values fall outside your defined min/max range, you can control how they're displayed using **clipping modes**.
+Quando os valores de pixel ficam fora do intervalo mínimo/máximo definido, você pode controlar como eles são exibidos usando **modos de recorte**.
 
-#### **Available clipping mode options:**
+#### **Opções de modo de recorte disponíveis:**
 
-#### 1. Minimum and Maximum
+#### 1. Mínimo e máximo
 
-* Pixels **below minimum** → display using the **first color** in gradient (e.g., red)
-* Pixels **above maximum** → display using the **last color** in gradient (e.g., green)
-* **Use case**: Emphasize extremes, show full data range with saturated colors at limits
-* **Example**: NDVI values below 0.2 all appear red, values above 0.9 all appear green
+* Pixels **abaixo do mínimo** → exibição usando a **primeira cor** no gradiente (por exemplo, vermelho)
+* Pixels **acima do máximo** → exibição usando a **última cor** no gradiente (por exemplo, verde)
+* **Caso de uso**: Enfatizar extremos, mostrar intervalo completo de dados com cores saturadas nos limites
+* **Exemplo**: os valores NDVI abaixo de 0,2 aparecem todos em vermelho, os valores acima de 0,9 aparecem todos em verde
 
-#### 2. Transparent Background
+#### 2. Fundo transparente
 
-* Pixels **outside the range** become **fully transparent**
-* Only pixels **within range** show color gradient
-* **Use case**: GIS overlay, isolating specific value ranges, highlighting only areas of interest
-* **Example**: Show only NDVI 0.4-0.7 in color, everything else transparent
+* Os pixels **fora do intervalo** tornam-se **totalmente transparentes**
+* Apenas os pixels **dentro do intervalo** mostram gradiente de cor
+* **Caso de uso**: sobreposição GIS, isolando intervalos de valores específicos, destacando apenas áreas de interesse
+* **Exemplo**: Mostrar apenas NDVI 0,4-0,7 em cores, todo o resto transparente
 
-{% hint style="warning" %}
-**Transparency Limitation**: Transparent pixels will appear as the background color in the viewer. When exported during processing, transparency is preserved in PNG format but not in JPG.
+{% hint style=&quot;warning&quot; %}
+**Limitação de transparência**: Os pixels transparentes aparecerão como a cor de fundo no visualizador. Quando exportados durante o processamento, a transparência é preservada no formato PNG, mas não no JPG.
 {% endhint %}
 
-#### 3. Index Background
+#### 3. Fundo do índice
 
-* Pixels **outside range** display in **grayscale** (showing raw index values)
-* Pixels **within range** show **color gradient**
-* **Use case**: Subtle highlighting, maintain context while emphasizing areas of interest
-* **Example**: Color-highlight stressed vegetation (NDVI 0.3-0.5) while showing healthy areas in gray
+* Os pixels **fora do intervalo** são exibidos em **escala de cinza** (mostrando os valores brutos do índice)
+* Os pixels **dentro do intervalo** mostram **gradiente de cor**
+* **Caso de uso**: destaque sutil, mantém o contexto enquanto enfatiza áreas de interesse
+* **Exemplo**: destaque em cores a vegetação estressada (NDVI 0,3-0,5) enquanto mostra as áreas saudáveis em cinza
 
-#### 4. Original Background
+#### 4. Fundo original
 
-* Pixels **outside range** display the **original multispectral image**
-* Pixels **within range** show **color gradient**
-* **Use case**: Most intuitive - combines natural image context with analytical color overlay
-* **Example**: See the actual field/crop appearance with color-coded stress areas overlaid
+* Os pixels **fora do intervalo** exibem a **imagem multiespectral original**
+* Os pixels **dentro do intervalo** mostram **gradiente de cores**
+* **Caso de uso**: Mais intuitivo - combina o contexto natural da imagem com a sobreposição analítica de cores
+* **Exemplo**: Veja a aparência real do campo/colheita com áreas estressadas codificadas por cores sobrepostas
 
-### Choosing the Right Clipping Mode
+### Escolhendo o modo de recorte certo
 
-| Clipping Mode              | Best For                                   | Visualization Style          |
+| Modo de recorte              | Ideal para                                   | Estilo de visualização          |
 | -------------------------- | ------------------------------------------ | ---------------------------- |
-| **Minimum and Maximum**    | Full data display, scientific analysis     | All pixels colored           |
-| **Transparent Background** | GIS overlays, isolating specific ranges    | Color on range, blank beyond |
-| **Index Background**       | Subtle emphasis, maintaining data context  | Color on range, gray beyond  |
-| **Original Background**    | Reports, presentations, intuitive analysis | Color on range, photo beyond |
+| **Mínimo e máximo**    | Exibição completa dos dados, análise científica     | Todos os pixels coloridos           |
+| **Fundo transparente** | Sobreposições GIS, isolando intervalos específicos    | Cor no intervalo, em branco fora dele |
+| **Fundo de índice**       | Ênfase sutil, mantendo o contexto dos dados  | Cor no intervalo, cinza além  |
+| **Fundo original**    | Relatórios, apresentações, análise intuitiva | Cor no intervalo, foto além |
 
-### Creating Custom LUT Colors
+### Criando cores LUT personalizadas
 
-For full control over your visualization, you can create **custom color gradients** by editing individual color stops.
+Para ter controle total sobre sua visualização, você pode criar **gradientes de cores personalizados** editando paradas de cores individuais.
 
-**To create a custom gradient:**
+**Para criar um gradiente personalizado:**
 
-1. In the LUT panel, locate the **gradient preview bar**
-2. Look for **color swatch squares** below the gradient
-3. **Click a color stop** to select it
-4. A **color picker** opens
-5. Choose a new color using:
-   * **Color wheel**: Visual color selection
-   * **RGB/HSV sliders**: Precise color control
-   * **Hex code entry**: Exact color specification (e.g., `#FF0000` for red)
-6. Click off the color picker **to apply the new color**
-7. The gradient **updates immediately** on the image
+1. No painel LUT, localize a **barra de visualização do gradiente**
+2. Procure os **quadrados de amostra de cor** abaixo do gradiente
+3. **Clique em uma parada de cor** para selecioná-la
+4. Um **seletor de cores** é aberto
+5. Escolha uma nova cor usando:
+   * **Roda de cores**: seleção visual de cores
+   * **Controles deslizantes RGB/HSV**: controle preciso da cor
+   * **Entrada de código hexadecimal**: especificação exata da cor (por exemplo, `#FF0000` para vermelho)
+6. Clique fora do seletor de cores **para aplicar a nova cor**
+7. O gradiente **é atualizado imediatamente** na imagem
 
-**Adding or removing color stops:**
+**Adicionando ou removendo paradas de cor:**
 
-* **Add a stop**: Click the + icon to add a new swatch at the end
-* **Remove a stop**: Double click the color square to remove the swatch
+* **Adicionar uma parada**: Clique no ícone + para adicionar uma nova amostra no final
+* **Remover uma parada**: Clique duas vezes no quadrado colorido para remover a amostra
 
-**Customization strategies:**
+**Estratégias de personalização:**
 
-* **Invert gradient**: Flip color order to reverse the meaning (e.g., green=low, red=high)
-* **Brand colors**: Match your organization's color palette for reports
-* **Colorblind-friendly**: Use orange-blue or purple-yellow combinations
-* **Print optimization**: Choose colors that work in both color and grayscale printing
-* **Multi-threshold**: Use distinct colors at specific value thresholds for classification
+* **Inverter gradiente**: inverta a ordem das cores para reverter o significado (por exemplo, verde = baixo, vermelho = alto)
+* **Cores da marca**: combine a paleta de cores da sua organização para relatórios
+* **Adequado para daltônicos**: use combinações de laranja-azul ou roxo-amarelo
+* **Otimização de impressão**: escolha cores que funcionem tanto na impressão colorida quanto na escala de cinza
+* **Limite múltiplo**: use cores distintas em limites de valores específicos para classificação
 
-{% hint style="info" %}
-**Saving Custom Gradients**: Custom gradients can be saved and reused. Click the save icon in the LUT panel to preserve your custom color schemes for future use.
+{% hint style=&quot;info&quot; %}
+**Salvar gradientes personalizados**: gradientes personalizados podem ser salvos e reutilizados. Clique no ícone salvar no painel LUT para preservar seus esquemas de cores personalizados para uso futuro.
 {% endhint %}
 
 ***
 
-## Interactive Workflow
+## Fluxo de trabalho interativo
 
-### Real-Time Updates
+### Atualizações em tempo real
 
-All LUT adjustments in the sandbox update the image **instantly and interactively**:
+Todos os ajustes LUT na área restrita atualizam a imagem **instantaneamente e de forma interativa**:
 
-* **Switch layer** → Image changes immediately
-* **Select gradient** → Colors update instantly
-* **Adjust value range** → Contrast changes in real-time
-* **Change classes** → Gradient smoothness updates immediately
-* **Modify clipping** → Background display changes instantly
-* **Edit colors** → Custom gradient applies immediately
+* **Trocar camada** → A imagem muda imediatamente
+* **Selecionar gradiente** → As cores são atualizadas instantaneamente
+* **Ajustar intervalo de valores** → O contraste muda em tempo real
+* **Alterar classes** → A suavidade do gradiente é atualizada imediatamente
+* **Modificar recorte** → A exibição do fundo muda instantaneamente
+* **Editar cores** → O gradiente personalizado é aplicado imediatamente
 
-**No "Apply" button needed** - all changes are live and interactive!
+**Não é necessário clicar no botão “Aplicar”** — todas as alterações são ao vivo e interativas!
 
-{% hint style="success" %}
-**Live Feedback**: The instant visual feedback allows you to rapidly experiment with different settings until you find the optimal visualization for your analysis needs.
+{% hint style=&quot;success&quot; %}
+**Feedback ao vivo**: o feedback visual instantâneo permite que você experimente rapidamente diferentes configurações até encontrar a visualização ideal para suas necessidades de análise.
 {% endhint %}
 
-### Iterative Refinement Workflow
+### Fluxo de trabalho de refinamento iterativo
 
-**Typical LUT optimization workflow:**
+**Fluxo de trabalho típico de otimização de LUT:**
 
-1. **Select index layer** (e.g., RAW (Reflectance))
-2. **Apply index** - Choose camera filter and index formula, drag colored circles to appropriate location in the index formula
-3. **Apply LUT gradient** - Start with Red-Yellow-Green preset
-4. **Inspect pixel values** - Move cursor around, note value ranges
-5. **Adjust min/max** - Narrow to focus on vegetation (e.g., 0.2 to 0.9)
-6. **Choose clipping** - Try "Original Background" for context
-7. **Refine colors** - Customize gradient if needed for specific emphasis
-8. **Finalize settings** - Document settings and copy to Project Settings for export processing
+1. **Selecione a camada de índice** (por exemplo, RAW (Refletância))
+2. **Aplique o índice** - Escolha o filtro da câmera e a fórmula do índice, arraste os círculos coloridos para o local apropriado na fórmula do índice
+3. **Aplique o gradiente LUT** - Comece com a predefinição Red-Yellow-Green
+4. **Inspecione os valores dos pixels** - Mova o cursor e observe os intervalos de valores
+5. **Ajuste o mínimo/máximo** - Restrinja para focar na vegetação (por exemplo, 0,2 a 0,9)
+6. **Escolha o recorte** - Experimente “Original Background” (Fundo original) para o contexto
+7. **Refine as cores** - Personalize o gradiente, se necessário, para dar ênfase específica
+8. **Finalize as configurações** - Documente as configurações e copie para Configurações do projeto para processamento de exportação
 
-### Pixel Value Inspection
+### Inspeção do valor dos pixels
 
-Understanding actual pixel values is crucial for setting effective LUT ranges:
+Compreender os valores reais dos pixels é crucial para definir intervalos LUT eficazes:
 
-**How to inspect values:**
+**Como inspecionar os valores:**
 
-1. Pixel values show when the image has either the Index, or both the Index and LUT **boxes checked**.
-2. **Move your cursor** over different areas of the image
-3. **Observe pixel values** displayed in the legend as you hover
-4. Zoom in to see individual pixels highlighted with a floating value
-5. **Take notes** of value ranges for different features:
-   * **Healthy vegetation**: e.g., NDVI 0.55-0.85
-   * **Stressed vegetation**: e.g., NDVI 0.30-0.50
-   * **Bare soil**: e.g., NDVI 0.05-0.25
-   * **Water** (if present): e.g., NDVI -0.05 to 0.10
+1. Os valores dos pixels são exibidos quando a imagem tem a caixa Índice ou ambas as caixas Índice e LUT **marcadas**.
+2. **Mova o cursor** sobre diferentes áreas da imagem
+3. **Observe os valores de pixel** exibidos na legenda ao passar o cursor
+4. Amplie para ver pixels individuais destacados com um valor flutuante
+5. **Anote** os intervalos de valores para diferentes características:
+   * **Vegetação saudável**: por exemplo, NDVI 0,55-0,85
+   * **Vegetação estressada**: por exemplo, NDVI 0,30-0,50
+   * **Solo nu**: por exemplo, NDVI 0,05-0,25
+   * **Água** (se presente): por exemplo, NDVI -0,05 a 0,10
 
-**Using pixel values to set LUT ranges:**
+**Usando valores de pixel para definir intervalos de LUT:**
 
-After inspecting pixel values, adjust your LUT min/max accordingly:
+Após inspecionar os valores de pixel, ajuste o mínimo/máximo da LUT de acordo:
 
-**Example scenario:**
+**Exemplo de cenário:**
 
-* **Observation**: Soil values = 0.05-0.25, Stressed = 0.25-0.50, Healthy = 0.50-0.85
-* **Goal**: Visualize only plant health (exclude soil)
-* **LUT settings**: Min = `0.25`, Max = `0.85`
-* **Clipping**: "Original Background" to see soil in natural color
-* **Result**: Color gradient only applies to vegetation, soil shows as original image
+* **Observação**: Valores do solo = 0,05-0,25, Estressado = 0,25-0,50, Saudável = 0,50-0,85
+* **Objetivo**: Visualizar apenas a saúde das plantas (excluir o solo)
+* **Configurações LUT**: Mínimo = `0.25`, Máximo = `0.85`
+* **Recorte**: “Fundo original” para ver o solo em sua cor natural
+* **Resultado**: O gradiente de cores se aplica apenas à vegetação, o solo é exibido como na imagem original
 
-{% hint style="info" %}
-**Dynamic Range**: Different crops, seasons, and growth stages will have different value ranges. Always inspect pixel values in your specific dataset before setting LUT ranges.
+{% hint style=&quot;info&quot; %}
+**Faixa dinâmica**: diferentes culturas, estações e estágios de crescimento terão diferentes faixas de valores. Sempre verifique os valores dos pixels em seu conjunto de dados específico antes de definir as faixas LUT.
 {% endhint %}
 
 ***
 
-## Custom Indices (Chloros+)
+## Índices personalizados (Chloros+)
 
-### Creating Custom Index Formulas
+### Criação de fórmulas de índices personalizados
 
-{% hint style="info" %}
-**Where to Create**: Custom indices can be configured in **Project Settings** before processing, as well as in the Image Viewer sandbox sidebar.
+{% hint style=&quot;info&quot; %}
+**Onde criar**: os índices personalizados podem ser configurados em **Configurações do projeto** antes do processamento, bem como na barra lateral da área restrita do Visualizador de imagens.
 {% endhint %}
 
-**To create a custom index:**
+**Para criar um índice personalizado:**
 
-1. **Open Project Settings** (before processing) or Image Viewer sandbox sidebar
-2. Navigate to the **Index formula dropdown**
-3. Look for **"Custom"** option (must be logged in with Chloros+ license)
-4. **Define your formula** using band variables:
-   * Band names: `NIR`, `Red`, `Green`, `Blue`, `RedEdge`, etc.
-   * Operators: `+`, `-`, `*`, `/`, `^` (exponent)
-   * Functions: `sqrt()`, `abs()`, etc. (if supported)
-   * Parentheses: `()` for order of operations
-5. **Name your index** (e.g., "MyIndex" or "CustomNDVI")
-6. **Save the configuration**
+1. **Abra as Configurações do projeto** (antes do processamento) ou a barra lateral da área restrita do Visualizador de imagens
+2. Navegue até o **menu suspenso Fórmula do índice**
+3. Procure a opção **“Personalizado”** (é necessário estar conectado com a licença Chloros+)
+4. **Defina sua fórmula** usando variáveis de banda:
+   * Nomes das bandas: `NIR`, `Red`, `Green`, `Blue`, `RedEdge`, etc.
+   * Operadores: `+`, `-`, `*`, `/`, `^` (expoente)
+   * Funções: `sqrt()`, `abs()`, etc. (se suportado)
+   * Parênteses: `()` para ordem das operações
+5. **Nomeie seu índice** (por exemplo, “MeuÍndice” ou “NDVIPersonalizado”)
+6. **Salve a configuração**
 
-**Example custom formulas:**
+**Exemplos de fórmulas personalizadas:**
 
 ```
 Modified NDVI with offset:
@@ -398,22 +398,22 @@ Exponential index:
 (NIR / Red) ^ 2
 ```
 
-{% hint style="warning" %}
-**Formula Validation**: Ensure your formula uses bands available in your camera. For example, RedEdge is only available on cameras with a RedEdge filter.
+{% hint style=&quot;warning&quot; %}
+**Validação da fórmula**: certifique-se de que sua fórmula usa bandas disponíveis em sua câmera. Por exemplo, RedEdge só está disponível em câmeras com um filtro RedEdge.
 {% endhint %}
 
 ***
 
-## Next Steps
+## Próximos passos
 
-Now that you understand the Index/LUT Sandbox:
+Agora que você entende o Index/LUT Sandbox:
 
-* **Apply to processing**: Use discovered settings in [Project Settings](../project-settings/page-2.md)
-* **Batch process**: Apply optimized indices to full datasets
-* **Learn more**: Read [Multispectral Index Formulas](../project-settings/multispectral-index-formulas.md)
+* **Aplicar ao processamento**: use as configurações descobertas em [Configurações do projeto](../project-settings/project-settings.md)
+* **Processamento em lote**: aplique índices otimizados a conjuntos de dados completos
+* **Saiba mais**: leia [Fórmulas de Índice Multiespectral](../project-settings/multispectral-index-formulas.md)
 
-Related documentation:
+Documentação relacionada:
 
-* [**Image Layers**](image-layers.md) - Layer management and visualization
-* [**Opening an Image Full Screen**](page-3.md) - Image Viewer basics
-* [**Processing Images (GUI)**](../processing-images-gui/page-1.md) - Full processing workflow
+* [**Camadas de imagem**](image-layers.md) - Gerenciamento e visualização de camadas
+* [**Abrindo uma imagem em tela cheia**](opening-an-image-full-screen.md) - Noções básicas do visualizador de imagens
+* [**Processamento de imagens (GUI)**](../processing-images-gui/adding-files-to-a-project.md) - Fluxo de trabalho completo de processamento

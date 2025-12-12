@@ -1,352 +1,352 @@
-# Image Layers
+Camadas de imagem
 
-The Image Layers dropdown in the Chloros Image Viewer allows you to quickly switch between different versions of the same image - from the original captures to processed reflectance outputs and calculated index images.
+O menu suspenso Camadas de imagem no Visualizador de imagens Chloros permite alternar rapidamente entre diferentes versões da mesma imagem - desde as capturas originais até saídas de refletância processadas e imagens de índice calculadas.
 
-## What are Image Layers?
+## O que são camadas de imagem?
 
-In Chloros, **layers** refer to the different image outputs available for a single source image. When you process images, Chloros creates multiple versions:
+No Chloros, **camadas** referem-se às diferentes saídas de imagem disponíveis para uma única imagem de origem. Quando você processa imagens, o Chloros cria várias versões:
 
-* **Original images** (JPG and RAW files from your camera)
-* **Reflectance calibrated** outputs (if reflectance calibration was enabled)
-* **Target images** (if the image contains calibration targets)
-* **Index images** (NDVI, NDRE, GNDVI, etc. if indices were configured)
+* **Imagens originais** (arquivos JPG e RAW da sua câmera)
+* Saídas **calibradas por refletância** (se a calibração por refletância estiver ativada)
+* **Imagens-alvo** (se a imagem contiver alvos de calibração)
+* **Imagens de índice** (NDVI, NDRE, GNDVI, etc., se os índices estiverem configurados)
 
-The **Layer Selector dropdown** in the top-right of the Image Viewer lets you instantly switch between these versions without leaving the viewer.
+O **menu suspenso Seletor de camadas** no canto superior direito do Visualizador de imagens permite alternar instantaneamente entre essas versões sem sair do visualizador.
 
 ***
 
-## Available Layer Types
+## Tipos de camadas disponíveis
 
 ### JPG
 
-* The original JPG preview image from your camera
-* Always available for all images
-* Unprocessed, as captured by the camera
-* Fastest to load and display
+* A imagem de pré-visualização JPG original da sua câmera
+* Sempre disponível para todas as imagens
+* Não processada, conforme capturada pela câmera
+* Mais rápida para carregar e exibir
 
-**When to view:**
+**Quando visualizar:**
 
-* Quick preview of original capture
-* Checking image composition and framing
-* Verifying capture quality before processing
-
-### RAW (Original)
-
-* The original RAW sensor data from your camera
-* Debayered with no post processing applied
-* Higher bit depth than JPG (typically 12-bit or 14-bit sensor data)
-
-**When to view:**
-
-* Inspecting original sensor data quality
-* Checking for sensor issues or artifacts
-* Comparing before/after processing results
-
-### RAW (Target)
-
-* Only appears for images identified as containing calibration targets
-* Shows the original RAW image with target detected
-* Used to verify target detection was successful
-
-**When to view:**
-
-* Confirming calibration targets were detected correctly
-* Checking target image quality
-* Troubleshooting calibration issues
-
-{% hint style="info" %}
-**Target Layer**: This layer only appears in the dropdown for images that contain calibration targets. Regular capture images will not have this option.
-{% endhint %}
-
-### RAW (Reflectance)
-
-* The calibrated reflectance output image
-* Vignette corrected (if enabled in processing)
-* Reflectance calibrated using target data (if enabled)
-* Multi-band TIFF with all camera channels
-* Pixel values represent percent reflectance (when using percent mode)
-* Ready to manipulate with the [Index/LUT Sandbox](index-lut-sandbox.md)
-
-**When to view:**
-
-* Inspecting calibrated results
-* Verifying calibration quality
-* Checking pixel values for scientific accuracy
-* Comparing with original to see calibration effects
-
-{% hint style="success" %}
-**Recommended**: Use RAW (Reflectance) layer when checking pixel values for scientific measurements and analysis.
-{% endhint %}
-
-### RAW (NDVI Index)... and similar
-
-* Calculated vegetation index image (NDVI in this example)
-* The index name changes based on which index was configured during processing
-* Examples: RAW (NDVI Index), RAW (NDRE Index), RAW (GNDVI Index), etc.
-* Single-band grayscale image showing index calculation results
-* One layer appears for each index configured in Project Settings
-
-**Possible index names:**
-
-* RAW (NDVI Index)
-* RAW (NDRE Index)
-* RAW (GNDVI Index)
-* RAW (OSAVI Index)
-* RAW (EVI Index)
-* RAW (SAVI Index)
-* And many more... (see [Multispectral Index Formulas](../project-settings/multispectral-index-formulas.md))
-
-**When to view:**
-
-* Examining index calculation results
-* Checking index value ranges
-* Identifying areas of interest
-* Verifying index images before using in GIS or analysis
-
-***
-
-## Using the Layer Selector
-
-### Opening the Dropdown
-
-1. Open an image in fullscreen mode (click any thumbnail in the Image Viewer)
-2. Locate the **layer dropdown** in the top-right corner of the viewer
-3. The dropdown shows the currently selected layer (e.g., "JPG")
-4. Click the dropdown to see all available layers
-
-### Switching Layers
-
-1. Click the layer dropdown to open the list
-2. All available layers for the current image are shown
-3. Click any layer name to switch to that version
-4. The image updates immediately to show the selected layer
-
-**Quick switching:**
-
-* The dropdown remembers your last selection
-* When navigating to the next image, Chloros attempts to show the same layer type
-* If that layer doesn't exist on the next image, it defaults to JPG
-
-### Layer Availability
-
-Not all layers are available for every image:
-
-**Always available:**
-
-* ✅ JPG (every image has a JPG preview)
-
-**Conditionally available:**
-
-* ⚠️ RAW (Original) - Only if image was captured in RAW or RAW+JPG mode
-* ⚠️ RAW (Target) - Only if image contains detected calibration targets
-* ⚠️ RAW (Reflectance) - Only after processing with reflectance calibration enabled
-* ⚠️ RAW (\[Index] Index) - Only after processing with indices configured
-
-***
-
-## Layer Persistence
-
-### Navigating Between Images
-
-When you navigate to a different image (using arrow keys or clicking thumbnails):
-
-**Layer preference is preserved:**
-
-* If viewing "RAW (Reflectance)", next image shows "RAW (Reflectance)" (if available)
-* If viewing "RAW (NDVI Index)", next image shows "RAW (NDVI Index)" (if available)
-* If the same layer doesn't exist, defaults to JPG
-
-**Example workflow:**
-
-1. Open Image 1, switch to RAW (NDVI Index)
-2. Press → to view Image 2
-3. Image 2 automatically displays RAW (NDVI Index) layer
-4. Continue navigating - all images show NDVI layer
-5. Very efficient for reviewing index results across many images
-
-***
-
-## Common Workflows
-
-### Workflow 1: Before/After Comparison
-
-**Goal**: Compare original vs. calibrated image
-
-1. Open processed image in Image Viewer
-2. Select **RAW (Original)** from dropdown
-3. Note the vignetting and uncalibrated values
-4. Switch to **RAW (Reflectance)** from dropdown
-5. Compare - vignetting removed, values calibrated
-
-### Workflow 2: Index Review
-
-**Goal**: Quickly review NDVI results across dataset
-
-1. Open first processed image
-2. Select **RAW (NDVI Index)** from dropdown
-3. Use → arrow key to navigate to next image
-4. NDVI layer persists automatically
-5. Continue through all images, checking NDVI patterns
-6. Switch to **RAW (NDRE Index)** to compare
-
-### Workflow 3: Target Verification
-
-**Goal**: Verify all target images were detected correctly
-
-1. Navigate to a target image
-2. Select **RAW (Target)** from dropdown
-3. Verify calibration targets are clearly visible and detected
-4. Navigate to next target image
-5. Repeat verification for all targets
-
-### Workflow 4: Pixel Value Inspection
-
-**Goal**: Check reflectance values for scientific accuracy
-
-1. Open processed image
-2. Select **RAW (Reflectance)** layer
-3. Enable **Pixel Percent** mode (button in top-right toolbar)
-4. Move cursor over vegetation areas
-5. Verify pixel values are in expected ranges (30-70% for NIR, 5-15% for Red)
-6. Check soil and water areas for appropriate values
-
-***
-
-## Understanding Pixel Values by Layer
-
-Different layers show different pixel value ranges:
-
-### JPG Layer
-
-* **Range**: 0-255 (8-bit)
-* **Meaning**: Display values, gamma-corrected
-* **Use**: Visual inspection only, not for scientific measurement
+* Visualização rápida da captura original
+* Verificação da composição e do enquadramento da imagem
+* Verificação da qualidade da captura antes do processamento
 
 ### RAW (Original)
 
-* **Range**: 0-65535 (16-bit)
-* **Meaning**: Raw sensor digital numbers
-* **Use**: Checking sensor performance, not calibrated
+* Os dados originais do sensor RAW da sua câmera
+* Desembayered sem pós-processamento aplicado
+* Profundidade de bits maior do que JPG (normalmente dados do sensor de 12 ou 14 bits)
 
-### RAW (Reflectance)
+**Quando visualizar:**
 
-* **Range**: 0-65,535 (16-bit TIFF) or 0.0-1.0 (32-bit Percent)
-* **Meaning**: Calibrated percent reflectance
-* **Use**: Scientific measurements and analysis
+* Inspecionando a qualidade dos dados originais do sensor
+* Verificando se há problemas ou artefatos no sensor
+* Comparando os resultados antes e depois do processamento
 
-**For 16-bit TIFF:** Divide by 65,535 to get percent reflectance **For 32-bit Percent:** Values directly represent percent (0.5 = 50% reflectance)
+### RAW (alvo)
 
-### RAW (Index Images)
+* Aparece apenas para imagens identificadas como contendo alvos de calibração
+* Mostra a imagem RAW original com o alvo detectado
+* Usado para verificar se a detecção do alvo foi bem-sucedida
 
-* **Range**: Varies by index (typically -1.0 to +1.0 for normalized indices)
-* **Meaning**: Index calculation result
-* **Examples**:
-  * NDVI: -1 to +1 (vegetation typically 0.4 to 0.9)
-  * NDRE: -1 to +1 (stress detection)
-  * EVI: 0 to 1 (enhanced vegetation)
+**Quando visualizar:**
 
-***
+* Confirmar se os alvos de calibração foram detectados corretamente
+* Verificar a qualidade da imagem do alvo
+* Solucionar problemas de calibração
 
-## Tips and Best Practices
+{% hint style=&quot;info&quot; %}
+**Camada de alvo**: esta camada só aparece no menu suspenso para imagens que contêm alvos de calibração. Imagens de captura regulares não terão essa opção.
+{% endhint %}
 
-### Efficient Layer Switching
+### RAW (Refletância)
 
-* **Keyboard shortcut awareness**: While there's no keyboard shortcut for layers, navigation arrows (←/→) work across all layers
-* **Consistent workflows**: Pick one layer (e.g., NDVI) and review entire dataset before switching to another
-* **Quick comparisons**: Toggle between Original and Reflectance to verify processing quality
+* A imagem de saída de refletância calibrada
+* Vinheta corrigida (se ativada no processamento)
+* Refletância calibrada usando dados de alvo (se ativada)
+* Multibanda TIFF com todos os canais da câmera
+* Os valores de pixel representam a porcentagem de refletância (ao usar o modo de porcentagem)
+* Pronto para manipulação com o [Index/LUT Sandbox](index-lut-sandbox.md)
 
-### Performance Considerations
+**Quando visualizar:**
 
-* **JPG loads fastest**: Use for quick navigation through many images
-* **RAW layers load slower**: Higher resolution and bit depth
-* **Index layers**: Similar speed to Reflectance layers
-* **First load is slowest**: Subsequent views of same layer are cached and faster
+* Inspecionando resultados calibrados
+* Verificando a qualidade da calibração
+* Verificando os valores dos pixels para precisão científica
+* Comparando com o original para ver os efeitos da calibração
 
-### Quality Verification
+{% hint style=&quot;success&quot; %}
+**Recomendado**: Use a camada RAW (Refletância) ao verificar os valores dos pixels para medições e análises científicas.
+{% endhint %}
 
-* **Always check RAW (Original)**: Verify source data quality before trusting processed outputs
-* **Compare layers**: Use layer switching to validate processing worked correctly
-* **Check index ranges**: Use Pixel Percent mode with index layers to verify values are reasonable
+### RAW (NDVI Índice)... e similares
 
-***
+* Imagem do índice de vegetação calculado (NDVI neste exemplo)
+* O nome do índice muda com base no índice que foi configurado durante o processamento
+* Exemplos: RAW (Índice NDVI), RAW (Índice NDRE), RAW (Índice GNDVI), etc.
+* Imagem em escala de cinza de banda única mostrando os resultados do cálculo do índice
+* Uma camada aparece para cada índice configurado nas Configurações do projeto
 
-## Troubleshooting
+**Nomes de índices possíveis:**
 
-### Layer Not Available
+* RAW (Índice NDVI)
+* RAW (Índice NDRE)
+* RAW (Índice GNDVI)
+* RAW (Índice OSAVI)
+* RAW (Índice EVI)
+* RAW (Índice SAVI)
+* E muitos mais... (consulte [Fórmulas de Índice Multiespectral](../project-settings/multispectral-index-formulas.md))
 
-**Problem**: Expected layer doesn't appear in dropdown
+**Quando visualizar:**
 
-**Possible causes:**
-
-* Image wasn't processed (only JPG and RAW (Original) available)
-* Reflectance calibration was disabled during processing
-* Specific index wasn't configured in Project Settings
-* Image is a target-only image (no indices generated for targets)
-
-**Solutions:**
-
-1. Verify image was processed (check output folder for processed files)
-2. Check Project Settings to confirm indices were configured
-3. Reprocess with desired indices enabled
-
-### Wrong Layer Shown
-
-**Problem**: Image opens in unexpected layer
-
-**Cause**: Layer preference from previous image carried forward, but that layer doesn't exist on current image
-
-**Solution**: Chloros automatically falls back to JPG when preferred layer unavailable - this is normal behavior
-
-### Can't See Calibration Targets
-
-**Problem**: RAW (Target) layer doesn't show target detection
-
-**Possible causes:**
-
-* Targets weren't detected during processing
-* Image doesn't actually contain targets
-* Target detection settings too strict
-
-**Solutions:**
-
-1. Check Debug Log for "Target found" messages
-2. Verify image actually contains visible calibration targets
-3. Adjust target detection settings in Project Settings
-4. See [Choosing Target Images](../processing-images-gui/choosing-target-images.md)
+* Examinando os resultados do cálculo do índice
+* Verificando os intervalos de valores do índice
+* Identificando áreas de interesse
+* Verificando as imagens do índice antes de usá-las no GIS ou na análise
 
 ***
 
-## Related Features
+## Usando o seletor de camadas
 
-### Image Viewer Tools
+### Abrindo o menu suspenso
 
-When viewing any layer, you can use:
+1. Abra uma imagem no modo de tela cheia (clique em qualquer miniatura no Visualizador de imagens)
+2. Localize o **menu suspenso de camadas** no canto superior direito do visualizador
+3. O menu suspenso mostra a camada selecionada no momento (por exemplo, “JPG”)
+4. Clique no menu suspenso para ver todas as camadas disponíveis
 
-* **Zoom controls**: Magnify to inspect details
-* **Pan**: Click and drag to move around zoomed image
-* **Pixel value inspection**: See values at cursor location
-* **Navigation arrows**: Move between images while maintaining layer
-* **Pixel Percent mode**: Toggle between DN and percent display
+### Alternando camadas
 
-See [Opening an Image Full Screen](page-3.md) for complete Image Viewer documentation.
+1. Clique no menu suspenso de camadas para abrir a lista
+2. Todas as camadas disponíveis para a imagem atual são exibidas
+3. Clique em qualquer nome de camada para alternar para essa versão
+4. A imagem é atualizada imediatamente para mostrar a camada selecionada
 
-### Index/LUT Sandbox
+**Troca rápida:**
 
-For interactive index testing and visualization:
+* O menu suspenso lembra sua última seleção
+* Ao navegar para a próxima imagem, o Chloros tenta mostrar o mesmo tipo de camada
+* Se essa camada não existir na próxima imagem, o padrão será JPG
 
-* **Real-time index calculation**: Test different index formulas
-* **LUT color mapping**: Apply color gradients to grayscale indices
-* **Export visualizations**: Save colored index images
+### Disponibilidade de camadas
 
-See [Index/LUT Sandbox](index-lut-sandbox.md) for details.
+Nem todas as camadas estão disponíveis para todas as imagens:
+
+**Sempre disponível:**
+
+* ✅ JPG (todas as imagens têm uma pré-visualização JPG)
+
+**Disponível condicionalmente:**
+
+* ⚠️ RAW (Original) - Apenas se a imagem foi capturada no modo RAW ou RAW+JPG
+* ⚠️ RAW (Alvo) - Apenas se a imagem contiver alvos de calibração detectados
+* ⚠️ RAW (Refletância) - Somente após o processamento com a calibração de refletância ativada
+* ⚠️ RAW (\[Índice] Índice) - Somente após o processamento com índices configurados
 
 ***
 
-## Next Steps
+## Persistência da camada
 
-Now that you understand image layers:
+### Navegando entre imagens
 
-* [**Opening an Image Full Screen**](page-3.md) - Complete Image Viewer guide
-* [**Index/LUT Sandbox**](index-lut-sandbox.md) - Interactive index visualization
-* [**Multispectral Index Formulas**](../project-settings/multispectral-index-formulas.md) - Available indices reference
-* [**Finishing the Processing**](../processing-images-gui/finishing-the-processing.md) - Understanding processed outputs
+Quando você navega para uma imagem diferente (usando as setas do teclado ou clicando nas miniaturas):
+
+**A preferência da camada é preservada:**
+
+* Se estiver visualizando “RAW (Refletância)”, a próxima imagem mostrará “RAW (Refletância)” (se disponível)
+* Se estiver visualizando “RAW (Índice NDVI)”, a próxima imagem mostrará “RAW (Índice NDVI)” (se disponível)
+* Se a mesma camada não existir, o padrão será JPG
+
+**Exemplo de fluxo de trabalho:**
+
+1. Abra a Imagem 1, mude para RAW (NDVI Index)
+2. Pressione → para visualizar a Imagem 2
+3. A Imagem 2 exibe automaticamente a camada RAW (NDVI Index)
+4. Continue navegando - todas as imagens mostram a camada NDVI
+5. Muito eficiente para revisar os resultados do índice em várias imagens
+
+***
+
+## Fluxos de trabalho comuns
+
+### Fluxo de trabalho 1: Comparação antes/depois
+
+**Objetivo**: Comparar a imagem original com a imagem calibrada
+
+1. Abra a imagem processada no Visualizador de imagens
+2. Selecione **RAW (Original)** no menu suspenso
+3. Observe os valores de vinheta e não calibrados
+4. Alterne para **RAW (Refletância)** no menu suspenso
+5. Compare - vinheta removida, valores calibrados
+
+### Fluxo de trabalho 2: Revisão do índice
+
+**Objetivo**: Revisar rapidamente os resultados NDVI em todo o conjunto de dados
+
+1. Abra a primeira imagem processada
+2. Selecione **RAW (Índice NDVI)** no menu suspenso
+3. Use a tecla de seta → para navegar até a próxima imagem
+4. A camada NDVI persiste automaticamente
+5. Continue por todas as imagens, verificando os padrões NDVI
+6. Alterne para **RAW (Índice NDRE)** para comparar
+
+### Fluxo de trabalho 3: Verificação do alvo
+
+**Objetivo**: Verificar se todas as imagens-alvo foram detectadas corretamente
+
+1. Navegue até uma imagem-alvo
+2. Selecione **RAW (Alvo)** no menu suspenso
+3. Verifique se os alvos de calibração estão claramente visíveis e foram detectados
+4. Navegue até a próxima imagem alvo
+5. Repita a verificação para todos os alvos
+
+### Fluxo de trabalho 4: Inspeção do valor do pixel
+
+**Objetivo**: Verificar os valores de refletância para precisão científica
+
+1. Abra a imagem processada
+2. Selecione a camada **RAW (Refletância)**
+3. Ative o modo **Porcentagem de pixel** (botão na barra de ferramentas superior direita)
+4. Mova o cursor sobre as áreas de vegetação
+5. Verifique se os valores dos pixels estão dentro dos intervalos esperados (30-70% para NIR, 5-15% para Red)
+6. Verifique se as áreas de solo e água apresentam valores adequados
+
+***
+
+## Compreensão dos valores dos pixels por camada
+
+Camadas diferentes mostram intervalos de valores de pixels diferentes:
+
+### Camada JPG
+
+* **Intervalo**: 0-255 (8 bits)
+* **Significado**: Valores exibidos, com correção gama
+* **Uso**: Apenas para inspeção visual, não para medições científicas
+
+### RAW (Original)
+
+* **Intervalo**: 0-65535 (16 bits)
+* **Significado**: Números digitais brutos do sensor
+* **Uso**: Verificação do desempenho do sensor, não calibrado
+
+### RAW (Refletância)
+
+* **Intervalo**: 0-65.535 (16 bits TIFF) ou 0,0-1,0 (32 bits Porcentagem)
+* **Significado**: Porcentagem de refletância calibrada
+* **Uso**: medições e análises científicas
+
+**Para 16 bits TIFF:** divida por 65.535 para obter a porcentagem de refletância **Para 32 bits Porcentagem:** os valores representam diretamente a porcentagem (0,5 = 50% de refletância)
+
+### RAW (Imagens de índice)
+
+* **Intervalo**: Varia de acordo com o índice (normalmente de -1,0 a +1,0 para índices normalizados)
+* **Significado**: Resultado do cálculo do índice
+* **Exemplos**:
+  * NDVI: -1 a +1 (vegetação normalmente 0,4 a 0,9)
+  * NDRE: -1 a +1 (detecção de estresse)
+  * EVI: 0 a 1 (vegetação aprimorada)
+
+***
+
+## Dicas e melhores práticas
+
+### Troca eficiente de camadas
+
+* **Conhecimento dos atalhos do teclado**: embora não haja atalhos do teclado para camadas, as setas de navegação (←/→) funcionam em todas as camadas
+* **Fluxos de trabalho consistentes**: escolha uma camada (por exemplo, NDVI) e revise todo o conjunto de dados antes de mudar para outra
+* **Comparações rápidas**: alterne entre Original e Refletância para verificar a qualidade do processamento
+
+### Considerações sobre desempenho
+
+* **JPG carrega mais rápido**: use para navegação rápida por muitas imagens
+* **Camadas RAW carregam mais lentamente**: resolução e profundidade de bits mais altas
+* **Camadas de índice**: velocidade semelhante às camadas de refletância
+* **O primeiro carregamento é o mais lento**: As visualizações subsequentes da mesma camada são armazenadas em cache e são mais rápidas
+
+### Verificação de qualidade
+
+* **Sempre verifique o RAW (Original)**: verifique a qualidade dos dados de origem antes de confiar nos resultados processados
+* **Compare camadas**: use a alternância de camadas para validar se o processamento funcionou corretamente
+* **Verifique os intervalos de índice**: use o modo Porcentagem de pixels com camadas de índice para verificar se os valores são razoáveis
+
+***
+
+## Solução de problemas
+
+### Camada indisponível
+
+**Problema**: A camada esperada não aparece no menu suspenso
+
+**Possíveis causas:**
+
+* A imagem não foi processada (apenas JPG e RAW (Original) disponíveis)
+* A calibração da refletância foi desativada durante o processamento
+* O índice específico não foi configurado nas configurações do projeto
+* A imagem é uma imagem apenas de destino (nenhum índice gerado para destinos)
+
+**Soluções:**
+
+1. Verifique se a imagem foi processada (verifique a pasta de saída para arquivos processados)
+2. Verifique as configurações do projeto para confirmar se os índices foram configurados
+3. Reprocesse com os índices desejados ativados
+
+### Camada errada exibida
+
+**Problema**: A imagem abre em uma camada inesperada
+
+**Causa**: A preferência de camada da imagem anterior foi transferida, mas essa camada não existe na imagem atual
+
+**Solução:** O Chloros volta automaticamente para JPG quando a camada preferida não está disponível - este é um comportamento normal
+
+### Não é possível ver os alvos de calibração
+
+**Problema:** A camada RAW (alvo) não mostra a detecção do alvo
+
+**Possíveis causas:**
+
+* Os alvos não foram detectados durante o processamento
+* A imagem não contém realmente alvos
+* As configurações de detecção de alvos são muito rígidas
+
+**Soluções:**
+
+1. Verifique o log de depuração em busca de mensagens “Alvo encontrado”
+2. Verifique se a imagem realmente contém alvos de calibração visíveis
+3. Ajuste as configurações de detecção de alvos nas Configurações do projeto
+4. Consulte [Escolhendo imagens-alvo](../processing-images-gui/choosing-target-images.md)
+
+***
+
+## Recursos relacionados
+
+### Ferramentas do visualizador de imagens
+
+Ao visualizar qualquer camada, você pode usar:
+
+* **Controles de zoom**: amplie para inspecionar detalhes
+* **Panorâmica**: clique e arraste para mover a imagem ampliada
+* **Inspeção do valor do pixel**: veja os valores na localização do cursor
+* **Setas de navegação**: mova-se entre as imagens mantendo a camada
+* **Modo Porcentagem de Pixel**: alterne entre a exibição DN e porcentagem
+
+Consulte [Abrindo uma imagem em tela cheia](opening-an-image-full-screen.md) para obter a documentação completa do Visualizador de imagens.
+
+### Sandbox de índice/LUT
+
+Para testes e visualização interativos de índices:
+
+* **Cálculo de índice em tempo real**: teste diferentes fórmulas de índice
+* **Mapeamento de cores LUT**: aplique gradientes de cores a índices em escala de cinza
+* **Exportar visualizações**: salve imagens de índice coloridas
+
+Consulte [Sandbox de índice/LUT](index-lut-sandbox.md) para obter detalhes.
+
+***
+
+## Próximos passos
+
+Agora que você entende as camadas de imagem:
+
+* [**Abrindo uma imagem em tela cheia**](opening-an-image-full-screen.md) - Guia completo do Visualizador de Imagens
+* [**Index/LUT Sandbox**](index-lut-sandbox.md) - Visualização interativa de índices
+* [**Fórmulas de índice multiespectral**](../project-settings/multispectral-index-formulas.md) - Referência de índices disponíveis
+* [**Concluindo o processamento**](../processing-images-gui/finishing-the-processing.md) - Compreendendo os resultados processados
