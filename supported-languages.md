@@ -4,61 +4,82 @@ O Chloros oferece suporte completo à interface em **38 idiomas em todo o mundo*
 
 O Chloros oferece suporte aos seguintes idiomas:
 
-1. 🇺🇸 **Inglês**
-2. 🇪🇸 **Español** (espanhol)
-3. 🇵🇹 **Português** (português)
-4. 🇫🇷 **Français** (francês)
-5. 🇩🇪 **Deutsch** (alemão)
-6. 🇮🇹 **Italiano** (italiano)
-7. 🇯🇵 **日本語** (japonês)
-8. 🇰🇷 **한국어** (coreano)
-9. 🇨🇳 **简体中文** (chinês simplificado)
-10. 🇹🇼 **繁體中文** (chinês tradicional)
-11. 🇷🇺 **Русский** (russo)
-12. 🇳🇱 **Nederlands** (holandês)
-13. 🇸🇦 **العربية** (árabe)
-14. 🇵🇱 **Polski** (Polonês)
-15. 🇹🇷 **Türkçe** (Turco)
-16. 🇮🇳 **हिंदी** (Hindi)
-17. 🇮🇩 **Bahasa Indonesia** (Indonésio)
-18. 🇻🇳 **Tiếng Việt** (Vietnamita)
-19. 🇹🇭 **ไทย** (Tailandês)
-20. 🇸🇪 **Svenska** (Sueco)
-21. 🇩🇰 **Dansk** (dinamarquês)
-22. 🇳🇴 **Norsk** (norueguês)
-23. 🇫🇮 **Suomi** (finlandês)
-24. 🇬🇷 **Ελληνικά** (grego)
-25. 🇨🇿 **Čeština** (Tcheco)
-26. 🇭🇺 **Magyar** (Húngaro)
-27. 🇷🇴 **Română** (Romeno)
-28. 🇺🇦 **Українська** (Ucraniano)
-29. 🇧🇷 **Português Brasileiro** (Português Brasileiro)
-30. 🇭🇰 **粵語** (Cantonês)
-31. 🇲🇾 **Bahasa Melayu** (Malaio)
-32. 🇸🇰 **Slovenčina** (Eslovaco)
-33. 🇧🇬 **Български** (Búlgaro)
-34. 🇭🇷 **Hrvatski** (Croata)
-35. 🇱🇹 **Lietuvių** (Lituano)
-36. 🇱🇻 **Latviešu** (Letão)
-37. 🇪🇪 **Eesti** (Estoniano)
-38. 🇸🇮 **Slovenščina** (Esloveno)
+| # | Idioma | Nome nativo | Código CLI |
+|---|----------|-------------|----------|
+| 1 | 🇺🇸 Inglês | Inglês | `en` |
+| 2 | 🇪🇸 Espanhol | Espanhol | `es` |
+| 3 | 🇵🇹 Português | Português | `pt` |
+| 4 | 🇫🇷 Francês | Francês | `fr` |
+| 5 | 🇩🇪 Alemão | Deutsch | `de` |
+| 6 | 🇮🇹 Italiano | Italiano | `it` |
+| 7 | 🇯🇵 Japonês | 日本語 | `ja` |
+| 8 | 🇰🇷 Coreano | 한국어 | `ko` |
+| 9 | 🇨🇳 Chinês (simplificado) | 简体中文 | `zh` |
+| 10 | 🇹🇼 Chinês (tradicional) | 繁體中文 | `zh-TW` |
+| 11 | 🇷🇺 Russo | Русский | `ru` |
+| 12 | 🇳🇱 Holandês | Nederlands | `nl` |
+| 13 | 🇸🇦 Árabe | العربية | `ar` |
+| 14 | 🇵🇱 Polonês | Polski | `pl` |
+| 15 | 🇹🇷 Turco | Türkçe | `tr` |
+| 16 | 🇮🇳 Hindi | हिंदी | `hi` |
+| 17 | 🇮🇩 Indonésio | Bahasa Indonesia | `id` |
+| 18 | 🇻🇳 Vietnamita | Tiếng Việt | `vi` |
+| 19 | 🇹🇭 Tailandês | ไทย | `th` |
+| 20 | 🇸🇪 Sueco | Svenska | `sv` |
+| 21 | 🇩🇰 Dinamarquês | Dansk | `da` |
+| 22 | 🇳🇴 Norueguês | Norsk | `no` |
+| 23 | 🇫🇮 Finlandês | Suomi | `fi` |
+| 24 | 🇬🇷 Grego | Ελληνικά | `el` |
+| 25 | 🇨🇿 Tcheco | Čeština | `cs` |
+| 26 | 🇭🇺 Húngaro | Magyar | `hu` |
+| 27 | 🇷🇴 Romeno | Română | `ro` |
+| 28 | 🇺🇦 Ucraniano | Українська | `uk` |
+| 29 | 🇧🇷 Português brasileiro | Português Brasileiro | `pt-BR` |
+| 30 | 🇭🇰 Cantonês | 粵語 | `zh-HK` |
+| 31 | 🇲🇾 Malaio | Bahasa Melayu | `ms` |
+| 32 | 🇸🇰 Eslovaco | Slovenčina | `sk` |
+| 33 | 🇧🇬 Búlgaro | Български | `bg` |
+| 34 | 🇭🇷 Croata | Hrvatski | `hr` |
+| 35 | 🇱🇹 Lituano | Lietuvių | `lt` |
+| 36 | 🇱🇻 Letão | Latviešu | `lv` |
+| 37 | 🇪🇪 Estoniano | Eesti | `et` |
+| 38 | 🇸🇮 Esloveno | Slovenščina | `sl` |
 
 ## Como alterar o idioma
 
 ### No Chloros Desktop/Navegador
 
-1. Abra as configurações do aplicativo
-2. Navegue até o menu de seleção de idioma
-3. Escolha o idioma de sua preferência na lista
-4. A interface será atualizada instantaneamente
+1. Abra as configurações do aplicativo.
+2. Navegue até o menu de seleção de idioma.
+3. Escolha o idioma de sua preferência na lista.
+4. A interface será atualizada instantaneamente.
 
 ### No Chloros CLI
 
-Use o parâmetro de idioma com seus comandos para definir o idioma da interface.
+Use o comando `language` para visualizar ou alterar o idioma da interface CLI:
+
+```bash
+# View current language
+chloros-cli language
+
+# Change to Spanish
+chloros-cli language es
+
+# Change to Chinese (Simplified)
+chloros-cli language zh
+
+# Change to Brazilian Portuguese
+chloros-cli language pt-BR
+
+# List all available languages
+chloros-cli language --list
+```
+
+Para obter mais detalhes, consulte a [documentação CLI](CLI.md).
 
 ### No Chloros Python SDK
 
-Defina o parâmetro de idioma ao inicializar o SDK para receber mensagens e saídas no seu idioma preferido.
+Defina o parâmetro de idioma ao inicializar o SDK para receber mensagens e saídas no idioma de sua preferência.
 
 ## Cobertura
 
