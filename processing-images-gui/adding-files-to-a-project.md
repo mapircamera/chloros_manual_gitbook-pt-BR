@@ -2,14 +2,14 @@
 
 Depois de criar ou abrir um projeto no Chloros, o próximo passo é adicionar suas imagens multiespectrais para iniciar o processamento. A guia Navegador de arquivos<img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> facilita a importação de imagens e o gerenciamento do seu conjunto de dados.
 
-## Acessando o Navegador de Arquivos
+## Acessando o Navegador de arquivos
 
 1. Abra ou crie um projeto no Chloros
-2. Clique no ícone **Navegador de Arquivos** <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> na barra lateral esquerda
+2. Clique no ícone **Navegador de arquivos** <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> na barra lateral esquerda
 3. O painel Navegador de arquivos exibirá a lista de arquivos do seu projeto
 
 {% dica style=&quot;info&quot; %}
-**Tipos de arquivos compatíveis**: O Chloros é compatível com arquivos de imagem RAW+JPG e JPG das câmeras MAPIR Survey3W e Survey3N. Recomenda-se apenas RAW+JPG.
+**Tipos de arquivos compatíveis**: O Chloros é compatível com arquivos de imagem RAW+JPG e JPG das câmeras MAPIR, Survey3W e Survey3N. Recomenda-se apenas RAW+JPG.
 {% endhint %}
 
 ***
@@ -31,9 +31,9 @@ Use esta opção para importar arquivos de imagem individuais ou uma pequena sel
 
 Use essa opção para importar todas as imagens de uma pasta de uma só vez.
 
-1. Clique no botão **“Adicionar pasta”** na parte superior do painel Navegador de arquivos.
-2. Navegue até a pasta que contém as imagens da sua sessão de captura e selecione-a.
-3. Clique em **“Selecionar pasta”** para importar todas as imagens compatíveis dessa pasta.
+1. Clique no botão **“Adicionar pasta”** na parte superior do painel Navegador de arquivos
+2. Navegue até a pasta que contém as imagens da sua sessão de captura e selecione-a
+3. Clique em **“Selecionar pasta”** para importar todas as imagens compatíveis dessa pasta
 
 ***
 
@@ -67,7 +67,7 @@ Depois que as imagens são importadas, elas aparecem em uma tabela com as seguin
 
 * Marque esta caixa para imagens que contêm alvos de calibração
 * Acelera consideravelmente a detecção de alvos durante o processamento
-* Consulte [Escolhendo imagens-alvo](choosing-target-images.md) para obter detalhes
+* Consulte [Escolhendo imagens alvo](choosing-target-images.md) para obter detalhes
 
 ***
 
@@ -104,7 +104,7 @@ Clique em qualquer miniatura de imagem no Navegador de arquivos para exibi-la na
 * **Imagem anterior**: Clique na seta para a esquerda ou pressione a tecla ←
 * **Próxima imagem**: Clique na seta para a direita ou pressione a tecla →
 * **Aumentar/diminuir zoom**: Use a roda do mouse ou os botões de zoom
-* **Panorâmica**: Clique e arraste a imagem quando estiver com o zoom aumentado
+* **Panorâmica**: Clique e arraste a imagem quando estiver ampliada
 
 ***
 

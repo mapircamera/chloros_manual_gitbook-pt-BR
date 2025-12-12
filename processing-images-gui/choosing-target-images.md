@@ -153,7 +153,7 @@ Se o Chloros não estiver detectando seus alvos corretamente, ajuste estas confi
 * Imagens de alvos não marcadas no Navegador de arquivos
 * Alvo muito pequeno no quadro (&lt; 30% da imagem)
 * Iluminação inadequada (sombras, reflexos)
-* Configurações de detecção de alvos muito restritas
+* Configurações de detecção de alvos muito rígidas
 
 **Soluções:**
 

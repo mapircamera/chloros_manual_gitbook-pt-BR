@@ -13,11 +13,11 @@ A maneira mais comum de abrir uma imagem no Visualizador de Imagens:
 3. A imagem é aberta na **área de visualização principal** (centro da tela)
 4. A imagem agora está carregada e pronta para visualização em tela cheia
 
-### Abrindo a guia Visualizador de Imagens
+### Abrindo a guia Visualizador de imagens
 
 Depois que uma imagem é carregada na área de visualização:
 
-1. Clique no ícone **Visualizador de Imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> na barra lateral esquerda
+1. Clique no ícone **Visualizador de imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> na barra lateral esquerda
 2. A guia Visualizador de imagens é aberta, exibindo a imagem selecionada em tela cheia
 3. Ferramentas avançadas de visualização e análise ficam disponíveis na barra lateral esquerda
 
@@ -42,7 +42,7 @@ A maior parte da tela mostra sua imagem:
 
 #### Navegar pelas imagens
 
-Navegue pelo conjunto de imagens usando atalhos do teclado ou botões:
+Navegue pelo seu conjunto de imagens usando atalhos de teclado ou botões:
 
 * **Próxima imagem**: clique no botão → ou pressione a tecla **→** (seta para a direita)
 * **Imagem anterior**: clique no botão ← ou pressione a tecla **←** (seta para a esquerda)
@@ -193,7 +193,7 @@ Verifique se os índices foram calculados corretamente:
 **Possíveis causas:**
 
 * Arquivo corrompido durante o processamento
-* Formato de arquivo não compatível
+* Formato de arquivo não suportado
 * Memória insuficiente para imagens grandes
 
 **Soluções:**
@@ -207,7 +207,7 @@ Verifique se os índices foram calculados corretamente:
 
 **Possíveis causas:**
 
-* Intervalo de valores fora da capacidade de exibição
+* Faixa de valores fora da capacidade de exibição
 * Imagem flutuante de 32 bits com valores incomuns
 * Erro de cálculo do índice
 
@@ -215,7 +215,7 @@ Verifique se os índices foram calculados corretamente:
 
 1. Verifique os valores dos pixels - se todos forem muito baixos ou muito altos, ajuste o intervalo de exibição
 2. Tente abrir no QGIS ou similar com ajuste automático do intervalo
-3. Verifique o log de depuração do processamento para erros
+3. Verifique o log de depuração do processamento em busca de erros
 
 ### Os valores dos pixels parecem errados
 
@@ -239,7 +239,7 @@ Verifique se os índices foram calculados corretamente:
 Agora que você pode visualizar imagens em tela cheia:
 
 * [**Camadas de imagem**](image-layers.md) - Saiba mais sobre visualização multibanda
-* [**Index/LUT Sandbox**](index-lut-sandbox.md) - Aplique índices personalizados e mapeamento de cores
+* [**Sandbox de índice/LUT**](index-lut-sandbox.md) - Aplique índices personalizados e mapeamento de cores
 * [**Fórmulas de índice multiespectral**](../project-settings/multispectral-index-formulas.md) - Entenda os índices disponíveis
 
 Para o fluxo de trabalho de processamento, consulte:

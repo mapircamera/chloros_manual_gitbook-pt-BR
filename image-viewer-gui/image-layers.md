@@ -1,6 +1,6 @@
 Camadas de imagem
 
-O menu suspenso Camadas de imagem no Visualizador de imagens Chloros permite alternar rapidamente entre diferentes versões da mesma imagem - desde as capturas originais até saídas de refletância processadas e imagens de índice calculadas.
+O menu suspenso Camadas de imagem no Visualizador de imagens Chloros permite alternar rapidamente entre diferentes versões da mesma imagem — desde as capturas originais até saídas de refletância processadas e imagens de índice calculadas.
 
 ## O que são camadas de imagem?
 
@@ -38,9 +38,9 @@ O **menu suspenso Seletor de camadas** no canto superior direito do Visualizador
 
 **Quando visualizar:**
 
-* Inspecionando a qualidade dos dados originais do sensor
-* Verificando se há problemas ou artefatos no sensor
-* Comparando os resultados antes e depois do processamento
+* Inspecionar a qualidade dos dados originais do sensor
+* Verificar se há problemas ou artefatos no sensor
+* Comparar os resultados antes e depois do processamento
 
 ### RAW (alvo)
 
@@ -64,7 +64,7 @@ O **menu suspenso Seletor de camadas** no canto superior direito do Visualizador
 * Vinheta corrigida (se ativada no processamento)
 * Refletância calibrada usando dados de alvo (se ativada)
 * Multibanda TIFF com todos os canais da câmera
-* Os valores de pixel representam a porcentagem de refletância (ao usar o modo de porcentagem)
+* Os valores dos pixels representam a porcentagem de refletância (ao usar o modo porcentagem)
 * Pronto para manipulação com o [Index/LUT Sandbox](index-lut-sandbox.md)
 
 **Quando visualizar:**
@@ -123,7 +123,7 @@ O **menu suspenso Seletor de camadas** no canto superior direito do Visualizador
 
 **Troca rápida:**
 
-* O menu suspenso lembra sua última seleção
+* O menu lembra sua última seleção
 * Ao navegar para a próxima imagem, o Chloros tenta mostrar o mesmo tipo de camada
 * Se essa camada não existir na próxima imagem, o padrão será JPG
 
@@ -131,15 +131,15 @@ O **menu suspenso Seletor de camadas** no canto superior direito do Visualizador
 
 Nem todas as camadas estão disponíveis para todas as imagens:
 
-**Sempre disponível:**
+**Sempre disponíveis:**
 
 * ✅ JPG (todas as imagens têm uma pré-visualização JPG)
 
 **Disponível condicionalmente:**
 
 * ⚠️ RAW (Original) - Apenas se a imagem foi capturada no modo RAW ou RAW+JPG
-* ⚠️ RAW (Alvo) - Apenas se a imagem contiver alvos de calibração detectados
-* ⚠️ RAW (Refletância) - Somente após o processamento com a calibração de refletância ativada
+* ⚠️ RAW (Alvo) - Apenas se a imagem contiver alvos de calibração detetados
+* ⚠️ RAW (Refletância) - Apenas após processamento com calibração de refletância ativada
 * ⚠️ RAW (\[Índice] Índice) - Somente após o processamento com índices configurados
 
 ***
@@ -150,10 +150,10 @@ Nem todas as camadas estão disponíveis para todas as imagens:
 
 Quando você navega para uma imagem diferente (usando as setas do teclado ou clicando nas miniaturas):
 
-**A preferência da camada é preservada:**
+**A preferência de camada é preservada:**
 
 * Se estiver visualizando “RAW (Refletância)”, a próxima imagem mostrará “RAW (Refletância)” (se disponível)
-* Se estiver visualizando “RAW (Índice NDVI)”, a próxima imagem mostrará “RAW (Índice NDVI)” (se disponível)
+* Se estiver visualizando “RAW (NDVI Índice)”, a próxima imagem mostrará “RAW (NDVI Índice)” (se disponível)
 * Se a mesma camada não existir, o padrão será JPG
 
 **Exemplo de fluxo de trabalho:**
@@ -162,7 +162,7 @@ Quando você navega para uma imagem diferente (usando as setas do teclado ou cli
 2. Pressione → para visualizar a Imagem 2
 3. A Imagem 2 exibe automaticamente a camada RAW (NDVI Index)
 4. Continue navegando - todas as imagens mostram a camada NDVI
-5. Muito eficiente para revisar os resultados do índice em várias imagens
+5. Muito eficiente para revisar resultados de índice em várias imagens
 
 ***
 
@@ -172,7 +172,7 @@ Quando você navega para uma imagem diferente (usando as setas do teclado ou cli
 
 **Objetivo**: Comparar a imagem original com a imagem calibrada
 
-1. Abra a imagem processada no Visualizador de imagens
+1. Abra a imagem processada no Visualizador de Imagens
 2. Selecione **RAW (Original)** no menu suspenso
 3. Observe os valores de vinheta e não calibrados
 4. Alterne para **RAW (Refletância)** no menu suspenso
@@ -180,7 +180,7 @@ Quando você navega para uma imagem diferente (usando as setas do teclado ou cli
 
 ### Fluxo de trabalho 2: Revisão do índice
 
-**Objetivo**: Revisar rapidamente os resultados NDVI em todo o conjunto de dados
+**Objetivo**: revisar rapidamente os resultados do NDVI em todo o conjunto de dados
 
 1. Abra a primeira imagem processada
 2. Selecione **RAW (Índice NDVI)** no menu suspenso
@@ -196,23 +196,23 @@ Quando você navega para uma imagem diferente (usando as setas do teclado ou cli
 1. Navegue até uma imagem-alvo
 2. Selecione **RAW (Alvo)** no menu suspenso
 3. Verifique se os alvos de calibração estão claramente visíveis e foram detectados
-4. Navegue até a próxima imagem alvo
+4. Navegue até a próxima imagem-alvo
 5. Repita a verificação para todos os alvos
 
 ### Fluxo de trabalho 4: Inspeção do valor do pixel
 
-**Objetivo**: Verificar os valores de refletância para precisão científica
+**Objetivo**: verificar os valores de refletância para precisão científica
 
 1. Abra a imagem processada
 2. Selecione a camada **RAW (Refletância)**
-3. Ative o modo **Porcentagem de pixel** (botão na barra de ferramentas superior direita)
+3. Ative o modo **Porcentagem de pixels** (botão na barra de ferramentas superior direita)
 4. Mova o cursor sobre as áreas de vegetação
 5. Verifique se os valores dos pixels estão dentro dos intervalos esperados (30-70% para NIR, 5-15% para Red)
-6. Verifique se as áreas de solo e água apresentam valores adequados
+6. Verifique se as áreas de solo e água têm valores adequados
 
 ***
 
-## Compreensão dos valores dos pixels por camada
+## Compreender os valores dos pixels por camada
 
 Camadas diferentes mostram intervalos de valores de pixels diferentes:
 
@@ -220,7 +220,7 @@ Camadas diferentes mostram intervalos de valores de pixels diferentes:
 
 * **Intervalo**: 0-255 (8 bits)
 * **Significado**: Valores exibidos, com correção gama
-* **Uso**: Apenas para inspeção visual, não para medições científicas
+* **Uso**: Apenas inspeção visual, não para medição científica
 
 ### RAW (Original)
 
@@ -232,27 +232,27 @@ Camadas diferentes mostram intervalos de valores de pixels diferentes:
 
 * **Intervalo**: 0-65.535 (16 bits TIFF) ou 0,0-1,0 (32 bits Porcentagem)
 * **Significado**: Porcentagem de refletância calibrada
-* **Uso**: medições e análises científicas
+* **Uso**: Medições e análises científicas
 
-**Para 16 bits TIFF:** divida por 65.535 para obter a porcentagem de refletância **Para 32 bits Porcentagem:** os valores representam diretamente a porcentagem (0,5 = 50% de refletância)
+**Para 16 bits TIFF:** Divida por 65.535 para obter a porcentagem de refletância **Para 32 bits Porcentagem:** Os valores representam diretamente a porcentagem (0,5 = 50% de refletância)
 
-### RAW (Imagens de índice)
+### RAW (imagens de índice)
 
-* **Intervalo**: Varia de acordo com o índice (normalmente de -1,0 a +1,0 para índices normalizados)
-* **Significado**: Resultado do cálculo do índice
+* **Intervalo**: varia de acordo com o índice (normalmente de -1,0 a +1,0 para índices normalizados)
+* **Significado**: resultado do cálculo do índice
 * **Exemplos**:
-  * NDVI: -1 a +1 (vegetação normalmente 0,4 a 0,9)
+  * NDVI: -1 a +1 (vegetação normalmente de 0,4 a 0,9)
   * NDRE: -1 a +1 (detecção de estresse)
   * EVI: 0 a 1 (vegetação aprimorada)
 
 ***
 
-## Dicas e melhores práticas
+## Dicas e práticas recomendadas
 
 ### Troca eficiente de camadas
 
 * **Conhecimento dos atalhos do teclado**: embora não haja atalhos do teclado para camadas, as setas de navegação (←/→) funcionam em todas as camadas
-* **Fluxos de trabalho consistentes**: escolha uma camada (por exemplo, NDVI) e revise todo o conjunto de dados antes de mudar para outra
+* **Fluxos de trabalho consistentes**: escolha uma camada (por exemplo, NDVI) e analise todo o conjunto de dados antes de alternar para outra
 * **Comparações rápidas**: alterne entre Original e Refletância para verificar a qualidade do processamento
 
 ### Considerações sobre desempenho
@@ -260,7 +260,7 @@ Camadas diferentes mostram intervalos de valores de pixels diferentes:
 * **JPG carrega mais rápido**: use para navegação rápida por muitas imagens
 * **Camadas RAW carregam mais lentamente**: resolução e profundidade de bits mais altas
 * **Camadas de índice**: velocidade semelhante às camadas de refletância
-* **O primeiro carregamento é o mais lento**: As visualizações subsequentes da mesma camada são armazenadas em cache e são mais rápidas
+* **O primeiro carregamento é o mais lento**: as visualizações subsequentes da mesma camada são armazenadas em cache e são mais rápidas
 
 ### Verificação de qualidade
 
@@ -297,21 +297,21 @@ Camadas diferentes mostram intervalos de valores de pixels diferentes:
 
 **Solução:** O Chloros volta automaticamente para JPG quando a camada preferida não está disponível - este é um comportamento normal
 
-### Não é possível ver os alvos de calibração
+### Não consigo ver os alvos de calibração
 
 **Problema:** A camada RAW (alvo) não mostra a detecção do alvo
 
 **Possíveis causas:**
 
 * Os alvos não foram detectados durante o processamento
-* A imagem não contém realmente alvos
+* A imagem não contém alvos
 * As configurações de detecção de alvos são muito rígidas
 
 **Soluções:**
 
-1. Verifique o log de depuração em busca de mensagens “Alvo encontrado”
+1. Verifique o log de depuração para mensagens “Alvo encontrado”
 2. Verifique se a imagem realmente contém alvos de calibração visíveis
-3. Ajuste as configurações de detecção de alvos nas Configurações do projeto
+3. Ajuste as configurações de detecção de alvos em Configurações do projeto
 4. Consulte [Escolhendo imagens-alvo](../processing-images-gui/choosing-target-images.md)
 
 ***
@@ -328,7 +328,7 @@ Ao visualizar qualquer camada, você pode usar:
 * **Setas de navegação**: mova-se entre as imagens mantendo a camada
 * **Modo Porcentagem de Pixel**: alterne entre a exibição DN e porcentagem
 
-Consulte [Abrindo uma imagem em tela cheia](opening-an-image-full-screen.md) para obter a documentação completa do Visualizador de imagens.
+Consulte [Abrindo uma imagem em tela cheia](opening-an-image-full-screen.md) para obter a documentação completa do Visualizador de Imagens.
 
 ### Sandbox de índice/LUT
 
@@ -347,6 +347,6 @@ Consulte [Sandbox de índice/LUT](index-lut-sandbox.md) para obter detalhes.
 Agora que você entende as camadas de imagem:
 
 * [**Abrindo uma imagem em tela cheia**](opening-an-image-full-screen.md) - Guia completo do Visualizador de Imagens
-* [**Index/LUT Sandbox**](index-lut-sandbox.md) - Visualização interativa de índices
+* [**Index/LUT Sandbox**](index-lut-sandbox.md) - Visualização interativa do índice
 * [**Fórmulas de índice multiespectral**](../project-settings/multispectral-index-formulas.md) - Referência de índices disponíveis
-* [**Concluindo o processamento**](../processing-images-gui/finishing-the-processing.md) - Compreendendo os resultados processados
+* [**Concluindo o processamento**](../processing-images-gui/finishing-the-processing.md) - Entendendo os resultados processados

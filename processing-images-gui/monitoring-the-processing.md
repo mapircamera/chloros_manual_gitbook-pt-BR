@@ -27,10 +27,10 @@ Para usuários com licença Chloros+:
 
 **Exibição de progresso em 4 etapas:**
 
-1. **Detecção** - Localização de alvos de calibração
-2. **Análise** - Exame de imagens e preparação do pipeline
-3. **Calibração** - Aplicação de correções de vinheta e refletância
-4. **Exportação** - Salvamento de arquivos processados
+1. **Detectando** - Localizando alvos de calibração
+2. **Analisando** - Examinando imagens e preparando o pipeline
+3. **Calibrando** - Aplicando correções de vinheta e refletância
+4. **Exportando** - Salvando arquivos processados
 
 **Recursos interativos:**
 
@@ -94,7 +94,7 @@ Para usuários com licença Chloros+:
 
 **O que está acontecendo:**
 
-* **Debayering**: Convertendo o padrão RAW Bayer para 3 canais
+* **Debayering**: Convertendo o padrão RAW Bayer em 3 canais
 * **Correção de vinheta**: Remoção do escurecimento das bordas da lente
 * **Calibração de refletância**: Normalização com valores-alvo
 * **Cálculo de índice**: Cálculo de índices multiespectrais
@@ -111,7 +111,7 @@ Para usuários com licença Chloros+:
 **Comportamento do processamento:**
 
 * **Modo livre**: processa uma imagem por vez sequencialmente
-* **Modo Chloros+**: processa até 16 imagens simultaneamente
+* **Modo Chloros+: processa até 16 imagens simultaneamente
 * **Aceleração da GPU**: acelera significativamente esta etapa
 
 **O que observar:**
@@ -199,10 +199,10 @@ Problemas críticos que podem causar falha no processamento:
 | -------------------------------- | -------------------------------------- | ----------------------------------------------------- |
 | “Alvo detectado em \[nome do arquivo]” | Alvo de calibração encontrado com sucesso  | Nenhuma - normal                                         |
 | “Processando imagem X de Y”        | Atualização do progresso atual                | Nenhuma - normal                                         |
-| “Nenhum alvo encontrado”               | Nenhum alvo de calibração detectado        | Marque as imagens de alvo ou desative a calibração de refletância |
+| “Nenhum alvo encontrado”               | Nenhum alvo de calibração detectado        | Marque as imagens-alvo ou desative a calibração de refletância |
 | “Espaço em disco insuficiente”        | Armazenamento insuficiente para saída          | Libere espaço em disco                                    |
 | “Ignorando arquivo corrompido”        | Arquivo de imagem está danificado                  | Recopie o arquivo do cartão SD                             |
-| “Dados PPK aplicados”               | Correções GPS do arquivo .daq aplicadas | Nenhum - normal                                         |
+| “Dados PPK aplicados”               | Correções de GPS do arquivo .daq aplicadas | Nenhum - normal                                         |
 
 ### Copiando dados de log
 
@@ -233,9 +233,9 @@ Para copiar o log para solução de problemas ou suporte:
 
 **Para monitorar:**
 
-* Gerenciador de Tarefas do Windows (Ctrl+Shift+Esc)
+* Gerenciador de tarefas do Windows (Ctrl+Shift+Esc)
 * Guia Desempenho → seção CPU
-* Procure pelos processos “Chloros” ou “chloros-backend”
+* Procure os processos “Chloros” ou “chloros-backend”
 
 ### Uso da memória (RAM)
 
@@ -336,7 +336,7 @@ Interrompa o processamento se você observar:
 
 **Soluções:**
 
-1. Se acabou de começar e está na fase de detecção: cancele, marque os alvos e reinicie
+1. Se acabou de iniciar e está na fase de detecção: cancele, marque os alvos e reinicie
 2. Para o futuro: use SSD, reduza os índices, atualize o hardware
 3. Considere o CLI para processamento em lote de grandes conjuntos de dados
 

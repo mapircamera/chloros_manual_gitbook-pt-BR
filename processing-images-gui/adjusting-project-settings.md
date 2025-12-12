@@ -20,8 +20,8 @@ Antes de processar suas imagens, é importante configurar as configurações do 
 
 Para fluxos de trabalho típicos de câmera MAPIR Survey3, as configurações padrão funcionam bem:
 
-* ✅ **Correção de vinheta**: Ativada
-* ✅ **Calibração de refletância**: Ativada (requer imagens de alvos MAPIR)
+* ✅ **Correção de vinheta**: ativada
+* ✅ **Calibração de refletância**: ativada (requer imagens de alvos MAPIR)
 * ✅ **Método Debayer**: Alta qualidade (mais rápido)
 * ✅ **Formato de exportação**: TIFF (16 bits)
 
@@ -61,7 +61,7 @@ Principais opções de processamento e calibração de imagens.
 
 **Configurações avançadas:**
 
-* **Deslocamento do fuso horário do sensor de luz**: para sincronização de tempo PPK (padrão: 0)
+* **Desvio de fuso horário do sensor de luz**: para sincronização de tempo PPK (padrão: 0)
 * **Aplicar correções PPK**: usa dados de GPS/pino de exposição de arquivos .daq
 * **Pino de exposição 1/2**: atribui câmeras a pinos de exposição para configurações de câmera dupla
 
@@ -90,7 +90,7 @@ Configure quais índices de vegetação calcular e exportar.
 * Use matemática de banda com todos os canais de imagem
 * Salve fórmulas personalizadas para reutilização
 
-Para todos os índices e fórmulas disponíveis, consulte [Fórmulas de índice multiespectral](../project-settings/multispectral-index-formulas.md).
+Para todos os índices e fórmulas disponíveis, consulte [Fórmulas de Índice Multiespectral](../project-settings/multispectral-index-formulas.md).
 
 ### Exportar
 
@@ -98,8 +98,8 @@ Controla o formato e a qualidade do arquivo de saída.
 
 **Formatos disponíveis:**
 
-* **TIFF (16 bits)**: recomendado para GIS e análise científica (intervalo de 0 a 65.535)
-* **TIFF (32 bits, porcentagem)**: valores de refletância de ponto flutuante (intervalo de 0,0 a 1,0)
+* **TIFF (16 bits)**: Recomendado para GIS e análise científica (intervalo de 0 a 65.535)
+* **TIFF (32 bits, porcentagem)**: Valores de refletância de ponto flutuante (intervalo de 0,0 a 1,0)
 * **PNG (8 bits)**: Compressão sem perdas para visualização (intervalo de 0 a 255)
 * **JPG (8 bits)**: Arquivos menores, compressão com perdas (intervalo de 0 a 255)
 
@@ -136,7 +136,7 @@ Ao criar um novo projeto:
 A configuração **“Salvar pasta do projeto”** especifica onde novos projetos são criados por padrão:
 
 * **Local padrão**: `C:\Users\[Username]\Chloros Projects`
-* **Alterar local**: clique no ícone de edição e selecione uma nova pasta
+* **Alterar local**: Clique no ícone de edição e selecione uma nova pasta
 * **Quando alterar**:
   * Unidade de rede para colaboração em equipe
   * Unidade diferente com mais espaço de armazenamento
@@ -146,11 +146,11 @@ A configuração **“Salvar pasta do projeto”** especifica onde novos projeto
 
 ## Configuração PPK (cinemática pós-processada)
 
-Se estiver usando gravadores MAPIR DAQ com GPS para geolocalização precisa:
+Se estiver usando gravadores DAQ MAPIR com GPS para geolocalização precisa:
 
 ### Pré-requisitos
 
-* MAPIR DAQ com módulo GPS (GNSS)
+* DAQ MAPIR com módulo GPS (GNSS)
 * Arquivo de log .daq com entradas de pinos de exposição
 * Câmera conectada aos pinos de exposição DAQ durante a sessão de captura
 
@@ -158,12 +158,12 @@ Se estiver usando gravadores MAPIR DAQ com GPS para geolocalização precisa:
 
 1. Coloque o arquivo de log .daq na pasta do seu projeto
 2. Em Configurações do projeto, marque a caixa de seleção **“Aplicar correções PPK”**
-3. Defina **“Fuso horário do sensor de luz”**, se necessário (padrão: 0 para UTC)
+3. Defina **“Desvio de fuso horário do sensor de luz”**, se necessário (padrão: 0 para UTC)
 4. Atribua câmeras aos pinos de exposição:
    * **Câmera única**: Atribuída automaticamente ao pino 1
    * **Duas câmeras**: atribua manualmente cada câmera ao pino correto
 
-**Atribuição do pino de exposição:**
+**Atribuição de pinos de exposição:**
 
 * **Pino de exposição 1**: selecione o modelo da câmera no menu suspenso
 * **Pino de exposição 2**: selecione a segunda câmera ou “Não usar”
@@ -211,9 +211,9 @@ Para projetos com muitas imagens (mais de 500):
 
 ## Verificando suas configurações
 
-Antes de iniciar o processamento, verifique estas configurações importantes:
+Antes de iniciar o processamento, revise estas configurações importantes:
 
-* [ ] Modelo da câmera detectado corretamente no Navegador de Arquivos
+* [ ] Modelo da câmera detectado corretamente no Navegador de arquivos
 * [ ] Correção de vinheta ativada
 * [ ] Calibração de refletância ativada
 * [ ] Pelo menos uma imagem de alvo de calibração importada
@@ -227,7 +227,7 @@ Antes de iniciar o processamento, verifique estas configurações importantes:
 
 Depois de configurar suas definições:
 
-1. **Marque as imagens-alvo de calibração** - Consulte [Escolhendo imagens-alvo](choosing-target-images.md)
+1. **Marque as imagens de alvo de calibração** - Consulte [Escolhendo imagens de alvo](choosing-target-images.md)
 2. **Inicie o processamento** - Consulte [Iniciando o processamento](starting-the-processing.md)
 3. **Monitore o progresso** - Consulte [Monitorando o processamento](monitoring-the-processing.md)
 

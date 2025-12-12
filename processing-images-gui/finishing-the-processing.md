@@ -24,7 +24,7 @@ Quando o processamento for concluído com sucesso, você verá vários indicador
 
 ***
 
-## Revisão das imagens processadas
+## Revendo as imagens processadas
 
 ### Visualização rápida no explorador de arquivos
 
@@ -40,7 +40,7 @@ Quando o processamento for concluído com sucesso, você verá vários indicador
 **Visualizadores recomendados:**
 
 * **QGIS** - Software GIS gratuito (ideal para análise multiespectral georreferenciada)
-* **IrfanView** - Visualizador de imagens rápido e leve (compatível com o TIFF)
+* **IrfanView** - Visualizador de imagens rápido e leve (compatível com TIFF)
 * **Adobe Photoshop** - Edição profissional (suporte a TIFF)
 * **GIMP** - Alternativa gratuita ao Photoshop
 * **Windows Photos** - Visualização básica (pode não suportar TIFF de 16 bits)
@@ -54,11 +54,11 @@ Use o Visualizador de Imagens integrado do Chloros para visualização avançada
 3. Clique na guia **Visualizador de Imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> na barra lateral esquerda
 4. Use [Index/LUT Sandbox](../image-viewer-gui/index-lut-sandbox.md) para análise interativa
 
-Consulte [Visualizador de Imagens](../image-viewer-gui/opening-an-image-full-screen.md) para obter instruções detalhadas.
+Consulte [Visualizador de imagens](../image-viewer-gui/opening-an-image-full-screen.md) para obter instruções detalhadas.
 
 ***
 
-## Revisando o Log de Depuração
+## Revisando o log de depuração
 
 ### Verifique se há avisos ou erros
 
@@ -66,11 +66,11 @@ Consulte [Visualizador de Imagens](../image-viewer-gui/opening-an-image-full-scr
 2. Percorra as mensagens.
 3. Procure avisos amarelos ou erros vermelhos.
 4. Revise quaisquer problemas observados.
-5. Entre em contato com o suporte do MAPIR para obter ajuda.
+5. Entre em contato com o suporte MAPIR para obter ajuda.
 
 ### Salvando o log
 
-Para manter um registro do processamento ou enviar para o suporte do MAPIR:
+Para manter um registro do processamento ou enviar para o suporte MAPIR:
 
 1. Clique no botão **“Copiar”** ou **“Baixar”**
 2. Salve como arquivo de texto na pasta do projeto
@@ -94,7 +94,7 @@ Para manter um registro do processamento ou enviar para o suporte do MAPIR:
 
 1. Verifique o log de depuração em busca de mensagens de ignorar/erro
 2. Verifique se o espaço em disco era suficiente
-3. Conte os arquivos: deve corresponder a (contagem original - contagem de destino) × (índices + 1)
+3. Conte os arquivos: deve corresponder (contagem original - contagem de destino) × (índices + 1)
 4. Reimporte e reprocesse todos os arquivos ausentes
 
 ### Problema: Bordas escuras ou claras (vinheta ainda visível)
@@ -228,7 +228,7 @@ Para várias sessões/conjuntos de dados:
 
 * Automatize o processamento em lote
 * Processe várias pastas com scripts
-* Consulte [Documentação do CLI](../CLI.md)
+* Consulte a [Documentação do CLI](../CLI.md)
 
 **Opção 3: Python SDK (somente Chloros+)**
 
@@ -244,7 +244,7 @@ Para várias sessões/conjuntos de dados:
 
 Se os resultados não forem satisfatórios:
 
-1. Mantenha as imagens originais (nunca as exclua)
+1. Mantenha as imagens originais (nunca exclua)
 2. Abra o mesmo projeto no Chloros
 3. Ajuste as configurações no painel Configurações do projeto
 4. Processe novamente - os resultados substituirão os resultados anteriores
@@ -258,7 +258,7 @@ Para reprocessar apenas imagens específicas:
 3. Use o mesmo modelo de configurações
 4. Processe um conjunto de dados menor
 
-### Obtenha ajuda
+### Obtenção de ajuda
 
 Se você encontrar problemas:
 
@@ -290,7 +290,7 @@ Você concluiu o fluxo de trabalho completo do Chloros:
 ### Recursos avançados
 
 * [**Visualizador de imagens**](../image-viewer-gui/opening-an-image-full-screen.md) - Visualização e análise interativas
-* [**Index/LUT Sandbox**](../image-viewer-gui/index-lut-sandbox.md) - Teste de índice personalizado
+* [**Sandbox de índice/LUT**](../image-viewer-gui/index-lut-sandbox.md) - Teste de índice personalizado
 * [**Fórmulas de índice multiespectral**](../project-settings/multispectral-index-formulas.md) - Referência completa do índice
 
 ### Automação e integração
