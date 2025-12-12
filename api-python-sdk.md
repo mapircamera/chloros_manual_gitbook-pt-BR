@@ -9,7 +9,7 @@ O **Chloros Python SDK** fornece acesso programático ao mecanismo de processame
 * 🚀 **Automação** - Crie fluxos de trabalho de processamento em lote personalizados
 * 🔗 **Integração** - Incorpore o Chloros em aplicativos Python existentes
 * 📊 **Pronto para pesquisa** - Perfeito para pipelines de análise científica
-* ⚡ **Processamento paralelo** - Escale para seus núcleos de CPU (Chloros+)
+* ⚡ **Processamento paralelo** - Escala para seus núcleos de CPU (Chloros+)
 
 ### Requisitos
 
@@ -19,7 +19,7 @@ O **Chloros Python SDK** fornece acesso programático ao mecanismo de processame
 | **Licença**          | Chloros+ ([plano pago necessário](https://cloud.mapir.camera/pricing)) |
 | **Sistema operacional** | Windows 10/11 (64 bits)                                              |
 | **Python**           | Python 3.7 ou superior                                                |
-| **Memória**           | Mínimo de 8 GB de RAM (recomenda-se 16 GB)                                  |
+| **Memória**           | Mínimo de 8 GB de RAM (recomendado 16 GB)                                  |
 | **Internet**         | Necessária para ativação da licença                                     |
 
 {% hint style=&quot;warning&quot; %}
@@ -137,7 +137,7 @@ O SDK usa a mesma licença que o Chloros, o Chloros (navegador) e o Chloros CLI.
 
 ### Testar conexão
 
-Verifique se o SDK consegue se conectar ao Chloros:
+Verifique se o SDK pode se conectar ao Chloros:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -227,7 +227,7 @@ chloros.create_project("DroneField_A", camera="Survey3N_RGN")
 
 #### `import_images(folder_path, recursive=False)`
 
-Importar imagens de uma pasta.
+Importa imagens de uma pasta.
 
 **Parâmetros:**
 
@@ -252,7 +252,7 @@ chloros.import_images("C:\\DroneImages", recursive=True)
 
 #### `configure(**settings)`
 
-Configure as definições de processamento.
+Configurar as definições de processamento.
 
 **Parâmetros:**
 
@@ -262,7 +262,7 @@ Configure as definições de processamento.
 | `vignette_correction`     | bool | `True`                  | Ativar correção de vinheta      |
 | `reflectance_calibration` | bool | `True`                  | Ativar calibração de refletância  |
 | `indices`                 | lista | `None`                  | Índices de vegetação a calcular |
-| `export_format`           | str  | &quot;TIFF (16 bits)&quot;         | Formato de saída                   |
+| `export_format`           | str  | “TIFF (16 bits)”         | Formato de saída                   |
 | `ppk`                     | bool | `False`                 | Ativar correções PPK          |
 | `custom_settings`         | dict | `None`                  | Configurações personalizadas avançadas        |
 
@@ -311,7 +311,7 @@ Processe as imagens do projeto.
 | `mode`              | str      | `"parallel"` | Modo de processamento: “paralelo” ou “serial”   |
 | `wait`              | bool     | `True`       | Aguardar conclusão                       |
 | `progress_callback` | callable | `None`       | Função de retorno de chamada de progresso (progress, msg) |
-| `poll_interval`     | float    | `2.0`        | Intervalo de pesquisa para progresso (segundos)   |
+| `poll_interval`     | float    | `2.0`        | Intervalo de sondagem para progresso (segundos)   |
 
 **Retorna:** `dict` - Resultados do processamento
 
@@ -397,7 +397,7 @@ Função de conveniência de uma linha para processar uma pasta.
 | `folder_path`             | str/Path | Obrigatório        | Caminho para a pasta com imagens     |
 | `project_name`            | str      | Gerado automaticamente  | Nome do projeto                   |
 | `camera`                  | str      | `None`          | Modelo da câmera                |
-| `indices`                 | list     | `["NDVI"]`      | Índices a calcular           |
+| `indices`                 | list     | `["NDVI"]`      | Índices a serem calculados           |
 | `vignette_correction`     | bool     | `True`          | Ativar correção de vinheta     |
 | `reflectance_calibration` | bool     | `True`          | Ativar calibração de refletância |
 | `export_format`           | str      | &quot;TIFF (16 bits)&quot; | Formato de saída                  |
@@ -566,7 +566,7 @@ print("All flights processed!")
 
 ### Exemplo 4: Integração do pipeline de pesquisa
 
-Integrar Chloros com análise de dados:
+Integre o Chloros com a análise de dados:
 
 ```python
 from chloros_sdk import ChlorosLocal
@@ -785,7 +785,7 @@ python my_processor.py "C:\Flight001" "C:\Flight002" --indices NDVI NDRE GNDVI
 
 ## Tratamento de exceções
 
-O SDK fornece classes de exceção específicas para diferentes tipos de erros:
+O SDK fornece classes de exceção específicas para diferentes tipos de erro:
 
 ### Hierarquia de exceções
 
@@ -890,9 +890,9 @@ for i in range(0, len(images), batch_size):
 
 ## Solução de problemas
 
-### Back-end não inicia
+### Backend não inicia
 
-**Problema:** SDK não consegue iniciar o back-end
+**Problema:** SDK não consegue iniciar o backend
 
 **Soluções:**
 
@@ -915,7 +915,7 @@ chloros = ChlorosLocal(backend_exe="C:\\Path\\To\\chloros-backend.exe")
 
 ### Licença não detectada
 
-**Problema:** O SDK avisa sobre a falta de licença
+**Problema:** SDK avisa sobre a falta de licença
 
 **Soluções:**
 
@@ -957,7 +957,7 @@ python -c "import sys; print(sys.path)"
 
 ### Tempo limite de processamento
 
-**Problema:** Tempo limite de processamento
+**Problema:** O tempo limite de processamento expirou
 
 **Soluções:**
 
@@ -975,7 +975,7 @@ chloros = ChlorosLocal(timeout=120)  # 2 minutes
 
 ### Porta já em uso
 
-**Problema:** Porta 5000 do back-end ocupada
+**Problema:** Porta 5000 do backend ocupada
 
 **Soluções:**
 
@@ -1003,13 +1003,13 @@ Get-NetTCPConnection -LocalPort 5000
 chloros.process(mode="parallel")  # Up to 16 workers
 ```
 
-2. **Reduza a resolução de saída** (se aceitável)
+2. **Reduzir a resolução de saída** (se aceitável)
 
 ```python
 chloros.configure(export_format="PNG (8-bit)")  # Faster than TIFF
 ```
 
-3. **Desative índices desnecessários**
+3. **Desativar índices desnecessários**
 
 ```python
 # Only calculate needed indices
@@ -1141,7 +1141,7 @@ chloros.process(progress_callback=notebook_progress)
 
 | Recurso         | GUI do Desktop | CLI Linha de comando | Python SDK  |
 | --------------- | ----------- | ---------------- | ----------- |
-| **Interface**   | Ponto-clique | Comando          | Python API  |
+| **Interface**   | Ponto e clique | Comando          | Python API  |
 | **Ideal para**    | Trabalho visual | Scripting        | Integração |
 | **Automação**  | Limitada     | Boa             | Excelente   |
 | **Flexibilidade** | Básica       | Boa             | Máxima     |
@@ -1154,7 +1154,7 @@ chloros.process(progress_callback=notebook_progress)
 **R:** O código SDK pode ser integrado aos seus aplicativos, mas:
 
 * Os usuários finais precisam ter o Chloros instalado
-* Os usuários finais precisam de licenças ativas do Chloros+
+* Os usuários finais precisam ter licenças ativas do Chloros+
 * A distribuição comercial requer licenciamento OEM
 
 Entre em contato com o info@mapir.camera para consultas sobre OEM.
@@ -1199,7 +1199,7 @@ Programe através do Agendador de Tarefas para executar diariamente.
 
 ### P: O SDK suporta async/await?
 
-**R:** A versão atual é síncrona. Para comportamento assíncrono, use o `wait=False` ou execute em um thread separado:
+**R:** A versão atual é síncrona. Para comportamento assíncrono, use o `wait=False` ou execute em uma thread separada:
 
 ```python
 import threading
@@ -1219,7 +1219,7 @@ thread.start()
 
 ### Documentação
 
-* **Referência do API**: esta página
+* **Referência do API**: Esta página
 
 ### Canais de suporte
 
