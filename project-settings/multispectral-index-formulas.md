@@ -24,7 +24,7 @@ $$
 EVI = 2.5 *  {(NIR - Red) \over (NIR + 6 * Red - 7.5 * Blue + 1)}
 $$
 
-Os valores EVI devem variar de 0 a 1 para pixels de vegetação. Características brilhantes, como nuvens e edifícios brancos, juntamente com características escuras, como água, podem resultar em valores de pixel anômalos em uma imagem EVI. Antes de criar uma imagem EVI, você deve mascarar as nuvens e as características brilhantes da imagem de refletância e, opcionalmente, definir o limite dos valores de pixel de 0 a 1.
+Os valores EVI devem variar de 0 a 1 para pixels de vegetação. Características brilhantes, como nuvens e edifícios brancos, juntamente com características escuras, como água, podem resultar em valores de pixel anômalos em uma imagem EVI. Antes de criar uma imagem EVI, você deve mascarar as nuvens e os recursos brilhantes da imagem de refletância e, opcionalmente, definir o limite dos valores de pixel de 0 a 1.
 
 _Referência: Huete, A., et al. “Visão geral do desempenho radiométrico e biofísico dos índices de vegetação MODIS”. Remote Sensing of Environment 83 (2002):195–213._
 
@@ -32,7 +32,7 @@ _Referência: Huete, A., et al. “Visão geral do desempenho radiométrico e bi
 
 ## FCI1 - Índice de cobertura florestal 1
 
-Este índice distingue a copa das árvores de outros tipos de vegetação usando imagens de refletância multiespectral que incluem uma faixa vermelha.
+Este índice distingue copas de árvores de outros tipos de vegetação usando imagens de refletância multiespectral que incluem uma faixa vermelha.
 
 $$
 FCI1 = Red * RedEdge
@@ -54,7 +54,7 @@ $$
 
 Áreas florestadas terão valores FCI2 mais baixos devido à menor refletância das árvores e à presença de sombras dentro da copa.
 
-_Referência: Becker, Sarah J., Craig S.T. Daughtry e Andrew L. Russ. “Índices robustos de cobertura florestal para imagens multiespectrais.” Engenharia Fotogramétrica e Sensoriamento Remoto 84.8 (2018): 505-512._
+_Referência: Becker, Sarah J., Craig S.T. Daughtry e Andrew L. Russ. “Índices robustos de cobertura florestal para imagens multiespectrais”. Engenharia Fotogramétrica e Sensoriamento Remoto 84.8 (2018): 505-512._
 
 ***
 
@@ -92,13 +92,13 @@ _Referência: Gitelson, A., Y. Kaufman e M. Merzylak. “Uso de um canal Green n
 
 ## GCI - Green Índice de clorofila
 
-Este índice é usado para estimar o conteúdo de clorofila das folhas em uma ampla variedade de espécies de plantas.
+Este índice é usado para estimar o teor de clorofila das folhas em uma ampla variedade de espécies de plantas.
 
 $$
 GCI = {NIR \over Green} - 1
 $$
 
-Ter comprimentos de onda NIR e verdes amplos proporciona uma melhor previsão do teor de clorofila, permitindo ao mesmo tempo maior sensibilidade e uma relação sinal-ruído mais elevada.
+Ter comprimentos de onda NIR e verdes amplos proporciona uma melhor previsão do teor de clorofila, ao mesmo tempo que permite maior sensibilidade e uma relação sinal-ruído mais elevada.
 
 _Referência: Gitelson, A., Y. Gritz e M. Merzlyak. “Relações entre o teor de clorofila nas folhas e a refletância espectral e algoritmos para avaliação não destrutiva da clorofila em folhas de plantas superiores”. Journal of Plant Physiology 160 (2003): 271-282._
 
@@ -150,7 +150,7 @@ $$
 GRVI = {NIR \over Green }
 $$
 
-_Referência: Sripada, R., et al. “Fotografia aérea infravermelha colorida para determinar as necessidades de nitrogênio no início da safra do milho.” Agronomy Journal 98 (2006): 968-977._
+_Referência: Sripada, R., et al. “Fotografia aérea em infravermelho colorido para determinar as necessidades de nitrogênio no início da estação para o milho.” Agronomy Journal 98 (2006): 968-977._
 
 ***
 
@@ -210,15 +210,15 @@ _Referência: Yang, Z., P. Willis e R. Mueller. “Impacto da imagem AWIFS aprim
 
 ***
 
-## MSAVI2 - Índice de vegetação ajustado ao solo modificado 2
+## MSAVI2 - Índice de Vegetação Ajustado ao Solo Modificado 2
 
-Este índice é uma versão mais simples do índice MSAVI proposto por Qi, et al (1994), que melhora o Índice de vegetação ajustado ao solo (SAVI). Ele reduz o ruído do solo e aumenta a faixa dinâmica do sinal da vegetação. O MSAVI2 baseia-se em um método indutivo que não utiliza um valor _L_ constante (como no SAVI) para destacar a vegetação saudável.
+Este índice é uma versão mais simples do índice MSAVI proposto por Qi, et al (1994), que melhora o Índice de Vegetação Ajustado ao Solo (SAVI). Ele reduz o ruído do solo e aumenta a faixa dinâmica do sinal da vegetação. O MSAVI2 baseia-se em um método indutivo que não utiliza um valor _L_ constante (como no SAVI) para destacar a vegetação saudável.
 
 $$
 MSAVI2 = {2 * NIR + 1 - \sqrt{(2 * NIR + 1)^{2} - 8(NIR - Red)} \over 2}
 $$
 
-_Referência: Qi, J., A. Chehbouni, A. Huete, Y. Kerr e S. Sorooshian. “Um Índice de Vegetação Ajustado ao Solo Modificado.” Sensoriamento Remoto do Ambiente 48 (1994): 119-126.
+_Referência: Qi, J., A. Chehbouni, A. Huete, Y. Kerr e S. Sorooshian. “Um Índice de Vegetação Ajustado ao Solo Modificado.” Remote Sensing of Environment 48 (1994): 119-126.
 
 ***
 
@@ -234,7 +234,7 @@ $$
 
 ## NDVI - Índice de Vegetação por Diferença Normalizada
 
-Este índice é uma medida da vegetação verde saudável. A combinação de sua formulação de diferença normalizada e o uso das regiões de maior absorção e refletância da clorofila tornam-no robusto em uma ampla gama de condições. No entanto, ele pode saturar em condições de vegetação densa quando o LAI se torna alto.
+Este índice é uma medida da vegetação verde saudável. A combinação de sua formulação de diferença normalizada e o uso das regiões de maior absorção e refletância da clorofila o tornam robusto em uma ampla gama de condições. No entanto, ele pode saturar em condições de vegetação densa quando o LAI se torna alto.
 
 $$
 NDVI = {NIR - Red \over NIR + Red  }
@@ -254,7 +254,7 @@ $$
 NLI = {NIR^{2} - Red \over NIR^{2} + Red  }
 $$
 
-_Referência: Goel, N. e W. Qin. “Influências da arquitetura do dossel nas relações entre vários índices de vegetação e LAI e Fpar: uma simulação por computador.” Remote Sensing Reviews 10 (1994): 309-347._
+_Referência: Goel, N., e W. Qin. “Influências da arquitetura do dossel nas relações entre vários índices de vegetação e LAI e Fpar: uma simulação por computador”. Remote Sensing Reviews 10 (1994): 309-347._
 
 ***
 
@@ -282,7 +282,7 @@ _Referência: Roujean, J., e F. Breon. “Estimativa da PAR absorvida pela veget
 
 ***
 
-## SAVI - Índice de Vegetação Ajustado ao Solo
+## SAVI - Índice de vegetação ajustado ao solo
 
 Este índice é semelhante ao NDVI, mas suprime os efeitos dos pixels do solo. Ele usa um fator de ajuste de fundo da copa, _L_, que é uma função da densidade da vegetação e geralmente requer conhecimento prévio das quantidades de vegetação. Huete (1988) sugere um valor ideal de _L_=0,5 para levar em conta as variações de fundo do solo de primeira ordem. Este índice é mais adequado para áreas com vegetação relativamente esparsa, onde o solo é visível através da copa das árvores.
 
@@ -320,7 +320,7 @@ _Referência: Gitelson, A., et al. “Linhas de vegetação e solo no espaço es
 
 ## WDRVI - Índice de vegetação de ampla faixa dinâmica
 
-Este índice é semelhante ao NDVI, mas usa um coeficiente de ponderação (_a_) para reduzir a disparidade entre as contribuições dos sinais do infravermelho próximo e do vermelho para o NDVI. O WDRVI é particularmente eficaz em cenas com densidade de vegetação moderada a alta quando o NDVI excede 0.6. O NDVI tende a se estabilizar quando a fração de vegetação e o índice de área foliar (LAI) aumentam, enquanto o WDRVI é mais sensível a uma gama mais ampla de frações de vegetação e a mudanças no LAI.
+Este índice é semelhante ao NDVI, mas usa um coeficiente de ponderação (_a_) para reduzir a disparidade entre as contribuições dos sinais do infravermelho próximo e do vermelho para o NDVI. O WDRVI é particularmente eficaz em cenas com densidade de vegetação moderada a alta quando o NDVI excede 0,6. O NDVI tende a se estabilizar quando a fração de vegetação e o índice de área foliar (LAI) aumentam, enquanto o WDRVI é mais sensível a uma gama mais ampla de frações de vegetação e a mudanças no LAI.
 
 $$
 WDRVI = {(\alpha * NIR- Red) \over (\alpha * NIR + Red)}
