@@ -1,15 +1,14 @@
 ---
-description: Frequently Asked Questions
+description: Perguntas frequentes
 metaLinks:
   alternates:
     - https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/faq
 ---
-
 # Perguntas frequentes
 
 <details>
 
-<summary>Posso processar imagens de câmeras que não são da marca MAPIR com o Chloros?</summary>
+<summary>Posso processar imagens de câmeras que não sejam da marca MAPIR com o Chloros?</summary>
 
 Não, o Chloros só suporta o processamento de imagens de câmeras MAPIR. Consulte a lista de [modelos de câmeras compatíveis](supported-cameras.md) para obter mais informações. Oferecemos o processamento de outras câmeras no MAPIR Cloud. Veja a lista completa [aqui](https://mapir.gitbook.io/mapir-cloud/supported-cameras).
 
@@ -27,7 +26,7 @@ Não. Sem uma imagem do alvo de calibração capturada ao mesmo tempo que as ima
 
 <summary>Posso editar minhas imagens antes do processamento no Chloros?</summary>
 
-Não. O Chloros pressupõe que os dados de entrada não foram modificados. Não altere os nomes dos arquivos.
+Não. O Chloros assume que os dados de entrada não foram modificados. Não altere os nomes dos arquivos.
 
 </details>
 
@@ -51,7 +50,7 @@ Não. Apenas imagens individuais da câmera MAPIR são suportadas, não imagens 
 
 <summary>Como posso acelerar a etapa de detecção de alvos do Chloros?</summary>
 
-Na tabela do navegador de arquivos, pré-selecionar as imagens-alvo na coluna da direita indicará ao Chloros para procurar apenas nessas imagens os alvos de calibração, acelerando consideravelmente o processamento.
+Na tabela do navegador de arquivos, pré-selecionar as imagens-alvo na coluna à direita indicará ao Chloros para procurar apenas nessas imagens os alvos de calibração, acelerando consideravelmente o processamento.
 
 </details>
 
@@ -65,7 +64,7 @@ Se você planeja fazer o upload para nossa plataforma de processamento online [M
 
 <details>
 
-<summary>O MAPIR algum dia oferecerá suporte ao recurso X? Eu realmente gostaria que o MAPIR oferecesse o X.</summary>
+<summary>O MAPIR oferecerá suporte ao recurso X? Eu realmente gostaria que o MAPIR oferecesse X.</summary>
 
 Estamos sempre interessados em receber feedback sobre nossos produtos. Se você encontrar algum problema com nossos produtos ou tiver alguma sugestão sobre como podemos melhorá-los, entre em contato conosco para compartilhar suas ideias. A maior parte de nossa pesquisa e desenvolvimento é orientada por ouvir as principais necessidades de nossos clientes.
 

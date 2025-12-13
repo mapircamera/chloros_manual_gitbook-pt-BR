@@ -1,13 +1,12 @@
 ---
-description: Lab-measured panels used to calibrate captured data in post processing
+description: Painéis medidos em laboratório usados para calibrar os dados capturados no pós-processamento
 metaLinks:
   alternates:
     - https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/calibration-targets
 ---
-
 # Alvos de calibração
 
-A MAPIR oferece vários alvos de calibração para cobrir uma ampla gama de aplicações. O compacto T4-R50 visto abaixo contém 4 painéis que foram medidos para refletância de luz de 250 a 2.500 nm.
+A MAPIR oferece vários alvos de calibração para cobrir uma ampla gama de aplicações. O compacto T4-R50, visto abaixo, contém quatro painéis que foram medidos para refletância de luz de 250 a 2.500 nm.
 
 <figure><img src=".gitbook/assets/t4-r50_2.jpg" alt=""><figcaption><p>MAPIR T4-R50</p></figcaption></figure>
 
@@ -21,6 +20,6 @@ Observando o gráfico de refletância, você pode ver que os valores são compri
 
 Isso significa que, com cada imagem capturada com nossas câmeras, você pode usar uma foto de nossos alvos de refletância, como o [T4-R50](https://www.mapir.camera/collections/calibration-targets/products/diffuse-reflectance-standard-calibration-target-package-t3-r50) ou [T4-R125](https://www.mapir.camera/collections/multispectral-reflectance-reference-calibration-targets/products/diffuse-reflectance-standard-calibration-target-package-t4-r125) para calibrar as imagens para refletância. Depois de calibrado, cada pixel da imagem é igual à porcentagem de refletância.
 
-Se você exportar as imagens calibradas em Chloros como o típico JPG ou TIFF, a porcentagem de refletância será calculada dividindo o valor do pixel pela profundidade de bits do formato da imagem. Portanto, para JPG, divida por 255 e, para TIFF, divida por 65.535. Você também pode escolher a saída no formato PERCENT em Chloros, e então cada pixel terá um valor percentual de 0,0 a 1,0 (0% a 100% de refletância). Lembre-se de que alguns aplicativos de imagem não aceitam imagens percentuais (ponto flutuante) e elas ocupam muito espaço de armazenamento.
+Se você produzir as imagens calibradas em Chloros como o típico JPG ou TIFF, a porcentagem de refletância será calculada dividindo o valor do pixel pela profundidade de bits do formato da imagem. Portanto, para JPG, divida por 255 e, para TIFF, divida por 65.535. Você também pode escolher a saída no formato PERCENT no Chloros, e então cada pixel terá um valor percentual de 0,0 a 1,0 (0% a 100% de refletância). Lembre-se de que alguns aplicativos de imagem não aceitam imagens percentuais (ponto flutuante) e elas ocupam muito espaço de armazenamento.
 
 <div><figure><img src=".gitbook/assets/t3-125.jpg" alt=""><figcaption><p>T4-R125</p></figcaption></figure> <figure><img src=".gitbook/assets/t3-125_2.jpg" alt=""><figcaption><p>T4-R125</p></figcaption></figure> <figure><img src=".gitbook/assets/t3-125_closed.jpg" alt=""><figcaption><p>T4-R125</p></figcaption></figure></div>
