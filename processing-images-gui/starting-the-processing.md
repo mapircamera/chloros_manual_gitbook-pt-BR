@@ -1,6 +1,6 @@
 Iniciando o processamento
 
-Depois de importar suas imagens, marcar seus alvos de calibração e configurar as definições do seu projeto, você estará pronto para iniciar o processamento. Esta página orienta você na inicialização do pipeline de processamento Chloros.
+Depois de importar suas imagens, marcar seus alvos de calibração e configurar as definições do projeto, você estará pronto para iniciar o processamento. Esta página orienta você na inicialização do pipeline de processamento Chloros.
 
 ## Lista de verificação pré-processamento
 
@@ -31,7 +31,7 @@ O botão Iniciar/Reproduzir está localizado na barra de cabeçalho superior do 
 
 ### Clique para iniciar
 
-1. Clique no **botão Reproduzir/Iniciar** na barra de cabeçalho superior
+1. Clique no **botão Reproduzir/Iniciar** no cabeçalho superior
 2. O processamento começa imediatamente
 3. O botão fica desativado (acinzentado) durante o processamento
 4. A barra de progresso é atualizada, mostrando o status do processamento
@@ -110,7 +110,7 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 
 * Digitaliza imagens de alvos marcados (ou todas as imagens, se nenhuma estiver marcada)
 * Identifica os 4 painéis de calibração em cada alvo
-* Extrai valores de refletância dos painéis de alvo
+* Extrai valores de refletância dos painéis alvo
 * Registra os carimbos de data/hora dos alvos para agendamento da calibração
 
 **Duração:** 1-30 segundos (com alvos marcados), 5-30+ minutos (sem marcação)
@@ -123,7 +123,7 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 * Aplica algoritmo de demosaicing de alta qualidade
 * Preserva a máxima qualidade e detalhes da imagem
 
-**Duração:** Varia de acordo com a quantidade de imagens e a velocidade da CPU
+**Duração:** varia de acordo com a quantidade de imagens e a velocidade da CPU
 
 ### Etapa 3: Calibração
 
@@ -134,13 +134,13 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 * Aplica correções em todas as bandas/canais
 * Usa alvo de calibração apropriado para cada imagem com base no carimbo de data/hora
 
-**Duração:** a maior parte do tempo de processamento
+**Duração:** Maioria do tempo de processamento
 
 ### Etapa 4: Cálculo do índice
 
 **O que o Chloros faz:**
 
-* Calcula os índices multiespectrais configurados (NDVI, NDRE, etc.)
+* Calcula índices multiespectrais configurados (NDVI, NDRE, etc.)
 * Aplica matemática de banda às imagens calibradas
 * Gera imagens de índice para cada índice selecionado
 
@@ -165,7 +165,7 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 
 Uma vez iniciado, todo o pipeline é executado automaticamente:
 
-* Não é necessária interação do usuário
+* Não é necessária nenhuma interação do usuário
 * Todas as etapas configuradas são executadas em sequência
 * Atualizações de progresso exibidas em tempo real
 
@@ -185,7 +185,7 @@ Uma vez iniciado, todo o pipeline é executado automaticamente:
 * Evite iniciar outras tarefas que exijam muito da CPU
 
 {% hint style=&quot;warning&quot; %}
-**Dica de desempenho**: Para obter o melhor desempenho do Chloros+, feche outros aplicativos e deixe o Chloros usar todos os recursos do sistema.
+**Dica de desempenho**: para obter o melhor desempenho do Chloros+, feche outros aplicativos e deixe o Chloros usar todos os recursos do sistema.
 {% endhint %}
 
 ### O processamento não pode ser pausado
@@ -197,7 +197,7 @@ Uma vez iniciado, todo o pipeline é executado automaticamente:
 * Resultados parciais não são salvos
 * É necessário reiniciar do início se for cancelado
 
-**Dica de planejamento:** para projetos muito grandes, considere processar em lotes ou usar o CLI para um melhor controle.
+**Dica de planejamento:** Para projetos muito grandes, considere processar em lotes ou usar o CLI para um melhor controle.
 
 ***
 
@@ -206,9 +206,9 @@ Uma vez iniciado, todo o pipeline é executado automaticamente:
 Enquanto o processamento é executado, você pode:
 
 * **Observar a barra de progresso** - Veja a porcentagem geral de conclusão
-* **Visualizar o estágio atual** - Detectar, analisar, calibrar ou exportar
-* **Verificar a guia de log** - Ver mensagens e avisos detalhados do processamento
-* **Visualizar imagens concluídas** - Alguns arquivos exportados podem aparecer durante o processamento
+* **Exibir o estágio atual** - Detectar, analisar, calibrar ou exportar
+* **Verificar a guia de log** - Veja mensagens e avisos detalhados do processamento
+* **Visualizar imagens concluídas** - Alguns arquivos de exportação podem aparecer durante o processamento
 
 Para obter informações detalhadas sobre o monitoramento, consulte [Monitorando o processamento](monitoring-the-processing.md).
 
@@ -216,7 +216,7 @@ Para obter informações detalhadas sobre o monitoramento, consulte [Monitorando
 
 ## Cancelando o processamento
 
-Se precisar interromper o processamento:
+Se você precisar interromper o processamento:
 
 ### Como cancelar
 
@@ -249,7 +249,7 @@ Se precisar interromper o processamento:
 
 ## Estimativas de tempo de processamento
 
-O tempo real de processamento varia muito com base em:
+O tempo de processamento real varia muito com base em:
 
 * Número de imagens
 * Resolução da imagem
@@ -271,7 +271,7 @@ O tempo real de processamento varia muito com base em:
 | 1000 imagens | 4-6 horas   | 1,5-2 horas      | 40-60 min      |
 
 {% hint style=&quot;info&quot; %}
-**Primeira execução**: O processamento inicial pode demorar mais tempo, pois o Chloros cria caches e perfis. O processamento subsequente de conjuntos de dados semelhantes será mais rápido.
+**Primeira execução**: o processamento inicial pode demorar mais tempo, pois o Chloros cria caches e perfis. O processamento subsequente de conjuntos de dados semelhantes será mais rápido.
 {% endhint %}
 
 ***
@@ -314,8 +314,8 @@ O tempo real de processamento varia muito com base em:
 
 **Possíveis causas:**
 
-* Esqueceu de marcar as imagens de destino
-* As imagens de destino não contêm alvos visíveis
+* Esqueceu de marcar as imagens-alvo
+* As imagens-alvo não contêm alvos visíveis
 * Configurações de detecção de alvos muito rígidas
 
 **Soluções:**
@@ -334,7 +334,7 @@ O tempo real de processamento varia muito com base em:
 1. **Teste primeiro com um pequeno subconjunto** - Processe 10 a 20 imagens para verificar as configurações
 2. **Verifique o espaço disponível em disco** - Certifique-se de ter 2 a 3 vezes o tamanho do conjunto de dados livre
 3. **Feche aplicativos desnecessários** - Libere recursos do sistema
-4. **Verifique as imagens alvo** - Visualize os alvos marcados para garantir a qualidade
+4. **Verifique as imagens-alvo** - Visualize os alvos marcados para garantir a qualidade
 5. **Salve o projeto** - O projeto é salvo automaticamente, mas é uma boa prática salvá-lo manualmente
 
 ### Durante o processamento

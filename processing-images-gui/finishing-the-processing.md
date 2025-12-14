@@ -24,7 +24,7 @@ Quando o processamento for concluído com sucesso, você verá vários indicador
 
 ***
 
-## Revendo as imagens processadas
+## Revisão das imagens processadas
 
 ### Visualização rápida no explorador de arquivos
 
@@ -40,7 +40,7 @@ Quando o processamento for concluído com sucesso, você verá vários indicador
 **Visualizadores recomendados:**
 
 * **QGIS** - Software GIS gratuito (ideal para análise multiespectral georreferenciada)
-* **IrfanView** - Visualizador de imagens rápido e leve (compatível com TIFF)
+* **IrfanView** - Visualizador de imagens rápido e leve (compatível com o TIFF)
 * **Adobe Photoshop** - Edição profissional (suporte a TIFF)
 * **GIMP** - Alternativa gratuita ao Photoshop
 * **Windows Photos** - Visualização básica (pode não suportar TIFF de 16 bits)
@@ -54,11 +54,11 @@ Use o Visualizador de Imagens integrado do Chloros para visualização avançada
 3. Clique na guia **Visualizador de Imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> na barra lateral esquerda
 4. Use [Index/LUT Sandbox](../image-viewer-gui/index-lut-sandbox.md) para análise interativa
 
-Consulte [Visualizador de imagens](../image-viewer-gui/opening-an-image-full-screen.md) para obter instruções detalhadas.
+Consulte [Visualizador de Imagens](../image-viewer-gui/opening-an-image-full-screen.md) para obter instruções detalhadas.
 
 ***
 
-## Revisando o log de depuração
+## Revisando o Log de Depuração
 
 ### Verifique se há avisos ou erros
 
@@ -66,16 +66,16 @@ Consulte [Visualizador de imagens](../image-viewer-gui/opening-an-image-full-scr
 2. Percorra as mensagens.
 3. Procure avisos amarelos ou erros vermelhos.
 4. Revise quaisquer problemas observados.
-5. Entre em contato com o suporte MAPIR para obter ajuda.
+5. Entre em contato com o suporte do MAPIR para obter ajuda.
 
 ### Salvando o log
 
-Para manter um registro do processamento ou enviar para o suporte MAPIR:
+Para manter um registro do processamento ou enviar para o suporte do MAPIR:
 
 1. Clique no botão **“Copiar”** ou **“Baixar”**
 2. Salve como arquivo de texto na pasta do projeto
 3. Inclua na documentação do projeto
-4. Envie para o suporte da MAPIR se encontrar problemas
+4. Envie para o suporte da MAPIR se houver problemas
 
 ***
 
@@ -94,7 +94,7 @@ Para manter um registro do processamento ou enviar para o suporte MAPIR:
 
 1. Verifique o log de depuração em busca de mensagens de ignorar/erro
 2. Verifique se o espaço em disco era suficiente
-3. Conte os arquivos: deve corresponder (contagem original - contagem de destino) × (índices + 1)
+3. Conte os arquivos: deve corresponder a (contagem original - contagem de destino) × (índices + 1)
 4. Reimporte e reprocesse todos os arquivos ausentes
 
 ### Problema: Bordas escuras ou claras (vinheta ainda visível)
@@ -116,7 +116,7 @@ Para manter um registro do processamento ou enviar para o suporte MAPIR:
 **Possíveis causas:**
 
 * Nenhum alvo de calibração detectado
-* Modelo de alvo de calibração selecionado incorreto
+* Modelo de alvo de calibração errado selecionado
 * Calibração de refletância desativada
 * Imagens de alvo de baixa qualidade
 
@@ -127,9 +127,9 @@ Para manter um registro do processamento ou enviar para o suporte MAPIR:
 3. Revise a qualidade da imagem do alvo
 4. Reprocesse com os alvos corretos marcados
 
-### Problema: Os valores do NDVI parecem incorretos
+### Problema: Os valores NDVI parecem incorretos
 
-**Intervalos esperados do NDVI:**
+**Intervalos NDVI esperados:**
 
 * **Água, rochas, solo**: -0,1 a 0,2
 * **Vegetação esparsa/doente**: 0,2 a 0,4
@@ -189,7 +189,7 @@ Para manter um registro do processamento ou enviar para o suporte MAPIR:
 
 **O que salvar:**
 
-* ✅ **Imagens RAW/JPG originais** - Arquive em unidade/nuvem separada
+* ✅ **Imagens RAW/JPG originais** - arquive em unidade/nuvem separada
 * ✅ **Resultados processados** - Mantenha imagens e índices calibrados
 * ✅ **Arquivo do projeto** - Contém todas as configurações para reprocessamento, se necessário
 * ✅ **Log de depuração** - Documenta detalhes do processamento
@@ -228,7 +228,7 @@ Para várias sessões/conjuntos de dados:
 
 * Automatize o processamento em lote
 * Processe várias pastas com scripts
-* Consulte a [Documentação do CLI](../CLI.md)
+* Consulte [Documentação do CLI](../CLI.md)
 
 **Opção 3: Python SDK (somente Chloros+)**
 
@@ -244,7 +244,7 @@ Para várias sessões/conjuntos de dados:
 
 Se os resultados não forem satisfatórios:
 
-1. Mantenha as imagens originais (nunca exclua)
+1. Mantenha as imagens originais (nunca as exclua)
 2. Abra o mesmo projeto no Chloros
 3. Ajuste as configurações no painel Configurações do projeto
 4. Processe novamente - os resultados substituirão os resultados anteriores
@@ -258,7 +258,7 @@ Para reprocessar apenas imagens específicas:
 3. Use o mesmo modelo de configurações
 4. Processe um conjunto de dados menor
 
-### Obtenção de ajuda
+### Obtenha ajuda
 
 Se você encontrar problemas:
 

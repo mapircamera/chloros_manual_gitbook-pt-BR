@@ -1,4 +1,4 @@
-# Monitoramento do processamento
+# Monitorando o processamento
 
 Depois que o processamento é iniciado, o Chloros oferece várias maneiras de monitorar o progresso, verificar se há problemas e entender o que está acontecendo com seu conjunto de dados. Esta página explica como acompanhar seu processamento e interpretar as informações fornecidas pelo Chloros.
 
@@ -36,7 +36,7 @@ Para usuários com licença Chloros+:
 
 * **Passe o mouse sobre** a barra de progresso para ver o painel expandido de 4 estágios
 * **Clique** na barra de progresso para congelar/fixar o painel expandido
-* **Clique novamente** para descongelar e ocultar automaticamente ao sair com o mouse
+* **Clique novamente** para descongelar e ocultar automaticamente ao sair do mouse
 * Cada estágio mostra o progresso individual (0-100%)
 
 ***
@@ -67,7 +67,7 @@ Para usuários com licença Chloros+:
 
 * Deve ser concluído rapidamente se os alvos estiverem devidamente marcados
 * Se demorar muito, os alvos podem não estar marcados
-* Verifique o Log de Depuração para mensagens “Alvo encontrado”
+* Verifique o log de depuração para mensagens “Alvo encontrado”
 
 ### Etapa 2: Análise
 
@@ -110,8 +110,8 @@ Para usuários com licença Chloros+:
 
 **Comportamento do processamento:**
 
-* **Modo livre**: processa uma imagem por vez sequencialmente
-* **Modo Chloros+: processa até 16 imagens simultaneamente
+* **Modo livre**: Processa uma imagem por vez sequencialmente
+* **Modo Chloros+**: Processa até 16 imagens simultaneamente
 * **Aceleração da GPU**: acelera significativamente esta etapa
 
 **O que observar:**
@@ -140,7 +140,7 @@ Para usuários com licença Chloros+:
 **O que observar:**
 
 * Avisos de espaço em disco
-* Erros de gravação de arquivo
+* Erros de gravação de arquivos
 * Conclusão de todas as saídas configuradas
 
 ***
@@ -153,7 +153,7 @@ O Log de depuração fornece informações detalhadas sobre o andamento do proce
 
 1. Clique no ícone **Log de depuração** <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> na barra lateral esquerda
 2. O painel de log é aberto, exibindo mensagens de processamento em tempo real
-3. A rolagem automática exibe as mensagens mais recentes
+3. Role automaticamente para mostrar as mensagens mais recentes
 
 ### Entendendo as mensagens de log
 
@@ -202,7 +202,7 @@ Problemas críticos que podem causar falha no processamento:
 | “Nenhum alvo encontrado”               | Nenhum alvo de calibração detectado        | Marque as imagens-alvo ou desative a calibração de refletância |
 | “Espaço em disco insuficiente”        | Armazenamento insuficiente para saída          | Libere espaço em disco                                    |
 | “Ignorando arquivo corrompido”        | Arquivo de imagem está danificado                  | Recopie o arquivo do cartão SD                             |
-| “Dados PPK aplicados”               | Correções de GPS do arquivo .daq aplicadas | Nenhum - normal                                         |
+| “Dados PPK aplicados”               | Correções GPS do arquivo .daq aplicadas | Nenhum - normal                                         |
 
 ### Copiando dados de log
 
@@ -225,7 +225,7 @@ Para copiar o log para solução de problemas ou suporte:
 * Outros núcleos ociosos ou disponíveis
 * O sistema permanece responsivo
 
-**Chloros+ Modo paralelo:**
+**Modo paralelo Chloros+:**
 
 * Vários núcleos a 80-100% (até 16 núcleos)
 * Alta utilização geral da CPU
@@ -233,9 +233,9 @@ Para copiar o log para solução de problemas ou suporte:
 
 **Para monitorar:**
 
-* Gerenciador de tarefas do Windows (Ctrl+Shift+Esc)
+* Gerenciador de Tarefas Windows (Ctrl+Shift+Esc)
 * Guia Desempenho → seção CPU
-* Procure os processos “Chloros” ou “chloros-backend”
+* Procure pelos processos “Chloros” ou “chloros-backend”
 
 ### Uso da memória (RAM)
 
@@ -318,7 +318,7 @@ Interrompa o processamento se você observar:
 
 1. Clique no **botão Parar/Cancelar** (substitui o botão Iniciar)
 2. O processamento é interrompido e o progresso é perdido
-3. Corrija os problemas e reinicie do início
+3. Corrija os problemas e reinicie desde o início
 
 ***
 
@@ -336,7 +336,7 @@ Interrompa o processamento se você observar:
 
 **Soluções:**
 
-1. Se acabou de iniciar e está na fase de detecção: cancele, marque os alvos e reinicie
+1. Se acabou de começar e está na fase de detecção: cancele, marque os alvos e reinicie
 2. Para o futuro: use SSD, reduza os índices, atualize o hardware
 3. Considere o CLI para processamento em lote de grandes conjuntos de dados
 

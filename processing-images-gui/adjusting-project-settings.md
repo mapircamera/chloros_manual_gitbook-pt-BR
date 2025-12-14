@@ -18,7 +18,7 @@ Antes de processar suas imagens, é importante configurar as configurações do 
 
 ### Configurações padrão (recomendadas para a maioria dos usuários)
 
-Para fluxos de trabalho típicos de câmera MAPIR Survey3, as configurações padrão funcionam bem:
+Para fluxos de trabalho típicos da câmera MAPIR Survey3, as configurações padrão funcionam bem:
 
 * ✅ **Correção de vinheta**: ativada
 * ✅ **Calibração de refletância**: ativada (requer imagens de alvos MAPIR)
@@ -98,8 +98,8 @@ Controla o formato e a qualidade do arquivo de saída.
 
 **Formatos disponíveis:**
 
-* **TIFF (16 bits)**: Recomendado para GIS e análise científica (intervalo de 0 a 65.535)
-* **TIFF (32 bits, porcentagem)**: Valores de refletância de ponto flutuante (intervalo de 0,0 a 1,0)
+* **TIFF (16 bits)**: recomendado para GIS e análise científica (intervalo de 0 a 65.535)
+* **TIFF (32 bits, porcentagem)**: valores de refletância de ponto flutuante (intervalo de 0,0 a 1,0)
 * **PNG (8 bits)**: Compressão sem perdas para visualização (intervalo de 0 a 255)
 * **JPG (8 bits)**: Arquivos menores, compressão com perdas (intervalo de 0 a 255)
 
@@ -136,7 +136,7 @@ Ao criar um novo projeto:
 A configuração **“Salvar pasta do projeto”** especifica onde novos projetos são criados por padrão:
 
 * **Local padrão**: `C:\Users\[Username]\Chloros Projects`
-* **Alterar local**: Clique no ícone de edição e selecione uma nova pasta
+* **Alterar local**: clique no ícone de edição e selecione uma nova pasta
 * **Quando alterar**:
   * Unidade de rede para colaboração em equipe
   * Unidade diferente com mais espaço de armazenamento
@@ -158,12 +158,12 @@ Se estiver usando gravadores DAQ MAPIR com GPS para geolocalização precisa:
 
 1. Coloque o arquivo de log .daq na pasta do seu projeto
 2. Em Configurações do projeto, marque a caixa de seleção **“Aplicar correções PPK”**
-3. Defina **“Desvio de fuso horário do sensor de luz”**, se necessário (padrão: 0 para UTC)
+3. Defina **“Fuso horário do sensor de luz”**, se necessário (padrão: 0 para UTC)
 4. Atribua câmeras aos pinos de exposição:
    * **Câmera única**: Atribuída automaticamente ao pino 1
-   * **Duas câmeras**: atribua manualmente cada câmera ao pino correto
+   * **Câmeras duplas**: atribua manualmente cada câmera ao pino correto
 
-**Atribuição de pinos de exposição:**
+**Atribuição do pino de exposição:**
 
 * **Pino de exposição 1**: selecione o modelo da câmera no menu suspenso
 * **Pino de exposição 2**: selecione a segunda câmera ou “Não usar”
@@ -203,7 +203,7 @@ Para levantamentos repetidos da mesma área ao longo do tempo:
 Para projetos com muitas imagens (mais de 500):
 
 * Considere dividir em projetos menores por data ou área
-* Use o processamento paralelo Chloros+ para resultados mais rápidos
+* Use o processamento paralelo Chloros+ para obter resultados mais rápidos
 * Considere CLI ou API para automação em lote
 * Ajuste o intervalo mínimo de recalibração para reduzir o tempo de detecção do alvo
 
@@ -225,9 +225,9 @@ Antes de iniciar o processamento, revise estas configurações importantes:
 
 ## Próximas etapas
 
-Depois de configurar suas definições:
+Depois que suas configurações estiverem definidas:
 
-1. **Marque as imagens de alvo de calibração** - Consulte [Escolhendo imagens de alvo](choosing-target-images.md)
+1. **Marque as imagens de calibração** - Consulte [Escolhendo imagens de calibração](choosing-target-images.md)
 2. **Inicie o processamento** - Consulte [Iniciando o processamento](starting-the-processing.md)
 3. **Monitore o progresso** - Consulte [Monitorando o processamento](monitoring-the-processing.md)
 

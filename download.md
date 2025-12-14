@@ -3,10 +3,9 @@ metaLinks:
   alternates:
     - https://app.gitbook.com/s/o044KN3Ws0uIDvOmSkcR/download
 ---
-
 # Download
 
-Faça o download da versão mais recente do Chloros para o Windows para começar a usar o processamento de imagens multiespectrais.
+Faça o download da versão mais recente do Chloros para Windows para começar a processar imagens multiespectrais.
 
 ### Requisitos do sistema
 
@@ -37,7 +36,7 @@ Faça o download da versão mais recente do Chloros para o Windows para começar
 * **Versão**: 1.0.3
 * **Data de lançamento**: dezembro de 2025
 * **Tamanho do arquivo**: 1,6 GB
-* **Tipo de arquivo**: .exe (Instalador Windows)
+* **Tipo de arquivo**: .exe (instalador do Windows)
 
 #### **Etapas de instalação:**
 
@@ -75,7 +74,7 @@ pip install chloros-sdk
 A instalação do Chloros inclui:
 
 * ✅ **Chloros Desktop GUI** - Interface gráfica completa
-* ✅ **Chloros (Browser)** - Interface baseada na Web para sistemas com especificações mais baixas
+* ✅ **Chloros (Navegador)** - Interface baseada na Web para sistemas com especificações mais baixas
 * ✅ **Chloros CLI** - Interface de linha de comando (requer licença Chloros+)
 * ✅ **Backend Engine** - Pipeline de processamento de imagens
 * ✅ **Perfis de câmera** - Modelos de câmera pré-configurados MAPIR
@@ -93,7 +92,7 @@ Desbloqueie recursos avançados com uma assinatura do Chloros+:
 * 📱 **Vários dispositivos** - Use em 2 a 10 ou mais dispositivos (dependendo do plano)
 * 🧮 **Fórmulas personalizadas** - Crie índices multiespectrais personalizados
 
-<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">Ver planos e preços do Chloros+</a></p>***
+<p align="center"><a href="https://cloud.mapir.camera/pricing" class="button primary">Veja os planos e preços do Chloros+</a></p>***
 
 ## Ajuda para instalação
 
@@ -110,7 +109,7 @@ Desbloqueie recursos avançados com uma assinatura do Chloros+:
 * Tente a versão Chloros (navegador)
 * Verifique se o Windows 10/11 (64 bits) está instalado
 * Atualize os drivers gráficos
-* Verifique o Windows Visualizador de Eventos para obter detalhes sobre o erro
+* Verifique o Windows Event Viewer para obter detalhes sobre o erro
 * Entre em contato com o suporte com os registros de erros
 
 **Problemas com a ativação da licença:**
@@ -166,3 +165,5 @@ Precisa de ajuda com a instalação ou configuração?
 **Versão gratuita**: Disponível para uso pessoal e comercial com limitações de recursos
 
 **Chloros+**: Licença baseada em assinatura para recursos avançados e implantações comerciais
+
+<figure><img src=".gitbook/assets/t3-125_2.jpg" alt=""><figcaption></figcaption></figure>

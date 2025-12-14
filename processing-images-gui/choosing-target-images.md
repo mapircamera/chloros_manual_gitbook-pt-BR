@@ -8,7 +8,7 @@ Marcar quais imagens contêm alvos de calibração é uma etapa crucial que acel
 
 Sem marcar as imagens-alvo, o Chloros precisa:
 
-* Digitalizar todas as imagens do seu projeto
+* Verificar todas as imagens do seu projeto
 * Executar algoritmos de detecção de alvos em cada imagem
 * Verificar centenas ou milhares de imagens desnecessariamente
 
@@ -80,12 +80,12 @@ Antes do processamento, verifique novamente:
 * Mesma iluminação ambiente do sensor de luz DAQ
 * Evite sombras nas superfícies do alvo
 * Não bloqueie a fonte de luz com o corpo, veículo ou vegetação
-* Condições de céu nublado proporcionam resultados mais consistentes
+* Condições nubladas fornecem resultados mais consistentes
 
 **Condição do alvo:**
 
 * Mantenha os painéis do alvo limpos e secos
-* Todos os 4 painéis devem estar claramente visíveis e sem obstruções
+* Todos os 4 painéis devem estar claramente visíveis e desobstruídos
 * Alvos perpendiculares/nadir à fonte de luz, se possível
 
 ### Quantas imagens do alvo?
@@ -126,7 +126,7 @@ Use esta coluna para verificar se você marcou os alvos para cada tipo de câmer
 
 ## Configurações de detecção de alvos
 
-### Ajustando a sensibilidade da detecção
+### Ajustando a sensibilidade de detecção
 
 Se o Chloros não estiver detectando seus alvos corretamente, ajuste estas configurações em [Configurações do projeto](adjusting-project-settings.md):
 

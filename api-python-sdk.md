@@ -9,7 +9,7 @@ O **Chloros Python SDK** fornece acesso programático ao mecanismo de processame
 * 🚀 **Automação** - Crie fluxos de trabalho de processamento em lote personalizados
 * 🔗 **Integração** - Incorpore o Chloros em aplicativos Python existentes
 * 📊 **Pronto para pesquisa** - Perfeito para pipelines de análise científica
-* ⚡ **Processamento paralelo** - Escala para seus núcleos de CPU (Chloros+)
+* ⚡ **Processamento paralelo** - Escale para seus núcleos de CPU (Chloros+)
 
 ### Requisitos
 
@@ -202,7 +202,7 @@ chloros = ChlorosLocal(timeout=60)
 
 #### `create_project(project_name, camera=None)`
 
-Criar um novo projeto Chloros.
+Cria um novo projeto Chloros.
 
 **Parâmetros:**
 
@@ -310,7 +310,7 @@ Processe as imagens do projeto.
 | ------------------- | -------- | ------------ | ----------------------------------------- |
 | `mode`              | str      | `"parallel"` | Modo de processamento: “paralelo” ou “serial”   |
 | `wait`              | bool     | `True`       | Aguardar conclusão                       |
-| `progress_callback` | callable | `None`       | Função de retorno de chamada de progresso (progress, msg) |
+| `progress_callback` | callable | `None`       | Função de retorno de chamada de progresso(progresso, msg) |
 | `poll_interval`     | float    | `2.0`        | Intervalo de sondagem para progresso (segundos)   |
 
 **Retorna:** `dict` - Resultados do processamento
@@ -343,7 +343,7 @@ chloros.process(wait=False)
 
 #### `get_config()`
 
-Obtém a configuração atual do projeto.
+Obter a configuração atual do projeto.
 
 **Retorna:** `dict` - Configuração atual do projeto
 
@@ -397,7 +397,7 @@ Função de conveniência de uma linha para processar uma pasta.
 | `folder_path`             | str/Path | Obrigatório        | Caminho para a pasta com imagens     |
 | `project_name`            | str      | Gerado automaticamente  | Nome do projeto                   |
 | `camera`                  | str      | `None`          | Modelo da câmera                |
-| `indices`                 | list     | `["NDVI"]`      | Índices a serem calculados           |
+| `indices`                 | list     | `["NDVI"]`      | Índices a calcular           |
 | `vignette_correction`     | bool     | `True`          | Ativar correção de vinheta     |
 | `reflectance_calibration` | bool     | `True`          | Ativar calibração de refletância |
 | `export_format`           | str      | &quot;TIFF (16 bits)&quot; | Formato de saída                  |
@@ -712,7 +712,7 @@ else:
 
 ### Exemplo 7: Ferramenta de linha de comando
 
-Crie uma ferramenta personalizada CLI com o SDK:
+Crie uma ferramenta CLI personalizada com o SDK:
 
 ```python
 #!/usr/bin/env python
@@ -785,7 +785,7 @@ python my_processor.py "C:\Flight001" "C:\Flight002" --indices NDVI NDRE GNDVI
 
 ## Tratamento de exceções
 
-O SDK fornece classes de exceção específicas para diferentes tipos de erro:
+O SDK fornece classes de exceção específicas para diferentes tipos de erros:
 
 ### Hierarquia de exceções
 
@@ -890,9 +890,9 @@ for i in range(0, len(images), batch_size):
 
 ## Solução de problemas
 
-### Backend não inicia
+### Back-end não inicia
 
-**Problema:** SDK não consegue iniciar o backend
+**Problema:** SDK não consegue iniciar o back-end
 
 **Soluções:**
 
@@ -975,7 +975,7 @@ chloros = ChlorosLocal(timeout=120)  # 2 minutes
 
 ### Porta já em uso
 
-**Problema:** Porta 5000 do backend ocupada
+**Problema:** Porta 5000 do back-end ocupada
 
 **Soluções:**
 
@@ -1003,13 +1003,13 @@ Get-NetTCPConnection -LocalPort 5000
 chloros.process(mode="parallel")  # Up to 16 workers
 ```
 
-2. **Reduzir a resolução de saída** (se aceitável)
+2. **Reduza a resolução de saída** (se aceitável)
 
 ```python
 chloros.configure(export_format="PNG (8-bit)")  # Faster than TIFF
 ```
 
-3. **Desativar índices desnecessários**
+3. **Desative índices desnecessários**
 
 ```python
 # Only calculate needed indices
@@ -1132,16 +1132,16 @@ chloros.process(progress_callback=notebook_progress)
 **R:** Sim! Requisitos:
 
 * Windows Server 2016 ou posterior
-* Chloros instalado (uma vez)
-* Licença ativada em qualquer máquina (licença armazenada em cache copiada para o servidor)
+* Chloros instalado (uma única vez)
+* Licença ativada em qualquer máquina (licença em cache copiada para o servidor)
 
 ***
 
 ### P: Qual é a diferença entre Desktop, CLI e SDK?
 
-| Recurso         | GUI do Desktop | CLI Linha de comando | Python SDK  |
+| Recurso         | GUI do Desktop | Linha de comando do CLI | Python SDK  |
 | --------------- | ----------- | ---------------- | ----------- |
-| **Interface**   | Ponto e clique | Comando          | Python API  |
+| **Interface**   | Ponto-clique | Comando          | Python API  |
 | **Ideal para**    | Trabalho visual | Scripting        | Integração |
 | **Automação**  | Limitada     | Boa             | Excelente   |
 | **Flexibilidade** | Básica       | Boa             | Máxima     |
@@ -1199,7 +1199,7 @@ Programe através do Agendador de Tarefas para executar diariamente.
 
 ### P: O SDK suporta async/await?
 
-**R:** A versão atual é síncrona. Para comportamento assíncrono, use o `wait=False` ou execute em uma thread separada:
+**R:** A versão atual é síncrona. Para comportamento assíncrono, use o `wait=False` ou execute em um thread separado:
 
 ```python
 import threading
