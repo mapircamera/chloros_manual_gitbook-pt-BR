@@ -88,7 +88,7 @@ A guia Mapa oferece suporte a dois provedores de mosaicos para as imagens de fun
 
 Você pode escolher o tipo de camada do mapa (da esquerda para a direita):
 
- <img src="../.gitbook/assets/image (23).png" alt="" data-size="original">### Terreno
+ <img src="../.gitbook/assets/image (23).png" alt="" data-size="line">### Terreno
 
 Mostra perfis de elevação e blocos de mapa com detalhes (estradas, etc.)
 
