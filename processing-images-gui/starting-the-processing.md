@@ -26,12 +26,12 @@ Antes de clicar no botão Iniciar, verifique se tudo está pronto:
 O botão Iniciar/Reproduzir está localizado na barra de cabeçalho superior do Chloros:
 
 * Posição: parte superior central da janela
-* Ícone: **botão Reproduzir/Iniciar** <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">
+* Ícone: **botão Reproduzir/Iniciar** <img src="../.gitbook/assets/image (2) (1).png" alt="" data-size="line">
 * Status: O botão fica ativado (brilhante) quando está pronto para processar
 
 ### Clique para iniciar
 
-1. Clique no **botão Reproduzir/Iniciar** no cabeçalho superior
+1. Clique no **botão Reproduzir/Iniciar** na barra de cabeçalho superior
 2. O processamento começa imediatamente
 3. O botão fica desativado (acinzentado) durante o processamento
 4. A barra de progresso é atualizada, mostrando o status do processamento
@@ -58,10 +58,8 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 
 **A barra de progresso mostra 2 etapas:**
 
-1. **Detecção de alvo** - Varredura em busca de alvos de calibração
-2. **Processamento** - Aplicação da calibração e exportação de imagens
-
-**Tempo de processamento:**
+1.**Detecção de alvo** - Verificação de alvos de calibração
+2. **Processamento** - Aplicação da calibração e exportação de imagens**Tempo de processamento:**
 
 * Muito mais lento do que o modo paralelo Chloros+
 * Adequado para conjuntos de dados pequenos a médios (&lt; 200 imagens)
@@ -79,18 +77,12 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 
 **A barra de progresso mostra 4 etapas:**
 
-1. **Detecção** - Localização de alvos de calibração
+1.**Detecção** - Localização de alvos de calibração
 2. **Análise** - Exame dos metadados da imagem e preparação do pipeline
 3. **Calibrando** - Aplicando correções e calibrações
-4. **Exportando** - Salvando imagens processadas e índices
-
-**Interação com a barra de progresso:**
-
-* **Passe o mouse** sobre a barra para ver o painel suspenso detalhado de 4 estágios
+4. **Exportando** - Salvando imagens processadas e índices**Interação com a barra de progresso:*** **Passe o mouse** sobre a barra para ver o painel suspenso detalhado de 4 estágios
 * **Clique** na barra de progresso para congelar o painel suspenso no lugar
-* **Clique novamente** para descongelar e ocultar o painel
-
-**Tempo de processamento:**
+* **Clique novamente** para descongelar e ocultar o painel**Tempo de processamento:**
 
 * Significativamente mais rápido do que o modo gratuito
 * Escala com a contagem de núcleos da CPU
@@ -123,13 +115,11 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 * Aplica algoritmo de demosaicing de alta qualidade
 * Preserva a máxima qualidade e detalhes da imagem
 
-**Duração:** varia de acordo com a quantidade de imagens e a velocidade da CPU
+**Duração:** Varia de acordo com a quantidade de imagens e a velocidade da CPU
 
 ### Etapa 3: Calibração
 
-**O que o Chloros faz:**
-
-* **Correção de vinheta**: remove o escurecimento das lentes nas bordas
+**O que o Chloros faz:*** **Correção de vinheta**: remove o escurecimento da lente nas bordas
 * **Calibração de refletância**: normaliza usando valores de refletância alvo
 * Aplica correções em todas as bandas/canais
 * Usa alvo de calibração apropriado para cada imagem com base no carimbo de data/hora
@@ -155,9 +145,7 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 * Grava arquivos nas subpastas do modelo da câmera
 * Preserva os nomes de arquivo originais com sufixos
 
-**Duração:** Varia de acordo com o formato de exportação e o tamanho do arquivo
-
-***
+**Duração:** Varia de acordo com o formato de exportação e o tamanho do arquivo***
 
 ## Comportamento do processamento
 
@@ -179,13 +167,13 @@ Uma vez iniciado, todo o pipeline é executado automaticamente:
 
 **Chloros+ Modo paralelo:**
 
-* Alto uso da CPU (multithread, até 16 núcleos)
-* Com aceleração da GPU: alto uso da GPU
+* Alto uso da CPU (multi-threaded, até 16 núcleos)
+* Com aceleração da GPU: uso elevado da GPU
 * O computador pode ficar menos responsivo durante o processamento
 * Evite iniciar outras tarefas que exijam muito da CPU
 
 {% hint style=&quot;warning&quot; %}
-**Dica de desempenho**: para obter o melhor desempenho do Chloros+, feche outros aplicativos e deixe o Chloros usar todos os recursos do sistema.
+**Dica de desempenho**: Para obter o melhor desempenho do Chloros+, feche outros aplicativos e deixe o Chloros usar todos os recursos do sistema.
 {% endhint %}
 
 ### O processamento não pode ser pausado
@@ -197,9 +185,7 @@ Uma vez iniciado, todo o pipeline é executado automaticamente:
 * Resultados parciais não são salvos
 * É necessário reiniciar do início se for cancelado
 
-**Dica de planejamento:** Para projetos muito grandes, considere processar em lotes ou usar o CLI para um melhor controle.
-
-***
+**Dica de planejamento:** Para projetos muito grandes, considere processar em lotes ou usar o CLI para um melhor controle.***
 
 ## Monitorando seu processamento
 
@@ -231,7 +217,7 @@ Se você precisar interromper o processamento:
 
 * Percebeu que foram utilizadas configurações incorretas
 * Esqueceu de marcar as imagens de destino
-* Imagens erradas importadas
+* Imagens importadas incorretas
 * Sistema muito lento ou sem resposta
 
 **Após o cancelamento:**
@@ -271,7 +257,7 @@ O tempo de processamento real varia muito com base em:
 | 1000 imagens | 4-6 horas   | 1,5-2 horas      | 40-60 min      |
 
 {% hint style=&quot;info&quot; %}
-**Primeira execução**: o processamento inicial pode demorar mais tempo, pois o Chloros cria caches e perfis. O processamento subsequente de conjuntos de dados semelhantes será mais rápido.
+**Primeira execução**: O processamento inicial pode demorar mais tempo, pois o Chloros cria caches e perfis. O processamento subsequente de conjuntos de dados semelhantes será mais rápido.
 {% endhint %}
 
 ***
@@ -314,8 +300,8 @@ O tempo de processamento real varia muito com base em:
 
 **Possíveis causas:**
 
-* Esqueceu de marcar as imagens-alvo
-* As imagens-alvo não contêm alvos visíveis
+* Esqueceu de marcar as imagens de destino
+* As imagens de destino não contêm alvos visíveis
 * Configurações de detecção de alvos muito rígidas
 
 **Soluções:**

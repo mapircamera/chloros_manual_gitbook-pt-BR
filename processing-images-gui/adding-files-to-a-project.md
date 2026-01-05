@@ -2,14 +2,14 @@
 
 Depois de criar ou abrir um projeto no Chloros, o próximo passo é adicionar suas imagens multiespectrais para iniciar o processamento. A guia Navegador de arquivos<img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> facilita a importação de imagens e o gerenciamento do seu conjunto de dados.
 
-## Acessando o Navegador de arquivos
+## Acessando o Navegador de Arquivos
 
 1. Abra ou crie um projeto no Chloros
-2. Clique no ícone **Navegador de arquivos** <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> na barra lateral esquerda
+2. Clique no ícone **Navegador de Arquivos** <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> na barra lateral esquerda
 3. O painel Navegador de arquivos exibirá a lista de arquivos do seu projeto
 
 {% dica style=&quot;info&quot; %}
-**Tipos de arquivos compatíveis**: O Chloros é compatível com arquivos de imagem RAW+JPG e JPG das câmeras MAPIR, Survey3W e Survey3N. Recomenda-se apenas RAW+JPG.
+**Tipos de arquivos compatíveis**: O Chloros é compatível com arquivos de imagem RAW+JPG e JPG das câmeras MAPIR Survey3W e Survey3N. Recomenda-se apenas RAW+JPG.
 {% endhint %}
 
 ***
@@ -22,29 +22,22 @@ Existem duas maneiras principais de adicionar imagens ao seu projeto:
 
 Use esta opção para importar arquivos de imagem individuais ou uma pequena seleção de arquivos.
 
-1. Clique no botão **“Adicionar arquivos”** na parte superior do painel Navegador de arquivos.
-2. Navegue até a pasta que contém suas imagens.
-3. Selecione um ou mais arquivos de imagem (mantenha pressionada a tecla **Ctrl** para selecionar vários arquivos).
-4. Clique em **“Abrir”** para importar os arquivos selecionados.
+1. Clique no botão **“Adicionar arquivos”** <img src="../.gitbook/assets/image.png" alt="" data-size="line"> na parte superior do painel Navegador de arquivos
+2. Navegue até a pasta que contém suas imagens
+3. Selecione um ou mais arquivos de imagem (mantenha pressionada a tecla **Ctrl** para selecionar vários arquivos)
+4. Clique em **“Abrir”** para importar os arquivos selecionados
 
-### Método 2: adicionar pasta
+### Método 2: Adicionar pasta
 
-Use essa opção para importar todas as imagens de uma pasta de uma só vez.
+Use esta opção para importar todas as imagens de uma pasta de uma só vez.
 
-1. Clique no botão **“Adicionar pasta”** na parte superior do painel Navegador de arquivos
+1. Clique no botão **“Adicionar pasta”** <img src="../.gitbook/assets/image (1).png" alt="" data-size="line"> na parte superior do painel Navegador de arquivos
 2. Navegue até a pasta que contém as imagens da sua sessão de captura e selecione-a
-3. Clique em **“Selecionar pasta”** para importar todas as imagens compatíveis dessa pasta
-
-***
+3. Clique em **“Selecionar pasta”** para importar todas as imagens compatíveis dessa pasta***
 
 ## Entendendo a tabela do Navegador de arquivos
 
 Depois que as imagens são importadas, elas aparecem em uma tabela com as seguintes colunas:
-
-### Miniatura
-
-* Pequena visualização de cada imagem
-* Clique na miniatura para visualizar a imagem completa na área de visualização principal
 
 ### Nome do arquivo
 
@@ -66,8 +59,8 @@ Depois que as imagens são importadas, elas aparecem em uma tabela com as seguin
 ### Coluna Alvo (caixa de seleção)
 
 * Marque esta caixa para imagens que contêm alvos de calibração
-* Acelera consideravelmente a detecção de alvos durante o processamento
-* Consulte [Escolhendo imagens alvo](choosing-target-images.md) para obter detalhes
+* Acelera significativamente a detecção de alvos durante o processamento
+* Consulte [Escolhendo imagens-alvo](choosing-target-images.md) para obter detalhes
 
 ***
 
@@ -78,18 +71,16 @@ Depois que as imagens são importadas, elas aparecem em uma tabela com as seguin
 Para remover imagens indesejadas do seu projeto:
 
 1. Selecione uma ou mais imagens na tabela do Navegador de arquivos
-2. Clique no botão **“Remover selecionados”**
+2. Clique no botão **“Remover selecionados”** <img src="../.gitbook/assets/image (2).png" alt="" data-size="line"> .
 3. Confirme a remoção (os arquivos não são excluídos do disco, apenas removidos do projeto)
 
-### Classificando e filtrando
+### Classificação e filtragem
 
 * **Classificar por coluna**: clique em qualquer cabeçalho de coluna para classificar as imagens
 * **Classificação por data e hora**: útil para organizar sequências de captura cronológicas
-* **Filtro de modelo de câmera**: agrupe imagens por tipo de câmera se estiver usando várias câmeras
+* **Filtro de modelo de câmera**: agrupe imagens por tipo de câmera se estiver usando várias câmeras***
 
-***
-
-## Visualização de imagens
+## Visualização de imagem
 
 ### Exibindo a imagem completa
 
@@ -101,12 +92,10 @@ Clique em qualquer miniatura de imagem no Navegador de arquivos para exibi-la na
 
 ### Navegação rápida
 
-* **Imagem anterior**: Clique na seta para a esquerda ou pressione a tecla ←
-* **Próxima imagem**: Clique na seta para a direita ou pressione a tecla →
-* **Aumentar/diminuir zoom**: Use a roda do mouse ou os botões de zoom
-* **Panorâmica**: Clique e arraste a imagem quando estiver ampliada
-
-***
+* **Imagem anterior**: clique na seta para a esquerda ou pressione a tecla ←
+* **Próxima imagem**: clique na seta para a direita ou pressione a tecla →
+* **Aumentar/diminuir zoom**: use a roda do mouse ou os botões de zoom
+* **Panorâmica**: clique e arraste na imagem quando estiver com o zoom aumentado***
 
 ## Tratamento de arquivos duplicados
 
@@ -131,9 +120,7 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 3. O Navegador de arquivos exibe o modelo da câmera na coluna Modelo da câmera
 4. O processamento aplica as configurações corretas para cada tipo de câmera
 
-**Exemplo de cenário**: Survey3W RGN + Survey3N OCN configuração de câmera dupla
-
-***
+**Exemplo de cenário**: Survey3W RGN + Survey3N OCN configuração de câmera dupla***
 
 ## Melhores práticas
 
@@ -176,7 +163,7 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 
 * Metadados EXIF modificados
 * Imagens editadas em software externo
-* Transferência incompleta do arquivo
+* Transferência de arquivo incompleta
 
 **Solução:** Reimporte os arquivos originais, não modificados, da câmera/cartão SD
 
@@ -187,9 +174,7 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 * Relógio da câmera não configurado corretamente
 * Dados EXIF removidos por software externo
 
-**Solução**: Verifique se as configurações de hora da câmera estavam corretas durante a captura
-
-***
+**Solução**: Verifique se as configurações de hora da câmera estavam corretas durante a captura***
 
 ## Próximos passos
 

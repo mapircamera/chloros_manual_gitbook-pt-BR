@@ -6,9 +6,7 @@ O menu lateral do usuário <img src=".gitbook/assets/icon_user.JPG" alt="" data-
 
 Quando estiver conectado, os detalhes da sua conta serão exibidos:
 
-<figure><img src=".gitbook/assets/user_account.JPG" alt="" width="375"><figcaption></figcaption></figure>
-
-## CLI Login
+<figure><img src=".gitbook/assets/user_account.JPG" alt="" width="375"><figcaption></figcaption></figure>## CLI Login
 
 Faça login com suas credenciais Chloros+ para habilitar o processamento CLI.
 
@@ -17,6 +15,10 @@ Faça login com suas credenciais Chloros+ para habilitar o processamento CLI.
 ```bash
 chloros-cli login <email> <password>
 ```
+
+{% hint style=&quot;info&quot; %}
+**Usuários do SDK**: O Python SDK também fornece um método programático `logout()` para limpar credenciais em cache. Consulte a [documentação do Python SDK](api-python-sdk.md#logout) para obter detalhes.
+{% endhint %}
 
 **Exemplo:**
 
@@ -30,9 +32,7 @@ chloros-cli login user@example.com 'MyP@ssw0rd123'
 
 **Saída:**
 
-<figure><img src=".gitbook/assets/cli login_w.JPG" alt=""><figcaption></figcaption></figure>
-
-### Expiração do plano
+<figure><img src=".gitbook/assets/cli login_w.JPG" alt=""><figcaption></figcaption></figure>### Expiração do plano
 
 A expiração do plano na GUI mostra quando sua licença se tornará inválida. Para assinaturas mensais recorrentes, a expiração ocorre no final do mês. Para assinaturas anuais, ocorre um ano após o início da assinatura. A verificação da licença requer uma conexão mensal com a Internet para verificação, com um período de carência de 30 dias.
 
