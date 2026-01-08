@@ -1,4 +1,4 @@
-# Abrindo uma imagem em tela cheia
+# Abrir uma imagem em tela cheia
 
 O Visualizador de Imagens Chloros oferece uma interface dedicada em tela cheia para visualizar, analisar e manipular suas imagens multiespectrais. Seja para visualizar imagens originais ou resultados processados, o Visualizador de Imagens oferece ferramentas poderosas para inspeção e análise.
 
@@ -13,11 +13,11 @@ A maneira mais comum de abrir uma imagem no Visualizador de Imagens:
 3. A imagem é aberta na **área de visualização principal** (centro da tela)
 4. A imagem agora está carregada e pronta para visualização em tela cheia
 
-### Abrindo a guia Visualizador de imagens
+### Abrindo a guia Visualizador de Imagens
 
 Depois que uma imagem é carregada na área de visualização:
 
-1. Clique no ícone **Visualizador de imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> na barra lateral esquerda
+1. Clique no ícone **Visualizador de Imagens** <img src="../.gitbook/assets/icon_image-viewer.JPG" alt="" data-size="line"> na barra lateral esquerda
 2. A guia Visualizador de imagens é aberta, exibindo a imagem selecionada em tela cheia
 3. Ferramentas avançadas de visualização e análise ficam disponíveis na barra lateral esquerda
 
@@ -42,7 +42,7 @@ A maior parte da tela mostra sua imagem:
 
 #### Navegar pelas imagens
 
-Navegue pelo seu conjunto de imagens usando atalhos de teclado ou botões:
+Navegue pelo seu conjunto de imagens usando atalhos do teclado ou botões:
 
 * **Próxima imagem**: clique no botão → ou pressione a tecla **→** (seta para a direita)
 * **Imagem anterior**: clique no botão ← ou pressione a tecla **←** (seta para a esquerda)
@@ -64,12 +64,6 @@ Ajuste a ampliação para inspecionar os detalhes da imagem:
 * Pressione a tecla **−** (Menos)
 * Role a roda do mouse **para baixo**
 
-**Ajustar à tela:**
-
-* Clique no botão **↔** (Ajustar)
-* Pressione a tecla **0** (Zero)
-* Clique duas vezes na imagem
-
 #### Panorâmica ao ampliar
 
 Ao ampliar além do tamanho da tela:
@@ -79,7 +73,7 @@ Ao ampliar além do tamanho da tela:
 3. **Arraste** para mover a imagem
 4. Solte para parar a panorâmica
 
-**Alternativa**: Use as teclas de seta para fazer uma panorâmica em pequenos incrementos
+**Alternativa**: use as teclas de seta para fazer uma panorâmica em pequenos incrementos
 
 ***
 
@@ -87,28 +81,30 @@ Ao ampliar além do tamanho da tela:
 
 ### Visualização dos valores dos pixels no cursor
 
-À medida que move o cursor do mouse sobre a imagem, os valores dos pixels são exibidos em tempo real:
+À medida que você move o cursor do mouse sobre a imagem, os valores dos pixels são exibidos em tempo real:
 
 **Localização da exibição do valor:**
 
 * **Número flutuante e linha vermelha na legenda do gradiente LUT do índice do lado direito**
-* **Ao ampliar ainda mais, valor flutuante próximo ao cursor e pixel destacado**
+* **Quando ampliado ainda mais, valor flutuante próximo ao cursor e pixel destacado**
 * Mostra os valores dos pixels **sob o cursor ou destacados**
 * Atualiza conforme você move o mouse
 
 ***
 
-## Tipos de imagens que você pode visualizar
+## Tipos de imagem que você pode visualizar
 
-### Imagens originais (pré-processamento)
+### JPG
 
-**Imagens RAW + JPG da câmera:**
+**Imagens JPG da câmera:**
 
-* Exibe os dados RAW conforme visualizados
+* Exibe os dados JPG conforme visualizados
 * Mostra os valores originais, sem correção
 * Útil para verificar a qualidade da imagem antes do processamento
 
-### Imagens de refletância calibradas
+### RAW (original)
+
+### RAW (refletância)
 
 **Após o processamento:**
 
@@ -117,7 +113,7 @@ Ao ampliar além do tamanho da tela:
 * Multibanda TIFF (Red, Green, NIR, etc.)
 * Dados científicos prontos para análise
 
-### Imagens de índice
+### RAW (Índice)
 
 **NDVI, NDRE, GNDVI, etc. (arquivos \_NDVI.tif):**
 
@@ -128,7 +124,7 @@ Ao ampliar além do tamanho da tela:
 
 ***
 
-## Aplicação de índices e LUTs
+## Aplicação de índice e LUT
 
 Aplique índices multiespectrais e tabelas de consulta de cores:
 
@@ -155,23 +151,11 @@ Consulte [Index/LUT Sandbox](index-lut-sandbox.md) para obter instruções detal
 
 * **+** ou **=**: Ampliar
 * **−**: Reduzir
-* **0** (Zero): Ajustar à tela
 * **Roda do mouse**: Ampliar/reduzir
-
-### Controles de visualização
-
-* **P**: Alternar modo de porcentagem de pixels
-* **L**: Alternar painel de camadas
-* **Esc**: Fechar tela cheia ou retornar ao Navegador de arquivos
-
-### Outros
-
-* **Ctrl+S**: Salvar imagem atual
-* **F**: Modo de tela cheia (se disponível)
 
 ***
 
-### Verificando cálculos de índice
+### Verificação dos cálculos do índice
 
 Verifique se os índices foram calculados corretamente:
 
@@ -179,10 +163,10 @@ Verifique se os índices foram calculados corretamente:
 2. Verifique as áreas de vegetação:
    * **NDVI**: Deve mostrar 0,4-0,9 para plantas saudáveis
    * **NDRE**: Valores mais altos para crescimento vigoroso
-   * **GNDVI**: Semelhante ao NDVI, mas sensível à clorofila
+   * **GNDVI**: semelhante ao NDVI, mas sensível à clorofila
 3. Verifique a não vegetação:
-   * **Solo**: Perto de 0 ou ligeiramente negativo
-   * **Água**: Valores negativos (-0,5 a 0)
+   * **Solo**: próximo a 0 ou ligeiramente negativo
+   * **Água**: valores negativos (-0,5 a 0)
 
 ***
 
@@ -193,7 +177,7 @@ Verifique se os índices foram calculados corretamente:
 **Possíveis causas:**
 
 * Arquivo corrompido durante o processamento
-* Formato de arquivo não suportado
+* Formato de arquivo não compatível
 * Memória insuficiente para imagens grandes
 
 **Soluções:**
@@ -239,7 +223,7 @@ Verifique se os índices foram calculados corretamente:
 Agora que você pode visualizar imagens em tela cheia:
 
 * [**Camadas de imagem**](image-layers.md) - Saiba mais sobre visualização multibanda
-* [**Sandbox de índice/LUT**](index-lut-sandbox.md) - Aplique índices personalizados e mapeamento de cores
+* [**Index/LUT Sandbox**](index-lut-sandbox.md) - Aplique índices personalizados e mapeamento de cores
 * [**Fórmulas de índice multiespectral**](../project-settings/multispectral-index-formulas.md) - Entenda os índices disponíveis
 
 Para o fluxo de trabalho de processamento, consulte:
