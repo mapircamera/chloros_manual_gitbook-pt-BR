@@ -19,7 +19,7 @@ A guia Mapa exibe suas imagens em um mapa 2D interativo com base nas coordenadas
 
 ## Ajustando imagens na guia Mapa
 
-A guia **Mapa** <img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> tem as mesmas opções de adicionar  <img src="../.gitbook/assets/image.png" alt="" data-size="line">   <img src="../.gitbook/assets/image (1).png" alt="" data-size="line">  e remover  <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">  que a guia [**Navegador de arquivos**](../processing-images-gui/adding-files-to-a-project.md) <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> . Ele também mostra a mesma lista de arquivos do projeto, mas com cabeçalhos de coluna diferentes:
+A guia **Mapa**<img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> tem as mesmas opções de adicionar  <img src="../.gitbook/assets/image.png" alt="" data-size="line">   <img src="../.gitbook/assets/image (1).png" alt="" data-size="line">  e remover  <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">  que a guia [**Navegador de arquivos**](../processing-images-gui/adding-files-to-a-project.md) <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> . Ele também mostra a mesma lista de arquivos do projeto, mas com cabeçalhos de coluna diferentes:
 
 ### Nome do arquivo
 
@@ -69,7 +69,7 @@ SUPERZOOM: Quando você atinge o nível máximo de zoom do provedor de blocos do
 ## Provedores de blocos de mapa
 
 {% hint style="success" %}
-**Seleção automática**: Chloros escolhe automaticamente o serviço de blocos que fornece o melhor nível de zoom para a sua localização atual no mapa. Você pode alternar manualmente entre os provedores, se desejar.
+**Seleção automática**: Chloros escolhe automaticamente o serviço de blocos que oferece o melhor nível de zoom para a sua localização atual no mapa. Você pode alternar manualmente entre os provedores, se desejar.
 {% endhint %}
 
 A guia Mapa oferece suporte a dois provedores de blocos para as imagens de fundo do mapa:
@@ -90,21 +90,21 @@ A guia Mapa oferece suporte a dois provedores de blocos para as imagens de fundo
 
 Você pode escolher o tipo de camada do mapa (da esquerda para a direita):
 
- <img src="../.gitbook/assets/image (23).png" alt="" data-size="line">### Terreno
+ <img src="../.gitbook/assets/image (23).png" alt="" data-size="original">### Terreno
 
-Mostra perfis de elevação e mosaicos de mapa com detalhes (estradas, etc.)
+Mostra perfis de elevação e blocos de mapa com detalhes (estradas, etc.)
 
 ### Mapa
 
-Mostra mosaicos de mapa padrão (baixa largura de banda) com detalhes (estradas, etc.)
+Mostra blocos de mapa padrão (baixa largura de banda) com detalhes (estradas, etc.)
 
 ### Satélite
 
-Mostra mosaicos de mapa de satélite detalhados (alta largura de banda)
+Mostra blocos de mapa de satélite detalhados (alta largura de banda)
 
 ### Híbrido
 
-Mostra mosaicos de mapa de satélite com detalhes adicionais (estradas, etc.)
+Mostra blocos de mapa de satélite com detalhes adicionais (estradas, etc.)
 
 ***
 
@@ -117,9 +117,7 @@ Mostra mosaicos de mapa de satélite com detalhes adicionais (estradas, etc.)
 
 ### Controles de panorâmica
 
-* **Panorâmica**: clique e arraste para se mover pelo mapa
-
-***
+* **Panorâmica**: clique e arraste para se mover pelo mapa***
 
 ## Casos de uso
 
@@ -139,27 +137,27 @@ Mostra mosaicos de mapa de satélite com detalhes adicionais (estradas, etc.)
 
 * Identifique rapidamente imagens capturadas em locais inesperados
 * Verifique a precisão do GPS em todo o conjunto de dados
-* Cruze as referências dos locais das imagens com as notas de campo
+* Cruze as localizações das imagens com as notas de campo
 
 ***
 
-## Solução de problemas
+## Resolução de problemas
 
-### Nenhum marcador aparecendo
+### Não aparecem marcadores
 
 **Possíveis causas:**
 
 * As imagens não contêm metadados GPS
-* O GPS foi desativado na câmera durante a captura
+* O GPS estava desativado na câmera durante a captura
 * Os dados EXIF foram removidos por um software externo
 
 **Solução**: verifique se o GPS está ativado na sua câmera e reimporte os arquivos originais
 
-### Marcadores em localização incorreta
+### Marcadores em localização errada
 
 **Possíveis causas:**
 
-* O GPS da câmera tinha uma fixação de satélite deficiente
+* O GPS da câmera tinha uma fixação de satélite ruim
 * Desvio do GPS durante a captura
 
 **Solução**: isso geralmente é um problema relacionado ao tempo de captura; considere usar GPS PPK/RTK para aplicações de precisão

@@ -1,4 +1,4 @@
-# Abrir uma imagem em tela cheia
+# Abrindo uma imagem em tela cheia
 
 O Visualizador de Imagens Chloros oferece uma interface dedicada em tela cheia para visualizar, analisar e manipular suas imagens multiespectrais. Seja para visualizar imagens originais ou resultados processados, o Visualizador de Imagens oferece ferramentas poderosas para inspeção e análise.
 
@@ -32,9 +32,7 @@ A maior parte da tela mostra sua imagem:
 * **Resolução total**: imagens exibidas na resolução nativa
 * **Zoom**: use os controles ou a roda do mouse para ampliar
 * **Panorâmica**: clique e arraste para se mover quando ampliar
-* **Proporção mantida**: as imagens são dimensionadas proporcionalmente
-
-***
+* **Proporção mantida**: as imagens são dimensionadas proporcionalmente***
 
 ## Opções de visualização
 
@@ -42,25 +40,20 @@ A maior parte da tela mostra sua imagem:
 
 #### Navegar pelas imagens
 
-Navegue pelo seu conjunto de imagens usando atalhos do teclado ou botões:
+Navegue pelo conjunto de imagens usando atalhos do teclado ou botões:
 
-* **Próxima imagem**: clique no botão → ou pressione a tecla **→** (seta para a direita)
-* **Imagem anterior**: clique no botão ← ou pressione a tecla **←** (seta para a esquerda)
+* **Próxima imagem**: clique no botão → ou pressione a tecla**→** (seta para a direita)
+* **Imagem anterior**: clique no botão ← ou pressione a tecla**←** (seta para a esquerda)
 * **Ir para uma imagem específica**: volte ao Navegador de arquivos e clique na miniatura desejada
 
 #### Controles de zoom
 
 Ajuste a ampliação para inspecionar os detalhes da imagem:
 
-**Aumentar:**
+**Ampliar:*** Clique no botão **+** (Mais)
+* Pressione a tecla **+**ou**=*** Role a roda do mouse **para cima**
 
-* Clique no botão **+** (Mais)
-* Pressione a tecla **+** ou **=**
-* Role a roda do mouse **para cima**
-
-**Diminuir:**
-
-* Clique no botão **−** (Menos)
+**Reduzir:*** Clique no botão **−** (Menos)
 * Pressione a tecla **−** (Menos)
 * Role a roda do mouse **para baixo**
 
@@ -70,25 +63,17 @@ Ao ampliar além do tamanho da tela:
 
 1. Mova o cursor do mouse sobre a imagem
 2. Clique e **mantenha pressionado o botão esquerdo do mouse**
-3. **Arraste** para mover a imagem
+
+3.**Arraste** para mover a imagem
 4. Solte para parar a panorâmica
 
-**Alternativa**: use as teclas de seta para fazer uma panorâmica em pequenos incrementos
-
-***
+**Alternativa**: use as teclas de seta para fazer uma panorâmica em pequenos incrementos***
 
 ## Inspeção do valor dos pixels
 
 ### Visualização dos valores dos pixels no cursor
 
-À medida que você move o cursor do mouse sobre a imagem, os valores dos pixels são exibidos em tempo real:
-
-**Localização da exibição do valor:**
-
-* **Número flutuante e linha vermelha na legenda do gradiente LUT do índice do lado direito**
-* **Quando ampliado ainda mais, valor flutuante próximo ao cursor e pixel destacado**
-* Mostra os valores dos pixels **sob o cursor ou destacados**
-* Atualiza conforme você move o mouse
+À medida que você move o cursor do mouse sobre a imagem, os valores dos pixels são exibidos em tempo real:**Localização da exibição do valor:*** **Número flutuante e linha vermelha na legenda do gradiente LUT do índice do lado direito*** **Quando ampliado ainda mais, valor flutuante próximo ao cursor e pixel destacado*** Mostra os valores dos pixels **sob o cursor ou destacados*** Atualiza conforme você move o mouse
 
 ***
 
@@ -149,13 +134,11 @@ Consulte [Index/LUT Sandbox](index-lut-sandbox.md) para obter instruções detal
 
 ### Zoom
 
-* **+** ou **=**: Ampliar
+* **+**ou**=**: Ampliar
 * **−**: Reduzir
-* **Roda do mouse**: Ampliar/reduzir
+* **Roda do mouse**: Ampliar/reduzir***
 
-***
-
-### Verificação dos cálculos do índice
+### Verificando os cálculos do índice
 
 Verifique se os índices foram calculados corretamente:
 
@@ -166,9 +149,7 @@ Verifique se os índices foram calculados corretamente:
    * **GNDVI**: semelhante ao NDVI, mas sensível à clorofila
 3. Verifique a não vegetação:
    * **Solo**: próximo a 0 ou ligeiramente negativo
-   * **Água**: valores negativos (-0,5 a 0)
-
-***
+   * **Água**: valores negativos (-0,5 a 0)***
 
 ## Solução de problemas de visualização
 

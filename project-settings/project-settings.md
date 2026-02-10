@@ -21,7 +21,7 @@ Essas configurações controlam como o Chloros detecta e processa alvos de calib
 * **Tipo**: Número
 * **Intervalo**: 0 a 10.000 pixels
 * **Padrão**: 25 pixels
-* **Descrição**: Define a área mínima (em pixels) necessária para que uma região detectada seja considerada uma amostra válida do alvo de calibração. Valores menores detectarão alvos menores, mas podem aumentar os falsos positivos. Valores maiores exigem regiões-alvo maiores e mais claras para detecção.
+* **Descrição**: Define a área mínima (em pixels) necessária para que uma região detectada seja considerada uma amostra válida de alvo de calibração. Valores menores detectarão alvos menores, mas podem aumentar os falsos positivos. Valores maiores exigem regiões-alvo maiores e mais nítidas para detecção.
 * **Quando ajustar**:
   * Aumente se você estiver obtendo detecções falsas em pequenos artefatos de imagem.
   * Diminua se seus alvos de calibração parecerem pequenos em suas imagens e não estiverem sendo detectados.
@@ -33,8 +33,8 @@ Essas configurações controlam como o Chloros detecta e processa alvos de calib
 * **Padrão**: 60
 * **Descrição**: Controla o limite de agrupamento para agrupar regiões de cores semelhantes ao detectar alvos de calibração. Valores mais altos exigem que cores mais semelhantes sejam agrupadas, resultando em uma detecção de alvo mais conservadora. Valores mais baixos permitem mais variação de cor dentro de um grupo de alvos.
 * **Quando ajustar**:
-  * Aumente se os alvos de calibração estiverem sendo divididos em várias detecções.
-  * Diminua se os alvos de calibração com variação de cor não estiverem sendo totalmente detectados.
+  * Aumente se os alvos de calibração estiverem sendo divididos em várias detecções
+  * Diminua se os alvos de calibração com variação de cor não estiverem sendo totalmente detectados
 
 ***
 
@@ -46,8 +46,8 @@ Essas configurações controlam como o Chloros processa e calibra suas imagens.
 
 * **Tipo**: Caixa de seleção
 * **Padrão**: Ativado (marcado)
-* **Descrição**: aplica correção de vinheta para compensar o escurecimento da lente nas bordas das imagens. A vinheta é um fenômeno óptico comum em que os cantos e bordas de uma imagem parecem mais escuros do que o centro devido às características da lente.
-* **Quando desativar**: desative apenas se a combinação de câmera/lente já tiver aplicado a correção de vinheta ou se você quiser corrigir manualmente a vinheta no pós-processamento.
+* **Descrição**: Aplica correção de vinheta para compensar o escurecimento da lente nas bordas das imagens. A vinheta é um fenômeno óptico comum em que os cantos e bordas de uma imagem parecem mais escuros do que o centro devido às características da lente.
+* **Quando desativar**: Desative apenas se a combinação de câmera/lente já tiver aplicado a correção de vinheta ou se você quiser corrigir manualmente a vinheta no pós-processamento.
 
 ### Calibração de refletância/equilíbrio de branco
 
@@ -60,10 +60,11 @@ Essas configurações controlam como o Chloros processa e calibra suas imagens.
 
 * **Tipo**: Seleção suspensa
 * **Opções**:
-  * Alta qualidade (mais rápido) - Atualmente, a única opção disponível
-* **Padrão**: Alta qualidade (mais rápido)
-* **Descrição**: Seleciona o algoritmo de demosaicing usado para converter dados brutos do sensor de padrão Bayer em imagens coloridas. O método “Alta qualidade (mais rápido)” oferece um equilíbrio ideal entre velocidade de processamento e qualidade de imagem.
-* **Observação**: Métodos adicionais de debayer podem ser adicionados em versões futuras do Chloros.
+  * Padrão (rápido, qualidade média)
+  * Sensível à textura (lento, qualidade máxima) \[Chloros+]
+* **Padrão**: Padrão (rápido, qualidade média)
+* **Descrição**: Seleciona o algoritmo de demosaicing usado para converter dados brutos do sensor de padrão Bayer em imagens coloridas. O método “Padrão (rápido, qualidade média)” oferece um equilíbrio ideal entre velocidade de processamento e qualidade de imagem. O método “Sensível à textura (lento, qualidade máxima)” \[Chloros+] usa um debayer de alta qualidade com reconhecimento de bordas combinado com um modelo de redução de ruído AI/ML que remove quase todo o ruído do debayering. O modelo Texture Aware requer memória GPU (VRAM) para funcionar. Recomendamos usá-lo quando você tiver &gt;4 GB de VRAM disponível para um processamento mais rápido.
+* **Observação**: métodos adicionais de debayer podem ser adicionados em versões futuras do Chloros.
 
 ### Intervalo mínimo de recalibração
 
@@ -90,40 +91,38 @@ Essas configurações controlam como o Chloros processa e calibra suas imagens.
 
 * **Tipo**: Caixa de seleção
 * **Padrão**: Desativado (desmarcado)
-* **Descrição**: Habilita o uso de correções cinemáticas pós-processadas (PPK) de gravadores MAPIR DAQ contendo um GPS (GNSS). Quando habilitado, o Chloros usará quaisquer arquivos de log .daq contendo dados de pinos de exposição em seu diretório de projeto e aplicará correções precisas de geolocalização às suas imagens.
+* **Descrição**: Habilita o uso de correções cinemáticas pós-processadas (PPK) de gravadores MAPIR DAQ contendo um GPS (GNSS). Quando habilitado, o Chloros usará quaisquer arquivos de log .daq contendo dados de pinos de exposição no diretório do seu projeto e aplicará correções precisas de geolocalização às suas imagens.
 * **Requisito**: O arquivo de log .daq com entradas de pinos de exposição deve estar presente no diretório do seu projeto
 * **Quando ativar**: Recomenda-se sempre ativar a correção PPK se você tiver entradas de feedback de exposição no seu arquivo de log .daq.
 
 ### Pino de exposição 1
 
 * **Tipo**: Seleção suspensa
-* **Visibilidade**: Visível apenas quando “Aplicar correções PPK” está ativado E os dados de exposição estão disponíveis para o Pino 1
+* **Visibilidade**: Visível apenas quando “Aplicar correções PPK” está ativado E os dados de exposição estão disponíveis para o pino 1
 * **Opções**:
-  * Nomes de modelos de câmera detectados no projeto
+  * Nomes dos modelos de câmera detectados no projeto
   * “Não usar” - Ignorar este pino de exposição
 * **Padrão**: Selecionado automaticamente com base na configuração do projeto
-* **Descrição**: Atribui uma câmera específica ao pino de exposição 1 para sincronização de tempo PPK. O pino de exposição registra o momento exato em que o obturador da câmera é acionado, o que é fundamental para uma geolocalização PPK precisa.
+* **Descrição**: Atribui uma câmera específica ao pino de exposição 1 para sincronização de tempo PPK. O pino de exposição registra o momento exato em que o obturador da câmera é acionado, o que é fundamental para a geolocalização PPK precisa.
 * **Comportamento de seleção automática**:
-  * Câmera única + pino único: seleciona automaticamente a câmera
-  * Câmera única + dois pinos: o pino 1 é atribuído automaticamente à câmera
-  * Várias câmeras: seleção manual necessária
+  * Câmera única + pino único: Seleciona automaticamente a câmera
+  * Câmera única + dois pinos: Pino 1 atribuído automaticamente à câmera
+  * Várias câmeras: Seleção manual necessária
 
 ### Pino de exposição 2
 
 * **Tipo**: Seleção suspensa
-* **Visibilidade**: Visível apenas quando “Aplicar correções PPK” está ativado E os dados de exposição estão disponíveis para o pino 2
+* **Visibilidade**: Visível apenas quando “Aplicar correções PPK” está ativado E os dados de exposição estão disponíveis para o Pino 2
 * **Opções**:
   * Nomes de modelos de câmera detectados no projeto
   * “Não usar” - Ignora este pino de exposição
 * **Padrão**: Selecionado automaticamente com base na configuração do projeto
 * **Descrição**: Atribui uma câmera específica ao pino de exposição 2 para sincronização de tempo PPK ao usar uma configuração de câmera dupla.
 * **Comportamento de seleção automática**:
-  * Câmera única + pino único: Pino 2 definido automaticamente como “Não usar”
-  * Câmera única + dois pinos: Pino 2 definido automaticamente como “Não usar”
-  * Várias câmeras: Seleção manual necessária
-* **Observação**: A mesma câmera não pode ser atribuída ao Pino 1 e ao Pino 2 simultaneamente.
-
-***
+  * Câmera única + pino único: O pino 2 é automaticamente definido como “Não usar”
+  * Câmera única + dois pinos: o pino 2 é automaticamente definido como “Não usar”
+  * Várias câmeras: seleção manual necessária
+* **Observação**: a mesma câmera não pode ser atribuída simultaneamente ao pino 1 e ao pino 2.***
 
 ## Índice
 
@@ -138,10 +137,10 @@ Essas configurações permitem que você configure índices multiespectrais para
   * NDRE (Diferença Normalizada RedEdge)
   * EVI (Índice de Vegetação Aprimorado)
   * GNDVI, SAVI, OSAVI, MSAVI2
-  * E muitos outros (consulte [Fórmulas de Índice Multiespectral](multispectral-index-formulas.md) para obter a lista completa)
+  * E muito mais (consulte [Fórmulas de Índice Multiespectral](multispectral-index-formulas.md) para obter a lista completa)
 * **Recursos**:
   * Selecione entre fórmulas de índice predefinidas
-  * Configure gradientes de cores de visualização (LUT - Tabelas de Consulta)
+  * Configure gradientes de cor de visualização (LUT - Tabelas de Consulta)
   * Defina valores limite para análise
   * Crie fórmulas de índice personalizadas
 
@@ -150,7 +149,7 @@ Essas configurações permitem que você configure índices multiespectrais para
 * **Tipo**: Matriz de definições de fórmulas personalizadas
 * **Descrição**: Permite criar e salvar fórmulas de índice multiespectral personalizadas usando matemática de banda. As fórmulas personalizadas são salvas com as configurações do seu projeto e podem ser usadas da mesma forma que os índices integrados.
 * **Como criar**:
-  1. No painel de configuração do Índice, procure a opção de fórmula personalizada
+  1. No painel de configuração do índice, procure a opção de fórmula personalizada
   2. Defina sua fórmula usando identificadores de banda (por exemplo, NIR, Red, Green, Blue)
   3. Salve a fórmula com um nome descritivo
 * **Sintaxe da fórmula**: Operações matemáticas padrão são suportadas, incluindo:
@@ -178,9 +177,7 @@ Essas configurações controlam o formato e a qualidade das imagens processadas 
   * **TIFF (16 bits)**: Recomendado para análises científicas e fluxos de trabalho profissionais. Preserva a máxima qualidade dos dados sem artefatos de compressão. Ideal para análises multiespectrais e processamento adicional em software GIS.
   * **TIFF (32 bits, porcentagem)**: Ideal para fluxos de trabalho que exigem valores de refletância em porcentagem (0-100%). Oferece precisão máxima para medições radiométricas.
   * **PNG (8 bits)**: Bom para visualização na web e visualização geral. Arquivos menores com compressão sem perdas, mas faixa dinâmica reduzida.
-  * **JPG (8 bits)**: Arquivos menores, ideais apenas para visualizações e exibição na web. Usa compressão com perdas, o que não é adequado para análises científicas.
-
-***
+  * **JPG (8 bits)**: Arquivos menores, ideais apenas para visualizações e exibição na web. Utiliza compressão com perdas, o que não é adequado para análises científicas.***
 
 ## Salvar modelo de projeto
 
@@ -200,7 +197,7 @@ Esse recurso permite salvar as configurações atuais do projeto como um modelo 
 
 ***
 
-## Pasta Salvar Projeto
+## Pasta Salvar projeto
 
 Esta configuração especifica onde os novos projetos são salvos por padrão.
 
@@ -211,9 +208,7 @@ Esta configuração especifica onde os novos projetos são salvos por padrão.
   * Defina como uma unidade de rede para colaboração em equipe
   * Altere para uma unidade com mais espaço de armazenamento para grandes conjuntos de dados
   * Organize projetos por ano, cliente ou tipo de projeto em pastas diferentes
-* **Observação**: alterar essa configuração afeta apenas projetos NOVOS. Os projetos existentes permanecem em seus locais originais.
-
-***
+* **Observação**: alterar essa configuração afeta apenas NOVOS projetos. Os projetos existentes permanecem em seus locais originais.***
 
 ## Persistência das configurações
 
@@ -230,7 +225,7 @@ As configurações são aplicadas na seguinte ordem:
 
 ### Configurações e processamento de imagens
 
-A maioria das alterações nas configurações (especialmente nas categorias Processamento e Exportação) acionará o reprocessamento das imagens para refletir as novas configurações. No entanto, algumas configurações são “somente para exportação” e não requerem reprocessamento imediato:
+A maioria das alterações nas configurações (especialmente nas categorias Processamento e Exportação) acionará o reprocessamento das imagens para refletir as novas configurações. No entanto, algumas configurações são “apenas para exportação” e não requerem reprocessamento imediato:
 
 * Salvar modelo do projeto
 * Diretório de trabalho
@@ -238,7 +233,7 @@ A maioria das alterações nas configurações (especialmente nas categorias Pro
 
 ***
 
-## Práticas recomendadas
+## Melhores práticas
 
 1. **Comece com as configurações padrão**: as configurações padrão funcionam bem para a maioria dos sistemas de câmera MAPIR e fluxos de trabalho típicos.
 2. **Crie modelos**: depois de otimizar as configurações para um fluxo de trabalho ou câmera específico, salve-as como um modelo para garantir a consistência entre os projetos.
