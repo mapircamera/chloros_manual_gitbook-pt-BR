@@ -1,21 +1,21 @@
 # Idiomas suportados
 
-O Chloros oferece suporte completo à interface em **38 idiomas em todo o mundo**, tornando-o acessível a usuários em todo o mundo. Você pode alternar entre os idiomas instantaneamente em todas as interfaces: Desktop, Navegador, CLI e Python SDK.
+O Chloros oferece suporte completo à interface em **38 idiomas em todo o mundo**, tornando-o acessível a usuários de todo o mundo. Você pode alternar entre idiomas instantaneamente em todas as interfaces: Desktop, Navegador, CLI e Python SDK.
 
 O Chloros oferece suporte aos seguintes idiomas:
 
 | # | Idioma | Nome nativo | Código CLI |
 |---|----------|-------------|----------|
-| 1 | 🇺🇸 Inglês | Inglês | `en` |
-| 2 | 🇪🇸 Espanhol | Espanhol | `es` |
+| 1 | 🇺🇸 Inglês | English | `en` |
+| 2 | 🇪🇸 Espanhol | Español | `es` |
 | 3 | 🇵🇹 Português | Português | `pt` |
-| 4 | 🇫🇷 Francês | Francês | `fr` |
+| 4 | 🇫🇷 Francês | Français | `fr` |
 | 5 | 🇩🇪 Alemão | Deutsch | `de` |
 | 6 | 🇮🇹 Italiano | Italiano | `it` |
 | 7 | 🇯🇵 Japonês | 日本語 | `ja` |
 | 8 | 🇰🇷 Coreano | 한국어 | `ko` |
-| 9 | 🇨🇳 Chinês (simplificado) | 简体中文 | `zh` |
-| 10 | 🇹🇼 Chinês (tradicional) | 繁體中文 | `zh-TW` |
+| 9 | 🇨🇳 Chinês (Simplificado) | 简体中文 | `zh` |
+| 10 | 🇹🇼 Chinês (Tradicional) | 繁體中文 | `zh-TW` |
 | 11 | 🇷🇺 Russo | Русский | `ru` |
 | 12 | 🇳🇱 Holandês | Nederlands | `nl` |
 | 13 | 🇸🇦 Árabe | العربية | `ar` |
@@ -34,7 +34,7 @@ O Chloros oferece suporte aos seguintes idiomas:
 | 26 | 🇭🇺 Húngaro | Magyar | `hu` |
 | 27 | 🇷🇴 Romeno | Română | `ro` |
 | 28 | 🇺🇦 Ucraniano | Українська | `uk` |
-| 29 | 🇧🇷 Português brasileiro | Português Brasileiro | `pt-BR` |
+| 29 | 🇧🇷 Português do Brasil | Português Brasileiro | `pt-BR` |
 | 30 | 🇭🇰 Cantonês | 粵語 | `zh-HK` |
 | 31 | 🇲🇾 Malaio | Bahasa Melayu | `ms` |
 | 32 | 🇸🇰 Eslovaco | Slovenčina | `sk` |
@@ -50,7 +50,7 @@ O Chloros oferece suporte aos seguintes idiomas:
 ### No Chloros Desktop/Navegador
 
 1. Abra as configurações do aplicativo
-2. Navegue até o menu de seleção de idioma
+2. Acesse o menu de seleção de idioma
 3. Escolha o idioma de sua preferência na lista
 4. A interface será atualizada instantaneamente
 
@@ -75,11 +75,11 @@ chloros-cli language pt-BR
 chloros-cli language --list
 ```
 
-Para obter mais detalhes, consulte a [documentação CLI](CLI.md).
+Para mais detalhes, consulte a [documentação CLI](CLI.md).
 
 ### No Chloros Python SDK
 
-Defina o parâmetro de idioma ao inicializar o SDK para receber mensagens e saídas no idioma de sua preferência.
+Defina o parâmetro de idioma ao inicializar o SDK para receber mensagens e saídas no seu idioma preferido.
 
 ## Cobertura
 

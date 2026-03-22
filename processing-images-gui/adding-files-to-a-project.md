@@ -9,7 +9,7 @@ Depois de criar ou abrir um projeto no Chloros, o próximo passo é adicionar su
 3. O painel Navegador de arquivos exibirá a lista de arquivos do seu projeto
 
 {% hint style="info" %}
-**Tipos de arquivos compatíveis**: O Chloros é compatível com arquivos de imagem RAW+JPG e JPG das câmeras MAPIR Survey3W e Survey3N. Recomenda-se apenas RAW+JPG.
+**Tipos de arquivo compatíveis**: O Chloros suporta arquivos de imagem RAW+JPG e JPG das câmeras MAPIR, Survey3W e Survey3N. Recomenda-se apenas o formato RAW+JPG.
 {% endhint %}
 
 ***
@@ -22,18 +22,18 @@ Existem duas maneiras principais de adicionar imagens ao seu projeto:
 
 Use esta opção para importar arquivos de imagem individuais ou uma pequena seleção de arquivos.
 
-1. Clique no botão **“Adicionar arquivos”** <img src="../.gitbook/assets/image.png" alt="" data-size="line"> na parte superior do painel Navegador de arquivos
+1. Clique no botão **&quot;Adicionar arquivos&quot;** <img src="../.gitbook/assets/image.png" alt="" data-size="line"> na parte superior do painel Navegador de Arquivos
 2. Navegue até a pasta que contém suas imagens
-3. Selecione um ou mais arquivos de imagem (mantenha pressionada a tecla **Ctrl** para selecionar vários arquivos)
-4. Clique em **“Abrir”** para importar os arquivos selecionados
+3. Selecione um ou mais arquivos de imagem (mantenha **Ctrl** pressionado para selecionar vários arquivos)
+4. Clique em **&quot;Abrir&quot;** para importar os arquivos selecionados
 
 ### Método 2: Adicionar pasta
 
 Use esta opção para importar todas as imagens de uma pasta de uma só vez.
 
-1. Clique no botão **“Adicionar pasta”** <img src="../.gitbook/assets/image (1).png" alt="" data-size="line"> na parte superior do painel Navegador de arquivos
+1. Clique no botão **&quot;Adicionar pasta&quot;** <img src="../.gitbook/assets/image (1).png" alt="" data-size="line"> na parte superior do painel Navegador de arquivos
 2. Navegue até a pasta que contém as imagens da sua sessão de captura e selecione-a
-3. Clique em **“Selecionar pasta”** para importar todas as imagens compatíveis dessa pasta***
+3. Clique em **&quot;Selecionar pasta&quot;** para importar todas as imagens compatíveis dessa pasta***
 
 ## Entendendo a tabela do Navegador de arquivos
 
@@ -48,23 +48,23 @@ Depois que as imagens são importadas, elas aparecem em uma tabela com as seguin
 
 * Data e hora em que a imagem foi capturada
 * Extraído dos metadados EXIF da imagem
-* Usado para sincronização PPK e detecção de alvo de calibração
+* Usado para sincronização PPK e detecção de alvos de calibração
 
 ### Modelo da câmera
 
 * Configuração da câmera e do filtro detectada automaticamente
 * Exemplos: Survey3W\_RGN, Survey3N\_OCN, Survey3W\_RGB
-* Usado para aplicar perfis de processamento corretos
+* Usado para aplicar os perfis de processamento corretos
 
-### Coluna Alvo (caixa de seleção)
+### Coluna de Alvo (Caixa de seleção)
 
-* Marque esta caixa para imagens que contêm alvos de calibração
-* Acelera consideravelmente a detecção de alvos durante o processamento
+* Marque esta caixa para imagens que contenham alvos de calibração
+* Acelera significativamente a detecção de alvos durante o processamento
 * Consulte [Escolhendo imagens-alvo](choosing-target-images.md) para obter detalhes
 
 ### Visualizando metadados da imagem
 
-Clicar no botão de alternância no canto superior direito acima da tabela mostra os metadados da imagem selecionada na área da grade de imagens.
+Clicar no botão de alternância no canto superior direito acima da tabela exibe os metadados da imagem selecionada na área da grade de imagens.
 
 <figure><img src="../.gitbook/assets/chloros_grid_meta.gif" alt=""><figcaption></figcaption></figure>
 
@@ -77,14 +77,13 @@ Clicar no botão de alternância no canto superior direito acima da tabela mostr
 Para remover imagens indesejadas do seu projeto:
 
 1. Selecione uma ou mais imagens na tabela do Navegador de arquivos
-2. Clique no botão **“Remover selecionados”** <img src="../.gitbook/assets/image (2).png" alt="" data-size="line"> .
-3. Confirme a remoção (os arquivos não são excluídos do disco, apenas removidos do projeto).
+2. Clique no botão **&quot;Remover selecionados&quot;** <img src="../.gitbook/assets/image (2).png" alt="" data-size="line"> 3. Confirme a remoção (os arquivos não são excluídos do disco, apenas removidos do projeto)
 
 ### Classificação e filtragem
 
-* **Classificar por coluna**: clique em qualquer cabeçalho de coluna para classificar as imagens.
-* **Classificação por data e hora**: útil para organizar sequências de captura cronológicas.
-* **Filtro de modelo de câmera**: agrupe imagens por tipo de câmera se estiver usando várias câmeras.***
+* **Classificar por coluna**: Clique em qualquer cabeçalho de coluna para classificar as imagens
+* **Classificação por data e hora**: Útil para organizar sequências de captura cronológicas
+* **Filtro por modelo de câmera**: Agrupe imagens por tipo de câmera se estiver usando várias câmeras***
 
 ## Visualização da imagem
 
@@ -98,10 +97,10 @@ Clique em qualquer miniatura de imagem no Navegador de arquivos para exibi-la na
 
 ### Navegação rápida
 
-* **Imagem anterior**: clique na seta para a esquerda ou pressione a tecla ←
-* **Imagem seguinte**: clique na seta para a direita ou pressione a tecla →
-* **Aumentar/diminuir zoom**: use a roda do mouse ou os botões de zoom
-* **Panorâmica**: clique e arraste na imagem quando estiver com zoom***
+* **Imagem anterior**: Clique na seta para a esquerda ou pressione a tecla ←
+* **Imagem seguinte**: Clique na seta para a direita ou pressione a tecla →
+* **Aumentar/Diminuir zoom**: Use a roda do mouse ou os botões de zoom
+* **Deslocamento**: Clique e arraste na imagem quando estiver com zoom aumentado***
 
 ## Tratamento de arquivos duplicados
 
@@ -112,7 +111,7 @@ O Chloros detecta e ignora automaticamente arquivos duplicados:
 * Mensagem de aviso exibida quando duplicatas são detectadas
 
 {% hint style="warning" %}
-**Importante**: Não renomeie ou modifique seus arquivos de imagem originais antes de importá-los. O Chloros depende dos nomes de arquivos e metadados originais para o processamento adequado.
+**Importante**: Não renomeie nem modifique seus arquivos de imagem originais antes da importação. O Chloros depende dos nomes de arquivo e metadados originais para o processamento adequado.
 {% endhint %}
 
 ***
@@ -123,23 +122,23 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 
 1. O Chloros detecta automaticamente cada modelo de câmera
 2. Cada tipo de câmera é processado com seu perfil de calibração apropriado
-3. O Navegador de arquivos exibe o modelo da câmera na coluna Modelo da câmera
+3. O Navegador de Arquivos exibe o modelo da câmera na coluna Modelo da Câmera
 4. O processamento aplica as configurações corretas para cada tipo de câmera
 
 **Exemplo de cenário**: Survey3W RGN + Survey3N OCN configuração com duas câmeras***
 
 ## Melhores práticas
 
-### Organize antes de importar
+### Organize antes da importação
 
 * Mantenha as imagens de alvo de calibração na mesma pasta que as imagens de levantamento
-* Mantenha a estrutura original da pasta da sua câmera/cartão SD
+* Mantenha a estrutura de pastas original da sua câmera/cartão SD
 * Não misture conjuntos de dados de sessões diferentes em um único projeto
 
 ### Nomeação de arquivos
 
 * Preserve os nomes de arquivo originais da câmera (IMG\_0001.RAW, etc.)
-* Não renomeie os arquivos antes de importar
+* Não renomeie arquivos antes da importação
 * Os nomes originais contêm metadados importantes
 
 ### Imagens de alvo de calibração
@@ -147,7 +146,7 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 * Sempre inclua 1-2 imagens de alvo de calibração por sessão
 * Capture os alvos antes e depois da sessão de captura
 * Coloque os alvos nas mesmas condições de iluminação da área de captura
-* Marque as imagens de alvo usando a caixa de seleção Alvo para acelerar o processamento
+* Marque as imagens de alvo usando a caixa de seleção “Alvo” para acelerar o processamento
 
 ***
 
@@ -157,11 +156,11 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 
 **Possíveis causas:**
 
-* Formato de arquivo não compatível (apenas RAW+JPG e JPG de câmeras MAPIR)
-* As imagens são de câmeras que não são MAPIR (consulte [Câmeras compatíveis](../supported-cameras.md))
+* Formato de arquivo não suportado (apenas RAW+JPG e JPG de câmeras MAPIR)
+* As imagens são de câmeras que não são MAPIR (consulte [Câmeras suportadas](../supported-cameras.md))
 * Arquivo corrompido ou transferência incompleta do cartão SD
 
-**Solução**: Verifique a compatibilidade do formato do arquivo e do modelo da câmera
+**Solução**: Verifique a compatibilidade do formato de arquivo e do modelo da câmera
 
 ### Modelo da câmera não detectado
 
@@ -173,7 +172,7 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 
 **Solução**: Reimporte os arquivos originais, não modificados, da câmera/cartão SD
 
-### Carimbos de data/hora ausentes
+### Falta de carimbos de data/hora
 
 **Possíveis causas:**
 
@@ -187,7 +186,7 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 Depois que seus arquivos forem importados:
 
 1. **Revise a lista de arquivos** - Certifique-se de que todas as imagens foram carregadas corretamente
-2. **Verifique os modelos da câmera** - Verifique se a câmera foi detectada corretamente
+2. **Verifique os modelos das câmeras** - Confirme se a detecção das câmeras está correta
 3. **Marque as imagens de destino** - Consulte [Escolhendo imagens de destino](choosing-target-images.md)
 4. **Ajuste as configurações** - Configure as opções de processamento em [Configurações do projeto](adjusting-project-settings.md)
 5. **Inicie o processamento** - Consulte [Iniciando o processamento](starting-the-processing.md)
