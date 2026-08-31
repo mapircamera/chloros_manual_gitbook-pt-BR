@@ -1,335 +1,200 @@
 # Camadas de imagem
 
-O menu suspenso “Camadas de imagem” no Visualizador de Imagens Chloros permite alternar rapidamente entre diferentes versões da mesma imagem — desde as capturas originais até resultados de refletância processados e imagens de índice calculadas.
+O **menu suspenso de camadas** no canto superior direito do Visualizador de Imagens permite alternar entre todas as versões da imagem que você está visualizando — desde a captura original, passando por cada produto processado, até as imagens de índice calculadas — sem sair do visualizador.
 
 ## O que são camadas de imagem?
 
-No Chloros, **camadas** referem-se às diferentes saídas de imagem disponíveis para uma única imagem de origem. Ao processar imagens, o Chloros cria várias versões:
+Uma “camada” no Chloros é um **arquivo de produto**registrado em relação a uma imagem original. A importação fornece os arquivos originais; o processamento adiciona uma camada para cada produto gerado pela execução. Os arquivos exportados mantêm o nome do arquivo de origem — é a**pasta** que identifica o produto, e o nome da camada é o rótulo do Chloros para essa pasta.
 
-* **Imagens originais** (arquivos JPG e RAW da sua câmera)
-* Saídas **calibradas por refletância** (se a calibração por refletância estiver ativada)
-* **Imagens-alvo** (se a imagem contiver alvos de calibração)
-* **Imagens de índice** (NDVI, NDRE, GNDVI, etc., se os índices tiverem sido configurados)
+<!-- SCREENSHOT-NEEDED: Image Viewer full screen with the layer dropdown open on a processed LATTICE multispectral image, showing the full list: TIFF base, RAW (Original), RAW (Debayered), RAW (Preview), RAW (Radiance), RAW (Reflectance), and one RAW (NDVI Index) entry. -->
 
-O **menu suspenso Seletor de Camadas** no canto superior direito do Visualizador de Imagens permite alternar instantaneamente entre essas versões sem sair do visualizador.***
+***
 
-## Tipos de Camadas Disponíveis
+## A lista de camadas
 
-### JPG
+### Sempre presente
 
-* A imagem de pré-visualização JPG original da sua câmera
-* Sempre disponível para todas as imagens
-* Não processada, tal como capturada pela câmera
-* Mais rápida para carregar e exibir
+| Camada | O que é |
+| --- | --- |
+| **JPG**(ou**PNG**/**TIFF**) | O arquivo base que veio junto com a captura. O Survey3 importa um `.JPG` ao lado de cada `.RAW`; As capturas LATTICE trazem uma pré-visualização de exibição do tipo PNG ou TIFF. Rotulada de acordo com o que foi realmente importado |
+| **RAW (Original)** | O quadro bruto de origem, submetido a débayering para exibição, sem correções aplicadas. Disponível desde o momento da importação — não requer processamento |
 
-**Quando visualizar:**
+Uma captura do LATTICE cujo arquivo base **é** seu quadro bruto não possui entrada base separada: o `RAW (Original)` já a abrange.
 
-* Visualização rápida da captura original
-* Verificação da composição e do enquadramento da imagem
-* Verificação da qualidade da captura antes do processamento
+### Produtos de processamento do Survey3
 
-### RAW (Original)
-
-* Os dados originais do sensor RAW da sua câmera
-* Desbayered, sem pós-processamento aplicado
-* Maior profundidade de bits do que o JPG (normalmente dados do sensor de 12 ou 14 bits)
-
-**Quando visualizar:**
-
-* Inspecionar a qualidade dos dados originais do sensor
-* Verificar se há problemas no sensor ou artefatos
-* Comparar os resultados antes e depois do processamento
-
-### RAW (Alvo)
-
-* Aparece apenas para imagens identificadas como contendo alvos de calibração
-* Mostra a imagem RAW original com o alvo detectado
-* Usado para verificar se a detecção do alvo foi bem-sucedida
-
-**Quando visualizar:**
-
-* Para confirmar se os alvos de calibração foram detectados corretamente
-* Para verificar a qualidade da imagem do alvo
-* Para solucionar problemas de calibração
+| Camada | Gravada em | Existe quando |
+| --- | --- | --- |
+| **RAW (Alvo)** | — | O quadro foi identificado como contendo um alvo de calibração |
+| **RAW (Refletância)** | `Reflectance_Calibrated_Images/` | A calibração de refletância foi executada com sucesso neste quadro |
+| **Correção de vinheta**| `Vignette_Corrected_Images/` | Não foi possível realizar a calibração de refletância do quadro**e** a *correção de vinheta* estava ativada |
+| **Resposta do sensor**| `Sensor_Response_Images/` | Não foi possível calibrar o quadro quanto à refletância**e** a *correção de vinheta* estava desativada |
+| **Equilíbrio de branco** | `White_Balanced_Images/` | Um produto com equilíbrio de branco foi gerado |
 
 {% hint style="info" %}
-**Camada do Alvo**: Esta camada só aparece no menu suspenso para imagens que contenham alvos de calibração. Imagens de captura regulares não terão esta opção.
+**A correção de vinheta e a resposta do sensor são alternativas; nunca ambas ao mesmo tempo.** Existe exatamente um produto de fallback não calibrado por execução, para cada modelo de câmera, e a opção *Correção de vinheta* determina qual deles será usado. Consulte [Configurações do projeto](../project-settings/project-settings.md).
 {% endhint %}
 
-### RAW (Refletância)
+### Níveis do LATTICE
 
-* A imagem de saída com refletância calibrada
-* Correção de vinheta (se ativada no processamento)
-* Refletância calibrada usando dados de alvo (se ativada)
-* Multibanda TIFF com todos os canais da câmera
-* Os valores dos pixels representam a porcentagem de refletância (ao usar o modo de porcentagem)
-* Pronta para manipulação com o [Index/LUT Sandbox](index-lut-sandbox.md)
+O LATTICE captura o fan-out nesses níveis em uma única etapa de processamento. Quais deles existem depende das opções de exportação por produto nas Configurações do Projeto e do que se aplica à câmera.
 
-**Quando visualizar:**
+| Camada | Gravada em | Aplica-se a |
+| --- | --- | --- |
+| **RAW (sem bayering)** | `Debayered_Images/` | RGB e multiespectral |
+| **RAW (Pré-visualização)** | `Preview_Images/` | Multiespectral (estiramento de cores falsas) |
+| **Equilíbrio de branco** | `Preview_Images/` | Câmeras principais RGB — a pré-visualização RGB está registrada sob este nome para que se alinhe com a camada Survey3 de mesmo nome |
+| **RAW (Radiação)** | `Radiance_Images/` | Apenas multiespectral |
+| **RAW (Radiação)** | `Reflectance_Calibrated_Images/` | Apenas multiespectral, e somente quando um registro descendente `.daq` correspondente ou um alvo no quadro aprovado no controle de qualidade (QA) cobrir o quadro |
 
-* Inspecionar resultados calibrados
-* Verificar a qualidade da calibração
-* Verificar valores de pixels para precisão científica
-* Comparar com o original para ver os efeitos da calibração
+As câmeras principais RGB não possuem radiometria por banda; portanto, a radiação e a refletância são ignoradas para elas como **não aplicáveis** — o log informa isso em vez de apresentar uma falha silenciosa.
 
-{% hint style="success" %}
-**Recomendado**: Use a camada RAW (Refletância) ao verificar valores de pixels para medições e análises científicas.
-{% endhint %}
+### Camadas de índice, LUT e sandbox
 
-### RAW (Índice NDVI)... e similares
+| Padrão da camada | Exemplo | De onde vem |
+| --- | --- | --- |
+| **RAW (`<INDEX>` Índice)** | `RAW (NDVI Index)` | Um por índice configurado nas Configurações do Projeto, calculado durante o processamento |
+| **`<INDEX>` LUT** | `NDVI LUT` | A versão com mapeamento de cores de um índice |
+| **Sandbox (`<Name>` `<Index\|LUT>` `<NNN>`)** | `Sandbox (NDVI LUT 003)` | Uma por execução de exportação do [Índice/LUT Sandbox](index-lut-sandbox.md) |
 
-* Imagem do índice de vegetação calculado (NDVI neste exemplo)
-* O nome do índice muda de acordo com o índice configurado durante o processamento
-* Exemplos: RAW (Índice NDVI), RAW (Índice NDRE), RAW (Índice GNDVI), etc.
-* Imagem em escala de cinza de banda única mostrando os resultados do cálculo do índice
-* Uma camada aparece para cada índice configurado nas Configurações do Projeto
-
-**Nomes de índice possíveis:**
-
-* RAW (Índice NDVI)
-* RAW (Índice NDRE)
-* RAW (Índice GNDVI)
-* RAW (Índice OSAVI)
-* RAW (Índice EVI)
-* RAW (Índice SAVI)
-* E muitos mais... (consulte [Fórmulas de Índices Multiespectrais](../project-settings/multispectral-index-formulas.md))
-
-**Quando visualizar:**
-
-* Analisar resultados de cálculo de índices
-* Verificar intervalos de valores de índices
-* Identificar áreas de interesse
-* Verificar imagens de índices antes de usá-las em GIS ou análises
+Se o mesmo nome de índice for configurado mais de uma vez com configurações diferentes, o segundo e os seguintes recebem um número no nome (`RAW (NDVI2 Index)`) para que as camadas permaneçam distinguíveis.
 
 ***
 
-## Usando o Seletor de Camadas
+## Usando o seletor de camadas
 
-### Abrindo o menu suspenso
+1. Abra uma imagem em tela cheia clicando em uma miniatura na grade
+2. Clique no **menu suspenso de camadas** no canto superior direito do visualizador
+3. Escolha uma camada — a imagem é atualizada imediatamente
 
-1. Abra uma imagem no modo de tela cheia (clique em qualquer miniatura no Visualizador de Imagens)
-2. Localize o **menu suspenso de camadas** no canto superior direito do visualizador
-3. O menu suspenso mostra a camada selecionada no momento (por exemplo, “JPG”)
-4. Clique no menu suspenso para ver todas as camadas disponíveis
+O menu suspenso exibe **JPG, RAW (Original), RAW (Destino), RAW (Refletância)** em primeiro lugar, nessa ordem, e lista todas as demais opções a seguir, na ordem em que os produtos foram registrados.
 
-### Alternando entre camadas
+### Preferência de camada ao navegar
 
-1. Clique no menu suspenso de camadas para abrir a lista
-2. Todas as camadas disponíveis para a imagem atual são exibidas
-3. Clique em qualquer nome de camada para alternar para essa versão
-4. A imagem é atualizada imediatamente para mostrar a camada selecionada
+Pressionar **←**/**→** avança para a próxima imagem e tenta manter você na mesma camada:
 
-**Alternância rápida:**
+1. **Correspondência exata primeiro** — se a próxima imagem tiver uma camada com o mesmo nome, você a visualiza. É isso que mantém você na camada `RAW (NDVI Index)` ao percorrer um conjunto inteiro
+2. **Em seguida, correspondência por tipo** — uma camada de índice procura por qualquer camada de índice, uma LUT por qualquer LUT, refletância por refletância, alvo por alvo, original por original, base por base
+3. **Em seguida, apenas para camadas de exportação** — o nome é mantido mesmo que a lista de camadas ainda não tenha sido atualizada, pois o arquivo já existe no disco. É isso que permite revisar os produtos enquanto uma execução ainda os está gravando
+4. **Caso contrário** — a primeira camada disponível, que normalmente é a imagem base
 
-* O menu suspenso lembra sua última seleção
-* Ao navegar para a próxima imagem, o Chloros tenta mostrar o mesmo tipo de camada
-* Se essa camada não existir na próxima imagem, o padrão será JPG
+Os arquivos sidecar `.daq` e `.csv` no projeto são ignorados pela navegação com as setas, de modo que a navegação pelas imagens nunca chega a uma gravação do sensor de luz.
 
-### Disponibilidade de camadas
-
-Nem todas as camadas estão disponíveis para todas as imagens:
-
-**Sempre disponíveis:*** ✅ JPG (todas as imagens têm uma pré-visualização em JPG)
-
-**Disponíveis condicionalmente:**
-
-* ⚠️ RAW (Original) - Apenas se a imagem tiver sido capturada no modo RAW ou RAW+JPG
-* ⚠️ RAW (Alvo) - Apenas se a imagem contiver alvos de calibração detectados
-* ⚠️ RAW (Refletância) - Somente após o processamento com a calibração de refletância ativada
-* ⚠️ RAW (\[Índice] Índice) - Somente após o processamento com índices configurados
+O zoom e a panorâmica também se aplicam às imagens, o que facilita a comparação “antes e depois” da mesma posição no campo.
 
 ***
 
-## Persistência da camada
+## Compreendendo os valores dos pixels por camada
 
-### Navegando entre imagens
+O [painel Valores do Cursor](opening-an-image-full-screen.md#cursor-values) exibe o valor real por canal sob o cursor, na unidade em que a camada está armazenada. Suas colunas variam de acordo com a camada:
 
-Quando você navega para uma imagem diferente (usando as setas do teclado ou clicando nas miniaturas):**A preferência da camada é preservada:**
+| Camada | Unidade exibida | Observações |
+| --- | --- | --- |
+| Base (JPG / PNG / pré-visualização do TIFF) | DN, 0–255 | Valores de exibição, com correção de gama no RGB. Apenas para inspeção visual |
+| RAW (Original) | DN | Valores digitais brutos do sensor. O eixo do histograma indica a profundidade: 255 (8 bits), 4095 (12 bits) ou 65535 (16 bits) |
+| RAW (sem debayering) | DN | Linear, sem expansão de exibição |
+| RAW (Pré-visualização) / Equilíbrio de branco | DN | Produto de exibição — expandido ou com correção de gama. Não serve para medição |
+| RAW (Radiação) | **W/m²/sr/nm** | Radiação física em Float32. Sem coluna DN |
+| RAW (Refletância) | DN **e %** | Porcentagem calculada com a escala própria do arquivo — veja abaixo |
+| Exportações de índice / LUT / sandbox | Valor de índice ou componentes RGB | Um arquivo de índice de canal único informa o valor do índice; um arquivo LUT com mapeamento de cores relata os componentes Red/Green/Blue |
 
-* Se estiver visualizando &quot;RAW (Refletância)&quot;, a próxima imagem mostra &quot;RAW (Refletância)&quot; (se disponível)
-* Se estiver visualizando &quot;RAW (NDVI Índice)&quot;, a próxima imagem mostra &quot;RAW (NDVI Índice)&quot; (se disponível)
-* Se a mesma camada não existir, o padrão será JPG
+### Refletância: a escala é por arquivo
 
-**Exemplo de fluxo de trabalho:**
+{% hint style="warning" %}
+**“Dividir por 65.535” só está correto para Survey3.** A refletância do LATTICE é armazenada em uma escala diferente, e misturar os dois divisores é a maneira mais comum de obter valores de refletância que são exatamente a metade do que deveriam ser.
+{% endhint %}
 
-1. Abra a Imagem 1, alterne para RAW (Índice NDVI)
-2. Pressione → para visualizar a Imagem 2
-3. A Imagem 2 exibe automaticamente a camada RAW (Índice NDVI)
-4. Continue navegando — todas as imagens mostram a camada NDVI
-5. Muito eficiente para revisar resultados de índice em várias imagens
+| Fonte | DN que equivale à refletância 1,0 | Identificado por |
+| --- | --- | --- |
+| **LATTICE**(M3C / M3M) |**32768** | A tag XMP `Chloros:PixelScale=32768` incluída em toda exportação de refletância do LATTICE. A margem de 2× significa que ρ acima de 1,0 é representável, em vez de ser cortado |
+| **Survey3**|**65535** | Sem tag de escala XMP Chloros — a calibração Survey3 grava ρ × dtype-max e clipa em 1,0 |
+
+Para GIS e scripts: leia `Chloros:PixelScale` do arquivo e divida pelo valor correspondente. Se a tag estiver ausente, o arquivo está na escala Survey3 (65535). O visualizador, a área de teste de índice/LUT e a exportação de índice resolvem a escala dessa mesma maneira; portanto, o número exibido no cursor é o número utilizado nos cálculos do índice.
+
+Armazenamento específico do formato além dessa escala:
+
+* **TIFF (32 bits, porcentagem)** armazena DN / 65535 como um número de ponto flutuante
+* **PNG (8 bits)**e**JPG (8 bits)** armazenam DN × 255 / 65535
+* Uma **exportação de 8 bits TIFF de uma captura com fonte de 8 bits** é limitada ao intervalo de 0 a 255, em vez de ser redimensionada, e deliberadamente não contém nenhuma tag de escala. O painel exibe apenas o DN para esses arquivos, sem a coluna de porcentagem
+
+### Intervalos de valores de índice
+
+| Família de índices | Intervalo típico | Leitura |
+| --- | --- | --- |
+| Diferença normalizada (NDVI, GNDVI, NDRE, ENDVI…) | −1 a +1 | Vegetação saudável geralmente entre 0,4 e 0,9; solo nu próximo a 0; água com valor negativo |
+| Ajustado ao solo (SAVI, OSAVI, MSAVI2…) | aproximadamente de −1 a +1,5 | Valor semelhante ao de NDVI com o fundo do solo suprimido |
+| Razão (GRVI, GCI, MSR, CIRE…) | sem limite superior | As razões crescem sem limite à medida que a faixa do denominador se aproxima de zero |
+| EVI / LAI | 0 a ~1, 0 a ~3,5 | Nuvens e outros pixels saturados fazem com que ambos saiam da faixa — máscara-os primeiro |
+
+Consulte [Fórmulas de índices multiespectrais](../project-settings/multispectral-index-formulas.md) para conhecer a fórmula exata por trás de cada predefinição.
 
 ***
 
 ## Fluxos de trabalho comuns
 
-### Fluxo de trabalho 1: Comparação antes/depois
+### Comparação antes/depois
 
-**Objetivo**: Comparar a imagem original com a imagem calibrada
+1. Selecione **RAW (Original)** e observe o efeito de vinheta e os valores não calibrados
+2. Alterne para **RAW (Refletância)**
 
-1. Abra a imagem processada no Visualizador de Imagens
-2. Selecione **RAW (Original)** no menu suspenso
-3. Observe o efeito de vinheta e os valores não calibrados
-4. Mude para **RAW (Refletância)** no menu suspenso
-5. Compare — efeito de vinheta removido, valores calibrados
+3. Compare — efeito de vinheta removido, valores calibrados. O zoom e a panorâmica permanecem fixos, para que você esteja vendo a mesma área
 
-### Fluxo de trabalho 2: Revisão do índice
+### Revise um índice em todo o conjunto
 
-**Objetivo**: Revisar rapidamente os resultados do NDVI em todo o conjunto de dados
+1. Abra a primeira imagem processada e selecione a camada de índice
+2. Pressione **→** repetidamente — a camada de índice acompanha você de imagem em imagem
+3. Observe o histograma na barra lateral à medida que avança: um quadro cuja distribuição apresente picos merece uma análise mais detalhada
 
-1. Abra a primeira imagem processada
-2. Selecione **RAW (Índice NDVI)** no menu suspenso
-3. Use a tecla de seta para a direita para navegar até a próxima imagem
-4. A camada NDVI é mantida automaticamente
-5. Continue por todas as imagens, verificando os padrões NDVI
-6. Alterne para **RAW (Índice NDRE)** para comparar
+### Verifique os alvos de calibração
 
-### Fluxo de trabalho 3: Verificação de alvos
+1. Selecione **RAW (Alvo)** em um quadro-alvo
+2. Confirme se o alvo está claramente visível e foi detectado
+3. Passe para o próximo quadro-alvo — a camada de alvo acompanha
 
-**Objetivo**: Verificar se todas as imagens de alvo foram detectadas corretamente
+### Verifique a precisão dos valores de refletância
 
-1. Navegue até uma imagem de alvo
-2. Selecione **RAW (Alvo)** no menu suspenso
-3. Verifique se os alvos de calibração estão claramente visíveis e foram detectados
-4. Navegue até a próxima imagem de alvo
-5. Repita a verificação para todos os alvos
+1. Selecione **RAW (Refletância)**
 
-### Fluxo de trabalho 4: Inspeção do valor dos pixels
-
-**Objetivo**: Verificar os valores de refletância para garantir a precisão científica
-
-1. Abra a imagem processada
-2. Selecione a camada **RAW (Refletância)**
-
-3. Ative o modo**Porcentagem de pixels** (botão na barra de ferramentas superior direita)
-4. Mova o cursor sobre as áreas de vegetação
-5. Verifique se os valores dos pixels estão dentro dos intervalos esperados (30-70% para NIR, 5-15% para Red)
-6. Verifique se as áreas de solo e água apresentam valores adequados
+2. Leia a coluna**%** no painel “Valores do cursor” — ela já está dimensionada corretamente para esse arquivo
+3. Faça uma verificação de validade comparando com materiais conhecidos no quadro: vegetação saudável apresenta valores altos em NIR e baixos no vermelho; um alvo de calibração deve apresentar valores próximos à sua refletância publicada
 
 ***
-
-## Compreensão dos valores dos pixels por camada
-
-Camadas diferentes apresentam intervalos de valores de pixels distintos:
-
-### Camada JPG
-
-* **Intervalo**: 0-255 (8 bits)
-* **Significado**: Valores de exibição, com correção de gama
-* **Uso**: Apenas para inspeção visual, não para medição científica
-
-### RAW (Original)
-
-* **Intervalo**: 0-65535 (16 bits)
-* **Significado**: Números digitais brutos do sensor
-* **Uso**: Verificação do desempenho do sensor, não calibrado
-
-### RAW (Refletância)
-
-* **Intervalo**: 0-65.535 (16 bits TIFF) ou 0,0-1,0 (32 bits em porcentagem)
-* **Significado**: Refletância percentual calibrada
-* **Uso**: Medições e análises científicas**Para 16 bits TIFF:**Divida por 65.535 para obter a refletância percentual**Para 32 bits Porcentagem:** Os valores representam diretamente a porcentagem (0,5 = 50% de refletância)
-
-### RAW (Imagens de Índice)
-
-* **Intervalo**: Varia de acordo com o índice (normalmente de -1,0 a +1,0 para índices normalizados)
-* **Significado**: Resultado do cálculo do índice
-* **Exemplos**:
-  * NDVI: -1 a +1 (vegetação normalmente de 0,4 a 0,9)
-  * NDRE: -1 a +1 (detecção de estresse)
-  * EVI: 0 a 1 (vegetação aprimorada)
-
-***
-
-## Dicas e melhores práticas
-
-### Troca eficiente de camadas
-
-* **Conhecimento dos atalhos de teclado**: Embora não haja atalhos de teclado para camadas, as setas de navegação (←/→) funcionam em todas as camadas
-* **Fluxos de trabalho consistentes**: Escolha uma camada (por exemplo, NDVI) e analise todo o conjunto de dados antes de alternar para outra
-* **Comparações rápidas**: Alterne entre Original e Refletância para verificar a qualidade do processamento
-
-### Considerações sobre desempenho
-
-* **JPG carrega mais rápido**: use para navegação rápida por muitas imagens
-* **Camadas RAW carregam mais devagar**: maior resolução e profundidade de bits
-* **Camadas de índice**: velocidade semelhante às camadas de refletância
-* **O primeiro carregamento é o mais lento**: visualizações subsequentes da mesma camada são armazenadas em cache e ficam mais rápidas
-
-### Verificação de qualidade
-
-* **Sempre verifique o RAW (Original)**: Verifique a qualidade dos dados de origem antes de confiar nos resultados processados
-* **Compare camadas**: Use a alternância de camadas para validar se o processamento funcionou corretamente
-* **Verifique os intervalos de índice**: Use o modo Porcentagem de Píxeis com camadas de índice para verificar se os valores são razoáveis***
 
 ## Solução de problemas
 
-### Camada indisponível
+### Uma camada que eu esperava não está no menu suspenso
 
-**Problema**: A camada esperada não aparece no menu suspenso**Possíveis causas:**
+**Possíveis causas**
 
-* A imagem não foi processada (apenas JPG e RAW (Original) disponíveis)
-* A calibração de refletância foi desativada durante o processamento
-* O índice específico não foi configurado nas Configurações do Projeto
-* A imagem é uma imagem apenas de alvo (nenhum índice gerado para alvos)
+* A imagem nunca foi processada — existem apenas a camada base e a `RAW (Original)`
+* A opção de exportação do produto está desmarcada nas Configurações do Projeto
+* O produto não se aplica a essa câmera (radianância e refletância em uma câmera mestre RGB; qualquer índice em uma câmera M3M monocromática de banda única)
+* A calibração de refletância não teve dados para trabalhar — sem cobertura descendente de `.daq` e sem alvo no quadro aprovado no controle de qualidade —, portanto, o quadro recorreu à correção de vinheta ou à resposta do sensor
 
-**Soluções:**
+**O que fazer**
 
-1. Verifique se a imagem foi processada (verifique a pasta de saída para arquivos processados)
-2. Verifique as Configurações do Projeto para confirmar se os índices foram configurados
-3. Reprocesse com os índices desejados ativados
+1. Verifique o log da execução: o Chloros indica quando um produto de exportação solicitado foi impossível e o motivo
+2. Verifique as opções de exportação por produto em [Configurações do projeto](../project-settings/project-settings.md)
+3. Confirme se a pasta do produto existe na árvore de saída do projeto
+4. Reprocesse com o produto habilitado
 
-### Camada errada exibida
+### A lista de camadas parece desatualizada
 
-**Problema**: A imagem abre na camada inesperada**Causa**: A preferência de camada da imagem anterior foi mantida, mas essa camada não existe na imagem atual**Solução**: O Chloros recorre automaticamente ao JPG quando a camada preferida não está disponível — esse é um comportamento normal
+O Chloros refaz a varredura das pastas de produtos do projeto enquanto uma execução está em andamento e corrige registros de camadas ausentes com base no que realmente está no disco; portanto, uma camada cuja exportação foi concluída normalmente aparece por conta própria em uma varredura. Sair da imagem e voltar força uma nova resolução.
 
-### Não é possível ver os alvos de calibração
+### Os valores de refletância parecem ser metade do que deveriam ser
 
-**Problema**: A camada RAW (Alvo) não mostra a detecção de alvos**Possíveis causas:**
+É quase certo que você esteja dividindo um arquivo LATTICE por 65535. Use o `Chloros:PixelScale` (32768) ou consulte a coluna **%**, que já aplicou esse valor.
 
-* Os alvos não foram detectados durante o processamento
-* A imagem não contém, de fato, alvos
-* Configurações de detecção de alvos muito rígidas
+### A camada de índice existe, mas a imagem está em branco
 
-**Soluções:**
-
-1. Verifique o Log de Depuração em busca de mensagens &quot;Alvo encontrado&quot;
-2. Verifique se a imagem contém, de fato, alvos de calibração visíveis
-3. Ajuste as configurações de detecção de alvos nas Configurações do projeto
-4. Consulte [Escolhendo imagens de alvo](../processing-images-gui/choosing-target-images.md)
-
-***
-
-## Recursos relacionados
-
-### Ferramentas do visualizador de imagens
-
-Ao visualizar qualquer camada, você pode usar:
-
-* **Controles de zoom**: amplie para inspecionar detalhes
-* **Panorâmica**: Clique e arraste para se mover pela imagem ampliada
-* **Inspeção do valor do pixel**: Veja os valores na localização do cursor
-* **Setas de navegação**: Mova-se entre imagens mantendo a camada
-* **Modo Porcentagem de Pixel**: Alterne entre a exibição em DN e em porcentagem
-
-Consulte [Abrindo uma imagem em tela cheia](opening-an-image-full-screen.md) para obter a documentação completa do Visualizador de Imagens.
-
-### Sandbox de Índice/LUT
-
-Para testes interativos de índice e visualização:
-
-* **Cálculo de índice em tempo real**: Teste diferentes fórmulas de índice
-* **Mapeamento de cores LUT**: Aplique gradientes de cor a índices em escala de cinza
-* **Exportar visualizações**: Salve imagens de índice coloridas
-
-Consulte [Sandbox de Índice/LUT](index-lut-sandbox.md) para obter detalhes.
+O índice precisa de faixas que sua camada não possui — por exemplo, um índice que lê um terceiro canal aplicado a um arquivo de um ou dois canais. Mude para uma camada multibanda (refletância ou sem bayering) ou escolha um índice compatível com o filtro da câmera.
 
 ***
 
 ## Próximos passos
 
-Agora que você entende as camadas de imagem:
-
-* [**Abrindo uma imagem em tela cheia**](opening-an-image-full-screen.md) - Guia completo do Visualizador de Imagens
-* [**Área de teste de Índice/LUT**](index-lut-sandbox.md) - Visualização interativa de índices
-* [**Fórmulas de índices multiespectrais**](../project-settings/multispectral-index-formulas.md) - Referência dos índices disponíveis
-* [**Concluindo o processamento**](../processing-images-gui/finishing-the-processing.md) - Compreendendo os resultados processados
+* [**Abrindo uma imagem em tela cheia**](opening-an-image-full-screen.md) — leitura do cursor, histograma e controle de GSD
+* [**Área de testes de índices/LUT**](index-lut-sandbox.md) — visualização interativa de índices e exportação
+* [**Fórmulas de índices multiespectrais**](../project-settings/multispectral-index-formulas.md) — a referência de índices
+* [**Conclusão do processamento**](../processing-images-gui/finishing-the-processing.md) — a árvore de pastas de saída para a qual essas camadas apontam

@@ -4,93 +4,97 @@ Assim que o processamento for iniciado, o Chloros oferece várias maneiras de mo
 
 ## Visão geral da barra de progresso
 
-A barra de progresso no cabeçalho superior mostra o status do processamento em tempo real e a porcentagem de conclusão.
+A barra de progresso no cabeçalho superior mostra o status do processamento em tempo real e a porcentagem de conclusão. O progresso é transmitido ao vivo do backend por meio de Server-Sent Events (SSE), de modo que a barra reflete o que o pipeline está realmente fazendo.
 
-### Barra de progresso do modo gratuito
+### Barra de progresso no modo gratuito
 
 Para usuários sem licença do Chloros+:
 
 **Exibição do progresso em duas etapas:**
 
-1.**Detecção de alvos** - Localização de alvos de calibração nas imagens
-2. **Processamento** - Aplicação de correções e exportação**A barra de progresso mostra:**
+1.**Detecção de alvos** — Localização de alvos de calibração nas imagens
+2. **Processamento** — Aplicação de correções e exportação**A barra de progresso mostra:**
 
 * Porcentagem geral de conclusão (0-100%)
 * Nome da etapa atual
-* Visualização simples em barra horizontal
+* Visualização simples em forma de barra horizontal
 
-### Barra de progresso do Chloros+
+### Barra de Progresso do Chloros+
 
-Para usuários com licença do Chloros+:
+Para usuários com licença Chloros+:
 
 **Exibição de progresso em 4 etapas:**
 
-1.**Detecção** - Localização de alvos de calibração
-2. **Análise** - Exame das imagens e preparação do fluxo de trabalho
-3. **Calibração** - Aplicação de correções de vinheta e refletância
-4. **Exportação** - Salvamento dos arquivos processados**Recursos interativos:*** **Passe o mouse** sobre a barra de progresso para ver o painel expandido de 4 etapas
+1.**Detecção** – Localização de alvos de calibração
+2. **Análise** – Exame das imagens e preparação do fluxo de trabalho
+3. **Calibração** – Aplicação de correções de vinheta e refletância
+4. **Exportação** – Salvamento dos arquivos processados**Recursos interativos:*** **Passe o mouse sobre** a barra de progresso para ver o painel expandido de 4 etapas
 * **Clique** na barra de progresso para congelar/fixar o painel expandido
-* **Clique novamente** para descongelar e ocultar automaticamente ao sair com o mouse
+* **Clique novamente** para descongelar e ocultar automaticamente ao afastar o mouse
 * Cada etapa mostra o progresso individual (0-100%)
+
+{% hint style="info" %}
+**Paridade CLI**: durante uma execução do `chloros-cli process`, os mesmos quatro threads são exibidos como “Detectando”, “Analisando”, Processando, Exportando, e o `chloros-cli export-status` exibe o progresso da exportação da Thread-4 em tempo real a partir de outro terminal. Consulte a [Referência do CLI](../reference/cli-reference.md).
+{% endhint %}
 
 ***
 
 ## Entendendo cada etapa do processamento
 
 {% hint style="info" %}
-**Arquitetura de pipeline**: Essas 4 etapas da GUI correspondem ao [pipeline de processamento de 4 threads](../processing-architecture/processing-pipeline.md). Em sistemas com aceleração por GPU, o Thread 3 (Calibração) se beneficia da [Adaptação Dinâmica de Computação](../processing-architecture/dynamic-compute-adaptation.md), que otimiza o processamento para o seu hardware específico.
+**Arquitetura de pipeline**: Essas quatro etapas da interface gráfica correspondem ao [pipeline de processamento de quatro threads](../processing-architecture/processing-pipeline.md). Em sistemas com aceleração por GPU, o Thread 3 (Calibração) se beneficia da [Adaptação Dinâmica de Computação](../processing-architecture/dynamic-compute-adaptation.md), que otimiza o processamento para o seu hardware específico.
 {% endhint %}
 
-### Etapa 1: Detecção (Detecção de Alvo)
+### Etapa 1: Detecção (Detecção de alvos)
 
 **O que está acontecendo:**
 
-* Chloros analisa imagens marcadas com a caixa de seleção Alvo
-* Algoritmos de visão computacional identificam os 4 painéis de calibração
+* O Chloros analisa as imagens que você marcou com a caixa de seleção “Alvo” (todas as imagens, caso nenhuma esteja marcada)
+* Algoritmos de visão computacional identificam os painéis de calibração
 * Valores de refletância extraídos de cada painel
-* Carimbos de data/hora dos alvos registrados para o agendamento adequado da calibração
+* Carimbos de data e hora dos alvos registrados para o agendamento adequado da calibração
 
 **Duração:**
 
-* Com alvos marcados: 10-60 segundos
-* Sem alvos marcados: 5-30+ minutos (digitaliza todas as imagens)
+* Com alvos marcados: 10 a 60 segundos
+* Sem alvos marcados: 5 a 30+ minutos (digitaliza todas as imagens)
 
 **Indicador de progresso:**
 
 * Detectando: 0% → 100%
-* Número de imagens digitalizadas
+* Número de imagens digitalizadas (conta apenas as imagens que estão realmente sendo digitalizadas)
 * Contagem de alvos encontrados
 
 **O que observar:**
 
 * Deve ser concluído rapidamente se os alvos estiverem devidamente marcados
 * Se demorar muito, os alvos podem não estar marcados
-* Verifique o Log de Depuração para mensagens de &quot;Alvo encontrado&quot;
+* Verifique o Log de Depuração em busca de mensagens do tipo “Alvo encontrado”
 
 ### Etapa 2: Análise
 
 **O que está acontecendo:**
 
-* Leitura dos metadados EXIF da imagem (marcações de tempo, configurações de exposição)
-* Determinação da estratégia de calibração com base nos carimbos de data/hora dos alvos
+* Leitura dos metadados EXIF da imagem (carimbos de data/hora, configurações de exposição)
+* Determinação da estratégia de calibração com base nos carimbos de data/hora dos alvos e nos dados de radiação descendente do DAQ disponíveis
 * Organização da fila de processamento de imagens
-* Preparação de trabalhadores de processamento paralelo (somente Chloros+)
+* Preparação dos trabalhadores de processamento paralelo (somente Chloros+)
 
-**Duração:** 5-30 segundos**Indicador de progresso:**
+**Duração:** 5 a 30 segundos**Indicador de progresso:**
 
 * Analisando: 0% → 100%
 * Etapa rápida, geralmente é concluída rapidamente
 
 **O que observar:**
 
-* Deve progredir de forma constante, sem pausas
+* Deve progredir de maneira constante, sem pausas
 * Avisos sobre metadados ausentes aparecerão no Log de Depuração
 
 ### Etapa 3: Calibração
 
-**O que está acontecendo:*** **Debayering**: Conversão do padrão RAW Bayer para 3 canais
+**O que está acontecendo:*** **Debayering**: Conversão do padrão RAW Bayer para 3 canais (ignorada para módulos LATTICE mono, com uma observação)
 * **Correção de vinheta**: Remoção do escurecimento nas bordas da lente
-* **Calibração de refletância**: Normalização com valores-alvo
+* **Calibração de refletância**: Normalização com valores-alvo e/ou downwelling do DAQ
 * **Cálculo de índices**: Cálculo de índices multiespectrais
 * Processamento de cada imagem por todo o pipeline
 
@@ -101,21 +105,21 @@ Para usuários com licença do Chloros+:
 * Imagens concluídas / Total de imagens
 
 **Comportamento do processamento:*** **Modo livre**: Processa uma imagem por vez, sequencialmente
-* **Modo Chloros+**: Processa até 16 imagens simultaneamente
+* **Modo Chloros+**: Executa um conjunto de trabalhadores adaptável ao hardware — de 1 a 4 trabalhadores simultâneos em sistemas com GPU (dependendo da VRAM), um trabalhador por núcleo físico (menos um) em sistemas apenas com CPU. Consulte [Adaptação Dinâmica de Computação](../processing-architecture/dynamic-compute-adaptation.md)
 * **Aceleração por GPU**: Acelera significativamente esta etapa**O que observar:**
 
 * Progresso constante na contagem de imagens
 * Verifique o Log de Depuração para mensagens de conclusão por imagem
-* Avisos sobre qualidade da imagem ou problemas de calibração
+* Avisos sobre qualidade de imagem ou problemas de calibração
 
 ### Etapa 4: Exportação
 
 **O que está acontecendo:**
 
-* Gravação de imagens calibradas no disco no formato selecionado
+* Gravação das imagens processadas no disco no formato selecionado, à medida que são concluídas
+* **LATTICE**: cada quadro é distribuído para todos os produtos habilitados (debayering / visualização / radiação / refletância)
 * Exportação de imagens de índice multiespectral com cores LUT
-* Criação de subpastas para modelos de câmera
-* Preservação dos nomes de arquivo originais com sufixos apropriados
+* Criação da árvore de saída `<project>/<camera>/<format>/<Product>_Images/` — os arquivos exportados mantêm o nome do arquivo de origem; a pasta identifica o produto
 
 **Duração:** 10-20% do tempo total de processamento**Indicador de progresso:**
 
@@ -131,71 +135,66 @@ Para usuários com licença do Chloros+:
 
 ***
 
-## Guia Log de Depuração
+## Guia “Log de Depuração”
 
-O Log de Depuração fornece informações detalhadas sobre o andamento do processamento e quaisquer problemas encontrados.
+O Log de Depuração fornece informações detalhadas sobre o andamento do processamento e quaisquer problemas encontrados. As mensagens de inicialização do backend também são reproduzidas no console de log; assim, o log conta toda a história, mesmo que você o abra mais tarde.
 
 ### Acessando o Log de Depuração
 
-1. Clique no ícone **Log de Depuração** <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> na barra lateral esquerda
+1. Clique no ícone **Log de Depuração**<img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line">
+
+na barra lateral esquerda
 2. O painel de log é aberto, exibindo mensagens de processamento em tempo real
-3. A tela rola automaticamente para mostrar as mensagens mais recentes
+3. A rolagem automática exibe as mensagens mais recentes
+
+<!-- SCREENSHOT-NEEDED: Debug Log tab open at the end of a completed run, showing real backend log lines including the [RUN-SUMMARY] lines (images / camera groups / targets / calibrated / files written) -->
 
 ### Entendendo as mensagens de log
 
-#### Mensagens de informação (brancas/cinzas)
-
-Atualizações normais do processamento:
+As linhas de log com o formato Chloros são precedidas por tags entre colchetes que identificam o subsistema — por exemplo, `[PROCESSING]`, `[RUN-SUMMARY]`, `[LATTICE-EXPORT]`, `[EXPORT-CHECK]`, `[IMPORT-LEVEL]`. O mais importante a se saber é o **resumo da execução**, exibido no final de cada execução (incluindo as interrompidas):
 
 ```
-[INFO] Processing started
-[INFO] Target detected in IMG_0015.RAW - 4 panels found
-[INFO] Calibrating IMG_0234.RAW
-[INFO] Exported NDVI image: IMG_0234_NDVI.tif
-[INFO] Processing complete
+[RUN-SUMMARY] 49 image(s) in 2 camera group(s); 4 target(s) detected; 45 image(s) calibrated; 180 file(s) written.
 ```
+
+Linhas de dicas adicionais, como a `[RUN-SUMMARY]`, aparecem sempre que algo precisa ser explicado — por exemplo, uma execução que não produziu nada ou uma câmera cujo produto solicitado foi ignorado por ser considerado inaplicável. As linhas `[EXPORT-CHECK]` explicam omissões por câmera (por exemplo, por que uma câmera RGB não obteve nenhum produto de radiação).
+
+Os níveis de gravidade gerais das mensagens (os exemplos abaixo são ilustrativos, não literais):
+
+#### Mensagens informativas (brancas/cinzas)
+
+Atualizações normais do processamento: processamento iniciado, alvos detectados (com contagem de painéis), progresso da calibração por imagem, arquivos exportados, processamento concluído.
 
 #### Mensagens de aviso (amarelas)
 
-Problemas não críticos que não interrompem o processamento:
-
-```
-[WARN] No GPS data found in IMG_0145.RAW
-[WARN] Target image timestamp gap > 30 minutes
-[WARN] Low contrast in calibration panel - results may vary
-```
+Problemas não críticos que não interrompem o processamento — por exemplo, dados de GPS ausentes em um quadro, uma grande lacuna de carimbo de data/hora entre imagens-alvo ou baixo contraste em um painel de calibração.
 
 **Ação:** Analise os avisos após o processamento, mas não interrompa
 
 #### Mensagens de erro (Red)
 
-Problemas críticos que podem causar falha no processamento:
-
-```
-[ERROR] Cannot write file - disk full
-[ERROR] Corrupted image file: IMG_0299.RAW
-[ERROR] No targets detected - enable reflectance calibration or mark target images
-```
+Problemas críticos que podem causar falha no processamento — por exemplo, disco cheio, um arquivo de imagem corrompido ou nenhum alvo detectado enquanto a calibração de refletância foi solicitada.
 
 **Ação:** Interrompa o processamento, resolva o erro e reinicie
 
-### Mensagens comuns de log
+### Situações comuns no log
 
-| Mensagem                          | Significado                                | Ação necessária                                         |
-| -------------------------------- | -------------------------------------- | ----------------------------------------------------- |
-| &quot;Alvo detectado em \[nome do arquivo]&quot; | Alvo de calibração encontrado com sucesso  | Nenhuma - normal                                         |
-| &quot;Processando imagem X de Y&quot;        | Atualização do progresso atual                | Nenhuma - normal                                         |
-| &quot;Nenhum alvo encontrado&quot;               | Nenhum alvo de calibração detectado        | Marcar imagens de alvo ou desativar a calibração de refletância |
-| &quot;Espaço em disco insuficiente&quot;        | Armazenamento insuficiente para saída          | Libere espaço em disco                                    |
-| &quot;Ignorando arquivo corrompido&quot;        | Arquivo de imagem está danificado                  | Recopie o arquivo do cartão SD                             |
-| &quot;Dados PPK aplicados&quot;               | Correções de GPS do arquivo .daq aplicadas | Nenhum - normal                                         |
+| Situação                             | Significado                                       | Ação necessária                                         |
+| ------------------------------------- | --------------------------------------------- | ----------------------------------------------------- |
+| Alvo detectado em \[nome do arquivo]        | Alvo de calibração encontrado com sucesso         | Nenhuma — normal                                         |
+| Linhas de progresso por imagem              | Atualização do progresso atual                       | Nenhuma — normal                                         |
+| Nenhum alvo encontrado                      | Nenhum alvo de calibração detectado               | Marcar imagens de alvo ou desativar a calibração de refletância |
+| Espaço em disco insuficiente               | Armazenamento insuficiente para saída                 | Liberar espaço em disco                                    |
+| Ignorando arquivo corrompido               | O arquivo de imagem está danificado                         | Copie novamente o arquivo do cartão SD                             |
+| `[IMPORT-LEVEL] Skipping ... no raw source` | Uma captura sem um quadro raw não pode ser processada | Recapture com raw, ou use CLI `--input-level`  |
+| `[RUN-SUMMARY] ... 0 file(s) written` | A execução não produziu nenhum produto de imagem — relatado como uma falha com dicas | Leia as linhas de dica; verifique o que foi ignorado e por quê |
 
 ### Copiando dados de log
 
-Para copiar o log para fins de solução de problemas ou suporte:
+Para copiar o log para solução de problemas ou suporte:
 
-1. Abra o painel Log de Depuração
-2. Clique no botão **&quot;Copiar Log&quot;** (ou clique com o botão direito → Selecionar tudo)
+1. Abra o painel “Log de depuração”
+2. Clique no botão **“Copiar log”** (ou clique com o botão direito → Selecionar tudo)
 3. Cole em um arquivo de texto ou e-mail
 4. Envie para o suporte do MAPIR, se necessário
 
@@ -203,48 +202,47 @@ Para copiar o log para fins de solução de problemas ou suporte:
 
 ## Monitoramento de recursos do sistema
 
-### Uso da CPU
+### Utilização da CPU
 
 **Modo Livre:**
 
 * 1 núcleo da CPU a ~100%
 * Outros núcleos ociosos ou disponíveis
-* O sistema permanece responsivo
+* O sistema continua responsivo
 
-**Modo Paralelo do Chloros+:**
+**Modo Paralelo Chloros+:**
 
-* Vários núcleos a 80-100% (até 16 núcleos)
-* Alta utilização geral da CPU
+* Vários núcleos com alta utilização — o número depende da estratégia escolhida pela [Adaptação Dinâmica de Computação](../processing-architecture/dynamic-compute-adaptation.md)
 * O sistema pode parecer menos responsivo
 
 **Para monitorar:**
 
 * Gerenciador de Tarefas (Ctrl+Shift+Esc)
-* Guia Desempenho → Seção CPU
-* Procure pelos processos &quot;Chloros&quot; ou &quot;chloros-backend&quot;
+* Guia Desempenho → seção CPU
+* Procure pelos processos “Chloros” ou “chloros-backend”
 
 ### Uso de memória (RAM)
 
 **Uso típico:**
 
-* Projetos pequenos (&lt; 100 imagens): 2-4 GB
-* Projetos médios (100-500 imagens): 4-8 GB
-* Projetos grandes (mais de 500 imagens): 8-16 GB
-* O modo paralelo do Chloros+ usa mais RAM
+* Projetos pequenos (&lt; 100 imagens): 2–4 GB
+* Projetos médios (100 a 500 imagens): 4 a 8 GB
+* Projetos grandes (mais de 500 imagens): 8 a 16 GB
+* O modo paralelo do Chloros+ utiliza mais RAM
 
 **Se a memória estiver baixa:**
 
 * Processe lotes menores
 * Feche outros aplicativos
-* Atualize a RAM se processar regularmente grandes conjuntos de dados
+* Aumente a memória RAM se processar regularmente grandes conjuntos de dados
 
 ### Uso da GPU (Chloros+ com CUDA)
 
 Quando a aceleração por GPU está ativada:
 
-* A GPU NVIDIA apresenta alta utilização (60-90%)
-* O uso de VRAM aumenta (requer 4 GB ou mais de VRAM)
-* A etapa de calibração é significativamente mais rápida
+* A GPU NVIDIA apresenta alta utilização (60–90%)
+* O uso de VRAM aumenta (requer 4 GB ou mais de VRAM; 7 GB ou mais para debayering com reconhecimento de textura simultâneo)
+* A etapa de calibração fica significativamente mais rápida
 
 **Para monitorar:**
 
@@ -256,15 +254,15 @@ Quando a aceleração por GPU está ativada:
 
 **O que esperar:**
 
-* Alta leitura de disco durante a fase de análise
-* Alta gravação de disco durante a fase de exportação
-* SSD significativamente mais rápido que HDD
+* Alta taxa de leitura do disco durante a etapa de análise
+* Alta taxa de gravação do disco durante a etapa de exportação
+* SSD é significativamente mais rápido que HDD
 
 **Dica de desempenho:**
 
-* Use SSD para a pasta do projeto sempre que possível
+* Use um SSD para a pasta do projeto sempre que possível
 * Evite unidades de rede para conjuntos de dados grandes
-* Certifique-se de que o disco não esteja quase cheio (afeta a velocidade de gravação)
+* Certifique-se de que o disco não esteja quase cheio (isso afeta a velocidade de gravação)
 
 ***
 
@@ -274,7 +272,7 @@ Quando a aceleração por GPU está ativada:
 
 **O progresso fica parado (sem alterações por mais de 5 minutos):**
 
-* Verifique o Log de Depuração em busca de erros
+* Verifique o log de depuração em busca de erros
 * Verifique o espaço disponível em disco
 * Verifique o Gerenciador de Tarefas para garantir que o Chloros esteja em execução
 
@@ -282,12 +280,12 @@ Quando a aceleração por GPU está ativada:
 
 * Interrompa o processamento e analise os erros
 * Causas comuns: espaço em disco, arquivos corrompidos, problemas de memória
-* Consulte a seção Solução de problemas abaixo
+* Consulte a seção “Solução de problemas” abaixo
 
 **O sistema deixa de responder:**
 
 * O modo paralelo do Chloros+ está consumindo muitos recursos
-* Considere reduzir as tarefas simultâneas ou atualizar o hardware
+* Considere reduzir o número de tarefas simultâneas ou atualizar o hardware
 * O modo livre consome menos recursos
 
 ### Quando interromper o processamento
@@ -297,14 +295,15 @@ Interrompa o processamento se observar:
 * ❌ Erros do tipo “Disco cheio” ou “Não é possível gravar o arquivo”
 * ❌ Erros repetidos de corrupção de arquivos de imagem
 * ❌ Sistema completamente travado (sem resposta)
-* ❌ Percebeu que foram configuradas definições incorretas
+* ❌ Percebeu que foram configuradas opções incorretas
 * ❌ Imagens erradas importadas
 
 **Como interromper:**
 
-1. Clique no**botão Parar/Cancelar** (substitui o botão Iniciar)
-2. O processamento é interrompido, o progresso é perdido
-3. Corrija os problemas e reinicie do início
+1. Clique no**botão Interromper** (que substitui o botão Iniciar) — basta uma vez
+2. A barra exibe “Interrompendo...” enquanto a imagem em processamento é concluída; em seguida, a execução termina no estado interrompido
+3. Os produtos já exportados permanecem no disco; o log exibe um código `[RUN-SUMMARY]` que indica o que foi concluído
+4. Corrija os problemas e reinicie — a execução recomeça do início
 
 ***
 
@@ -314,7 +313,7 @@ Interrompa o processamento se observar:
 
 **Possíveis causas:**
 
-* Imagens de destino não marcadas (digitalização de todas as imagens)
+* Imagens-alvo não marcadas (digitalização de todas as imagens)
 * Armazenamento em HDD em vez de SSD
 * Recursos do sistema insuficientes
 * Muitos índices configurados
@@ -322,8 +321,8 @@ Interrompa o processamento se observar:
 
 **Soluções:**
 
-1. Se acabou de iniciar e está na fase de detecção: Cancele, marque os alvos, reinicie
-2. Para o futuro: Use SSD, reduza os índices, atualize o hardware
+1. Se acabou de iniciar e está na fase de detecção: pare, marque os alvos e reinicie
+2. Para o futuro: use SSD, reduza o número de índices, atualize o hardware
 3. Considere o CLI para processamento em lote de grandes conjuntos de dados
 
 ### Avisos de “Espaço em disco”
@@ -333,9 +332,10 @@ Interrompa o processamento se observar:
 1. Libere espaço em disco imediatamente
 2. Mova o projeto para uma unidade com mais espaço
 3. Reduza o número de índices a serem exportados
-4. Use o formato JPG em vez de TIFF (arquivos menores)
+4. Desative os produtos de exportação do LATTICE que você não precisa (Configurações do projeto → Processamento)
+5. Use o formato JPG em vez de TIFF (arquivos menores)
 
-### Mensagens frequentes de &quot;Arquivo corrompido&quot;
+### Mensagens frequentes de “Arquivo corrompido”
 
 **Soluções:**
 
@@ -360,9 +360,9 @@ Interrompa o processamento se observar:
 Quando o processamento terminar:
 
 * A barra de progresso atinge 100%
-* A mensagem **&quot;Processamento concluído&quot;** aparece no Log de depuração
+* As linhas `[RUN-SUMMARY]` aparecem no Log de Depuração com as contagens finais
 * O botão Iniciar fica habilitado novamente
-* Todos os arquivos de saída estão na subpasta do modelo da câmera
+* Todos os arquivos de saída estão na árvore de saída por câmera do projeto: `<project>/<camera>/<format>/<Product>_Images/`
 
 ***
 
@@ -370,9 +370,9 @@ Quando o processamento terminar:
 
 Após a conclusão do processamento:
 
-1. **Analise os resultados** - Consulte [Concluindo o processamento](finishing-the-processing.md)
-2. **Verifique a pasta de saída** - Confirme se todos os arquivos foram exportados corretamente
-3. **Analise o Log de Depuração** - Verifique se há avisos ou erros
-4. **Visualize as imagens processadas** - Use o Visualizador de Imagens ou um software externo
+1. **Analise os resultados** — Consulte [Concluindo o processamento](finishing-the-processing.md)
+2. **Verifique a pasta de saída** — Confirme se todos os arquivos foram exportados corretamente
+3. **Analise o log de depuração** — Verifique se há avisos ou erros
+4. **Visualize as imagens processadas** — Use o Visualizador de Imagens ou um software externo
 
-Para obter informações sobre como analisar e usar os resultados processados, consulte [Concluindo o processamento](finishing-the-processing.md).
+Para obter informações sobre como analisar e utilizar os resultados processados, consulte [Concluindo o processamento](finishing-the-processing.md).
