@@ -1,6 +1,6 @@
 # Adicionando arquivos a um projeto
 
-Depois de criar ou abrir um projeto no Chloros, a próxima etapa é adicionar suas imagens multiespectrais para iniciar o processamento. A guia “Navegador de arquivos” <img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> facilita a importação de imagens e o gerenciamento do seu conjunto de dados.
+Depois de criar ou abrir um projeto no Chloros, o próximo passo é adicionar suas imagens multiespectrais para iniciar o processamento. A guia “Navegador de arquivos”<img src="../.gitbook/assets/icon_file-browser.JPG" alt="" data-size="line"> facilita a importação de imagens e o gerenciamento do seu conjunto de dados.
 
 ## Acessando o Navegador de arquivos
 
@@ -12,8 +12,8 @@ Depois de criar ou abrir um projeto no Chloros, a próxima etapa é adicionar su
 **Tipos de arquivos compatíveis**:
 
 * **Survey3W / Survey3N**: pares RAW+JPG e imagens JPG (recomenda-se RAW+JPG)
-* **LATTICE**: capturas `.tif` / `.tiff` — gravadas pelo controle de câmera Chloros ou por um hub LATTICE
-* **Dados do sensor de luz**: gravações `.daq` (DAQ-U/M/E) e registros de radiação descendente do DAQ-M `.csv` — importados juntamente com as imagens para realizar a calibração de refletância
+* **LATTICE**: capturas `.tif` / `.tiff` — gravadas pelo controle de câmera do Chloros ou por um hub LATTICE
+* **Dados do sensor de luz**: gravações `.daq` (DAQ-U/M/E) e registros de luz descendente `.csv` do DAQ-M — importados junto com as imagens para realizar a calibração de refletância
 {% endhint %}
 
 ***
@@ -26,21 +26,21 @@ Existem duas maneiras principais de adicionar imagens ao seu projeto:
 
 Use esta opção para importar arquivos de imagem individuais ou uma pequena seleção de arquivos.
 
-1. Clique no botão **“Adicionar arquivos”** <img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> na parte superior do painel Navegador de arquivos
+1. Clique no botão **&quot;Adicionar arquivos&quot;** <img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> na parte superior do painel Navegador de arquivos
 2. Navegue até a pasta que contém suas imagens
 3. Selecione um ou mais arquivos de imagem (mantenha pressionada a tecla **Ctrl** para selecionar vários arquivos)
-4. Clique em **“Abrir”** para importar os arquivos selecionados
+4. Clique em **&quot;Abrir&quot;** para importar os arquivos selecionados
 
 ### Método 2: Adicionar pasta
 
 Use esta opção para importar todas as imagens de uma pasta de uma só vez. Você pode selecionar **várias pastas** em uma única caixa de diálogo.
 
-1. Clique no botão **“Adicionar pasta”** <img src="../.gitbook/assets/image (1) (1).png" alt="" data-size="line"> na parte superior do painel Navegador de arquivos
-2. Navegue até e selecione a(s) pasta(s) que contém(em) as imagens da sua sessão de captura
+1. Clique no botão **“Adicionar pasta”** <img src="../.gitbook/assets/image (1) (1).png" alt="" data-size="line">, na parte superior do painel Navegador de arquivos
+2. Navegue até a(s) pasta(s) que contém(em) as imagens da sua sessão de captura e selecione-a(s)
 3. Clique em **“Selecionar pasta”** para importar todas as imagens compatíveis
 
 {% hint style="info" %}
-**Os arquivos que não conseguem ser carregados são relatados.** Se uma pasta contiver arquivos que o Chloros reconhece, mas não consegue carregar, um aviso informará isso — as imagens não desaparecem silenciosamente da grade.
+**Os arquivos que não conseguem ser carregados são sinalizados.** Se uma pasta contiver arquivos que o Chloros reconhece, mas não consegue carregar, um aviso informará isso — as imagens não desaparecem silenciosamente da grade.
 {% endhint %}
 
 ***
@@ -57,9 +57,12 @@ output/
 └── *.daq          the downwelling reading matched to the capture
 ```
 
-**Selecione “Adicionar pasta” na raiz das capturas** (`output/` acima). Quando a pasta selecionada não contém imagens, mas possui subpastas, o Chloros percorre-as automaticamente — as subpastas do nível e a raiz `.daq` são todas capturadas de uma só vez.**Como as capturas são importadas:*** Cada captura é importada como uma **única imagem**, agrupada por captura (não uma entrada por nível). Os outros níveis da mesma captura aparecem como modos de visualização dessa única imagem.
-* **O processamento sempre começa a partir do quadro bruto.** Os outros níveis podem ser visualizados, mas apenas o `raw` é encaminhado pelo pipeline — reprocessar um produto já processado aplicaria as correções duas vezes, por isso o Chloros é rejeitado. Uma exportação reimportada nunca pode ocupar o espaço de quadro bruto de uma captura.
-* Uma pasta de captura salva **sem** importações de quadros brutos é exibida normalmente, mas o processamento a ignora e registra isso no log. (O sinalizador CLI `--input-level` pode forçar um ponto de entrada para esse caso — consulte [a Referência do CLI](../reference/cli-reference.md#what-a-captures-folder-looks-like).)**As sessões do hub LATTICE** são importadas da mesma maneira: selecione “Adicionar Pasta” na pasta da sessão copiada do hub (ela contém `raw/` e `previews/`), juntamente com qualquer registro de downwelling do DAQ-M `.csv`. Se a calibração da câmera ou do DAQ ainda não estiver armazenada em cache na sua máquina, o Chloros a busca automaticamente pelo número de série durante a importação (requer conexão com a internet uma vez).***
+**Selecione “Adicionar pasta” na raiz das capturas** (`output/` acima). Quando a pasta selecionada não contém imagens, mas possui subpastas, o Chloros as percorre automaticamente — as subpastas do nível e a raiz `.daq` são todas capturadas de uma só vez.**Como as capturas são importadas:*** Cada captura é importada como uma **única imagem**, agrupada por captura (não uma entrada por nível). Os outros níveis da mesma captura aparecem como modos de visualização dessa única imagem.
+* **O processamento sempre começa a partir do quadro bruto.** Os outros níveis podem ser visualizados, mas apenas o `raw` é processado — reprocessar um produto já processado aplicaria as correções duas vezes, por isso o Chloros recusa. Uma exportação reimportada nunca pode ocupar o espaço de um quadro bruto de uma captura.
+* Uma pasta de captura salva **sem** quadros brutos é importada e exibida normalmente, mas o processamento a ignora e registra isso no log. (O sinalizador da CLI `--input-level` pode forçar um ponto de entrada para esse caso — consulte [a Referência da CLI](../reference/cli-reference.md#what-a-captures-folder-looks-like).)
+* A partir da versão 1.3.0, uma pasta de capturas também pode conter uma pasta `clamp_masks/` (máscaras por pixel para os níveis de radiação e refletância — consulte [Formatos de imagem de saída](../output-image-formats.md#clamp-masks)). As máscaras não são imagens da cena, e o Chloros as ignora na importação, independentemente de onde estejam.
+
+**As sessões do hub LATTICE** são importadas da mesma maneira: clique em “Adicionar pasta” na pasta da sessão copiada do hub (ela contém `raw/` e `previews/`), juntamente com qualquer registro de fluxo descendente do DAQ-M `.csv`. Se a calibração da câmera ou do DAQ ainda não estiver armazenada em cache no seu computador, o Chloros a busca automaticamente pelo número de série durante a importação (requer conexão com a internet uma vez).***
 
 ## Entendendo a tabela do navegador de arquivos
 
@@ -67,7 +70,7 @@ Depois que as imagens são importadas, elas aparecem em uma tabela com as seguin
 
 ### Nome do arquivo
 
-* Nome do arquivo original da câmera
+* Nome original do arquivo da câmera
 * Mantém a convenção de nomenclatura da câmera (por exemplo, IMG\_0001.RAW ou capture\_20260816\_101500\_SN213800234\_raw.tif)
 
 ### Carimbo de data/hora
@@ -79,11 +82,11 @@ Depois que as imagens são importadas, elas aparecem em uma tabela com as seguin
 ### Modelo da câmera
 
 * Configuração da câmera e do filtro detectada automaticamente
-* Exemplos Survey3: Survey3W\_RGN, Survey3N\_OCN, Survey3W\_RGB
-* Exemplos LATTICE: LATT-M3M-L41-F550, LATT-M3C-L87-FRGN
+* Exemplos do Survey3: Survey3W_RGN, Survey3N_OCN, Survey3W_RGB
+* Exemplos do LATTICE: LATT-M3M-L41-F550, LATT-M3C-L87-FRGN
 * Usado para aplicar os perfis de processamento corretos
 
-### Coluna de alvos (caixa de seleção)
+### Coluna “Alvo” (caixa de seleção)
 
 * Marque esta caixa para imagens que contenham alvos de calibração
 * Quando pelo menos uma imagem estiver marcada, **apenas as imagens marcadas serão verificadas** em busca de alvos
@@ -100,8 +103,8 @@ Clicar no botão de alternância no canto superior direito, acima da tabela, exi
 ## Arquivos do sensor de luz em seu projeto
 
 * Os arquivos `.daq` e `.csv` aparecem na lista do Navegador de Arquivos, mas não são imagens clicáveis — eles fornecem a irradiância descendente para a calibração de refletância.
-* Cada arquivo `.daq`/`.csv` importado é listado em **Configurações do Projeto → Sensor de Luz DAQ**, onde você pode verificar a correção da tampa difusora aplicada a cada arquivo. Consulte [Ajustando as configurações do projeto](adjusting-project-settings.md).
-* Os registros feitos na guia **Sensores de luz** são adicionados automaticamente ao projeto aberto — não é necessária nenhuma importação manual.***
+* Cada arquivo `.daq`/`.csv` importado é listado em **Configurações do projeto → Sensor de luz DAQ**, onde você pode verificar a correção da tampa difusora aplicada a cada arquivo. Consulte [Ajustando as configurações do projeto](adjusting-project-settings.md).
+* As gravações feitas na guia **Sensores de luz** são adicionadas automaticamente ao projeto aberto — não é necessária nenhuma importação manual.***
 
 ## Gerenciando arquivos em seu projeto
 
@@ -117,7 +120,7 @@ Para remover imagens indesejadas do seu projeto:
 
 * **Classificar por coluna**: clique em qualquer cabeçalho de coluna para classificar as imagens
 * **Classificação por data e hora**: útil para organizar sequências cronológicas de captura
-* **Filtro por modelo de câmera**: agrupe imagens por tipo de câmera caso esteja usando várias câmeras***
+* **Filtro por modelo de câmera**: agrupe as imagens por tipo de câmera caso esteja usando várias câmeras***
 
 ## Visualização da imagem
 
@@ -126,7 +129,7 @@ Para remover imagens indesejadas do seu projeto:
 Clique em qualquer miniatura de imagem no Navegador de Arquivos para exibi-la na área principal de visualização:
 
 1. A imagem aparece no painel de visualização central
-2. Use os controles de zoom para inspecionar os detalhes da imagem
+2. Use os controles de zoom para examinar os detalhes da imagem
 3. Navegue entre as imagens usando as setas do teclado
 
 ### Navegação rápida
@@ -141,7 +144,7 @@ Clique em qualquer miniatura de imagem no Navegador de Arquivos para exibi-la na
 O Chloros detecta e ignora automaticamente arquivos duplicados:
 
 * Arquivos com nomes idênticos são ignorados
-* Evita o processamento duplo acidental
+* Evita o processamento acidental em duplicata
 * É exibida uma mensagem de aviso quando são detectadas duplicatas
 
 {% hint style="warning" %}
@@ -152,21 +155,21 @@ O Chloros detecta e ignora automaticamente arquivos duplicados:
 
 ## Conjuntos de dados de câmeras mistas
 
-Se o seu projeto contiver imagens de várias câmeras MAPIR:
+Se seu projeto contiver imagens de várias câmeras MAPIR:
 
 1. O Chloros detecta automaticamente cada modelo de câmera — Survey3, LATTICE ou uma combinação
 2. Cada tipo de câmera é processado com seu perfil de calibração apropriado
 3. O Navegador de Arquivos exibe o modelo da câmera na coluna “Modelo da Câmera”
 4. Cada câmera recebe sua própria árvore de pastas de saída ao ser processada
 
-**Exemplos de cenários**: Survey3W RGN + Survey3N OCN — configuração com duas câmeras, ou uma matriz LATTICE com um RGB mestre e vários módulos de banda estreita***
+**Exemplos de cenários**: configuração de câmera dupla Survey3W RGN + Survey3N OCN, ou um conjunto LATTICE com uma câmera principal RGB e vários módulos de banda estreita***
 
 ## Melhores práticas
 
 ### Organize antes da importação
 
 * Mantenha as imagens de alvo de calibração na mesma pasta que as imagens de levantamento
-* Mantenha os arquivos dos sensores de luz `.daq` / `.csv` de cada sessão de captura junto com as imagens dessa sessão
+* Mantenha os arquivos do sensor de luz `.daq` / `.csv` de cada sessão de captura junto com as imagens dessa sessão
 * Mantenha a estrutura de pastas original da sua câmera/cartão SD/hub
 * Não misture conjuntos de dados de sessões diferentes em um único projeto
 
@@ -176,26 +179,26 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 * Não renomeie os arquivos antes da importação
 * Os nomes originais contêm metadados importantes
 
-### Imagens-alvo de calibração
+### Imagens de alvo de calibração
 
-* Sempre inclua 1 a 2 imagens-alvo de calibração por sessão (Survey3; para o LATTICE, uma gravação DAQ pode substituí-las — consulte [Escolhendo imagens-alvo](choosing-target-images.md))
-* Capture os alvos antes e depois da sessão de captura
-* Coloque os alvos nas mesmas condições de iluminação da área de captura
+* Sempre inclua 1 a 2 imagens de alvo de calibração por sessão (no Survey3; no LATTICE, uma gravação DAQ pode substituí-las — consulte [Escolhendo imagens de alvo](choosing-target-images.md))
+* Capture as imagens-alvo antes e depois da sessão de captura
+* Coloque as imagens-alvo nas mesmas condições de iluminação da área de captura
 * Marque as imagens-alvo usando a caixa de seleção “Alvo”
 
 ***
 
 ## Problemas comuns e soluções
 
-### Imagens que não aparecem após a importação
+### Imagens não aparecem após a importação
 
 **Possíveis causas:**
 
 * Formato de arquivo não compatível (consulte a lista de tipos compatíveis no topo desta página)
-* As imagens são de câmeras que não são do modelo MAPIR (consulte [Câmeras compatíveis](../supported-cameras.md))
+* As imagens são de câmeras que não são da MAPIR (consulte [Câmeras compatíveis](../supported-cameras.md))
 * Arquivo corrompido ou transferência incompleta do cartão SD
 
-**Solução**: Verifique a compatibilidade do formato do arquivo e do modelo da câmera e confira o aviso de carregamento de arquivos para identificar exatamente quais arquivos apresentaram falha
+**Solução**: Verifique a compatibilidade do formato de arquivo e do modelo da câmera e analise o aviso de carregamento de arquivos para identificar exatamente quais arquivos apresentaram falha
 
 ### Modelo da câmera não detectado
 
@@ -207,7 +210,7 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 
 **Solução**: Reimporte os arquivos originais, não modificados, da câmera ou do cartão SD
 
-### Falta de registros de data e hora
+### Falta de carimbos de data/hora
 
 **Possíveis causas:**
 
@@ -216,18 +219,18 @@ Se o seu projeto contiver imagens de várias câmeras MAPIR:
 
 **Solução**: Verifique se as configurações de hora da câmera estavam corretas durante a captura
 
-### Relatórios de projeto reabertos indicam arquivos ausentes
+### Projeto reaberto relata arquivos ausentes
 
-Se os arquivos de origem foram movidos ou excluídos desde a última vez que o projeto foi aberto, o código de erro Chloros informa **quais** arquivos estão faltando, em vez de abrir uma grade em branco. Restaure os arquivos em seus caminhos originais ou remova as entradas ausentes e reimporte-os.***
+Se os arquivos de origem foram movidos ou excluídos desde a última vez que o projeto foi aberto, o Chloros informa **quais**arquivos estão faltando, em vez de abrir uma grade em branco. Se a própria pasta do projeto tiver sido movida, o Chloros redireciona seus caminhos de origem para a pasta em que `project.json` está agora e mantém um backup (`project.json.before-relink-<date>-<time>`). Quando isso não os localiza, a janela**Arquivos de origem não encontrados**oferece a opção**Procurar**para o novo local e, em seguida,**Novo projeto**ou**Excluir projeto**. Na CLI, use `chloros-cli project open PATH --relink FOLDER`; no SDK, `open_project(path, relink=...)`.***
 
 ## Próximos passos
 
 Depois que seus arquivos forem importados:
 
-1. **Revise a lista de arquivos** – Certifique-se de que todas as imagens foram carregadas corretamente
-2. **Verifique os modelos das câmeras** – Confirme se a detecção das câmeras está correta
-3. **Marque as imagens de destino** — Consulte [Escolhendo imagens de destino](choosing-target-images.md)
+1. **Revise a lista de arquivos** — Certifique-se de que todas as imagens foram carregadas corretamente
+2. **Verifique os modelos de câmera** — Confirme se a detecção da câmera está correta
+3. **Marque as imagens-alvo** — Consulte [Escolhendo imagens-alvo](choosing-target-images.md)
 4. **Ajuste as configurações** — Configure as opções de processamento em [Configurações do projeto](adjusting-project-settings.md)
-5. **Inicie o processamento** – Consulte [Iniciando o processamento](starting-the-processing.md)
+5. **Inicie o processamento** — Consulte [Iniciando o processamento](starting-the-processing.md)
 
 Para obter informações detalhadas sobre a configuração do projeto, consulte [Ajustando as configurações do projeto](adjusting-project-settings.md).

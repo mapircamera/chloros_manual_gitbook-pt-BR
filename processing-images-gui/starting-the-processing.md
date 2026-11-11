@@ -1,17 +1,17 @@
 # Iniciando o processamento
 
-Depois de importar suas imagens, marcar seus alvos de calibração e definir as configurações do projeto, você estará pronto para iniciar o processamento. Esta página orienta você sobre como iniciar o fluxo de processamento Chloros.
+Depois de importar suas imagens, marcar seus alvos de calibração e definir as configurações do projeto, você estará pronto para iniciar o processamento. Esta página orienta você sobre como iniciar o fluxo de processamento do Chloros.
 
 ## Lista de verificação do pré-processamento
 
-Antes de clicar no botão “Iniciar”, verifique se tudo está pronto:
+Antes de clicar no botão Iniciar, verifique se tudo está pronto:
 
 * [ ] **Arquivos importados** — Todas as imagens aparecem no Navegador de Arquivos
-* [ ] **Imagens-alvo marcadas** — Coluna “Alvo” marcada para imagens de calibração (ou uma gravação `.daq` importada para o LATTICE)
-* [ ] **Modelos de câmera detectados** — A coluna “Modelo de câmera” exibe as câmeras corretas
+* [ ] **Imagens-alvo marcadas** — Coluna “Alvo” verificada para imagens de calibração (ou uma gravação `.daq` importada para o LATTICE)
+* [ ] **Modelos de câmera detectados** — A coluna “Modelo da câmera” mostra as câmeras corretas
 * [ ] **Configurações definidas** — Configurações do projeto revisadas e ajustadas
 * [ ] **Índices selecionados** — Índices multiespectrais desejados adicionados (se necessário)
-* [ ] **Formato de exportação escolhido** — Formato de saída adequado para o seu fluxo de trabalho
+* [ ] **Formato de exportação escolhido** - Formato de saída adequado ao seu fluxo de trabalho
 
 {% hint style="info" %}
 **Dica**: Clique em algumas imagens no Navegador de Arquivos para verificar se elas foram carregadas corretamente antes do processamento.
@@ -26,7 +26,7 @@ Antes de clicar no botão “Iniciar”, verifique se tudo está pronto:
 O botão Iniciar/Reproduzir está localizado na barra de cabeçalho superior do Chloros:
 
 * Posição: parte superior central da janela
-* Ícone: **Botão Reproduzir/Iniciar** <img src="../.gitbook/assets/image (2) (1) (1).png" alt="" data-size="line">
+* Ícone: **botão Reproduzir/Iniciar** <img src="../.gitbook/assets/image (2) (1) (1).png" alt="" data-size="line">
 * Status: o botão fica ativado (iluminado) quando estiver pronto para o processamento
 
 ### Clique para iniciar
@@ -37,14 +37,14 @@ O botão Iniciar/Reproduzir está localizado na barra de cabeçalho superior do 
 4. A barra de progresso é atualizada, mostrando o status do processamento
 
 {% hint style="success" %}
-**Processamento iniciado**: Uma vez clicado, o Chloros lida automaticamente com todas as etapas de processamento — detecção de alvo, debayering, calibração, cálculo de índice e exportação. Ele detecta automaticamente se o seu projeto é Survey3, LATTICE ou uma combinação, e aplica o fluxo de processamento adequado a cada câmera.
+**Processamento iniciado**: Após ser clicado, o Chloros lida automaticamente com todas as etapas de processamento — detecção de alvo, debayering, calibração, cálculo de índice e exportação. Ele detecta automaticamente se o seu projeto é Survey3, LATTICE ou uma combinação dos dois, e aplica o fluxo de trabalho correto a cada câmera.
 {% endhint %}
 
 ***
 
-## Entendendo os modos de processamento
+## Entendendo os modos de processamento O
 
-O Chloros opera em dois modos de processamento diferentes, dependendo da sua licença:
+Chloros opera em dois modos de processamento diferentes, dependendo da sua licença:
 
 ### Modo Gratuito (Processamento Sequencial)
 
@@ -59,10 +59,10 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 **A barra de progresso mostra 2 etapas:**
 
 1.**Detecção de alvos** — Varredura em busca de alvos de calibração
-2. **Processamento** — Aplicação da calibração e exportação de imagens**Tempo de processamento:**
+2. **Processamento** — Aplicação da calibração e exportação das imagens**Tempo de processamento:**
 
 * Muito mais lento do que o modo paralelo do Chloros+
-* Adequado para conjuntos de dados de pequeno a médio porte (&lt; 200 imagens)
+* Adequado para conjuntos de dados pequenos a médios (&lt; 200 imagens)
 
 ### Modo Chloros+ (Processamento Paralelo)
 
@@ -72,13 +72,13 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 
 * Processa várias imagens simultaneamente usando um [pipeline de processamento de 4 threads](../processing-architecture/processing-pipeline.md)
 * A [Adaptação Dinâmica de Computação](../processing-architecture/dynamic-compute-adaptation.md) seleciona automaticamente a estratégia ideal para o seu hardware no início da execução
-* Aceleração por GPU (CUDA) com placas de vídeo NVIDIA (desktop e Jetson)
-* **O número de workers se adapta ao hardware**: as estratégias de GPU executam**de 1 a 4 workers simultâneos** (escalonados pela VRAM — um Jetson com pouca memória executa 1, uma GPU de desktop com 12 GB ou mais executa até 4); sistemas apenas com CPU executam um worker por núcleo físico, menos um**A barra de progresso mostra 4 etapas** (correspondentes às 4 threads do pipeline):
+* Aceleração por GPU (CUDA) com placas de vídeo NVIDIA
+* **O número de workers se adapta ao hardware**: as estratégias de GPU executam**2 a 4 workers simultâneos** (escalonados pela VRAM — 3 em uma GPU de 2 a 12 GB, 2 a 4 em uma GPU de 12 GB ou mais); Sistemas apenas com CPU executam um worker por núcleo físico, menos um**A barra de progresso mostra 4 etapas** (correspondentes às 4 threads do pipeline):
 
-1. **Detecção** (Thread 1) — Localização de alvos de calibração
+1. **Detecção** (Thread 1) — Localização dos alvos de calibração
 2. **Análise** (Thread 2) — Exame dos metadados da imagem e cálculo da calibração
 3. **Calibração** (Thread 3) — Remoção do efeito bayesian, correção de vinheta, calibração, cálculo do índice
-4. **Exportação** (Thread 4) — Salvamento das imagens processadas e dos índices**Interação com a barra de progresso:*** **Passe o mouse** sobre a barra para ver o painel suspenso detalhado de 4 etapas
+4. **Exportação** (Thread 4) — Salvamento das imagens processadas e dos índices**Interação com a barra de progresso:*** **Passe o mouse** sobre a barra para ver o painel suspenso detalhado com as 4 etapas
 * **Clique** na barra de progresso para fixar o painel suspenso no lugar
 * **Clique novamente** para desfixar e ocultar o painel**Tempo de processamento:**
 
@@ -86,7 +86,7 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 * A aceleração por GPU melhora ainda mais a velocidade
 
 {% hint style="info" %}
-**Chloros+ Velocidade**: O processamento paralelo pode ser de 5 a 10 vezes mais rápido do que o modo sequencial para grandes conjuntos de dados. Um projeto de 500 imagens que leva 2 horas no modo gratuito pode ser concluído em 15 a 20 minutos com o Chloros+.
+**Velocidade do Chloros+**: O processamento paralelo pode ser de 5 a 10 vezes mais rápido do que o modo sequencial para grandes conjuntos de dados. Um projeto de 500 imagens que leva 2 horas no modo gratuito pode ser concluído em 15 a 20 minutos com o Chloros+.
 {% endhint %}
 
 ***
@@ -97,9 +97,9 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 
 **O que o Chloros faz:**
 
-* Analisa as imagens que você marcou na coluna “Alvo” (todas as imagens, caso nenhuma esteja marcada)
+* Analisa as imagens marcadas na coluna “Alvo” (todas as imagens, caso nenhuma esteja marcada)
 * Identifica os painéis de calibração em cada alvo
-* Extrai os valores de refletância dos painéis dos alvos
+* Extrai os valores de refletância dos painéis-alvo
 * Registra os carimbos de data e hora dos alvos para o agendamento da calibração
 
 **Duração:** 1 a 30 segundos (com alvos marcados), 5 a 30+ minutos (sem marcação)
@@ -128,7 +128,7 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 **O que o Chloros faz:**
 
 * Calcula os índices multiespectrais configurados (NDVI, NDRE, etc.)
-* Aplica cálculos matemáticos de banda às imagens calibradas
+* Aplica cálculos matemáticos de bandas às imagens calibradas
 * Gera imagens de índice para cada índice selecionado
 
 **Duração:** Alguns segundos por imagem
@@ -138,7 +138,7 @@ O Chloros opera em dois modos de processamento diferentes, dependendo da sua lic
 **O que o Chloros faz:**
 
 * Salva as imagens processadas no formato selecionado
-* **Fan-out do LATTICE**: cada quadro bruto do LATTICE é exportado como todos os produtos habilitados em uma única passagem — debayering, pré-visualização, radiação (sempre float32), refletância
+* **Fan-out do LATTICE**: cada quadro bruto do LATTICE é exportado como todos os produtos habilitados em uma única passagem — debayering, pré-visualização, radianância (sempre float32), refletância
 * Grava os arquivos na árvore de saída do projeto: `<project>/<camera>/<format>/<Product>_Images/`
 * **Mantém o nome do arquivo de origem** — a pasta identifica o produto, nenhum sufixo é adicionado**Duração:** Varia de acordo com o formato de exportação e o tamanho do arquivo***
 
@@ -161,7 +161,7 @@ Uma vez iniciado, todo o pipeline é executado automaticamente:
 * O computador permanece responsivo para outras tarefas
 * É seguro minimizar o Chloros e trabalhar em outros aplicativos
 
-**Modo Paralelo Chloros+:**
+**Modo Paralelo do Chloros+:**
 
 * Alto uso da CPU em todo o conjunto de trabalhadores da estratégia
 * Com aceleração por GPU: alto uso da GPU
@@ -175,12 +175,12 @@ Uma vez iniciado, todo o pipeline é executado automaticamente:
 ### O processamento não pode ser pausado (mas a interrupção é definitiva)
 
 * Uma vez iniciado, o processamento não pode ser pausado e retomado posteriormente
-* Clicar em **Parar** interrompe a execução de forma limpa logo no primeiro clique
+* Clicar em **Parar** encerra a execução de forma definitiva logo no primeiro clique
 * Os produtos já exportados antes da interrupção permanecem no disco
-* Uma execução interrompida relata com precisão o que foi concluído (veja as linhas `[RUN-SUMMARY]` no log)
+* Uma execução interrompida relata com precisão o que foi concluído (consulte as linhas `[RUN-SUMMARY]` no log)
 * Uma nova execução reinicia o pipeline desde o início
 
-**Dica de planejamento:** Para projetos muito grandes, considere processar em lotes ou usar o CLI para obter melhor controle.***
+**Dica de planejamento:** Para projetos muito grandes, considere processar em lotes ou usar a CLI para obter melhor controle.***
 
 ## Monitorando seu processamento
 
@@ -188,10 +188,10 @@ Enquanto o processamento está em andamento, você pode:
 
 * **Observar a barra de progresso** — Veja a porcentagem geral de conclusão
 * **Visualizar o estágio atual** — Detecção, Análise, Calibração ou Exportação
-* **Verificar a guia de log** — Veja mensagens detalhadas de processamento e avisos
+* **Verificar a aba de log** — Veja mensagens detalhadas de processamento e avisos
 * **Visualizar imagens concluídas** — Os arquivos exportados aparecem no disco durante o processamento
 
-Para informações detalhadas sobre o monitoramento, consulte [Monitorando o processamento](monitoring-the-processing.md).
+Para informações detalhadas sobre monitoramento, consulte [Monitorando o processamento](monitoring-the-processing.md).
 
 ***
 
@@ -201,9 +201,9 @@ Se você precisar interromper o processamento:
 
 ### Como interromper
 
-1. Localize o **botão Parar** (substitui o botão Iniciar durante o processamento)
+1. Localize o **botão Interromper** (substitui o botão “Iniciar” durante o processamento)
 2. Clique nele uma vez — a barra exibe **“Interrompendo...”** enquanto a imagem em processamento é finalizada
-3. A execução termina em um estado de interrupção definitiva e o log exibe um relatório detalhado (`[RUN-SUMMARY]`) do que foi concluído
+3. A execução termina em um estado de interrupção definitiva e o log gera um relatório detalhado `[RUN-SUMMARY]` do que foi concluído
 
 ### Quando interromper
 
@@ -224,12 +224,12 @@ Se você precisar interromper o processamento:
 
 ## Estimativas de tempo de processamento
 
-O tempo real de processamento varia bastante de acordo com:
+O tempo real de processamento varia muito de acordo com:
 
 * Número de imagens
 * Resolução das imagens
 * Formato de entrada RAW vs. JPG
-* Modo de processamento (Free vs. Chloros+)
+* Modo de processamento (Gratuito vs. Chloros+)
 * Velocidade da CPU e número de núcleos
 * Disponibilidade da GPU (somente Chloros+)
 * Número de índices a serem calculados
@@ -241,8 +241,8 @@ O tempo real de processamento varia bastante de acordo com:
 | ----------- | --------- | -------------- | -------------- |
 | 50 imagens   | 15-20 min | 5-8 min        | 3-5 min        |
 | 100 imagens  | 30-40 min | 10-15 min      | 5-8 min        |
-| 200 imagens  | 1-1,5 h | 20-30 min      | 10-15 min      |
-| 500 imagens  | 2 a 3 horas   | 45 a 60 min      | 20 a 30 min      |
+| 200 imagens  | 1–1,5 horas | 20–30 min      | 10–15 min      |
+| 500 imagens  | 2–3 horas   | 45–60 min      | 20–30 min      |
 | 1.000 imagens | 4 a 6 horas   | 1,5 a 2 horas      | 40 a 60 min      |
 
 {% hint style="info" %}
@@ -280,20 +280,32 @@ O tempo real de processamento varia bastante de acordo com:
 
 **Soluções:**
 
-1. Verifique o Log de Depuração <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> para mensagens de erro
+1. Verifique o Log de Depuração <img src="../.gitbook/assets/icon_log.JPG" alt="" data-size="line"> em busca de mensagens de erro
 2. Verifique o espaço disponível em disco
 3. Tente processar um subconjunto menor de imagens
 4. Verifique se as imagens não estão corrompidas
 
 ### A execução é concluída, mas nenhuma imagem é gravada
 
-Uma execução que solicitou produtos de imagem, mas não gravou nenhum, é tratada como uma **falha, não como um sucesso** — o código Chloros sinaliza isso claramente:
+Uma execução que solicitou produtos de imagem, mas não gravou nenhum, é tratada como uma **falha, não como um sucesso** — o Chloros relata isso de forma bem clara:
 
-* O log da GUI exibe mensagens `[RUN-SUMMARY]` indicando a causa provável — nenhuma imagem importada, nenhum destino detectado ou todos os produtos solicitados ignorados por serem inaplicáveis (por exemplo, solicitar radiação/refletância de câmeras que suportam apenas RGB)
-* O equivalente ao CLI (`chloros-cli process`) exibe o `Processing finished but wrote no image products.` e **encerra com valor diferente de zero**, para que os scripts possam detectá-lo
-* Uma execução deliberada apenas com metadados (todos os produtos de exportação desativados, sem índices) ainda é considerada bem-sucedida
+* O log da GUI exibe mensagens do tipo `[RUN-SUMMARY]` indicando a causa provável — nenhuma imagem importada, nenhum alvo detectado ou todos os produtos solicitados ignorados por serem inaplicáveis (por exemplo, solicitar radianância/refletância de câmeras que capturam apenas RGB)
+* O equivalente na CLI (`chloros-cli process`) exibe `Processing finished but wrote no image products.` e **retorna um valor diferente de zero**, para que os scripts possam detectá-lo
+* Uma execução deliberada apenas com metadados (todos os produtos de exportação desativados, sem índices) ainda é considerada um sucesso
 
-Consulte [a Referência do CLI](../reference/cli-reference.md#a-run-that-writes-no-images-fails) para a semântica completa.
+Consulte [a Referência da CLI](../reference/cli-reference.md#a-run-that-writes-no-images-fails) para a semântica completa.
+
+### A pasta do projeto está muito profunda para este computador
+
+**Somente Windows, novidade na versão 1.3.0.** O Windows vem com caminhos longos desativados, e, portanto, nenhum caminho de arquivo pode ter mais de 260 caracteres. Os produtos da Chloros ficam até cerca de 130 caracteres abaixo da pasta do projeto; portanto, uma pasta de projeto mais profunda do que isso não poderia receber seus produtos. Em vez de ser executado e não gravar nada, o Chloros agora verifica antes do início do processamento:
+
+* Clicar em Iniciar não inicia uma execução: a barra de progresso mostra o motivo, e o Log de Depuração exibe `[PROCESS] refused: The project folder is too deep for this computer…`. A mensagem informa o comprimento da pasta do projeto e a pasta de projeto mais longa que cabe.
+* A criação ou abertura de um projeto em uma pasta muito profunda, mesmo para os próprios arquivos do projeto, também é recusada. Uma caixa de mensagem explica o motivo, indicando a pasta de projeto mais longa que cabe e como habilitar caminhos longos, e nada é criado ou aberto; o Log de Depuração registra isso como `[PROJECT] refused: …`. Duplicar um projeto com um nome mais longo também pode ultrapassar o limite: a cópia é feita, mas não é aberta, e a mesma mensagem explica o motivo.
+
+**Soluções:**
+
+1. Mantenha os projetos em uma pasta com nome mais curto — altere o**Diretório de Trabalho** em [Configurações do Projeto](../project-settings/project-settings.md) e crie o projeto novamente, ou
+2. Ative os caminhos longos do Windows e reinicie o Chloros: execute novamente o instalador do Chloros com a opção **Ativar caminhos longos do Windows** marcada (ela vem marcada por padrão), ou use a Política de Grupo: *Configuração do Computador &gt; Modelos Administrativos &gt; Sistema &gt; Sistema de Arquivos &gt; Ativar caminhos longos do Win32*.
 
 ### Aviso “Nenhum alvo detectado”
 
@@ -305,7 +317,7 @@ Consulte [a Referência do CLI](../reference/cli-reference.md#a-run-that-writes-
 
 **Soluções:**
 
-1. Consulte [Como escolher imagens-alvo](choosing-target-images.md)
+1. Consulte [Escolhendo imagens-alvo](choosing-target-images.md)
 2. Marque as imagens apropriadas na coluna “Alvo”
 3. Verifique se os alvos estão visíveis nas imagens marcadas
 4. Ajuste as configurações de detecção de alvos, se necessário
@@ -316,18 +328,18 @@ Consulte [a Referência do CLI](../reference/cli-reference.md#a-run-that-writes-
 
 ### Antes de começar
 
-1. **Teste primeiro com um pequeno subconjunto** – Processe de 10 a 20 imagens para verificar as configurações
-2. **Verifique o espaço livre em disco** – Garanta que haja espaço livre equivalente a 2 a 3 vezes o tamanho do conjunto de dados (mais se todos os produtos LATTICE estiverem ativados)
-3. **Feche aplicativos desnecessários** – Libere recursos do sistema
-4. **Verifique as imagens-alvo** – Visualize os alvos marcados para garantir a qualidade
-5. **Salve o projeto** – O projeto é salvo automaticamente, mas é recomendável salvá-lo manualmente
+1. **Teste primeiro com um pequeno subconjunto** — Processe de 10 a 20 imagens para verificar as configurações
+2. **Verifique o espaço disponível em disco** — Garanta que haja espaço livre equivalente a 2 a 3 vezes o tamanho do conjunto de dados (mais se todos os produtos LATTICE estiverem ativados)
+3. **Feche aplicativos desnecessários** — Libere recursos do sistema
+4. **Verifique as imagens dos alvos** — Visualize os alvos marcados para garantir a qualidade
+5. **Salve o projeto** — O projeto é salvo automaticamente, mas é recomendável salvá-lo manualmente
 
 ### Durante o processamento
 
 1. **Evite que o sistema entre em modo de suspensão** — Desative os modos de economia de energia
 2. **Mantenha o Chloros em primeiro plano** — Ou, pelo menos, visível na barra de tarefas
 3. **Monitore o andamento ocasionalmente** — Verifique se há avisos ou erros
-4. **Não carregue outros aplicativos pesados** — Especialmente com o modo paralelo do Chloros+
+4. **Não carregue outros aplicativos pesados** — Especialmente no modo paralelo do Chloros+
 
 ### Aceleração por GPU do Chloros+
 
