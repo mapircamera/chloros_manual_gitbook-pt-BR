@@ -1,12 +1,8 @@
 # Configurações da câmera
 
-A aba **Câmeras** é a interface de controle em tempo real do Chloros
+A aba **Câmeras** é a interface de controle em tempo real do Chloros para as câmeras LATTICE: uma área de feed principal que exibe todas as câmeras conectadas como blocos dinâmicos e uma barra lateral que alterna entre três páginas — a **lista de câmeras**, um**painel de configurações**(configurações por câmera, de matriz ou de captura — uma de cada vez) e a**Calculadora de Índice**. Esta página documenta todos os controles da lista de câmeras, do painel de configurações por câmera e do painel de configurações de matriz. Os modos de captura, seleção do tipo de exportação e o fluxo “Capturar Tudo” estão na página complementar [Configurações e Modos de Captura](capture.md).
 
-para as câmeras LATTICE: uma área de feed principal que exibe todas as câmeras conectadas como blocos dinâmicos e uma barra lateral que alterna entre três páginas — a **lista de câmeras**, um**painel de configurações**(configurações por câmera, de matriz ou de captura — uma de cada vez) e a**Calculadora de Índice**. Esta página documenta todos os controles da lista de câmeras, do painel de configurações por câmera e do painel de configurações de matriz. Os modos de captura, seleção do tipo de exportação e o fluxo “Capturar Tudo” estão na página complementar [Configurações e Modos de Captura](capture.md).
-
-A aba “Câmeras” aparece na barra lateral assim que o backend do Chloros
-
-estiver pronto. Todos os controles abaixo se comunicam com o backend local por meio do `127.0.0.1:5000`; as alterações são aplicadas imediatamente à câmera ao vivo, salvo indicação em contrário.
+A aba “Câmeras” aparece na barra lateral assim que o backend do Chloros estiver pronto. Todos os controles abaixo se comunicam com o backend local por meio do `127.0.0.1:5000`; as alterações são aplicadas imediatamente à câmera ao vivo, salvo indicação em contrário.
 
 ## Tipos de câmera utilizados nesta página
 
@@ -14,38 +10,12 @@ Os controles são exibidos ou ocultados de acordo com o tipo de câmera selecion
 
 | Termo | Significado | Canais de filtro |
 | --- | --- | --- |
-| **Câmera RGB** | LATTICE M3C com filtro FRGB (o modelo contém `-FRGB`) | Red
-
-/ Green
-
-/ Blue
-
-|
-| **Multiespectral Bayer** | LATTICE M3C com FRGN, FOCN ou FNGB | FRGN: Red
-
-/ Green
-
-/ NIR
-
-· FOCN: Orange
-
-/ Cyan
-
-/ NIR
-
-· FNGB: NIR
-
-/ Green
-
-/ Blue
-
-|
+| **Câmera RGB** | LATTICE M3C com filtro FRGB (o modelo contém `-FRGB`) | Red / Green / Blue |
+| **Multiespectral Bayer** | LATTICE M3C com FRGN, FOCN ou FNGB | FRGN: Red / Green / NIR · FOCN: Orange / Cyan / NIR · FNGB: NIR / Green / Blue |
 | **Mono (M3M)** | LATTICE M3M — um filtro de banda estreita, uma banda calibrada | Banda única |
 | **Membro da matriz** | Uma câmera conectada como parte de uma matriz sincronizada (exibição combinada ou separada) | De acordo com seu filtro |
 
-Câmeras RGB
-
-passam por processamento fotométrico (equilíbrio de branco, perfis de cor, gama); câmeras multiespectrais e monocromáticas passam pela cadeia radiométrica e ignoram os controles fotométricos. Os membros da matriz passam as configurações no nível do fluxo (formato de pixel, resolução, agrupamento de pixels, acionamento, taxa de quadros) para a matriz — essas linhas passam a ser somente de leitura no painel por câmera e são transferidas para o painel de configurações da matriz.
+Câmeras RGB passam por processamento fotométrico (equilíbrio de branco, perfis de cor, gama); câmeras multiespectrais e monocromáticas passam pela cadeia radiométrica e ignoram os controles fotométricos. Os membros da matriz passam as configurações no nível do fluxo (formato de pixel, resolução, agrupamento de pixels, acionamento, taxa de quadros) para a matriz — essas linhas passam a ser somente de leitura no painel por câmera e são transferidas para o painel de configurações da matriz.
 
 ## A área principal de feed
 
@@ -53,9 +23,7 @@ passam por processamento fotométrico (equilíbrio de branco, perfis de cor, gam
 
 <!-- SCREENSHOT-NEEDED: Cameras tab with 2+ cameras connected in grid view — live tiles visible with name and fps overlays, sidebar camera list open on the right. -->
 
-Sem câmeras conectadas, a área de feed exibe uma tela inicial com a mensagem **“Conecte uma câmera para começar”**e dois botões:**Conectar Câmera**(verde, abre a caixa de diálogo de conexão de uma única câmera) e**Conectar Matriz** (azul, abre a caixa de diálogo de conexão da matriz). As próprias caixas de diálogo de conexão estão documentadas em [Conectando Câmeras](connecting.md); os conceitos da matriz (sincronização, camadas, largura de banda) em [Matrizes de múltiplas câmeras](arrays.md). Ao abrir um projeto salvo que contenha câmeras, a tela inicial exibe, em vez disso, um indicador de carregamento com a mensagem “Reabrindo N câmeras salvas…” enquanto o Chloros
-
-restaura os fluxos da última sessão.
+Sem câmeras conectadas, a área de feed exibe uma tela inicial com a mensagem **“Conecte uma câmera para começar”**e dois botões:**Conectar Câmera**(verde, abre a caixa de diálogo de conexão de uma única câmera) e**Conectar Matriz** (azul, abre a caixa de diálogo de conexão da matriz). As próprias caixas de diálogo de conexão estão documentadas em [Conectando Câmeras](connecting.md); os conceitos da matriz (sincronização, camadas, largura de banda) em [Matrizes de múltiplas câmeras](arrays.md). Ao abrir um projeto salvo que contenha câmeras, a tela inicial exibe, em vez disso, um indicador de carregamento com a mensagem “Reabrindo N câmeras salvas…” enquanto o Chloros restaura os fluxos da última sessão.
 
 <!-- SCREENSHOT-NEEDED: Cameras tab empty state — the "Connect a camera to get started" splash with the green Connect Camera and blue Connect Array buttons. -->
 
@@ -120,15 +88,11 @@ Abra clicando na **engrenagem** na linha de uma câmera. O painel desliza sobre 
 
 ### Histograma em tempo real
 
-Na parte superior do painel há um histograma de luminância em tempo real calculado a partir da pré-visualização em JPEG
-
-a ~8 Hz. A média é ponderada pelo método Bayer — (R+2G+B)/4 — para corresponder à medição de AE da própria câmera.
+Na parte superior do painel há um histograma de luminância em tempo real calculado a partir da pré-visualização em JPEG a ~8 Hz. A média é ponderada pelo método Bayer — (R+2G+B)/4 — para corresponder à medição de AE da própria câmera.
 
 * **Linha tracejada Orange**= a meta de AE. **Arraste-a horizontalmente para redefinir a meta** — um comando é enviado ao soltar, e o ato de arrastar alterna o modo de meta de AE para Manual.
 * **Linha contínua Green** = a média real de luma (o que o AE está fornecendo no momento).
-* **Botão RGB** (canto superior direito): alterna entre histogramas sobrepostos por banda, coloridos de acordo com o filtro da câmera (por exemplo, no FRGN: NIR
-
-cinza, verde, vermelho). Em câmeras mono (M3M), o botão exibe “MONO” e fica desativado — o modo mono sempre mostra o histograma de luminância de banda única.
+* **Botão RGB** (canto superior direito): alterna entre histogramas sobrepostos por banda, coloridos de acordo com o filtro da câmera (por exemplo, no FRGN: NIR cinza, verde, vermelho). Em câmeras mono (M3M), o botão exibe “MONO” e fica desativado — o modo mono sempre mostra o histograma de luminância de banda única.
 * Os rótulos do eixo X seguem a profundidade de bits do sensor do formato de pixel atual: 0..255, 0..1023, 0..4095 ou 0..65535.
 
 ### Linhas
@@ -140,52 +104,22 @@ de informações da câmera
 | Linha | Comportamento |
 | --- | --- |
 | **Modelo** | Somente leitura (por exemplo, `LATT-M3C-L87-FRGN`). |
-| **Calibração radiométrica** | Emblema Green**&quot;Ativo&quot;**com uma legenda mostrando o nível de calibração, o hash, a data da calibração e a lista de bandas, carregados a partir do pacote de calibração da câmera (consulte [Calibração radiométrica de fábrica](https://mapir.gitbook.io/lattice-camera/calibration/factory-radiometric-calibration)).**Ocultado para câmeras RGB
-
-** — elas possuem uma calibração fotométrica de balanço de branco, e não radiação por banda. |
-| **Relatório de calibração**| Botão**Baixar** — abre o PDF do certificado de calibração NIST específico para cada número de série da câmera no visualizador do seu sistema operacional. Se o certificado ainda não estiver armazenado em cache, o Chloros
-
-exibe uma dica. |
+| **Calibração radiométrica** | Emblema Green**"Ativo"**com uma legenda mostrando o nível de calibração, o hash, a data da calibração e a lista de bandas, carregados a partir do pacote de calibração da câmera (consulte [Calibração radiométrica de fábrica](https://mapir.gitbook.io/lattice-camera/calibration/factory-radiometric-calibration)).**Ocultado para câmeras RGB** — elas possuem uma calibração fotométrica de balanço de branco, e não radiação por banda. |
+| **Relatório de calibração**| Botão**Baixar** — abre o PDF do certificado de calibração NIST específico para cada número de série da câmera no visualizador do seu sistema operacional. Se o certificado ainda não estiver armazenado em cache, o Chloros exibe uma dica. |
 | **Número de série** | Somente leitura. |
 | **Firmware**| Mostra a versão atual e, em seguida, identifica a versão disponível para este modelo (armazenada em cache por modelo — um conjunto de N câmeras verifica o servidor uma única vez). Estados: “Verificando…” → botão**“Atualizar para X”**→ “Atualizando…” → “Atualizado de A para B” / “Falha: …” / “Ignorado: …” / verde**“Atualizado”**. Dica de ferramenta do botão de atualização: “Redefinição de fábrica + flash + reprogramação do UserSet1. ~2–3 minutos; não desconecte.” |
 | **IP** | Somente leitura. |
 | **Temperatura** | Somente leitura, atualizada a cada 3 s. Fica laranja a partir de ≥65 °C e vermelha com um ⚠ a partir de ≥75 °C. |
-| **Alvo de calibração** caixa de seleção | Ativa a detecção de alvo de refletância ArUco com uma tabela de validação NDVI
-
-por painel abaixo da transmissão ao vivo (visualização em lista) — consulte [A tabela de alvo de calibração](#the-calibration-target-table). Apenas para a sessão — abre sempre desativada. |
+| **Alvo de calibração** caixa de seleção | Ativa a detecção de alvo de refletância ArUco com uma tabela de validação NDVI por painel abaixo da transmissão ao vivo (visualização em lista) — consulte [A tabela de alvo de calibração](#the-calibration-target-table). Apenas para a sessão — abre sempre desativada. |
 | Menu suspenso **Sensor de luz** | Vincula um sensor de luz DAQ (DAQ-E/M/U, da lista da aba Sensores de luz) a esta câmera para correção de iluminação de luz descendente (DLS) e exposição automática preditiva. ““Nenhum” cancela a vinculação. Se nenhum sensor estiver conectado, o menu suspenso exibe “(nenhum sensor conectado — abra a aba DAQ)”. A vinculação é salva com o projeto. |
 
 #### A tabela Alvo de Calibração
 
 A tabela é uma **leitura apenas para validação** (“apenas validação — não modifica a calibração”). Seu cabeçalho indica o número de série da câmera, o filtro, o número do alvo e o tamanho do marcador em pixels, e possui uma linha por painel:
 
-* **Painel**, seguido de uma coluna por banda com o valor do painel — uma câmera Bayer exibe suas três bandas por nome e comprimento de onda (por exemplo, FRGN: Red
-
-ro 660 nm / Green
-
-550 nm / NIR
-
-850 nm); uma **câmera mono (M3M) exibe sua única banda** (por exemplo, `F750`) e não possui colunas de NDVI
-
-.
+* **Painel**, seguido de uma coluna por banda com o valor do painel — uma câmera Bayer exibe suas três bandas por nome e comprimento de onda (por exemplo, FRGN: Red 660 nm / Green 550 nm / NIR 850 nm); uma **câmera mono (M3M) exibe sua única banda** (por exemplo, `F750`) e não possui colunas de NDVI.
 * **Sat** — a proporção de pixels do painel que estão saturados (âmbar a partir de 1 %, vermelho a partir de 5 %).
-* **NDVI
-
-Medido**,**NDVI
-
-Teórico** (o NDVI
-
-de refletância de referência do painel) e **Δ**— apenas para câmeras multiespectrais Bayer. Uma pequena marca após “NDVI
-
-Medido” indica a partir de que o NDVI
-
-medido foi calculado:**ρ**(refletância — há leitura disponível do sensor de luz),**L**(radianância — sem leitura do sensor de luz) ou**DN** (valores brutos da câmera). Apenas um NDVI**ρ** é comparável ao NDVI
-
-Teórico: para L e DN, a coluna Δ fica desativada e uma nota indica isso (“Sem leitura do sensor de luz: o NDVI
-
-é derivado da radianância, portanto Δ não é uma verificação de calibração” / “O NDVI
-
-é derivado dos valores brutos da câmera, portanto Δ não é uma verificação de calibração”). Com ρ, Δ fica verde abaixo de 0,02, âmbar abaixo de 0,05 e vermelho nos demais casos.
+* **NDVI Medido**,**NDVI Teórico** (o NDVI de refletância de referência do painel) e **Δ**— apenas para câmeras multiespectrais Bayer. Uma pequena marca após “NDVI Medido” indica a partir de que o NDVI medido foi calculado:**ρ**(refletância — há leitura disponível do sensor de luz),**L**(radianância — sem leitura do sensor de luz) ou**DN** (valores brutos da câmera). Apenas um NDVI**ρ** é comparável ao NDVI Teórico: para L e DN, a coluna Δ fica desativada e uma nota indica isso (“Sem leitura do sensor de luz: o NDVI é derivado da radianância, portanto Δ não é uma verificação de calibração” / “O NDVI é derivado dos valores brutos da câmera, portanto Δ não é uma verificação de calibração”). Com ρ, Δ fica verde abaixo de 0,02, âmbar abaixo de 0,05 e vermelho nos demais casos.
 
 <!-- SCREENSHOT-NEEDED: a 1.3.0 Calibration Target table under a live feed in list view — a Bayer camera's table showing the band columns, Sat, and "NDVI Meas ρ" / NDVI Theo / Δ; ideally next to a mono camera's single-band table with no NDVI columns. -->
 
@@ -206,21 +140,11 @@ Todas as entradas numéricas aqui usam controles giratórios do tipo “manter p
 | **Proteção de realces** | Rigorosa (1 %) / Normal (5 %) / Flexível (15 %) | Rigorosa | Câmeras que expõem a configuração | Quanto do quadro pode ficar clipeado em branco antes que o AE escureça a imagem. |
 
 {% hint style="info" %}
-**Requisito de iluminação para câmeras multiespectrais Bayer (RGN
-
-/ OCN
-
-/ NGB
-
-):** a cena deve ter luz suficiente nos três canais; caso contrário, a calibração não funcionará corretamente — uma única exposição do sensor abrange todos os três espectros. Use um sensor de luz DAQ para medir a iluminação ou opte pelo modo totalmente monocromático (M3M) para que cada banda receba sua própria exposição. Se uma captura violar essa regra, o Chloros
-
-detecta isso e avisa você (a notificação de limitação da separação de canais). Em tempo real, um bloco de divisão de canais exibe **“Dados da banda com baixa confiança · N%”** quando o unmix limitou essa banda em 25% ou mais de seus pixels.
+**Requisito de iluminação para câmeras multiespectrais Bayer (RGN / OCN / NGB):** a cena deve ter luz suficiente nos três canais; caso contrário, a calibração não funcionará corretamente — uma única exposição do sensor abrange todos os três espectros. Use um sensor de luz DAQ para medir a iluminação ou opte pelo modo totalmente monocromático (M3M) para que cada banda receba sua própria exposição. Se uma captura violar essa regra, o Chloros detecta isso e avisa você (a notificação de limitação da separação de canais). Em tempo real, um bloco de divisão de canais exibe **“Dados da banda com baixa confiança · N%”** quando o unmix limitou essa banda em 25% ou mais de seus pixels.
 {% endhint %}
 
 {% hint style="info" %}
-**Como a exposição automática distribui a exposição e o ganho (1.3.0).** Com o ganho em “Auto”, o Chloros
-
-mantém o ganho em 0 dB até que a exposição atinja o valor máximo permitido (o limite superior da AE, o período de disparo de uma matriz ou o teto de exposição do DAQ); somente então o ganho aumenta. Em uma matriz, a taxa de disparo tem prioridade: a exposição automática preenche o período determinado pela taxae, em seguida, aumenta o ganho; assim, uma cena que escurece não reduz mais a taxa de disparo automática (na versão 1.2.0 isso acontecia). Uma exposição **manual**em um membro da matriz com duração superior ao período de disparo desacelera o disparo da matriz para se adequar a ela; a taxa automática é restabelecida assim que todos os membros que a retardaram voltarem à exposição automática. Com**Exposição**e**Brilho-alvo da AE** ambos em Automático e um sensor de luz DAQ fornecendo uma leitura, a exposição de cada câmera é mantida assim que a exposição automática se estabilizar, desde que a luz medida permaneça dentro de cerca de ±25 %; uma variação de luz maior e sustentada, uma reinicialização das configurações (por exemplo, uma alteração na ROI) ou uma alteração de exposição feita por você reativa o sistema.
+**Como a exposição automática distribui a exposição e o ganho (1.3.0).** Com o ganho em “Auto”, o Chloros mantém o ganho em 0 dB até que a exposição atinja o valor máximo permitido (o limite superior da AE, o período de disparo de uma matriz ou o teto de exposição do DAQ); somente então o ganho aumenta. Em uma matriz, a taxa de disparo tem prioridade: a exposição automática preenche o período determinado pela taxae, em seguida, aumenta o ganho; assim, uma cena que escurece não reduz mais a taxa de disparo automática (na versão 1.2.0 isso acontecia). Uma exposição **manual**em um membro da matriz com duração superior ao período de disparo desacelera o disparo da matriz para se adequar a ela; a taxa automática é restabelecida assim que todos os membros que a retardaram voltarem à exposição automática. Com**Exposição**e**Brilho-alvo da AE** ambos em Automático e um sensor de luz DAQ fornecendo uma leitura, a exposição de cada câmera é mantida assim que a exposição automática se estabilizar, desde que a luz medida permaneça dentro de cerca de ±25 %; uma variação de luz maior e sustentada, uma reinicialização das configurações (por exemplo, uma alteração na ROI) ou uma alteração de exposição feita por você reativa o sistema.
 {% endhint %}
 
 {% hint style="info" %}
@@ -261,34 +185,18 @@ Tudo nesta seção é **apenas para exibição**— altera o que você vê na tr
 | --- | --- | --- | --- | --- |
 | **Resolução de renderização** | 360p (mais rápida) / 480p / 720p / 1080p / Resolução nativa do sensor (mais lenta) | 720p | Todos | A altura na qual o backend executa a cadeia de pré-visualização radiométrica. Um valor menor aumenta a taxa de quadros sem alterar o campo de visão. |
 | **Índice**| Caixa de seleção “Ativar” + engrenagem | Desativado | Apenas multiespectral Bayer,**não** membros de matriz combinada | Pré-visualização ao vivo do índice de vegetação. A engrenagem abre a [Calculadora de Índice](#index-calculator-pane) compartilhada, pré-carregada com as bandas naturais do filtro da câmera (por exemplo, `Red_660_RGN`, `Green_550_RGN`, `NIR_850_RGN`). A expressão personalizada mais a LUT (ligado/desligado, nível padrão de 7 stops, mínimo padrão de 0,2, máximo padrão de 1) é calculada em cada quadro de pré-visualização. Os membros da matriz combinada ocultam esta linha — a matriz possui um único índice compartilhado. |
-| **Equilíbrio de Brancos** | Desligado / Uma vez / Contínuo + um botão de recaptura | Contínuo | Somente RGB
-
-| Equilíbrio de branco em tempo real. O botão de atualização recaptura o equilíbrio de branco a partir do espectro DLS atual (desativado quando o modo está Desligado). |
-| **Gama** | Ligado / Desligado | Ligado | Somente RGB
-
-| Exibe a gama (γ = 2,2 LUT) na pré-visualização ao vivo. As capturas salvas permanecem lineares. |
+| **Equilíbrio de Brancos** | Desligado / Uma vez / Contínuo + um botão de recaptura | Contínuo | Somente RGB | Equilíbrio de branco em tempo real. O botão de atualização recaptura o equilíbrio de branco a partir do espectro DLS atual (desativado quando o modo está Desligado). |
+| **Gama** | Ligado / Desligado | Ligado | Somente RGB | Exibe a gama (γ = 2,2 LUT) na pré-visualização ao vivo. As capturas salvas permanecem lineares. |
 | **Redução de ruído** | Caixa de seleção + intensidade 0–100 | Desligado / 50 | Todos (por câmera, mesmo dentro de matrizes) | Filtro bilateral na visualização ao vivo. Valor mais alto = detalhes mais suaves, mas menos nítidos. |
 | **Nitidez** | Caixa de seleção + intensidade 0–100 | Desligado / 30 | Todos | Máscara de nitidez na visualização ao vivo, aplicada por último. Pode amplificar o ruído. Apenas na visualização. |
 | **Vinheta**| Caixa de seleção + intensidade 0–100 | Desativado / 0 | Todas | Remoção manual de vinheta residual (clareia os cantos), sobreposta à estimativa de Vinheta Inteligente da matriz.**Radiométrico — afeta a visualização ao vivo E as exportações**, ao contrário de Redução de ruído/Nitidez. |
-| **Perfil de cor** | Raw / Linear / Natural / Aprimorado / Temperatura personalizada | Natural | Apenas RGB
-
-| Veja abaixo. |
-| **Temperatura de cor** | 2.000–10.000 K, intervalo de 100 | 5.500 K | Apenas RGB
-
-e perfil de temperatura personalizada | Fixa o equilíbrio de branco em uma temperatura de cor correlacionada fixa (a entrada DLS é ignorada). O último valor em Kelvin selecionado é lembrado mesmo ao alternar entre perfis. |
-| **Destaques** | −100 a 0, em incrementos de 1 | 0 (desativado) | Somente RGB
-
-| Novidade na versão 1.3.0. Escurece as áreas mais claras e brancas da imagem (0 = inalterado, −100 = intensidade máxima). Aplica-se à visualização ao vivo **e às capturas no nível da tela (Pré-visualização)**, que registram a configuração (`Chloros:DisplayHighlights`); as exportações de radiação e refletância nunca são afetadas. Não é possível recuperar dados do sensor que sofreram clipping — reduza a exposição para isso. A sobreposição zebra acompanha a imagem escurecida. Desativado com o perfil de cor Raw (“Não aplicado com o perfil de cor Raw.”). |
-| **Saturação** | 0–200 (100 = neutro) | 100 | Somente RGB
-
-| Saturação HSV na pré-visualização ao vivo. |
-| **Contraste** | 0–200 (100 = neutro) | 100 | Somente RGB
-
-| Contraste linear em torno do cinza médio na visualização ao vivo. |
+| **Perfil de cor** | Raw / Linear / Natural / Aprimorado / Temperatura personalizada | Natural | Apenas RGB | Veja abaixo. |
+| **Temperatura de cor** | 2.000–10.000 K, intervalo de 100 | 5.500 K | Apenas RGB e perfil de temperatura personalizada | Fixa o equilíbrio de branco em uma temperatura de cor correlacionada fixa (a entrada DLS é ignorada). O último valor em Kelvin selecionado é lembrado mesmo ao alternar entre perfis. |
+| **Destaques** | −100 a 0, em incrementos de 1 | 0 (desativado) | Somente RGB | Novidade na versão 1.3.0. Escurece as áreas mais claras e brancas da imagem (0 = inalterado, −100 = intensidade máxima). Aplica-se à visualização ao vivo **e às capturas no nível da tela (Pré-visualização)**, que registram a configuração (`Chloros:DisplayHighlights`); as exportações de radiação e refletância nunca são afetadas. Não é possível recuperar dados do sensor que sofreram clipping — reduza a exposição para isso. A sobreposição zebra acompanha a imagem escurecida. Desativado com o perfil de cor Raw (“Não aplicado com o perfil de cor Raw.”). |
+| **Saturação** | 0–200 (100 = neutro) | 100 | Somente RGB | Saturação HSV na pré-visualização ao vivo. |
+| **Contraste** | 0–200 (100 = neutro) | 100 | Somente RGB | Contraste linear em torno do cinza médio na visualização ao vivo. |
 | **Espelhar H / Espelhar V** | Caixas de seleção | Desativado | Todas | Inverte a visualização na horizontal / na vertical. |
-| **Rotação**| 0° / 90° / 180° / 270° | 0° | Todas | Gira a visualização. A orientação é aplicada no final da cadeia de pré-visualização do backend.**Capturas salvas (1.3.0):**os produtos Pré-visualização, Radiação, Refletância e Índice de uma câmera autônoma são girados por Espelhamento/Rotação, enquanto**os arquivos Raw e Debayered permanecem na orientação nativa da câmera**; cada arquivo de captura registra a configuração em seu XMP, de modo que o processamento posterior de um arquivo raw a aplica da mesma forma.**Os arquivos membros da matriz permanecem na orientação nativa** (a configuração é registrada, não aplicada), e as visualizações compostas da matriz a ignoram. |**Semântica dos perfis de cor** (câmeras RGB
-
-):
+| **Rotação**| 0° / 90° / 180° / 270° | 0° | Todas | Gira a visualização. A orientação é aplicada no final da cadeia de pré-visualização do backend.**Capturas salvas (1.3.0):**os produtos Pré-visualização, Radiação, Refletância e Índice de uma câmera autônoma são girados por Espelhamento/Rotação, enquanto**os arquivos Raw e Debayered permanecem na orientação nativa da câmera**; cada arquivo de captura registra a configuração em seu XMP, de modo que o processamento posterior de um arquivo raw a aplica da mesma forma.**Os arquivos membros da matriz permanecem na orientação nativa** (a configuração é registrada, não aplicada), e as visualizações compostas da matriz a ignoram. |**Semântica dos perfis de cor** (câmeras RGB):
 
 * **Raw** — ignora completamente a cadeia de processamento.
 * **Linear** — sinal escuro + campo plano + balanço de branco; sem matriz de cor, sem gama.
@@ -313,20 +221,12 @@ Elas são exclusivas do front-end — são sobrepostas ao vídeo, sem nunca afet
 | **Grade** | Desativado / 3 × 3 / 9 × 9 | Desativado | Grade de composição. |
 | **Histograma** | Caixa de seleção + largura de 0,10–0,90 do quadro | Desativado / 0,25 | Uma faixa de histograma no feed. |
 | **Pico de foco** | Caixa de seleção + limite 20–200 + amostra de cor | Desativado / 80 / `#ff5722` | Destaque de bordas Sobel para foco. |
-| **Divisões de canal** | &quot;Mostrar divisões (Red
-
-/ Green
-
-/ NIR
-
-)&quot; / botão “Ocultar divisões” | Oculto | Adiciona três blocos independentes em escala de cinza, um por canal, ao lado da imagem composta (o rótulo do botão segue os canais de filtro da câmera). Cada bloco dividido pode ser arrastado e compartilha a cor da borda da câmera. Não disponível em câmeras monocromáticas. Salvo com o projeto. |
+| **Divisões de canal** | "Mostrar divisões (Red / Green / NIR)" / botão “Ocultar divisões” | Oculto | Adiciona três blocos independentes em escala de cinza, um por canal, ao lado da imagem composta (o rótulo do botão segue os canais de filtro da câmera). Cada bloco dividido pode ser arrastado e compartilha a cor da borda da câmera. Não disponível em câmeras monocromáticas. Salvo com o projeto. |
 
 ### Medidor pontual
 
 * **Caixa de seleção “Clique para amostrar”**: clique na imagem ao vivo para amostrar um único pixel (uma cruz marca o ponto), ou clique e arraste uma região para obter uma média de pixels.**Limpar**apaga a amostra e a cruz. É mutuamente exclusivo com o modo**Aim** do AE-ROI.
-* **Menu suspenso**Mostrar**:**Raw (profundidade de bits)**— valores digitais nativos na profundidade de bits do sensor (por exemplo, 12 bits → 0..4095) — ou**Exibição (8 bits)** (padrão). Quando um índice em tempo real está ativo, a opção Exibição mostra o valor do índice calculado (por exemplo, NDVI
-
-) em vez disso.
+* **Menu suspenso**Mostrar**:**Raw (profundidade de bits)**— valores digitais nativos na profundidade de bits do sensor (por exemplo, 12 bits → 0..4095) — ou**Exibição (8 bits)** (padrão). Quando um índice em tempo real está ativo, a opção Exibição mostra o valor do índice calculado (por exemplo, NDVI) em vez disso.
 * O painel de leitura lista coordenadas de pixels, tamanho do quadro, formato de pixel, profundidade de bits e uma tabela de canais (Canal / Valor / %) com rótulos de banda e comprimentos de onda; os pares verdes do Bayer são calculados como média; as amostras da região exibem “Média de N px”.
 
 O estado do medidor pontual é válido apenas para a sessão.
@@ -348,18 +248,10 @@ Esta seção só aparece quando **pelo menos um sensor de luz DAQ estiver conect
 | **Refletância da cena**| Botão**Recalibrar ρ** | — | Reestima o fator de refletância da cena usado pelo solucionador. |
 
 {% hint style="info" %}
-**A conexão em matriz desativa a AE preditiva por padrão** — para matrizes, a AE inteligente do Chloros
-
-, juntamente com a exposição automática do lado da câmera, controla a exposição (com proteção contra saturação), e a estimativa de refletância de cena única da AE preditivanão é segura em cenas mistas. Você pode reativá-la por câmera aqui se desejar especificamente uma exposição radiométrica orientada por DLS.
+**A conexão em matriz desativa a AE preditiva por padrão** — para matrizes, a AE inteligente do Chloros, juntamente com a exposição automática do lado da câmera, controla a exposição (com proteção contra saturação), e a estimativa de refletância de cena única da AE preditivanão é segura em cenas mistas. Você pode reativá-la por câmera aqui se desejar especificamente uma exposição radiométrica orientada por DLS.
 {% endhint %}
 
-**Limite máximo de exposição orientado por DAQ e AE fixada na luz incidente.** Independentemente da caixa de seleção acima, quando um sensor de luz DAQ é atribuído a uma câmera RGB
-
-, o Chloros
-
-calcula — a partir da irradiância descendente absoluta medida — a exposição máxima × ganho na qual uma superfície com 100% de refletância permanece abaixo do clipping e aplica isso como um **limite**na exposição automática. Desde a versão 1.3.0, o limite se aplica apenas enquanto um alvo de calibração estiver no campo de visão daquela câmera (visível em seu quadro nos últimos 10 s); sem nenhum alvo no campo de visão, a exposição automática normal da câmera, com sua própria proteção contra realces, é acionada, de modo que o restante da cena não fique mais escuro do que o necessário. Enquanto o limite máximo estiver ativo, a câmera fica**fixada na luz incidente**: ela opera em malha aberta com a exposição medida pela luz incidente e ganho em 0 dB — a exposição segue a luz medida, não o conteúdo da cena. Como o limite máximo só pode reduzir a exposição, ele não pode, por si só, causar clipping. Desde a versão 1.3.0, o limite máximo é calculado com a constante de exposição da própria câmera, proveniente de seu pacote de calibração (um valor médio da frota apenas quando o pacote não contém um). O limite máximo é desativado automaticamente — e a exposição automática (AE) normal da cena é retomada — sempre que nenhum alvo de calibração estiver no campo de visão, a leitura do DAQ estiver ausente, desatualizada (&gt;30 s), ou escura, ou se ≥15 % do quadro sofrer clipping na exposição fixada (o que significa que o sensor e a câmera estão captando iluminação diferente). Não há opção na interface gráfica; esse é o comportamento padrão sempre que uma câmera RGB
-
-tem um DAQ vinculado.
+**Limite máximo de exposição orientado por DAQ e AE fixada na luz incidente.** Independentemente da caixa de seleção acima, quando um sensor de luz DAQ é atribuído a uma câmera RGB, o Chloros calcula — a partir da irradiância descendente absoluta medida — a exposição máxima × ganho na qual uma superfície com 100% de refletância permanece abaixo do clipping e aplica isso como um **limite**na exposição automática. Desde a versão 1.3.0, o limite se aplica apenas enquanto um alvo de calibração estiver no campo de visão daquela câmera (visível em seu quadro nos últimos 10 s); sem nenhum alvo no campo de visão, a exposição automática normal da câmera, com sua própria proteção contra realces, é acionada, de modo que o restante da cena não fique mais escuro do que o necessário. Enquanto o limite máximo estiver ativo, a câmera fica**fixada na luz incidente**: ela opera em malha aberta com a exposição medida pela luz incidente e ganho em 0 dB — a exposição segue a luz medida, não o conteúdo da cena. Como o limite máximo só pode reduzir a exposição, ele não pode, por si só, causar clipping. Desde a versão 1.3.0, o limite máximo é calculado com a constante de exposição da própria câmera, proveniente de seu pacote de calibração (um valor médio da frota apenas quando o pacote não contém um). O limite máximo é desativado automaticamente — e a exposição automática (AE) normal da cena é retomada — sempre que nenhum alvo de calibração estiver no campo de visão, a leitura do DAQ estiver ausente, desatualizada (>30 s), ou escura, ou se ≥15 % do quadro sofrer clipping na exposição fixada (o que significa que o sensor e a câmera estão captando iluminação diferente). Não há opção na interface gráfica; esse é o comportamento padrão sempre que uma câmera RGB tem um DAQ vinculado.
 
 ### Aquisição e Acionamento
 
@@ -409,11 +301,7 @@ Exibido tanto para matrizes combinadas quanto separadas:
 
 Seu próprio grupo logo após o Sensor de Luz Ambiente, tanto para matrizes combinadas quanto separadas:
 
-* Caixa de seleção **Ativar** — “Detectar alvo ArUco do MAPIR
-
-e validar NDVI
-
-versus LUT de refletância do painel”; controla a sobreposição do alvo e as tabelas de validação do bloco combinado. Em uma matriz **separada**, ela ativa a [tabela de alvo de calibração](#the-calibration-target-table) de cada membro (uma por linha de câmera na visualização em lista).
+* Caixa de seleção **Ativar** — “Detectar alvo ArUco do MAPIR e validar NDVI versus LUT de refletância do painel”; controla a sobreposição do alvo e as tabelas de validação do bloco combinado. Em uma matriz **separada**, ela ativa a [tabela de alvo de calibração](#the-calibration-target-table) de cada membro (uma por linha de câmera na visualização em lista).
 
 ### Captura — configurações uniformes do sensor
 

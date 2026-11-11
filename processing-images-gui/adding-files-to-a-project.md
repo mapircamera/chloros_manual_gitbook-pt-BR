@@ -26,10 +26,10 @@ Existem duas maneiras principais de adicionar imagens ao seu projeto:
 
 Use esta opção para importar arquivos de imagem individuais ou uma pequena seleção de arquivos.
 
-1. Clique no botão **&quot;Adicionar arquivos&quot;** <img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> na parte superior do painel Navegador de arquivos
+1. Clique no botão **"Adicionar arquivos"** <img src="../.gitbook/assets/image (3).png" alt="" data-size="line"> na parte superior do painel Navegador de arquivos
 2. Navegue até a pasta que contém suas imagens
 3. Selecione um ou mais arquivos de imagem (mantenha pressionada a tecla **Ctrl** para selecionar vários arquivos)
-4. Clique em **&quot;Abrir&quot;** para importar os arquivos selecionados
+4. Clique em **"Abrir"** para importar os arquivos selecionados
 
 ### Método 2: Adicionar pasta
 

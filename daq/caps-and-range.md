@@ -1,10 +1,8 @@
 # Perfis das tampas e faixa calibrada
 
-> As próprias tampas — quais são fornecidas com quais sensores, como são montadas e seu comportamento óptico — estão documentadas no **[manual do usuário do DAQ](https://mapir.gitbook.io/daq)**. Esta página aborda a *declaração* da tampa instalada ao Chloros
-, o que garante que a correção seja feita corretamente.
+> As próprias tampas — quais são fornecidas com quais sensores, como são montadas e seu comportamento óptico — estão documentadas no **[manual do usuário do DAQ](https://mapir.gitbook.io/daq)**. Esta página aborda a *declaração* da tampa instalada ao Chloros, o que garante que a correção seja feita corretamente.
 
-A calibração radiométrica de fábrica de cada sensor de luz do DAQ descreve o sensor *nu*. A tampa física instalada sobre o difusor altera a luz que o sensor capta; por isso, o Chloros
-aplica um **perfil de correção da tampa** medido na fábrica sobre o pacote de calibração. Declarar a tampa correta faz parte do processo de obtenção de dados calibrados — esta página aborda quais tampas existem por modelo, como declará-las e qual é, de fato, a faixa espectral calibrada do sensor.
+A calibração radiométrica de fábrica de cada sensor de luz do DAQ descreve o sensor *nu*. A tampa física instalada sobre o difusor altera a luz que o sensor capta; por isso, o Chloros aplica um **perfil de correção da tampa** medido na fábrica sobre o pacote de calibração. Declarar a tampa correta faz parte do processo de obtenção de dados calibrados — esta página aborda quais tampas existem por modelo, como declará-las e qual é, de fato, a faixa espectral calibrada do sensor.
 
 ## Disponibilidade de tampas por modelo
 
@@ -50,30 +48,22 @@ chloros-cli daq pool-connect --eth-host daq-e-def330.local --cap-id sunshine_cos
 chloros-cli daq pool-set-cap --sensor-id daq-e-def330 --cap-id fov_45
 ```
 
-A CLI
-aceita sintaticamente a lista completa `cap_id` (`{none, fov_15, fov_30, fov_45, fov_60, fov_90, sunshine_cosine}`); cada perfil é validado em relação ao modelo do sensor no momento da conexão; portanto, um ID de cap inválido (por exemplo, um ID exclusivo do E em um DAQ-U) resulta em uma falha com um erro claro, em vez de uma correção incorreta. O padrão do backend, quando nada é passado, é `sunshine_cosine`.
+A CLI aceita sintaticamente a lista completa `cap_id` (`{none, fov_15, fov_30, fov_45, fov_60, fov_90, sunshine_cosine}`); cada perfil é validado em relação ao modelo do sensor no momento da conexão; portanto, um ID de cap inválido (por exemplo, um ID exclusivo do E em um DAQ-U) resulta em uma falha com um erro claro, em vez de uma correção incorreta. O padrão do backend, quando nada é passado, é `sunshine_cosine`.
 
-Python
-SDK
-: nomeie o cap no momento da conexão com `connect_daq_sensor(cap_id="sunshine_cosine")` ou troque-o em tempo de execução com `DAQSensorSession.set_cap("fov_45")`; consulte a [Referência do SDK
-](../reference/sdk-reference.md#daq-sensor-sessions).
+Python SDK: nomeie o cap no momento da conexão com `connect_daq_sensor(cap_id="sunshine_cosine")` ou troque-o em tempo de execução com `DAQSensorSession.set_cap("fov_45")`; consulte a [Referência do SDK](../reference/sdk-reference.md#daq-sensor-sessions).
 
-Avançado: os perfis são fornecidos na instalação do Chloros
-em `daq/cap_profiles/<u|m|e>/<cap_id>.json` e podem ser substituídos por usuário em `~/.chloros/daq_cap_profiles/<u|m|e>/<cap_id>.json`.
+Avançado: os perfis são fornecidos na instalação do Chloros em `daq/cap_profiles/<u|m|e>/<cap_id>.json` e podem ser substituídos por usuário em `~/.chloros/daq_cap_profiles/<u|m|e>/<cap_id>.json`.
 
 Independentemente dos limites, os sensores que nunca foram recalibrados recebem automaticamente um pequeno ajuste de desvio de escuro derivado da frota — sem necessidade de ação do usuário.
 
 ## DAQ-E-S: difusor fixo e inclinação
 
-O **DAQ-E-S** é um DAQ-E com duas diferenças importantes para o Chloros
-. Todo o restante (detecção, conexão, PTP, gravação, configurações do dispositivo) funciona exatamente como em um DAQ-E.
+O **DAQ-E-S** é um DAQ-E com duas diferenças importantes para o Chloros. Todo o restante (detecção, conexão, PTP, gravação, configurações do dispositivo) funciona exatamente como em um DAQ-E.
 
-* **Seu difusor é permanente, portanto não requer correção de tampa.** O difusor já estava na unidade quando sua calibração de fábrica foi medida; portanto, essa calibração já indica a irradiância descendente real. O Chloros
-não aplica nenhum perfil de limite a ele, independentemente do que for solicitado: um limite nomeado para ele é ignorado com uma mensagem, seus registros indicam que o limite veio do modelo e o aviso de limite presumido nunca é acionado para ele. Em Configurações do Projeto → Sensor de Luz DAQ, sua linha não exibe nenhum limite, e a substituição de limite para todo o projeto não se aplica a ele. Não aplique um limite aos seus dados manualmente: a correção Sunshine resultante apresentaria um valor cerca de 11 vezes maior.
+* **Seu difusor é permanente, portanto não requer correção de tampa.** O difusor já estava na unidade quando sua calibração de fábrica foi medida; portanto, essa calibração já indica a irradiância descendente real. O Chloros não aplica nenhum perfil de limite a ele, independentemente do que for solicitado: um limite nomeado para ele é ignorado com uma mensagem, seus registros indicam que o limite veio do modelo e o aviso de limite presumido nunca é acionado para ele. Em Configurações do Projeto → Sensor de Luz DAQ, sua linha não exibe nenhum limite, e a substituição de limite para todo o projeto não se aplica a ele. Não aplique um limite aos seus dados manualmente: a correção Sunshine resultante apresentaria um valor cerca de 11 vezes maior.
 * **Ele possui um acelerômetro de 3 eixos.** A resposta cosseno do difusor só é válida enquanto ele estiver nivelado; portanto, um sensor inclinado relata uma irradiância incorreta sem apresentar nenhum outro sintoma. Cada leitura do DAQ-E-S, portanto, contém seus dados de inclinação, rotação e inclinação longitudinal, e um `.daq` registrado a partir de um deles os armazena ao lado de cada espectro (`imu_tilt_deg`, `imu_roll_deg`, `imu_pitch_deg`, …), permitindo distinguir uma nuvem de uma montagem deslocada.
 
-Para cada campo de atitude e para saber como uma falha no fluxo de atitude é relatada, consulte [DAQ-E-S na Referência da CLI
-](../reference/cli-reference.md#daq-e-s--fixed-diffuser-and-tilt-sensor).
+Para cada campo de atitude e para saber como uma falha no fluxo de atitude é relatada, consulte [DAQ-E-S na Referência da CLI](../reference/cli-reference.md#daq-e-s--fixed-diffuser-and-tilt-sensor).
 
 ## Desempenho do Sunshine Cap (configuração para uso ao ar livre)
 
@@ -97,7 +87,6 @@ Para qualquer valor de irradiação quantitativa — incluindo referências de r
 | Amostragem espectral | 340–1010 nm em intervalos de 5 nm (135 pontos) |
 | Faixa calibrada radiometricamente | **~374–974 nm** (imposta pelo software) |
 
-O sensor reporta a grade completa de 340–1010 nm, mas o ganho radiométrico rastreável ao NIST abrange ~374–974 nm. O Chloros
-**recusa a divisão de refletância absoluta** para qualquer banda da câmera com menos da metade de seu peso espectral dentro desse intervalo, relatando o motivo de omissão `dls-uncalibrated-band-<nm>` em vez de produzir um resultado não calibrado. Entre os SKUs de câmeras disponíveis para envio, apenas o filtro F988 fica fora desse intervalo; ele utiliza, em vez disso, o fluxo de trabalho com painel de refletância — consulte [Fluxos de Trabalho de Refletância](reflectance.md).
+O sensor reporta a grade completa de 340–1010 nm, mas o ganho radiométrico rastreável ao NIST abrange ~374–974 nm. O Chloros **recusa a divisão de refletância absoluta** para qualquer banda da câmera com menos da metade de seu peso espectral dentro desse intervalo, relatando o motivo de omissão `dls-uncalibrated-band-<nm>` em vez de produzir um resultado não calibrado. Entre os SKUs de câmeras disponíveis para envio, apenas o filtro F988 fica fora desse intervalo; ele utiliza, em vez disso, o fluxo de trabalho com painel de refletância — consulte [Fluxos de Trabalho de Refletância](reflectance.md).
 
 Para modelos de sensores, transportes e IDs de sensores, consulte a [visão geral do DAQ](README.md). Para saber como o carimbo de limite é consumido durante o processamento, consulte [Gravação e o formato .daq](recording.md).

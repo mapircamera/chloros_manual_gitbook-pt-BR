@@ -62,7 +62,7 @@ Chloros opera em dois modos de processamento diferentes, dependendo da sua licen
 2. **Processamento** — Aplicação da calibração e exportação das imagens**Tempo de processamento:**
 
 * Muito mais lento do que o modo paralelo do Chloros+
-* Adequado para conjuntos de dados pequenos a médios (&lt; 200 imagens)
+* Adequado para conjuntos de dados pequenos a médios (< 200 imagens)
 
 ### Modo Chloros+ (Processamento Paralelo)
 
@@ -305,7 +305,7 @@ Consulte [a Referência da CLI](../reference/cli-reference.md#a-run-that-writes-
 **Soluções:**
 
 1. Mantenha os projetos em uma pasta com nome mais curto — altere o**Diretório de Trabalho** em [Configurações do Projeto](../project-settings/project-settings.md) e crie o projeto novamente, ou
-2. Ative os caminhos longos do Windows e reinicie o Chloros: execute novamente o instalador do Chloros com a opção **Ativar caminhos longos do Windows** marcada (ela vem marcada por padrão), ou use a Política de Grupo: *Configuração do Computador &gt; Modelos Administrativos &gt; Sistema &gt; Sistema de Arquivos &gt; Ativar caminhos longos do Win32*.
+2. Ative os caminhos longos do Windows e reinicie o Chloros: execute novamente o instalador do Chloros com a opção **Ativar caminhos longos do Windows** marcada (ela vem marcada por padrão), ou use a Política de Grupo: *Configuração do Computador > Modelos Administrativos > Sistema > Sistema de Arquivos > Ativar caminhos longos do Win32*.
 
 ### Aviso “Nenhum alvo detectado”
 

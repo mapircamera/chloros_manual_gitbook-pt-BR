@@ -27,15 +27,9 @@ Sim. O Chloros 1.3.0 oferece suporte completo aos módulos de câmera LATTICE M3
 
 <summary>Posso calibrar minhas imagens para refletância sem um alvo de calibração?</summary>
 
-**Survey3
+**Survey3:** Não. Sem uma imagem do alvo de calibração capturada ao mesmo tempo em que as imagens sem alvo são capturadas, você não conseguirá relacionar os valores dos pixels da imagem a uma porcentagem conhecida de refletância. Se você também não incluir o registro de um sensor de luz MAPIR, o espectro da luz ambiente não será medido e os resultados de refletância não serão precisos.
 
-:** Não. Sem uma imagem do alvo de calibração capturada ao mesmo tempo em que as imagens sem alvo são capturadas, você não conseguirá relacionar os valores dos pixels da imagem a uma porcentagem conhecida de refletância. Se você também não incluir o registro de um sensor de luz MAPIR
-
-, o espectro da luz ambiente não será medido e os resultados de refletância não serão precisos.
-
-**LATTICE:** Sim. A refletância pode ser referenciada à irradiância descendente medida por um sensor de luz DAQ em vez de um painel (ρ = π·L/E). Quando um alvo dentro do quadro aprovado no controle de qualidade *está* presente, ele se torna a referência absoluta por padrão (`--reflectance-source auto`), a menos que seja aprovado com um sinalizador; nesse caso, o alvo e as cadeias do DAQ competem pela pontuação medida. Uma exceção: “A refletância F988 é calibrada usando um painel de refletância na cena: a banda está além da faixa calibrada do sensor de luz do DAQ, portanto, o Chloros
-
-aplica sua captura mais recente do painel e a mantém entre as observações do painel.” Consulte [Alvos de calibração](calibration-targets.md).
+**LATTICE:** Sim. A refletância pode ser referenciada à irradiância descendente medida por um sensor de luz DAQ em vez de um painel (ρ = π·L/E). Quando um alvo dentro do quadro aprovado no controle de qualidade *está* presente, ele se torna a referência absoluta por padrão (`--reflectance-source auto`), a menos que seja aprovado com um sinalizador; nesse caso, o alvo e as cadeias do DAQ competem pela pontuação medida. Uma exceção: “A refletância F988 é calibrada usando um painel de refletância na cena: a banda está além da faixa calibrada do sensor de luz do DAQ, portanto, o Chloros aplica sua captura mais recente do painel e a mantém entre as observações do painel.” Consulte [Alvos de calibração](calibration-targets.md).
 
 </details>
 
@@ -43,9 +37,7 @@ aplica sua captura mais recente do painel e a mantém entre as observações do 
 
 <summary>Preciso de um sensor de luz DAQ?</summary>
 
-Não para radianância: as exportações de radianância do LATTICE provêm da calibração radiométrica de fábrica de cada câmera e não requerem nem um sensor DAQ nem um alvo. Para **refletância**, você precisa de uma referência para a luz ambiente — seja uma medição descendente de um sensor de luz DAQ ou um alvo de calibração dentro do quadro. Um sensor DAQ permite que você produza refletância calibrada**sem colocar nenhum painel na cena**. Os arquivos `.daq` gravados são automaticamente associados às suas imagens por meio do carimbo de data/hora. Consulte [Alvos de Calibração](calibration-targets.md) e a [Referência da CLI
-
-](reference/cli-reference.md).
+Não para radianância: as exportações de radianância do LATTICE provêm da calibração radiométrica de fábrica de cada câmera e não requerem nem um sensor DAQ nem um alvo. Para **refletância**, você precisa de uma referência para a luz ambiente — seja uma medição descendente de um sensor de luz DAQ ou um alvo de calibração dentro do quadro. Um sensor DAQ permite que você produza refletância calibrada**sem colocar nenhum painel na cena**. Os arquivos `.daq` gravados são automaticamente associados às suas imagens por meio do carimbo de data/hora. Consulte [Alvos de Calibração](calibration-targets.md) e a [Referência da CLI](reference/cli-reference.md).
 
 </details>
 
@@ -143,9 +135,7 @@ Na tabela do navegador de arquivos, pré-selecionar as imagens-alvo na coluna da
 
 <summary>Se eu for enviar minhas imagens para o <a href="https://www.mapir.camera/collections/software/products/mapir-cloud-subscription">MAPIR Cloud,</a> devo processá-las no Chloros antes do envio?</summary>
 
-Se você planeja enviar para nossa plataforma de processamento online [MAPIR
-
-Cloud](https://www.mapir.camera/collections/software/products/mapir-cloud-subscription), não edite as imagens antes do envio. A Cloud realizará todo o mesmo processamento e muito mais.
+Se você planeja enviar para nossa plataforma de processamento online [MAPIR Cloud](https://www.mapir.camera/collections/software/products/mapir-cloud-subscription), não edite as imagens antes do envio. A Cloud realizará todo o mesmo processamento e muito mais.
 
 </details>
 
@@ -186,9 +176,7 @@ Sim! O Chloros inclui a [Adaptação Dinâmica de Computação](processing-archi
 <summary>O que é o pipeline de processamento de 4 threads?</summary>
 O
 
-Chloros
-utiliza uma arquitetura em pipeline de 4 threads para usuários do Chloros
-+: A thread 1 (Detecção) carrega imagens e detecta alvos de calibração; a thread 2 (Calibração) calcula a calibração de refletância; a thread 3 (Processamento) realiza o debayering acelerado por GPU e o cálculo de índice; e a thread 4 (Exportação) grava os arquivos de saída. Várias imagens podem estar em threads diferentes simultaneamente para obter o máximo rendimento. Consulte [Pipeline de processamento](processing-architecture/processing-pipeline.md) para obter detalhes.
+Chloros utiliza uma arquitetura em pipeline de 4 threads para usuários do Chloros+: A thread 1 (Detecção) carrega imagens e detecta alvos de calibração; a thread 2 (Calibração) calcula a calibração de refletância; a thread 3 (Processamento) realiza o debayering acelerado por GPU e o cálculo de índice; e a thread 4 (Exportação) grava os arquivos de saída. Várias imagens podem estar em threads diferentes simultaneamente para obter o máximo rendimento. Consulte [Pipeline de processamento](processing-architecture/processing-pipeline.md) para obter detalhes.
 
 </details>
 

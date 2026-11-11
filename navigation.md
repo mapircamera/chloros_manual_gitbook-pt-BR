@@ -22,19 +22,7 @@ Da esquerda para a direita, o cabeçalho superior contém:
 * **Conectar ao sensor de luz** — acesse a [guia Sensores de luz](daq/) para conectar um sensor de luz DAQ. Funciona mesmo sem um projeto aberto.
 
 {% hint style="info" %}
-**Somente Windows**: A interface gráfica do Chloros
-
-Desktop está disponível no Windows
-
-. Usuários do Linux
-
-devem consultar a documentação da [CLI
-
-](CLI.md) e do [Python
-
-SDK
-
-](api-python-sdk.md) para processamento sem interface gráfica.
+**Somente Windows**: A interface gráfica do Chloros Desktop está disponível no Windows. Usuários do Linux devem consultar a documentação da [CLI](CLI.md) e do [Python SDK](api-python-sdk.md) para processamento sem interface gráfica.
 {% endhint %}
 
 ### <img src=".gitbook/assets/image (2) (1) (1).png" alt="" data-size="line">
@@ -49,15 +37,9 @@ Barra de progresso <img src=".gitbook/assets/image (5).png" alt="" data-size="li
 
 
 
-No modo gratuito do Chloros
+No modo gratuito do Chloros, que processa todos os arquivos sequencialmente, a barra de progresso exibirá duas etapas: Detecção de alvo e Processamento.
 
-, que processa todos os arquivos sequencialmente, a barra de progresso exibirá duas etapas: Detecção de alvo e Processamento.
-
-No modo pago do Chloros
-
-+, que processa todos os arquivos simultaneamente, a barra de progresso exibe quatro etapas: Detecção, Análise, Calibração e Exportação. Se você passar o cursor do mouse sobre a barra de progresso do Chloros
-
-+, será exibido um painel suspenso com as quatro etapas da barra de progresso para que você possa acompanhar o andamento. Clicar na barra de progresso superior congela o painel suspenso; clicar novamente o descongela.
+No modo pago do Chloros+, que processa todos os arquivos simultaneamente, a barra de progresso exibe quatro etapas: Detecção, Análise, Calibração e Exportação. Se você passar o cursor do mouse sobre a barra de progresso do Chloros+, será exibido um painel suspenso com as quatro etapas da barra de progresso para que você possa acompanhar o andamento. Clicar na barra de progresso superior congela o painel suspenso; clicar novamente o descongela.
 
 <figure><img src=".gitbook/assets/plus_prog.JPG" alt=""><figcaption></figcaption></figure>
 

@@ -1,8 +1,6 @@
 # Matriz de câmeras
 
-Uma **matriz**LATTICE consiste em duas ou mais câmeras LATTICE conectadas como uma única unidade sincronizada. Uma câmera é a**mestre**: ela emite um pulso de acionamento GPIO de hardware em uma linha de sincronização compartilhada (padrão**Linha 2**), de modo que todos os membros capturam o mesmo instante. O Chloros
-
-adiciona sincronização de tempo PTP, uma pré-visualização ao vivo (mosaicos por câmera ou uma única imagem composta multibanda alinhada) e captura sincronizada — cada passagem de captura produz um **grupo de quadros** no qual todas as câmeras compartilham o mesmo carimbo de data/hora e ID de quadro (relatado como `fid:N` na saída de captura).
+Uma **matriz**LATTICE consiste em duas ou mais câmeras LATTICE conectadas como uma única unidade sincronizada. Uma câmera é a**mestre**: ela emite um pulso de acionamento GPIO de hardware em uma linha de sincronização compartilhada (padrão**Linha 2**), de modo que todos os membros capturam o mesmo instante. O Chloros adiciona sincronização de tempo PTP, uma pré-visualização ao vivo (mosaicos por câmera ou uma única imagem composta multibanda alinhada) e captura sincronizada — cada passagem de captura produz um **grupo de quadros** no qual todas as câmeras compartilham o mesmo carimbo de data/hora e ID de quadro (relatado como `fid:N` na saída de captura).
 
 As matrizes são a forma como as câmeras monocromáticas (M3M) produzem índices de vegetação — uma câmera contribui com uma banda, e a matriz as alinha em uma pilha multibanda. Consulte [Câmeras Mono e Índices de Vegetação](mono-indices.md).
 
@@ -11,23 +9,15 @@ Existem três maneiras equivalentes de conectar uma matriz, e todas elas executa
 | Superfície | Ponto de entrada |
 | --- | --- |
 | GUI | Guia Câmeras → **Conectar Matriz** (botão azul) |
-| CLI
-
-| `chloros-cli lattice array-connect --serials SN1,SN2,…` (primeiro número de série = mestre) |
-| Python
-
-SDK
-
-| `connect_array(serials=[…])` → `ArraySession` (primeiro número de série = mestre) |
+| CLI | `chloros-cli lattice array-connect --serials SN1,SN2,…` (primeiro número de série = mestre) |
+| Python SDK | `connect_array(serials=[…])` → `ArraySession` (primeiro número de série = mestre) |
 
 O smart-prep realiza: um teste de capacidade de rede (ping ICMP DF + teste GVSP), seleção da camada de sincronização, uma projeção da taxa de quadros no tamanho de quadro solicitado, a decisão de transporte compactado de 12 bits (consulte [Transporte compactado de 12 bits](#packed-12-bit-transport)), ativação do PTP, seleção automática do formato de pixel por câmera, inicialização da exposição automática a partir do estado salvo de cada câmera e configuração do gatilho GPIO na Linha 2.
 
 **Sensor completo por padrão (novidade na versão 1.3.0).** O Connect mantém o tamanho de quadro solicitado — o sensor completo de 2048×1536, sem binning nem recorte, a menos que você escolha o contrário — e permite que a taxa de quadros caia para o que o host e a rede fornecem. Ele nunca realiza binning ou recorte por conta própria (a versão 1.2.0 ativava o binning automaticamente abaixo de 1,5 fps). O binning ou uma ROI menor ficam a seu critério: na caixa de diálogo “Conectar”, escolha uma opção e o “Resultado Projetado” mostra a taxa de quadros resultante; o comando ``array-connect`` exibe as opções mais rápidas com suas taxas projetadas.
 
 {% hint style="info" %}
-As câmeras devem estar acessíveis no link antes que qualquer uma dessas funções funcione — consulte [Conectando câmeras](connecting.md) para descoberta, endereçamento e download da calibração na primeira conexão. Para configurações com várias câmeras, as configurações do anel de recepção da placa de rede do host são tão importantes quanto a velocidade do link; a tabela completa de sintomas → soluções está em [Referência da CLI
-
-§ Configuração e Ajuste da Placa de Rede do Host](../reference/cli-reference.md#host-nic-setup--tuning-lattice-arrays).
+As câmeras devem estar acessíveis no link antes que qualquer uma dessas funções funcione — consulte [Conectando câmeras](connecting.md) para descoberta, endereçamento e download da calibração na primeira conexão. Para configurações com várias câmeras, as configurações do anel de recepção da placa de rede do host são tão importantes quanto a velocidade do link; a tabela completa de sintomas → soluções está em [Referência da CLI § Configuração e Ajuste da Placa de Rede do Host](../reference/cli-reference.md#host-nic-setup--tuning-lattice-arrays).
 {% endhint %}
 
 ## A caixa de diálogo “Conectar Matriz”
@@ -42,18 +32,12 @@ A guia “Câmeras” → **Conectar Matriz**abre um assistente de três etapas:
 
 A caixa de diálogo varre a rede assim que é aberta (“Varredura da rede...”) e, em seguida, verifica os cabos de sincronização (“Verificando cabos de sincronização...”) para identificar quais câmeras estão na linha de sincronização M8. São necessárias pelo menos **2 câmeras** para formar um array.
 
-Os cabos de sincronização M8 se encontram em um ponto de junção, portanto, **qualquer câmera conectada pode ser a mestre**. O teste preenche previamente as funções — a câmera RGB
-
-(`-FRGB`) como mestre quando estiver conectada; caso contrário, a primeira câmera conectada; e as demais câmeras conectadas como escravas — e exibe uma das três mensagens:
+Os cabos de sincronização M8 se encontram em um ponto de junção, portanto, **qualquer câmera conectada pode ser a mestre**. O teste preenche previamente as funções — a câmera RGB (`-FRGB`) como mestre quando estiver conectada; caso contrário, a primeira câmera conectada; e as demais câmeras conectadas como escravas — e exibe uma das três mensagens:
 
 | Mensagem | Significado |
 | --- | --- |
-| “Cabo de sincronização encontrado em {n} câmeras. Qualquer uma delas pode ser mestre; a câmera RGB
-
-(ou a primeira, caso contrário) está pré-selecionada.” (verde) | O probe encontrou as câmeras na linha de sincronização; as caixas de seleção “mestre” e “escravo” já estão marcadas. |
-| “Nenhum mestre detectado — verifique o cabo GPIO” (laranja) | Nenhuma câmera detectou um pulso de acionamento; verifique o cabeamento de sincronização. As funções ainda estão pré-definidas (a câmera RGB
-
-, ou a primeira câmera da lista, como mestre) e você pode alterá-las. |
+| “Cabo de sincronização encontrado em {n} câmeras. Qualquer uma delas pode ser mestre; a câmera RGB (ou a primeira, caso contrário) está pré-selecionada.” (verde) | O probe encontrou as câmeras na linha de sincronização; as caixas de seleção “mestre” e “escravo” já estão marcadas. |
+| “Nenhum mestre detectado — verifique o cabo GPIO” (laranja) | Nenhuma câmera detectou um pulso de acionamento; verifique o cabeamento de sincronização. As funções ainda estão pré-definidas (a câmera RGB, ou a primeira câmera da lista, como mestre) e você pode alterá-las. |
 | “Sem cabo de sincronização: {seriais}” (laranja) | As câmeras listadas não têm nenhum cabo de sincronização conectado. |
 
 A tabela de câmeras possui as colunas **Câmera / Serial / IP / Mestre (rádio) / Escravo (caixa de seleção)**. As linhas são listadas na**ordem das câmeras** — câmeras M3C (Bayer) antes das M3M (mono); entre as M3C, FRGB, FRGN, FOCN e, em seguida, FNGB; as M3M por comprimento de onda do filtro, do menor para o maior (F450 antes de F808). A lista de câmeras na barra lateral e o layout padrão da grade usam a mesma ordem.
@@ -65,9 +49,7 @@ A tabela de câmeras possui as colunas **Câmera / Serial / IP / Mestre (rádio)
 **Próximo: Modo de Exibição →**fica habilitado assim que um mestre e pelo menos um escravo forem escolhidos.**Reexaminar** executa novamente a descoberta e a sondagem de fiação.
 
 {% hint style="warning" %}
-**Cancelar** fica desativado enquanto uma varredura ou sondagem estiver em andamento — cancelar no meio da sondagem pode causar falha no SDK
-
-da câmera no firmware da câmera LATTICE. Aguarde até que o indicador de carregamento termine.
+**Cancelar** fica desativado enquanto uma varredura ou sondagem estiver em andamento — cancelar no meio da sondagem pode causar falha no SDK da câmera no firmware da câmera LATTICE. Aguarde até que o indicador de carregamento termine.
 {% endhint %}
 
 ### Etapa 2 — Modo de exibição
@@ -79,9 +61,7 @@ da câmera no firmware da câmera LATTICE. Aguarde até que o indicador de carre
 | Modo | O que você obtém |
 | --- | --- |
 | **Câmeras separadas** | Um bloco ao vivo por câmera, todos acionados juntos para que os quadros permaneçam sincronizados. Cada câmera mantém sua própria cor e configurações. |
-| **Câmeras combinadas** *(padrão)* | Um único bloco exibindo a composição multibanda alinhada de NDVI
-
-/índice. As câmeras compartilham a cor do conjunto. |
+| **Câmeras combinadas** *(padrão)* | Um único bloco exibindo a composição multibanda alinhada de NDVI/índice. As câmeras compartilham a cor do conjunto. |
 
 O modo de exibição altera apenas a apresentação da pré-visualização ao vivo — o comportamento de captura é o mesmo em ambos.
 
@@ -91,9 +71,7 @@ O modo de exibição altera apenas a apresentação da pré-visualização ao vi
 
 projetado
 
-Ao entrar nessa cena, o Chloros
-
-solicita ao backend uma **recomendação**e a aplica: o**sensor completo — sem binning, sem recorte de ROI — sempre que qualquer taxa de quadros permitir**, independentemente da taxa que o host e a conexão forneçam. Somente quando nenhuma taxa puder suportar o sensor completo é que a recomendação reduz o quadro, e, nesse caso, prefere o binning ao recorte de ROI, pois o binning preserva o campo de visão completo. A partir daí, você troca resolução por taxa de quadros. Cada alteração que você faz reexecuta a análise em tempo real e atualiza o painel**Resultado Projetado** à direita.
+Ao entrar nessa cena, o Chloros solicita ao backend uma **recomendação**e a aplica: o**sensor completo — sem binning, sem recorte de ROI — sempre que qualquer taxa de quadros permitir**, independentemente da taxa que o host e a conexão forneçam. Somente quando nenhuma taxa puder suportar o sensor completo é que a recomendação reduz o quadro, e, nesse caso, prefere o binning ao recorte de ROI, pois o binning preserva o campo de visão completo. A partir daí, você troca resolução por taxa de quadros. Cada alteração que você faz reexecuta a análise em tempo real e atualiza o painel**Resultado Projetado** à direita.
 
 Coluna esquerda — configurações:
 
@@ -102,61 +80,47 @@ Coluna esquerda — configurações:
 | **ROI (Campo de Visão)** | Completo (2048×1536) / Metade (1024×768) / Um quarto (512×384) | Completo | Recorte do sensor: recorte de metade ou um quarto para uma região menor com o passo de pixel nativo. |
 | **Binning** | 1× / 2× (soma 2×2) / 4× (soma 4×4) | 1× | Binning de hardware: 2×2 = campo de visão completo com um quarto do custo de transmissão; 4×4 = campo de visão completo com 1/16. Ocultado se as câmeras não suportarem binning. |
 | **Imagem no lado do cabo** (leitura) | — | — | A largura × altura pós-binning efetivamente enviada pelo cabo, redimensionada para múltiplos de 16 (mínimo 64). |
-| **Taxa de disparo** | 0,5–60 fps, passo de 0,1 | vazio = automático | A taxa de disparo do mestre. Deixe em branco para que o Chloros
-
-a calcule. |
+| **Taxa de disparo** | 0,5–60 fps, passo de 0,1 | vazio = automático | A taxa de disparo do mestre. Deixe em branco para que o Chloros a calcule. |
 | **Capacidade da conexão**| 20–2.000 MB/s, em incrementos de 10 | vazio = automático | Quanto o host pode realmente absorver, em MB/s —**o único número do qual depende toda a alocação da matriz.** Detectado automaticamente a partir do adaptador de rede. Reduza-o se a matriz relatar quadros corrompidos: o valor detectado superestima os adaptadores USB e os switches compartilhados. Alterá-lo reexecuta a projeção em tempo real. O campo abre com o orçamento com o qual a última matriz foi conectada (salvo com o projeto), portanto, um orçamento que você corrigiu uma vez é mantido. |
 
 A caixa de seleção **Resolução de pinos** da versão 1.2.0 foi removida: a conexão mantém sempre o tamanho de quadro escolhido e, em vez disso, reduz a taxa de quadros.
 
 Coluna direita — **Resultado projetado**:
 
-* **Nível de sincronização** — “Captura simultânea” (verde), “Captura simultânea (emissão escalonada FTD)” (verde), “Captura escalonada (desvio de 100 ms)” (âmbar) ou “Configuração muito grande” (vermelho). O Chloros
-
-escolhe o nível: captura simultânea sempre que o cabo puder ser compartilhado a uma taxa que as câmeras possam acompanhar (a taxa de quadros diminui à medida que a parcela de cada câmera diminui) e captura escalonada apenas quando isso não for possível — assim, um conjunto de câmeras se conecta a qualquer rede, na taxa de quadros que a rede permitir.
+* **Nível de sincronização** — “Captura simultânea” (verde), “Captura simultânea (emissão escalonada FTD)” (verde), “Captura escalonada (desvio de 100 ms)” (âmbar) ou “Configuração muito grande” (vermelho). O Chloros escolhe o nível: captura simultânea sempre que o cabo puder ser compartilhado a uma taxa que as câmeras possam acompanhar (a taxa de quadros diminui à medida que a parcela de cada câmera diminui) e captura escalonada apenas quando isso não for possível — assim, um conjunto de câmeras se conecta a qualquer rede, na taxa de quadros que a rede permitir.
 * **Projeção de fps** — a taxa de quadros na qual se espera que o conjunto funcione. Com a captura simultânea, trata-se de um único número: a taxa vem primeiro, e a exposição automática preenche o período que ela determina, depois aumenta o ganho, de modo que uma cena escura não a reduza (consulte [Como a exposição automática distribui exposição e ganho](camera-settings.md)). Com a captura escalonada, ela é mostrada como um intervalo (“escuro → claro”), pois a exposição de cada câmera prolonga o escalonamento em uma cena escura.
 * **Linha da NIC** — velocidade do link e taxa de transferência sustentada (“NIC {mbps} Mbps · sustentada {N} MB/s”).
 * **Verificação de rajada de emissão simulada** — a NIC do anel de recepção do host consegue receber uma rajada simultânea de todas as câmeras (“Rajada de emissão simulada: X MB · Anel de NIC utilizável: Y MB ✓/✗”).
 * **Verificação do orçamento de banda** — demanda agregada em estado estacionário versus o limite máximo de banda seguro contra colisões (“Orçamento de banda: {demanda} MB/s exigidos por {n} câmeras · limite máximo {limite} MB/s ✓/✗ sobrecarregado”).
 * **“Número máximo de câmeras nesta linha: {n} — definido pelo limite mínimo de largura de banda por câmera, portanto o agrupamento não aumenta esse número.”** — exibido quando você está próximo (ou acima) do limite máximo de câmeras.
-* **“QUADROS SERÃO PERDIDOS com essas configurações.&quot;**— aviso em vermelho com o motivo do backend, além de uma lista de bloqueadores e**sugestões de correção** em azul (“Para acomodar esta matriz na rede” / “Para habilitar a captura simultânea”).**Aplicar e Conectar** fica bloqueado até que exista uma projeção, e seu rótulo indica por que está sendo recusado:
+* **“QUADROS SERÃO PERDIDOS com essas configurações."**— aviso em vermelho com o motivo do backend, além de uma lista de bloqueadores e**sugestões de correção** em azul (“Para acomodar esta matriz na rede” / “Para habilitar a captura simultânea”).**Aplicar e Conectar** fica bloqueado até que exista uma projeção, e seu rótulo indica por que está sendo recusado:
 
 | Rótulo do botão | Significado | O que realmente ajuda |
 | --- | --- | --- |
 | “Analisando...” | Análise ainda em andamento. | Aguarde. |
-| **“Câmeras demais para esta rede&quot;**| A conexão não consegue suportar o conjunto nem mesmo uma câmera por vez (falha na verificação agregada): há muito mais câmeras do que ela consegue processar, ou outras câmeras transmitindo pela mesma conexão. | Menos câmeras, quadros jumbo de ponta a ponta ou uma placa de rede mais rápida.**Uma área de interesse (ROI) menor NÃO ajudará** — veja abaixo. |
+| **“Câmeras demais para esta rede"**| A conexão não consegue suportar o conjunto nem mesmo uma câmera por vez (falha na verificação agregada): há muito mais câmeras do que ela consegue processar, ou outras câmeras transmitindo pela mesma conexão. | Menos câmeras, quadros jumbo de ponta a ponta ou uma placa de rede mais rápida.**Uma área de interesse (ROI) menor NÃO ajudará** — veja abaixo. |
 | **“Reduzir a área de interesse (ROI) para habilitar”** | Os quadros seriam perdidos com essas configurações (falha na verificação de burst/ring). | Reduza a área de interesse (ROI), aumente o binning ou conserte o anel de recepção da placa de rede. |
 
 <!-- SCREENSHOT-NEEDED: Array Connect dialog, Settings scene, over-subscribed state: red "Wire budget ... over-subscribed" line, the "Max cameras on this wire" hint, and the Apply button reading "Too many cameras for this network". Reproduce by configuring more cameras than the 1 GbE ceiling (e.g. 7+ cams at 1500 MTU) or with CHLOROS-simulated models via `lattice analyze-array`. -->
 
 
 
-Durante a conexão, um **painel de download de calibração** verde pode aparecer com uma barra de progresso por porta serial: na primeira vez que uma câmera é conectada a uma máquina, o Chloros
-
-baixa seu pacote de calibração de fábrica de ~3,8 MB da câmera via GigE (aproximadamente 70 segundos por câmera). Câmeras armazenadas em cache nunca exibem esse painel; com mais de seis câmeras, suas linhas rolam. Consulte [Conectando câmeras](connecting.md).
+Durante a conexão, um **painel de download de calibração** verde pode aparecer com uma barra de progresso por porta serial: na primeira vez que uma câmera é conectada a uma máquina, o Chloros baixa seu pacote de calibração de fábrica de ~3,8 MB da câmera via GigE (aproximadamente 70 segundos por câmera). Câmeras armazenadas em cache nunca exibem esse painel; com mais de seis câmeras, suas linhas rolam. Consulte [Conectando câmeras](connecting.md).
 
 ### Transporte compactado de 12 bits
 
-Os formatos de 12 bits (`BayerRG12`, `Mono12`) normalmente são transmitidos como palavras de 16 bits. **O transporte**compactado**envia os mesmos 12 bits em 1,5 bytes por pixel e os descompacta no host, de modo que cada quadro leva 25% menos tempo para ser enviado — com o sensor operando em capacidade total, aproximadamente um terço a mais de quadros por segundo.**Os dados salvos são idênticos.** A conexão em matriz decide isso automaticamente (`auto`): ela compacta apenas quando isso é vantajoso e o host dispõe de CPU disponível para a descompactação. A GUI não possui opção para isso; na CLI
-
-, use `array-connect --packed {auto,on,off}` (padrão: `auto`). Os formatos de 8 e 16 bits nunca são compactados.
+Os formatos de 12 bits (`BayerRG12`, `Mono12`) normalmente são transmitidos como palavras de 16 bits. **O transporte**compactado**envia os mesmos 12 bits em 1,5 bytes por pixel e os descompacta no host, de modo que cada quadro leva 25% menos tempo para ser enviado — com o sensor operando em capacidade total, aproximadamente um terço a mais de quadros por segundo.**Os dados salvos são idênticos.** A conexão em matriz decide isso automaticamente (`auto`): ela compacta apenas quando isso é vantajoso e o host dispõe de CPU disponível para a descompactação. A GUI não possui opção para isso; na CLI, use `array-connect --packed {auto,on,off}` (padrão: `auto`). Os formatos de 8 e 16 bits nunca são compactados.
 
 ## Largura de banda: quantas câmeras cabem
 
-A capacidade de um array depende da largura de banda da conexão, não do Chloros
+A capacidade de um array depende da largura de banda da conexão, não do Chloros; portanto, os números de planejamento constam no manual do hardware: **[Planejamento de largura de banda do array](https://mapir.gitbook.io/lattice-camera/setup/array-bandwidth-planning)**.
 
-; portanto, os números de planejamento constam no manual do hardware: **[Planejamento de largura de banda do array](https://mapir.gitbook.io/lattice-camera/setup/array-bandwidth-planning)**.
-
-O que o Chloros
-
-faz com esses dados: a caixa de diálogo de conexão executa um teste de rede, projeta a taxa de quadros alcançável e seleciona um nível adequado. Uma matriz se conecta a qualquer rede: em um link lento, cada câmera é ajustada à sua parcela da largura de banda e a taxa de quadros diminui, em vez de a matriz ser recusada ou seus quadros serem reduzidos. Somente um array que a linha não consiga suportar nem mesmo uma câmera por vez é recusado (**Muitas câmeras para esta rede**), em vez de descartar pacotes silenciosamente — consulte o painel de resultados projetados descrito acima.
+O que o Chloros faz com esses dados: a caixa de diálogo de conexão executa um teste de rede, projeta a taxa de quadros alcançável e seleciona um nível adequado. Uma matriz se conecta a qualquer rede: em um link lento, cada câmera é ajustada à sua parcela da largura de banda e a taxa de quadros diminui, em vez de a matriz ser recusada ou seus quadros serem reduzidos. Somente um array que a linha não consiga suportar nem mesmo uma câmera por vez é recusado (**Muitas câmeras para esta rede**), em vez de descartar pacotes silenciosamente — consulte o painel de resultados projetados descrito acima.
 
 ## Quando os quadros desaparecem
 
 Uma câmera pode estar ausente de um grupo publicado por dois motivos completamente diferentes,
-e eles exigem soluções opostas. O Chloros
-
-os contabiliza separadamente, em vez de relatar um
+e eles exigem soluções opostas. O Chloros os contabiliza separadamente, em vez de relatar um
 número “incompleto” que não especifica nenhum dos dois:
 
 | O que aconteceu | O que isso significa | Onde procurar |
@@ -189,11 +153,7 @@ manter é limitado pelo barramento USB e seu driver. Um dongle USB 10GbE costuma
 com aproximadamente 1.000 MB/s de taxa de transferência — um valor que nunca havia sido medido — e ajustar
 quatro câmeras com base nesse limite imaginário corrompeu de 6 a 18 % dos quadros, enquanto o array
 ainda relatava uma taxa de quadros alvo satisfatória. Os adaptadores conectados via USB agora têm um limite de
-**200 MB/s** no Windows
-
-e no NVIDIA Jetson, e **400 MB/s** no Linux
-
-x86_64. O limite é um valor absoluto, e não uma porcentagem, pois o restritor é o
+**200 MB/s** no Windows e no NVIDIA Jetson, e **400 MB/s** no Linux x86_64. O limite é um valor absoluto, e não uma porcentagem, pois o restritor é o
 barramento: um adaptador USB de 1 GbE atinge cerca de 80 MB/s e não é afetado.
 
 Se o seu host for realmente mais rápido do que o limite, aumente o **Wire Budget** para refletir isso.
@@ -202,15 +162,9 @@ Se o seu host for realmente mais rápido do que o limite, aumente o **Wire Budge
 
 A *sincronização* de quadros vem do gatilho de hardware; o **PTP** (IEEE 1588 PTPv2) fornece *carimbos de data/hora* comparáveis em todos os dispositivos. Ele é ativado por padrão na conexão do array:
 
-* O **backend do host Chloros
-
-executa o grandmaster PTP**. As câmeras LATTICE e os sensores de luz DAQ-E funcionam como escravos dele no domínio 0, de modo que os carimbos de data/hora das imagens e os espectros do DAQ ficam em um único relógio (~1 ms).
-* `--no-ptp` (CLI
-
-) desativa essa função para trabalhos em bancada — os carimbos de data/hora entre câmeras, então, **não** são comparáveis.
-* Verifique o estado da sincronização pela CLI
-
-:
+* O **backend do host Chloros executa o grandmaster PTP**. As câmeras LATTICE e os sensores de luz DAQ-E funcionam como escravos dele no domínio 0, de modo que os carimbos de data/hora das imagens e os espectros do DAQ ficam em um único relógio (~1 ms).
+* `--no-ptp` (CLI) desativa essa função para trabalhos em bancada — os carimbos de data/hora entre câmeras, então, **não** são comparáveis.
+* Verifique o estado da sincronização pela CLI:
 
 ```bash
 chloros-cli time-sync status     # grandmaster state, clock identity, health (OK, or why its packets are not reaching the network)
@@ -239,31 +193,23 @@ O **modo separado** mostra um bloco por câmera. Cada bloco exibe:
 
 O **modo combinado**exibe um único bloco composto: o backend realiza o debayering, redimensiona, alinha, remove ruídos, converte para radiação por banda (mais refletância DLS quando um sensor de luz está vinculado), avalia a expressão de índice da matriz, aplica a LUT e transmite o resultado como MJPEG. Até que o primeiro quadro alinhado seja renderizado, o bloco indica seu estado: “Preparando matriz…”, “Calibrando o alinhamento…”, “Aguardando o primeiro quadro…”, ou — se as tentativas de alinhamento automático do bloco (cerca de um minuto) se esgotarem — “Alinhamento necessário” com um botão**Calibrar alinhamento**.
 
-A exibição de fps do bloco da matriz também informa o estado da transmissão:**“Aplicando configurações…”**enquanto uma alteração nas configurações (formato, binning, ROI) reinicia as câmeras,**“Parado”**quando a matriz está ativa, mas parou de enviar grupos de quadros, e**“Parado&quot;**quando ele interrompeu a transmissão — nesse caso, reconecte o conjunto. Quando a separação espectral precisou limitar uma banda exibida na imagem composta em uma grande parcela de seus pixels (25 % ou mais), o bloco exibe**“Dados da banda com baixa confiança · N%&quot;**: os valores de índice calculados com base nessa banda são suspeitos (geralmente, uma banda recebeu pouca luz).
+A exibição de fps do bloco da matriz também informa o estado da transmissão:**“Aplicando configurações…”**enquanto uma alteração nas configurações (formato, binning, ROI) reinicia as câmeras,**“Parado”**quando a matriz está ativa, mas parou de enviar grupos de quadros, e**“Parado"**quando ele interrompeu a transmissão — nesse caso, reconecte o conjunto. Quando a separação espectral precisou limitar uma banda exibida na imagem composta em uma grande parcela de seus pixels (25 % ou mais), o bloco exibe**“Dados da banda com baixa confiança · N%"**: os valores de índice calculados com base nessa banda são suspeitos (geralmente, uma banda recebeu pouca luz).
 
 Informações úteis sobre o modo combinado:
 
 * A imagem composta é alinhada ao quadro da câmera **mestre**. O direcionamento AE-ROI e a medição pontual na imagem composta são exatos para a câmera mestre e aproximados para as escravas; use**Visão Dividida** (configurações do conjunto → “Mostrar câmeras membros”) para blocos por câmera com precisão de pixel sem abrir conexões extras de câmera.
 * ****Camadas de exibição**(configurações da matriz; desativado por padrão) permite escolher uma camada de primeiro plano e uma de fundo — qualquer câmera membro ou**Índice**. Com primeiro plano = Índice, os pixels fora do Min/Max da LUT exibem a camada de fundo.
 * **Resolução de renderização** (padrão 720p) define a altura da transmissão ao vivo *e* o tamanho da exportação da imagem composta salva. As imagens por câmera são sempre exportadas em resolução total.
-* O alinhamento é calculado por sessão e nunca é salvo. O Chloros
-
-alinha **todas as matrizes automaticamente após a conexão, em ambos os modos de exibição**, assim que a exposição automática dos membros se estabilizar (ele continua tentando por até 5 minutos). A seção**Alinhamento**do painel de configurações do conjunto mostra os resíduos RMS e o botão**Recalibrar alinhamento** — também para conjuntos separados, que não possuem bloco composto.
+* O alinhamento é calculado por sessão e nunca é salvo. O Chloros alinha **todas as matrizes automaticamente após a conexão, em ambos os modos de exibição**, assim que a exposição automática dos membros se estabilizar (ele continua tentando por até 5 minutos). A seção**Alinhamento**do painel de configurações do conjunto mostra os resíduos RMS e o botão**Recalibrar alinhamento** — também para conjuntos separados, que não possuem bloco composto.
 
 ## Captura: monitoramento x análise
 
 As superfícies de captura do conjunto se dividem claramente em **nível de monitoramento**(grava o que você vê) e**nível de análise** (grava dados brutos, calibra posteriormente):
 
-| Fluxo de trabalho | Nível | O que é salvo | GUI | CLI
-
-|
+| Fluxo de trabalho | Nível | O que é salvo | GUI | CLI |
 | --- | --- | --- | --- | --- |
 | **Captura**(imagens estáticas) | Análise | Um grupo de quadros sincronizados por passagem; arquivos por câmera em todos os níveis de exportação selecionados (bruto/sem debayering/radiação/refletância/visualização/índice) + arquivo sidecar `.daq` |**Botão **Capturar tudo** + Configurações de captura | `lattice array-capture` |
-| **Gravar vídeo de índice** | Monitoramento | A composição do índice combinado ao vivo conforme exibida — 8 bits, resolução de pré-visualização, LUT incorporada. Na CLI
-
-, sem nenhuma janela da GUI aberta, o backend renderiza o NDVI
-
-da matriz (ou `--expr`) assim que a matriz estiver alinhada; uma gravação que não grava nenhum quadro falha | ● Gravar vídeo de índice (matrizes combinadas) | `lattice array-record` |
+| **Gravar vídeo de índice** | Monitoramento | A composição do índice combinado ao vivo conforme exibida — 8 bits, resolução de pré-visualização, LUT incorporada. Na CLI, sem nenhuma janela da GUI aberta, o backend renderiza o NDVI da matriz (ou `--expr`) assim que a matriz estiver alinhada; uma gravação que não grava nenhum quadro falha | ● Gravar vídeo de índice (matrizes combinadas) | `lattice array-record` |
 | **Sequência bruta → criar vídeo**| Análise | Quadros brutos do sensor na taxa máxima de captura + manifesto + `.daq`, seguida de reconstrução offline em vídeo calibrado de radiação / refletância / índice, sincronizado com as leituras do DAQ | ⦿ Gravar sequência bruta →**Criar vídeo** | `lattice array-burst` → `lattice array-build-video` |
 
 Regra geral: se os pixels forem fornecer *medições*, use a captura ou o burst (nível de análise); se você precisar apenas *assistir ou demonstrar* o que o array captou, grave o vídeo indexado (nível de monitoramento).
@@ -277,19 +223,13 @@ Regra geral: se os pixels forem fornecer *medições*, use a captura ou o burst 
 A engrenagem ao lado de **Capturar tudo** abre o painel de configurações de captura (requer um projeto aberto — as capturas são salvas nele):
 
 * **Modo de captura**:**Único**(uma passagem) /**Contínuo**(consecutivo; limitado por um número de capturas, padrão 1, ou por uma duração, padrão 10 s) /**Intervalo** (timelapse: N capturas a cada intervalo de X para um total de Y; padrão: 1 a cada 5 s por 1 minuto).
-* **Tipos de exportação por câmera**: Raw, Debayered, Radiance, Reflectance, Preview, Index — todas as opções aplicáveis estão ativadas por padrão. Radiance/Reflectance ficam ocultas para câmeras com filtro RGB
-
-; **Refletância aparece apenas quando a câmera possui um sensor de luz DAQ** (próprio ou herdado da matriz); Índice requer uma expressão de índice configurada.
+* **Tipos de exportação por câmera**: Raw, Debayered, Radiance, Reflectance, Preview, Index — todas as opções aplicáveis estão ativadas por padrão. Radiance/Reflectance ficam ocultas para câmeras com filtro RGB; **Refletância aparece apenas quando a câmera possui um sensor de luz DAQ** (próprio ou herdado da matriz); Índice requer uma expressão de índice configurada.
 * **Alinhado**(por matriz, padrão**ativado**): distorce as exportações dos membros de acordo com o perfil de alinhamento da matriz, de modo que as exportações sejam registradas por pixel. O formato Raw permanece sempre sem distorção, mas carrega a transformação nos metadados. Os arquivos dos membros da matriz são salvos na orientação nativa de cada câmera (qualquer configuração de Espelhamento/Rotação é registrada no arquivo, mas não aplicada).
 * **Captura mais rápida** (alternar): somente raw + a leitura DAQ atribuída + a composição de índice combinado livre, pulando os cálculos de calibração no momento da captura para obter a taxa máxima — reconstrua a radiação/refletância/índice posteriormente a partir do `.daq` salvo.
 * As seleções permanecem com o projeto. Câmeras ocultas ou pausadas são ignoradas.
-* **Contínuo** em matrizes é executado no backend do Chloros
+* **Contínuo** em matrizes é executado no backend do Chloros (novidade na versão 1.3.0): quando todas as câmeras da lista pertencem a uma matriz, o backend executa ele mesmo o ciclo de captura, gravando um grupo enquanto seleciona o próximo, sem necessidade de solicitação por captura. Um disco cheio interrompe a execução (“Interrompido: disco cheio. Salvo N, F falhou”). Consulte [Configurações e modos de captura](capture.md#capture-modes) para ver a nota do Microsoft Defender sobre altas taxas de captura.
 
-(novidade na versão 1.3.0): quando todas as câmeras da lista pertencem a uma matriz, o backend executa ele mesmo o ciclo de captura, gravando um grupo enquanto seleciona o próximo, sem necessidade de solicitação por captura. Um disco cheio interrompe a execução (“Interrompido: disco cheio. Salvo N, F falhou”). Consulte [Configurações e modos de captura](capture.md#capture-modes) para ver a nota do Microsoft Defender sobre altas taxas de captura.
-
-A CLI
-
-equivalente (mesmo endpoint do backend, mesma semântica):
+A CLI equivalente (mesmo endpoint do backend, mesma semântica):
 
 ```bash
 # One synced group, every applicable export level per camera (the default)
@@ -308,11 +248,7 @@ chloros-cli lattice array-record --duration 30 --fps 10 --gif -o monitoring/
 chloros-cli lattice array-burst --duration 5 --build --products combined:index --fps 10 -o capture/
 ```
 
-A compressão TIFF
-
-para capturas é `deflate` (sem perdas, padrão) ou `none` — as tabelas completas de sinalizadores, o layout da pasta de captura e as regras de reprocessamento estão na [Referência da CLI
-
-](../reference/cli-reference.md#capture-modes-recorders--offline-reprocess).
+A compressão TIFF para capturas é `deflate` (sem perdas, padrão) ou `none` — as tabelas completas de sinalizadores, o layout da pasta de captura e as regras de reprocessamento estão na [Referência da CLI](../reference/cli-reference.md#capture-modes-recorders--offline-reprocess).
 
 ## Emparelhamento de um sensor de luz DAQ
 
@@ -322,13 +258,9 @@ As visualizações prévias com correção de refletância e iluminação precis
 * Atribua a configuração para toda a matriz nas configurações da matriz → **Sensor de Luz Ambiente**→ menu suspenso**Sensor de Luz**. A seleção permanece com o projeto, se propaga para todas as câmeras do conjunto, e as câmeras individuais ainda podem substituí-la pelo próprio sensor.
 * A linha de status abaixo dela informa o estado em tempo real: **Desativado**→ “Aguardando o primeiro espectro…” →**“Ativo — todas as câmeras do conjunto têm a iluminação corrigida”** → ou, se nenhum novo espectro chegou nos últimos 3 s, um aviso de dados desatualizados — a última leitura continua sendo usada (as leituras nunca expiram no caminho de captura).
 
-Com um sensor atribuído: o tipo de exportação “Refletância” fica disponível, as visualizações em tempo real são corrigidas quanto à iluminação, a exposição automática preditiva pode usar o espectro e cada captura de refletância grava a leitura do DAQ efetivamente usada como um **arquivo `.daq`** na pasta `daq/` para que a captura possa ser reprocessada posteriormente. Ao lado dele, um arquivo `.daq.cameras.json` identifica as câmeras cujos quadros essa leitura descreve; ao reprocessar, o Chloros
+Com um sensor atribuído: o tipo de exportação “Refletância” fica disponível, as visualizações em tempo real são corrigidas quanto à iluminação, a exposição automática preditiva pode usar o espectro e cada captura de refletância grava a leitura do DAQ efetivamente usada como um **arquivo `.daq`** na pasta `daq/` para que a captura possa ser reprocessada posteriormente. Ao lado dele, um arquivo `.daq.cameras.json` identifica as câmeras cujos quadros essa leitura descreve; ao reprocessar, o Chloros combina a leitura apenas com imagens dessas câmeras.
 
-combina a leitura apenas com imagens dessas câmeras.
-
-## Opções de CLI
-
-do `array-connect`
+## Opções de CLI do `array-connect`
 
 | Sinalizador | Padrão | Descrição |
 | --- | --- | --- |
@@ -338,18 +270,8 @@ do `array-connect`
 | `--binning {1,2,4}` | auto | Agrupamento de pixels por hardware. “Auto” significa o sensor completo (sem agrupamento) sempre que qualquer taxa de quadros o suportar; “connect never bins” mantém a taxa elevada sem agrupamento. |
 | `--packed {auto,on,off}` | `auto` | [Transporte compactado de 12 bits](#packed-12-bit-transport): O `auto` compacta apenas quando isso ajuda e o host tem capacidade para descompactar. |
 | `--force-tier {sim-capture-sim-emit, sim-capture-ftd-stagger, slip-emit-and-capture}` | automático | Substituição avançada do seletor de camada de sincronização. |
-| `--wire-ceiling-mbps MB_PER_S` | detectado automaticamente | Orçamento de banda do host em MB/s — a forma de CLI
-
-do campo **Orçamento de banda**. Reduza-o se o array relatar quadros corrompidos. Salvo com o projeto, de modo que uma reconexão posterior o restaure. |
+| `--wire-ceiling-mbps MB_PER_S` | detectado automaticamente | Orçamento de banda do host em MB/s — a forma de CLI do campo **Orçamento de banda**. Reduza-o se o array relatar quadros corrompidos. Salvo com o projeto, de modo que uma reconexão posterior o restaure. |
 | `--no-recommend` | desativado | Ignora a etapa de análise de rede. |
 | `--no-ptp` | desativado | Desativa o PTP (os carimbos de data/hora entre câmeras não serão comparáveis). |
 
-`lattice array-list`, `array-status` e `array-disconnect` gerenciam a sessão persistente. A referência completa aos subcomandos, incluindo alinhamento (`align-calibrate` / `align-apply`) e as ferramentas de rede, encontra-se na [Referência da CLI
-
-§ chloros-cli lattice](../reference/cli-reference.md#chloros-cli-lattice); os equivalentes no SDK
-
-(`connect_array`, `ArraySession`, `attach_array`, `analyze_array_network`) estão na [Referência do SDK
-
-](../reference/sdk-reference.md). No Python
-
-, o orçamento de transmissão é `connect_array(..., wire_ceiling_mbps=120)`, e a divisão entre dados corrompidos em tempo real e dados que nunca chegaram está em [`/api/camera/array/<id>/capability`](../reference/sdk-reference.md#array-health--which-subsystem-is-losing-frames).
+`lattice array-list`, `array-status` e `array-disconnect` gerenciam a sessão persistente. A referência completa aos subcomandos, incluindo alinhamento (`align-calibrate` / `align-apply`) e as ferramentas de rede, encontra-se na [Referência da CLI § chloros-cli lattice](../reference/cli-reference.md#chloros-cli-lattice); os equivalentes no SDK (`connect_array`, `ArraySession`, `attach_array`, `analyze_array_network`) estão na [Referência do SDK](../reference/sdk-reference.md). No Python, o orçamento de transmissão é `connect_array(..., wire_ceiling_mbps=120)`, e a divisão entre dados corrompidos em tempo real e dados que nunca chegaram está em [`/api/camera/array/<id>/capability`](../reference/sdk-reference.md#array-health--which-subsystem-is-losing-frames).
