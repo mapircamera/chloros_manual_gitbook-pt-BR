@@ -10,7 +10,9 @@ Use o controle deslizante de zoom no canto superior direito para ajustar o taman
 * **Ctrl + `+`**/**Ctrl + `=`**e**Ctrl + `−`** aumentam o tamanho em 4 px a cada pressionamento. O intervalo de tamanho definido pelo teclado vai de 64 px, no menor, até o tamanho que couber exatamente duas miniaturas por linha na janela atual, no maior.
 * O tamanho escolhido é salvo com o projeto (`UI → Grid thumbnail size` em `project.json`, padrão `160`), portanto, ao reabrir o projeto, ele é restaurado.
 
-<figure><img src="../.gitbook/assets/chloros_grid_zoom.gif" alt=""><figcaption></figcaption></figure>A *resolução* da miniatura é uma configuração separada do *tamanho* da miniatura: consulte **Exibição → Resolução da miniatura da imagem** em [Configurações do projeto](../project-settings/project-settings.md) (padrão: 512 px na borda mais longa). O tamanho refere-se ao tamanho com que o bloco é desenhado; a resolução, ao nível de detalhe utilizado para preenchê-lo.***
+<figure><img src="../.gitbook/assets/chloros_grid_zoom.gif" alt=""><figcaption></figcaption></figure>A *resolução* da miniatura é uma configuração separada do *tamanho* da miniatura: consulte **Exibição → Resolução da miniatura da imagem** em [Configurações do projeto](../project-settings/project-settings.md) (padrão: 512 px na borda mais longa). O tamanho refere-se ao tamanho com que o bloco é desenhado; a resolução, ao nível de detalhe utilizado para preenchê-lo.
+
+***
 
 ## A barra de ferramentas da grade
 

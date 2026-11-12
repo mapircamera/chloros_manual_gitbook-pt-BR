@@ -112,7 +112,9 @@ A refletância é armazenada como um valor inteiro DN, e **o valor de DN que cor
 | LATTICE (M3C/M3M) | **32768** (margem de segurança até ρ 2,0) | A tag XMP `Chloros:PixelScale=32768` está marcada no arquivo |
 | Survey3          | **65535** (limitado a ρ 1,0)     | Não há tag `Chloros:PixelScale` — essa ausência é o indicador (os produtos Survey3 contêm outras tags de processamento `Chloros:*`) |
 
-**Leia a tag `Chloros:PixelScale` e divida pelo valor dela**, em vez de assumir um valor genérico de 65535 — dividir a refletância do LATTICE por 65535 reduz silenciosamente pela metade todos os valores. Um arquivo de refletância anterior à versão 1.3.0, gravado em 8 bits, foi cortado, não redimensionado, e não possui tag de escala: reexporte-o em 16 bits ou 32 bits em vez de dividi-lo. Consulte [Formatos de imagem de saída](../output-image-formats.md) para obter mais detalhes.***
+**Leia a tag `Chloros:PixelScale` e divida pelo valor dela**, em vez de assumir um valor genérico de 65535 — dividir a refletância do LATTICE por 65535 reduz silenciosamente pela metade todos os valores. Um arquivo de refletância anterior à versão 1.3.0, gravado em 8 bits, foi cortado, não redimensionado, e não possui tag de escala: reexporte-o em 16 bits ou 32 bits em vez de dividi-lo. Consulte [Formatos de imagem de saída](../output-image-formats.md) para obter mais detalhes.
+
+***
 
 ## Metadados transferidos para as exportações
 
@@ -167,7 +169,9 @@ Para manter um registro do processamento ou enviar ao suporte da MAPIR:
 3. Inclua na documentação do projeto
 4. Envie ao suporte da MAPIR caso encontre problemas
 
-Para enviar um problema diretamente à MAPIR, use o ícone de bug (**Relatar um bug**) na parte superior da guia “Log de Depuração” — consulte [Como relatar um bug a partir da guia de log](monitoring-the-processing.md#reporting-a-bug-from-the-log-tab).***
+Para enviar um problema diretamente à MAPIR, use o ícone de bug (**Relatar um bug**) na parte superior da guia “Log de Depuração” — consulte [Como relatar um bug a partir da guia de log](monitoring-the-processing.md#reporting-a-bug-from-the-log-tab).
+
+***
 
 ## Problemas comuns de saída e soluções
 

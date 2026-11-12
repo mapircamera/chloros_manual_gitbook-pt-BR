@@ -102,4 +102,4 @@ Detalhes para usuários que exigem alinhamento rigoroso:
 | Domínio de broadcast | Host e sensor no mesmo segmento L2; o mDNS não está roteando |
 | Firewall | Windows: a regra **Chloros Backend (UDP-In)** do instalador permite a entrada do fluxo do DAQ-E (UDP 5002), mDNS (5353) e PTP (319/320); um firewall de terceiros precisa da mesma configuração. Linux: o `.deb` abre essas portas no `ufw` / `firewalld` somente se o firewall estiver ativo no momento da instalação — permita-as manualmente caso ele seja ativado posteriormente |
 | Host com várias placas de rede | A descoberta pesquisa o mDNS com um fallback de ARP; o `--eth-host <ip-or-hostname>` ignora a descoberta e se conecta diretamente |
-| Nova varredura pela GUI | A descoberta só é executada enquanto a caixa de diálogo de conexão estiver aberta; use “Atualizar” |</version>
+| Nova varredura pela GUI | A descoberta só é executada enquanto a caixa de diálogo de conexão estiver aberta; use “Atualizar” |

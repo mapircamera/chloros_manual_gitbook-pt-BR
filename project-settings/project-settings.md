@@ -34,7 +34,9 @@ na barra lateral esquerda
 * **Opções**: `Default (512 px)`, `1024 px`, `2048 px`, `Full resolution`
 * **Padrão**: Padrão (512 px)
 * **Descrição**: Resolução (aresta mais longa, em pixels) na qual as miniaturas da grade de imagens são renderizadas. Valores mais altos parecem mais nítidos quando ampliados, mas demoram mais para carregar e consomem mais memória. A resolução total corresponde ao tamanho original da imagem.
-* **Observação**: Apenas para exibição — isso nunca afeta o processamento nem os arquivos exportados.***
+* **Observação**: Apenas para exibição — isso nunca afeta o processamento nem os arquivos exportados.
+
+***
 
 ## Detecção de alvos
 
@@ -188,7 +190,9 @@ As varreduras de alvo **medidas** por unidade são pesquisadas pelo número de s
   * Uma câmera + um pino: o Pino 2 é automaticamente definido como “Não usar”
   * Uma câmera + dois pinos: o Pino 2 é automaticamente definido como “Não usar”
   * Várias câmeras: é necessária a seleção manual
-* **Observação**: A mesma câmera não pode ser atribuída simultaneamente ao Pino 1 e ao Pino 2.***
+* **Observação**: A mesma câmera não pode ser atribuída simultaneamente ao Pino 1 e ao Pino 2.
+
+***
 
 ## Sensor de Luz DAQ
 
@@ -209,7 +213,9 @@ Cada linha mostra o arquivo, o modelo do sensor e a correção da tampa difusora
 * **Descrição**: `Auto` utiliza a tampa registrada em cada arquivo (presume-se a tampa Sunshine quando nada foi registrado, mas o DAQ-U, o DAQ-M e o DAQ-E são fornecidos sem tampa e o Chloros não consegue identificar qual está instalada, portanto, o processamento exibe um aviso sobre uma tampa presumida: escolha a tampa que foi instalada). A escolha de uma tampa específica substitui **todos** os arquivos de fluxo descendente no projeto, exceto os de um DAQ-E-S, cujo difusor faz parte de sua calibração; um projeto composto apenas por DAQ-E-S não exibe a lista suspensa: as gravações brutas são corrigidas com ela, e as gravações que já possuem uma tampa são re-referenciadas (a correção gravada é desfeita e a selecionada é aplicada).
 * **Importante**: A tampa selecionada deve corresponder à tampa que foi fisicamente instalada durante a gravação. Nem o sensor nem o software podem detectar a tampa física — um ID de tampa incompatível corrige incorretamente os espectros.
 
-Existe deliberadamente **um único** controle para todo o projeto, em vez de menus suspensos por arquivo: a configuração se aplica a todas as fontes descendentes do projeto.***
+Existe deliberadamente **um único** controle para todo o projeto, em vez de menus suspensos por arquivo: a configuração se aplica a todas as fontes descendentes do projeto.
+
+***
 
 ## Alinhamento de Matriz
 

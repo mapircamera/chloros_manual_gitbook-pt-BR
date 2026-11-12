@@ -180,7 +180,9 @@ Uma vez iniciado, todo o pipeline é executado automaticamente:
 * Uma execução interrompida relata com precisão o que foi concluído (consulte as linhas `[RUN-SUMMARY]` no log)
 * Uma nova execução reinicia o pipeline desde o início
 
-**Dica de planejamento:** Para projetos muito grandes, considere processar em lotes ou usar a CLI para obter melhor controle.***
+**Dica de planejamento:** Para projetos muito grandes, considere processar em lotes ou usar a CLI para obter melhor controle.
+
+***
 
 ## Monitorando seu processamento
 

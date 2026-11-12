@@ -71,7 +71,9 @@ Para consultar a referência completa das fórmulas — todas as três listas de
 
 ### Com a opção Índice marcada, mas sem LUT
 
-A imagem é exibida em **escala de cinza**, estendida entre os dois valores de limiar. Isso é intencional: a imagem de índice é composta por dados escalares, e a escala de cinza é a representação fiel desses dados. Adicione uma LUT quando desejar cores.***
+A imagem é exibida em **escala de cinza**, estendida entre os dois valores de limiar. Isso é intencional: a imagem de índice é composta por dados escalares, e a escala de cinza é a representação fiel desses dados. Adicione uma LUT quando desejar cores.
+
+***
 
 ## Trabalhando com LUTs (Tabelas de Consulta)
 
@@ -135,7 +137,9 @@ Exemplo de janelas do NDVI:
 | Apenas vegetação saudável                | 0,5  | 0,9 |
 | Enfatizar estresse                        | 0,2  | 0,5 |
 
-Restringir a janela aumenta o contraste dentro da sua área de interesse e coloca todo o restante fora do intervalo — onde o **Modo de Recorte** decide o que acontece com esses dados.***
+Restringir a janela aumenta o contraste dentro da sua área de interesse e coloca todo o restante fora do intervalo — onde o **Modo de Recorte** decide o que acontece com esses dados.
+
+***
 
 ## Modos de recorte
 

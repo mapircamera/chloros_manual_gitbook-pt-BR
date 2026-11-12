@@ -15,7 +15,9 @@ Images In → [Thread 1: Detection] → [Thread 2: Calibration] → [Thread 3: P
 
 Cada imagem passa por todas as quatro threads em ordem. Com o processamento multithread do Chloros+, várias imagens ocupam diferentes threads simultaneamente — enquanto a Thread 3 processa uma imagem, a Thread 1 pode estar detectando a próxima, a Thread 2 calibrando outra e a Thread 4 gravando uma imagem finalizada no disco.
 
-O progresso é relatado por thread e transmitido por meio de Server-Sent Events (o backend os publica no `/api/events`). Na exibição de progresso em tempo real da CLI, os quatro estágios são identificados como **Detecção, Análise, Processamento, Exportação**.***
+O progresso é relatado por thread e transmitido por meio de Server-Sent Events (o backend os publica no `/api/events`). Na exibição de progresso em tempo real da CLI, os quatro estágios são identificados como **Detecção, Análise, Processamento, Exportação**.
+
+***
 
 ## Detalhes das threads
 

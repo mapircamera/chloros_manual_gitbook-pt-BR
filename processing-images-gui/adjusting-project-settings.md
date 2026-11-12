@@ -153,7 +153,9 @@ Esta seção aparece **apenas** quando pelo menos uma imagem no projeto contém 
 
 * **Aplicar alinhamento de matriz** (padrão: ativado): distorce cada produto processado (debayering / visualização / radiação / refletância / índice) para a geometria de referência compartilhada da matriz. Desativado = exporta na geometria nativa do sensor.
 * **Recortar para sobreposição comum** (padrão: ativado): recorta as exportações alinhadas para a região compartilhada por todos os módulos, de modo que cada banda tenha a mesma área de cobertura. Desativado mantém a tela completa do sensor (preenchimento em preto fora da área de origem).
-* **Reamostragem**:**Bilinear (suave, padrão)**,**Mais próximo (preserva valores exatos)**— sem mistura entre pixels, para análise radiométrica rigorosa — ou**Cúbica (mais nítida)**.***
+* **Reamostragem**:**Bilinear (suave, padrão)**,**Mais próximo (preserva valores exatos)**— sem mistura entre pixels, para análise radiométrica rigorosa — ou**Cúbica (mais nítida)**.
+
+***
 
 ## Salvando e carregando configurações
 

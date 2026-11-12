@@ -196,7 +196,9 @@ Tudo nesta seção é **apenas para exibição**— altera o que você vê na tr
 | **Saturação** | 0–200 (100 = neutro) | 100 | Somente RGB | Saturação HSV na pré-visualização ao vivo. |
 | **Contraste** | 0–200 (100 = neutro) | 100 | Somente RGB | Contraste linear em torno do cinza médio na visualização ao vivo. |
 | **Espelhar H / Espelhar V** | Caixas de seleção | Desativado | Todas | Inverte a visualização na horizontal / na vertical. |
-| **Rotação**| 0° / 90° / 180° / 270° | 0° | Todas | Gira a visualização. A orientação é aplicada no final da cadeia de pré-visualização do backend.**Capturas salvas (1.3.0):**os produtos Pré-visualização, Radiação, Refletância e Índice de uma câmera autônoma são girados por Espelhamento/Rotação, enquanto**os arquivos Raw e Debayered permanecem na orientação nativa da câmera**; cada arquivo de captura registra a configuração em seu XMP, de modo que o processamento posterior de um arquivo raw a aplica da mesma forma.**Os arquivos membros da matriz permanecem na orientação nativa** (a configuração é registrada, não aplicada), e as visualizações compostas da matriz a ignoram. |**Semântica dos perfis de cor** (câmeras RGB):
+| **Rotação**| 0° / 90° / 180° / 270° | 0° | Todas | Gira a visualização. A orientação é aplicada no final da cadeia de pré-visualização do backend.**Capturas salvas (1.3.0):**os produtos Pré-visualização, Radiação, Refletância e Índice de uma câmera autônoma são girados por Espelhamento/Rotação, enquanto**os arquivos Raw e Debayered permanecem na orientação nativa da câmera**; cada arquivo de captura registra a configuração em seu XMP, de modo que o processamento posterior de um arquivo raw a aplica da mesma forma.**Os arquivos membros da matriz permanecem na orientação nativa** (a configuração é registrada, não aplicada), e as visualizações compostas da matriz a ignoram. |
+
+**Semântica dos perfis de cor** (câmeras RGB):
 
 * **Raw** — ignora completamente a cadeia de processamento.
 * **Linear** — sinal escuro + campo plano + balanço de branco; sem matriz de cor, sem gama.

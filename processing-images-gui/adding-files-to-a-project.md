@@ -62,7 +62,9 @@ output/
 * Uma pasta de captura salva **sem** quadros brutos é importada e exibida normalmente, mas o processamento a ignora e registra isso no log. (O sinalizador da CLI `--input-level` pode forçar um ponto de entrada para esse caso — consulte [a Referência da CLI](../reference/cli-reference.md#what-a-captures-folder-looks-like).)
 * A partir da versão 1.3.0, uma pasta de capturas também pode conter uma pasta `clamp_masks/` (máscaras por pixel para os níveis de radiação e refletância — consulte [Formatos de imagem de saída](../output-image-formats.md#clamp-masks)). As máscaras não são imagens da cena, e o Chloros as ignora na importação, independentemente de onde estejam.
 
-**As sessões do hub LATTICE** são importadas da mesma maneira: clique em “Adicionar pasta” na pasta da sessão copiada do hub (ela contém `raw/` e `previews/`), juntamente com qualquer registro de fluxo descendente do DAQ-M `.csv`. Se a calibração da câmera ou do DAQ ainda não estiver armazenada em cache no seu computador, o Chloros a busca automaticamente pelo número de série durante a importação (requer conexão com a internet uma vez).***
+**As sessões do hub LATTICE** são importadas da mesma maneira: clique em “Adicionar pasta” na pasta da sessão copiada do hub (ela contém `raw/` e `previews/`), juntamente com qualquer registro de fluxo descendente do DAQ-M `.csv`. Se a calibração da câmera ou do DAQ ainda não estiver armazenada em cache no seu computador, o Chloros a busca automaticamente pelo número de série durante a importação (requer conexão com a internet uma vez).
+
+***
 
 ## Entendendo a tabela do navegador de arquivos
 
@@ -104,7 +106,9 @@ Clicar no botão de alternância no canto superior direito, acima da tabela, exi
 
 * Os arquivos `.daq` e `.csv` aparecem na lista do Navegador de Arquivos, mas não são imagens clicáveis — eles fornecem a irradiância descendente para a calibração de refletância.
 * Cada arquivo `.daq`/`.csv` importado é listado em **Configurações do projeto → Sensor de luz DAQ**, onde você pode verificar a correção da tampa difusora aplicada a cada arquivo. Consulte [Ajustando as configurações do projeto](adjusting-project-settings.md).
-* As gravações feitas na guia **Sensores de luz** são adicionadas automaticamente ao projeto aberto — não é necessária nenhuma importação manual.***
+* As gravações feitas na guia **Sensores de luz** são adicionadas automaticamente ao projeto aberto — não é necessária nenhuma importação manual.
+
+***
 
 ## Gerenciando arquivos em seu projeto
 
@@ -221,7 +225,9 @@ Se seu projeto contiver imagens de várias câmeras MAPIR:
 
 ### Projeto reaberto relata arquivos ausentes
 
-Se os arquivos de origem foram movidos ou excluídos desde a última vez que o projeto foi aberto, o Chloros informa **quais**arquivos estão faltando, em vez de abrir uma grade em branco. Se a própria pasta do projeto tiver sido movida, o Chloros redireciona seus caminhos de origem para a pasta em que `project.json` está agora e mantém um backup (`project.json.before-relink-<date>-<time>`). Quando isso não os localiza, a janela**Arquivos de origem não encontrados**oferece a opção**Procurar**para o novo local e, em seguida,**Novo projeto**ou**Excluir projeto**. Na CLI, use `chloros-cli project open PATH --relink FOLDER`; no SDK, `open_project(path, relink=...)`.***
+Se os arquivos de origem foram movidos ou excluídos desde a última vez que o projeto foi aberto, o Chloros informa **quais**arquivos estão faltando, em vez de abrir uma grade em branco. Se a própria pasta do projeto tiver sido movida, o Chloros redireciona seus caminhos de origem para a pasta em que `project.json` está agora e mantém um backup (`project.json.before-relink-<date>-<time>`). Quando isso não os localiza, a janela**Arquivos de origem não encontrados**oferece a opção**Procurar**para o novo local e, em seguida,**Novo projeto**ou**Excluir projeto**. Na CLI, use `chloros-cli project open PATH --relink FOLDER`; no SDK, `open_project(path, relink=...)`.
+
+***
 
 ## Próximos passos
 

@@ -78,7 +78,9 @@ Cada imagem com dados de GPS recebe um marcador em suas coordenadas.
 | Provedor        | Observações                                                                                                                                                             |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Google Maps** | Ampla cobertura mundial; suporta todos os quatro tipos de blocos                                                                                                            |
-| **Esri ArcGIS**| Imagens aéreas frequentemente com resolução mais alta em determinadas regiões. O tipo de bloco**Terrain** não é oferecido para o Esri e seu botão fica desativado enquanto o Esri estiver selecionado |***
+| **Esri ArcGIS**| Imagens aéreas frequentemente com resolução mais alta em determinadas regiões. O tipo de bloco**Terrain** não é oferecido para o Esri e seu botão fica desativado enquanto o Esri estiver selecionado |
+
+***
 
 ## Tipos de blocos de mapa
 
@@ -93,7 +95,9 @@ Escolha o tipo de camada do mapa usando os botões (da esquerda para a direita):
 | **Satélite**        | Imagens detalhadas de satélite, sem legendas — a opção que exige maior largura de banda |
 | **Híbrido** (padrão) | Imagens de satélite com estradas e legendas sobrepostas                |
 
-A guia “Mapa” abre na opção **Híbrido**. Sua escolha é aplicada à troca de provedor, desde que o provedor ofereça suporte a isso.***
+A guia “Mapa” abre na opção **Híbrido**. Sua escolha é aplicada à troca de provedor, desde que o provedor ofereça suporte a isso.
+
+***
 
 ## Navegação no mapa
 
@@ -141,7 +145,9 @@ A guia “Mapa” abre na opção **Híbrido**. Sua escolha é aplicada à troca
 
 ### O mapa está em branco ou os blocos param de carregar
 
-Os provedores de blocos são serviços on-line. Se os blocos pararem de chegar, verifique a conexão de rede do equipamento e, em seguida, tente trocar de provedor. Se você estava com o zoom muito ampliado, pressione o botão de reinicialização **×** para retornar a um nível normal de zoom e permitir que o mapa solicite os blocos novamente.***
+Os provedores de blocos são serviços on-line. Se os blocos pararem de chegar, verifique a conexão de rede do equipamento e, em seguida, tente trocar de provedor. Se você estava com o zoom muito ampliado, pressione o botão de reinicialização **×** para retornar a um nível normal de zoom e permitir que o mapa solicite os blocos novamente.
+
+***
 
 ## Páginas relacionadas
 
