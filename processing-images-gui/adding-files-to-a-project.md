@@ -57,7 +57,11 @@ output/
 └── *.daq          the downwelling reading matched to the capture
 ```
 
-**Selecione “Adicionar pasta” na raiz das capturas** (`output/` acima). Quando a pasta selecionada não contém imagens, mas possui subpastas, o Chloros as percorre automaticamente — as subpastas do nível e a raiz `.daq` são todas capturadas de uma só vez.**Como as capturas são importadas:*** Cada captura é importada como uma **única imagem**, agrupada por captura (não uma entrada por nível). Os outros níveis da mesma captura aparecem como modos de visualização dessa única imagem.
+**Selecione “Adicionar pasta” na raiz das capturas** (`output/` acima). Quando a pasta selecionada não contém imagens, mas possui subpastas, o Chloros as percorre automaticamente — as subpastas do nível e a raiz `.daq` são todas capturadas de uma só vez.
+
+**Como as capturas são importadas:**
+
+* Cada captura é importada como uma **única imagem**, agrupada por captura (não uma entrada por nível). Os outros níveis da mesma captura aparecem como modos de visualização dessa única imagem.
 * **O processamento sempre começa a partir do quadro bruto.** Os outros níveis podem ser visualizados, mas apenas o `raw` é processado — reprocessar um produto já processado aplicaria as correções duas vezes, por isso o Chloros recusa. Uma exportação reimportada nunca pode ocupar o espaço de um quadro bruto de uma captura.
 * Uma pasta de captura salva **sem** quadros brutos é importada e exibida normalmente, mas o processamento a ignora e registra isso no log. (O sinalizador da CLI `--input-level` pode forçar um ponto de entrada para esse caso — consulte [a Referência da CLI](../reference/cli-reference.md#what-a-captures-folder-looks-like).)
 * A partir da versão 1.3.0, uma pasta de capturas também pode conter uma pasta `clamp_masks/` (máscaras por pixel para os níveis de radiação e refletância — consulte [Formatos de imagem de saída](../output-image-formats.md#clamp-masks)). As máscaras não são imagens da cena, e o Chloros as ignora na importação, independentemente de onde estejam.

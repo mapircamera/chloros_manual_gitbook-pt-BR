@@ -198,7 +198,7 @@ A exibição de fps do bloco da matriz também informa o estado da transmissão:
 Informações úteis sobre o modo combinado:
 
 * A imagem composta é alinhada ao quadro da câmera **mestre**. O direcionamento AE-ROI e a medição pontual na imagem composta são exatos para a câmera mestre e aproximados para as escravas; use**Visão Dividida** (configurações do conjunto → “Mostrar câmeras membros”) para blocos por câmera com precisão de pixel sem abrir conexões extras de câmera.
-* ****Camadas de exibição**(configurações da matriz; desativado por padrão) permite escolher uma camada de primeiro plano e uma de fundo — qualquer câmera membro ou**Índice**. Com primeiro plano = Índice, os pixels fora do Min/Max da LUT exibem a camada de fundo.
+* **Camadas de exibição** (configurações da matriz; desativado por padrão) permite escolher uma camada de primeiro plano e uma de fundo — qualquer câmera membro ou**Índice**. Com primeiro plano = Índice, os pixels fora do Min/Max da LUT exibem a camada de fundo.
 * **Resolução de renderização** (padrão 720p) define a altura da transmissão ao vivo *e* o tamanho da exportação da imagem composta salva. As imagens por câmera são sempre exportadas em resolução total.
 * O alinhamento é calculado por sessão e nunca é salvo. O Chloros alinha **todas as matrizes automaticamente após a conexão, em ambos os modos de exibição**, assim que a exposição automática dos membros se estabilizar (ele continua tentando por até 5 minutos). A seção**Alinhamento**do painel de configurações do conjunto mostra os resíduos RMS e o botão**Recalibrar alinhamento** — também para conjuntos separados, que não possuem bloco composto.
 

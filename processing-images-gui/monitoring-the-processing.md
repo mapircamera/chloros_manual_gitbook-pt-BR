@@ -30,7 +30,11 @@ Para usuários com licença do Chloros+:
 1.**Detecção** – Localização de alvos de calibração
 2. **Análise** – Exame das imagens e preparação do pipeline
 3. **Calibração** – Aplicação de correções de vinheta e refletância
-4. **Exportação** – Salvamento dos arquivos processados**Recursos interativos:*** **Passe o mouse** sobre a barra de progresso para ver o painel expandido de 4 etapas
+4. **Exportação** – Salvamento dos arquivos processados
+
+**Recursos interativos:**
+
+* **Passe o mouse** sobre a barra de progresso para ver o painel expandido de 4 etapas
 * **Clique** na barra de progresso para congelar/fixar o painel expandido
 * **Clique novamente** para desbloquear e ocultar automaticamente ao afastar o mouse
 * Cada etapa mostra o progresso individual (0-100%)
@@ -94,7 +98,9 @@ Para usuários com licença do Chloros+:
 
 ### Etapa 3: Calibração
 
-**O que está acontecendo:*** **Debayering**: Conversão do padrão RAW Bayer em 3 canais (ignorada para módulos LATTICE mono, com uma observação)
+**O que está acontecendo:**
+
+* **Debayering**: Conversão do padrão RAW Bayer em 3 canais (ignorada para módulos LATTICE mono, com uma observação)
 * **Correção de vinheta**: Remoção do escurecimento nas bordas da lente
 * **Calibração de refletância**: Normalização com valores-alvo e/ou downwelling do DAQ
 * **Cálculo de índices**: Cálculo de índices multiespectrais
@@ -106,7 +112,9 @@ Para usuários com licença do Chloros+:
 * Imagem atual sendo processada
 * Imagens concluídas / Total de imagens
 
-**Comportamento do processamento:*** **Modo livre**: Processa uma imagem por vez, sequencialmente
+**Comportamento do processamento:**
+
+* **Modo livre**: Processa uma imagem por vez, sequencialmente
 * **Modo Chloros+**: Executa um conjunto de trabalhadores adaptável ao hardware — de 1 a 4 trabalhadores simultâneos em sistemas com GPU (dependendo da VRAM), um trabalhador por núcleo físico (menos um) em sistemas apenas com CPU. Consulte [Adaptação Dinâmica de Computação](../processing-architecture/dynamic-compute-adaptation.md)
 * **Aceleração por GPU**: Acelera significativamente esta etapa**O que observar:**
 

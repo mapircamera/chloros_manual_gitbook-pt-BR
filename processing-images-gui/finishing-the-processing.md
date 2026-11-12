@@ -82,7 +82,9 @@ Não conte com base em fórmulas — o número de saídas depende de quais produ
 
 ### Pré-visualização em visualizadores de imagem externos
 
-**Visualizadores recomendados:*** **QGIS** – Software GIS gratuito (ideal para análise multiespectral georreferenciada)
+**Visualizadores recomendados:**
+
+* **QGIS** – Software GIS gratuito (ideal para análise multiespectral georreferenciada)
 * **IrfanView** – Visualizador de imagens rápido e leve (compatível com TIFF)
 * **Adobe Photoshop** – Edição profissional (compatível com TIFF)
 * **GIMP** – Alternativa gratuita ao Photoshop
@@ -224,7 +226,9 @@ Para enviar um problema diretamente à MAPIR, use o ícone de bug (**Relatar um 
 
 ### Problema: Valores de NDVI parecem incorretos
 
-**Intervalos esperados para o NDVI:*** **Água, rochas, solo**: -0,1 a 0,2
+**Intervalos esperados para o NDVI:**
+
+* **Água, rochas, solo**: -0,1 a 0,2
 * **Vegetação esparsa/doente**: 0,2 a 0,4
 * **Vegetação moderada**: 0,4 a 0,6
 * **Vegetação saudável e densa**: 0,6 a 0,9**Se os valores estiverem fora desses intervalos:**
@@ -278,12 +282,18 @@ Para enviar um problema diretamente à MAPIR, use o ícone de bug (**Relatar um 
 
 ### Estratégia de backup recomendada
 
-**O que salvar:*** ✅ **Imagens RAW/JPG originais ou capturas brutas do LATTICE** — Arquive em uma unidade separada ou na nuvem; os arquivos brutos são a fonte do pipeline e tudo o mais pode ser regenerado a partir deles
+**O que salvar:**
+
+* ✅ **Imagens RAW/JPG originais ou capturas brutas do LATTICE** — Arquive em uma unidade separada ou na nuvem; os arquivos brutos são a fonte do pipeline e tudo o mais pode ser regenerado a partir deles
 * ✅ **Arquivos do sensor de luz `.daq` / `.csv`** — Necessários para recalcular a refletância posteriormente
 * ✅ **Resultados processados** — Mantenha as imagens calibradas e os índices
 * ✅ **Pasta do projeto** (`project.json` e arquivos associados) — Contém todas as configurações para reprocessamento, se necessário
 * ✅ **Log de depuração** — Documenta os detalhes do processamento
-* ✅ **Imagens de alvo de calibração** — Para verificação e reprocessamento**Recomendações de armazenamento:*** **Backup imediato**: Disco rígido externo
+* ✅ **Imagens de alvo de calibração** — Para verificação e reprocessamento
+
+**Recomendações de armazenamento:**
+
+* **Backup imediato**: Disco rígido externo
 * **Arquivamento de longo prazo**: Armazenamento em nuvem (Google Drive, Dropbox, etc.)
 * **Dados críticos**: Mantenha 2 a 3 cópias em locais diferentes***
 

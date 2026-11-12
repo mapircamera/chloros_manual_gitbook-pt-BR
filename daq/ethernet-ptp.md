@@ -72,9 +72,9 @@ Na interface gráfica (GUI), a janela modal de configurações do DAQ-E exibe um
 
 ```bash
 chloros-cli daq pool-enable-ptp --sensor-id daq-e-def330
-``` O
+```
 
-Chloros nunca reativa uma unidade por conta própria, pois o desligamento pode ser intencional.
+O Chloros nunca reativa uma unidade por conta própria, pois o desligamento pode ser intencional.
 
 Detalhes para usuários que exigem alinhamento rigoroso:
 

@@ -375,7 +375,7 @@ Um painel somente leitura atualizado a cada 5 s:
 
 * **Rótulo de nível**: “Captura simultânea” (verde) · “Captura simultânea (emissão escalonada FTD)” (verde) · “Captura escalonada (desvio de 100 ms)” (âmbar) · “Configuração muito grande” (vermelho).
 * **Integridade do quadro**: “x,xx % incompleto” — verde abaixo de 1 %, âmbar abaixo de 5 %, vermelho a partir de 5 %.
-* ****Linha de link**: “NIC {mbps} Mbps - sustentada {MB/s} MB/s”.
+* **Linha de link**: “NIC {mbps} Mbps - sustentada {MB/s} MB/s”.
 
 Este é o orçamento de largura de banda em tempo real do array. Para obter informações sobre o modelo de fps e de rede subjacente — e o que alterar quando o nível ficar âmbar ou vermelho — consulte [Matrizes com várias câmeras](arrays.md) e a [Referência da CLI](../reference/cli-reference.md).
 
@@ -401,7 +401,7 @@ Referência rápida sobre o que fica onde quando uma câmera é membro de uma ma
 Outros comportamentos transversais:
 
 * **Exibição combinada vs. separada** é escolhida na conexão da matriz: combinada = um bloco composto alinhado (as câmeras transmitem apenas via Visualização Dividida); separada = cada câmera renderiza seu próprio bloco sincronizado. Uma câmera nunca exibe simultaneamente uma transmissão independente e um bloco da matriz.
-* ****Reconexão automática**: abrir um projeto salvo restaura suas câmeras e matrizes e reaplica todas as configurações salvas ao backend antes que as transmissões sejam retomadas.
+* **Reconexão automática**: abrir um projeto salvo restaura suas câmeras e matrizes e reaplica todas as configurações salvas ao backend antes que as transmissões sejam retomadas.
 * **Controle de captura**: câmeras ocultas ou pausadas são excluídas da opção “Capturar tudo”; uma matriz é totalmente bloqueada somente quando TODOS os membros estiverem ocultos/pausados. Consulte [Configurações e modos de captura](capture.md).
 
 ## Como as configurações são mantidas

@@ -44,7 +44,9 @@ O painel Configurações do projeto está organizado nas seções abaixo. Duas s
 
 Controla como o Chloros identifica alvos de calibração em suas imagens.
 
-**Principais configurações:*** **Área mínima da amostra de calibração (px)**: Limite de tamanho para detecção de alvos (padrão:**25**, intervalo de 0 a 10.000)
+**Principais configurações:**
+
+* **Área mínima da amostra de calibração (px)**: Limite de tamanho para detecção de alvos (padrão:**25**, intervalo de 0 a 10.000)
 * **Agrupamento mínimo de alvos (0–100)**: Limite de similaridade para agrupar regiões-alvo (padrão:**60**)**Quando ajustar:**
 
 * Aumente a área de amostragem se houver detecções falsas
@@ -59,19 +61,26 @@ Essas configurações ficam desativadas quando a **calibração de refletância 
 
 Principais opções de processamento de imagem e calibração.
 
-**Configurações principais:*** **Correção de vinheta**: Compensa o escurecimento da lente nas bordas ✅ Recomendado
+**Configurações principais:**
+
+* **Correção de vinheta**: Compensa o escurecimento da lente nas bordas ✅ Recomendado
 * **Calibração de refletância / balanço de branco**: Calibra imagens usando alvos detectados (Survey3) e/ou dados do sensor de luz DAQ (LATTICE) ✅ Recomendado
 * **Método de debayer**: Algoritmo para converter RAW em multiespectral de 3 canais
 * **Intervalo mínimo de recalibração**: Tempo mínimo, em segundos, entre o uso de alvos de calibração (padrão:**0** = usar todos, intervalo de 0 a 3.600)**Produtos alternativos não calibrados:**Quando um quadro não pode ser calibrado por refletância (nenhum alvo disponível ou calibração desativada), ele é exportado como um dos dois produtos alternativos —**existe exatamente um do par por execução**, escolhido pela opção de correção de vinheta:
 
-* **Exportar resposta do sensor**: grava `Sensor_Response_Images` — usado quando a correção de vinheta está**desativada*** **Exportar com correção de vinheta**: grava `Vignette_Corrected_Images` — usado quando a correção de vinheta está**ativada**A caixa de seleção que não está em uso fica desativada. Desmarcar a caixa ativa impede que esse arquivo seja gravado.**Produtos de exportação do LATTICE** (exibidos para todos os projetos; aplicam-se às capturas do LATTICE):
+* **Exportar resposta do sensor**: grava `Sensor_Response_Images` — usado quando a correção de vinheta está**desativada**
+* **Exportar com correção de vinheta**: grava `Vignette_Corrected_Images` — usado quando a correção de vinheta está**ativada**A caixa de seleção que não está em uso fica desativada. Desmarcar a caixa ativa impede que esse arquivo seja gravado.**Produtos de exportação do LATTICE** (exibidos para todos os projetos; aplicam-se às capturas do LATTICE):
 
 * **Exportar sem demosaico**: a imagem linear sem debayering (`Debayered_Images`): o desvio de escuro do pacote de calibração é removido e, em seguida, é realizada a demosaicagem, sem campo plano nem separação de cores — o mesmo arquivo que uma captura salva em seu nível sem debayering — na orientação nativa do sensor. Aplica-se aos módulos RGB e multiespectrais.
 * **Exportar pré-visualização**: a pré-visualização na tela (`Preview_Images`). RGB = balanço de branco (iluminante do DAQ, quando disponível; caso contrário, mundo cinza) + gama; multiespectral = alongamento de cores falsas.
 * **Exportar radiancia**: radiancia espectral float32 (`Radiance_Images`, W/m²/sr/nm). Apenas para módulos multiespectrais — não se aplica a masters RGB.
 * **Exportar refletância**: refletância uint16 (`Reflectance_Calibrated_Images`, DN 32768 = ρ 1,0) quando uma leitura descendente `.daq` ou um alvo dentro do quadro cobre o quadro. Apenas módulos multiespectrais.
 
-Todas as quatro opções estão **ativadas por padrão**— um quadro bruto LATTICE importado é distribuído para todos os produtos habilitados e aplicáveis em uma única etapa de processamento. A caixa de seleção**Exportar refletância** fica desativada quando a calibração de refletância está desativada. Configurações cujo botão pai as torna impossíveis estão sempre desativadas, com uma dica de ferramenta indicando o botão a ser alterado.**Configurações avançadas:*** **Deslocamento de fuso horário do sensor de luz**: Horas em relação ao UTC para sincronização do tempo do sensor de luz (padrão: 0, intervalo de −12 a +12)
+Todas as quatro opções estão **ativadas por padrão**— um quadro bruto LATTICE importado é distribuído para todos os produtos habilitados e aplicáveis em uma única etapa de processamento. A caixa de seleção**Exportar refletância** fica desativada quando a calibração de refletância está desativada. Configurações cujo botão pai as torna impossíveis estão sempre desativadas, com uma dica de ferramenta indicando o botão a ser alterado.
+
+**Configurações avançadas:**
+
+* **Deslocamento de fuso horário do sensor de luz**: Horas em relação ao UTC para sincronização do tempo do sensor de luz (padrão: 0, intervalo de −12 a +12)
 * **Aplicar correções PPK**: utiliza dados de GPS/pinos de exposição dos arquivos `.daq` (padrão: desativado)
 * **Pino de exposição 1/2**: atribui câmeras aos pinos de exposição para configurações com duas câmeras
 
@@ -105,7 +114,9 @@ Configure quais índices de vegetação devem ser calculados e exportados. O men
 3. Configure as definições de visualização (cores da LUT, intervalos de valores)
 4. Adicione vários índices conforme necessário
 
-**Índices populares:*** **NDVI**: Saúde geral da vegetação (o mais comum)
+**Índices populares:**
+
+* **NDVI**: Saúde geral da vegetação (o mais comum)
 * **NDRE**: Detecção precoce de estresse com RedEdge
 * **GNDVI**: Sensível à concentração de clorofila
 * **OSAVI**: Funciona bem com solo visível
@@ -217,7 +228,11 @@ com GPS para geolocalização precisa:
 3. Defina**“Desvio de fuso horário do sensor de luz”**, se necessário (padrão: 0 para UTC)
 4. Atribua as câmeras aos pinos de exposição:
    * **Câmera única**: atribuída automaticamente ao Pino 1
-   * **Duas câmeras**: atribua manualmente cada câmera ao pino correto**Atribuição de pinos de exposição:*** **Pino de exposição 1**: Selecione o modelo da câmera no menu suspenso
+   * **Duas câmeras**: atribua manualmente cada câmera ao pino correto
+
+**Atribuição de pinos de exposição:**
+
+* **Pino de exposição 1**: Selecione o modelo da câmera no menu suspenso
 * **Pino de exposição 2**: Selecione a segunda câmera ou “Não usar”
 * A mesma câmera não pode ser atribuída a ambos os pinos
 
