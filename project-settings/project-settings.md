@@ -107,7 +107,7 @@ Para projetos que contêm capturas do LATTICE, cada quadro importado do LATTICE 
 * O processamento do *Survey3
 
 * não é afetado por essas quatro opções.
-* Os produtos de radiação e refletância das câmeras multiespectrais M3C também podem gravar uma ****máscara de limitação** por pixel em uma pasta `clamp_masks/` ao lado das pastas de produtos, registrando onde a separação de bandas limitou um valor negativo a zero. Consulte [Formatos de imagem de saída](../output-image-formats.md#clamp-masks).
+* Os produtos de radiação e refletância das câmeras multiespectrais M3C também podem gravar uma **máscara de limitação** por pixel em uma pasta `clamp_masks/` ao lado das pastas de produtos, registrando onde a separação de bandas limitou um valor negativo a zero. Consulte [Formatos de imagem de saída](../output-image-formats.md#clamp-masks).
 
 Essas mesmas quatro opções de ativação/desativação existem na versão sem interface gráfica como `chloros-cli process --debayered / --preview / --radiance / --reflectance`. Elas substituíram o antigo sinalizador da CLI, `--radiometric-output`, que não existe mais.
 
